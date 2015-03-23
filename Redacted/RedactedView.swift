@@ -20,6 +20,13 @@ class RedactedView: NSView {
 	}
 
 	private let imageLayer = CALayer()
+	private let dragHighlightLayer: CALayer = {
+		let layer = CALayer()
+		layer.borderWidth = 4
+		layer.borderColor = NSColor.selectedControlColor().CGColor
+		layer.hidden = true
+		return layer
+	}()
 
 
 	// MARK: - Initializers
@@ -43,11 +50,7 @@ class RedactedView: NSView {
 
 	override func layout() {
 		super.layout()
-
-		CATransaction.begin()
-		CATransaction.setDisableActions(true)
-		imageLayer.frame = layer?.bounds ?? bounds
-		CATransaction.commit()
+		layoutLayers()
 	}
 
 
@@ -56,11 +59,70 @@ class RedactedView: NSView {
 	private func initialize() {
 		wantsLayer = true
 
+		registerForDraggedTypes([NSFilenamesPboardType])
+
 		imageLayer.contentsGravity = kCAGravityResizeAspect
 
 		if let layer = layer {
-			imageLayer.frame = layer.bounds
 			layer.addSublayer(imageLayer)
+			layer.addSublayer(dragHighlightLayer)
+			layoutLayers()
+		}
+	}
+
+	private func layoutLayers() {
+		if let layer = layer {
+			CATransaction.begin()
+			CATransaction.setDisableActions(true)
+			imageLayer.frame = layer.bounds
+			dragHighlightLayer.frame = layer.bounds
+			CATransaction.commit()
 		}
 	}
 }
+
+
+extension RedactedView: NSDraggingDestination {
+
+	override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
+//		NSPasteboard *pboard = [sender draggingPasteboard];
+//
+//		if ([[pboard types] containsObject:NSFilenamesPboardType]) {
+//
+//			NSArray *paths = [pboard propertyListForType:NSFilenamesPboardType];
+//			for (NSString *path in paths) {
+//				NSError *error = nil;
+//				NSString *utiType = [[NSWorkspace sharedWorkspace]
+//					typeOfFile:path error:&error];
+//				if (![[NSWorkspace sharedWorkspace]
+//					type:utiType conformsToType:(id)kUTTypeMovie]) {
+//
+//						self.dragHighlightLayer.hidden = YES;
+//						return NSDragOperationNone;
+//				}
+//			}
+//		}
+
+		dragHighlightLayer.hidden = false
+		return NSDragOperation.Every
+	}
+
+	override func draggingExited(sender: NSDraggingInfo?) {
+		dragHighlightLayer.hidden = true
+	}
+
+	override func prepareForDragOperation(sender: NSDraggingInfo) -> Bool {
+		return true
+	}
+
+	override func performDragOperation(sender: NSDraggingInfo) -> Bool {
+		dragHighlightLayer.hidden = true
+
+		let pasteboard = sender.draggingPasteboard()
+		if let paths = pasteboard.propertyListForType(NSFilenamesPboardType) as? [String], path = paths.first, URL = NSURL(fileURLWithPath: path) {
+			image = NSImage(contentsOfURL: URL)
+		}
+		return true
+	}
+}
+
