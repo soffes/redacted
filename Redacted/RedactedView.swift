@@ -85,23 +85,17 @@ class RedactedView: NSView {
 extension RedactedView: NSDraggingDestination {
 
 	override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
-//		NSPasteboard *pboard = [sender draggingPasteboard];
-//
-//		if ([[pboard types] containsObject:NSFilenamesPboardType]) {
-//
-//			NSArray *paths = [pboard propertyListForType:NSFilenamesPboardType];
-//			for (NSString *path in paths) {
-//				NSError *error = nil;
-//				NSString *utiType = [[NSWorkspace sharedWorkspace]
-//					typeOfFile:path error:&error];
-//				if (![[NSWorkspace sharedWorkspace]
-//					type:utiType conformsToType:(id)kUTTypeMovie]) {
-//
-//						self.dragHighlightLayer.hidden = YES;
-//						return NSDragOperationNone;
-//				}
-//			}
-//		}
+		let pasteboard = sender.draggingPasteboard()
+		let workspace = NSWorkspace.sharedWorkspace()
+
+		if let types = pasteboard.types as? [String], paths = pasteboard.propertyListForType(NSFilenamesPboardType) as? [String] where contains(types, NSFilenamesPboardType) {
+			for path in paths {
+				if let utiType = workspace.typeOfFile(path, error: nil) where !workspace.type(utiType, conformsToType: String(kUTTypeImage)) {
+					dragHighlightLayer.hidden = true
+					return NSDragOperation.None
+				}
+			}
+		}
 
 		dragHighlightLayer.hidden = false
 		return NSDragOperation.Every
