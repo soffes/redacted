@@ -70,6 +70,12 @@ class WindowController: NSWindowController {
 
 	func imageDidChange(notification: NSNotification?) {
 		validateToolbar()
+
+//		if let window = window, image = editorViewController.image {
+//			var frame = window.frame
+//			frame.size.height = round(frame.size.width) * image.size.height / image.size.width
+//			window.setFrame(frame, display: true)
+//		}
 	}
 }
 
@@ -78,6 +84,14 @@ extension WindowController: NSWindowDelegate {
 	func windowWillClose(notification: NSNotification) {
 		NSApplication.sharedApplication().terminate(window)
 	}
+
+//	func windowWillResize(sender: NSWindow, toSize frameSize: NSSize) -> NSSize {
+//		var size = frameSize
+//		if let image = editorViewController.image {
+//			size.height = round(size.width) * image.size.height / image.size.width
+//		}
+//		return size
+//	}
 }
 
 

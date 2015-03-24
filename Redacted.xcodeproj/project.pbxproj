@@ -23,6 +23,7 @@
 		2149F2C31AC0E85E00F4AF7E /* CoreImageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C21AC0E85E00F4AF7E /* CoreImageLayer.swift */; };
 		2149F2C51AC0EECC00F4AF7E /* CGRect+RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C41AC0EECC00F4AF7E /* CGRect+RedactedKit.swift */; };
 		2149F2C71AC1040100F4AF7E /* ImageDragDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C61AC1040100F4AF7E /* ImageDragDestinationView.swift */; };
+		2149F2CB1AC1326200F4AF7E /* Aspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2CA1AC1326200F4AF7E /* Aspect.swift */; };
 		21D1F3491AC0C85600E07BE8 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1F3481AC0C85600E07BE8 /* WindowController.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		2149F2C21AC0E85E00F4AF7E /* CoreImageLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreImageLayer.swift; sourceTree = "<group>"; };
 		2149F2C41AC0EECC00F4AF7E /* CGRect+RedactedKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+RedactedKit.swift"; sourceTree = "<group>"; };
 		2149F2C61AC1040100F4AF7E /* ImageDragDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDragDestinationView.swift; sourceTree = "<group>"; };
+		2149F2CA1AC1326200F4AF7E /* Aspect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aspect.swift; sourceTree = "<group>"; };
 		21D1F3481AC0C85600E07BE8 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 				2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */,
 				2149F2C01AC0DFD100F4AF7E /* ChainFilter.swift */,
 				2149F2C41AC0EECC00F4AF7E /* CGRect+RedactedKit.swift */,
+				2149F2CA1AC1326200F4AF7E /* Aspect.swift */,
 			);
 			path = RedactedKit;
 			sourceTree = SOURCE_ROOT;
@@ -460,6 +463,7 @@
 				2149F2BF1AC0DB2900F4AF7E /* Redaction.swift in Sources */,
 				2149F2C51AC0EECC00F4AF7E /* CGRect+RedactedKit.swift in Sources */,
 				2149F2C11AC0DFD100F4AF7E /* ChainFilter.swift in Sources */,
+				2149F2CB1AC1326200F4AF7E /* Aspect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

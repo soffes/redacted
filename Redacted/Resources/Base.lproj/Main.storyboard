@@ -149,6 +149,13 @@ CA
                                                 <action selector="runToolbarCustomizationPalette:" target="Ady-hI-5gd" id="pQI-g3-MTW"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="67K-VJ-85B"/>
+                                        <menuItem title="Enter Full Screen" keyEquivalent="f" id="lOm-0W-U7v">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="toggleFullScreen:" target="Ady-hI-5gd" id="p1E-wA-Fdo"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -210,6 +217,7 @@ CA
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="200" height="200"/>
                         <toolbar key="toolbar" implicitIdentifier="F4E5C2DE-5F69-4075-ACF7-6A1D214536CD" displayMode="iconAndLabel" sizeMode="regular" id="tJy-B4-k21">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="yMH-mM-Tge"/>
@@ -247,33 +255,26 @@ CA
                                         <action selector="clearImage:" target="B8D-0N-5wS" id="iX6-0a-ukE"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="1E92E7CB-CD45-420D-9A0F-C78EE3B653FF" explicitItemIdentifier="mode" label="Mode" paletteLabel="Mode" tag="1" id="OMs-VQ-mXr">
+                                <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="HF5-4q-4wk"/>
+                                <toolbarItem implicitItemIdentifier="B5DBD10B-8CAB-4E4A-8767-0DE5BA0302DA" explicitItemIdentifier="mode" label="Mode" paletteLabel="Mode" id="m3V-Mi-ixQ">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="71" height="24"/>
-                                    <size key="maxSize" width="71" height="28"/>
-                                    <segmentedControl key="view" verticalHuggingPriority="750" tag="1" id="Bbx-cJ-SpM">
-                                        <rect key="frame" x="0.0" y="14" width="71" height="28"/>
+                                    <size key="minSize" width="67" height="28"/>
+                                    <size key="maxSize" width="67" height="28"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="FtH-vU-pEZ">
+                                        <rect key="frame" x="0.0" y="14" width="67" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="Qd2-U0-G6C">
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="rWV-CV-kvs">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment image="NSIconViewTemplate" width="32" selected="YES">
-                                                    <nil key="label"/>
-                                                </segment>
-                                                <segment image="NSBluetoothTemplate" width="32" tag="1">
-                                                    <nil key="label"/>
-                                                </segment>
+                                                <segment image="NSIconViewTemplate" width="32"/>
+                                                <segment image="NSBluetoothTemplate" width="32" selected="YES" tag="1"/>
                                             </segments>
                                         </segmentedCell>
                                     </segmentedControl>
-                                    <connections>
-                                        <action selector="changeMode:" target="B8D-0N-5wS" id="qAR-gi-6hW"/>
-                                    </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="HF5-4q-4wk"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="OMs-VQ-mXr"/>
+                                <toolbarItem reference="m3V-Mi-ixQ"/>
                                 <toolbarItem reference="yMH-mM-Tge"/>
                                 <toolbarItem reference="SWC-U0-tA0"/>
                                 <toolbarItem reference="cYw-Mz-8wy"/>
@@ -281,7 +282,6 @@ CA
                         </toolbar>
                     </window>
                     <connections>
-                        <outlet property="modeControl" destination="Bbx-cJ-SpM" id="ZfW-S1-pxm"/>
                         <outlet property="shareItem" destination="cYw-Mz-8wy" id="pqF-ie-zuC"/>
                         <outlet property="toolbar" destination="tJy-B4-k21" id="ocm-7I-Qh2"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>

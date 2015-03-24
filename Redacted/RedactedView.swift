@@ -60,15 +60,23 @@ class RedactedView: NSView {
 	}
 
 
+	override func viewDidMoveToWindow() {
+		super.viewDidMoveToWindow()
+
+		if let scale = window?.screen?.backingScaleFactor {
+			layer?.contentsScale = scale
+			imageLayer.contentsScale = scale
+		}
+	}
+
+
 	// MARK: - Private
 
 	private func initialize() {
 		wantsLayer = true
-//		editable = true
-//		allowsCutCopyPaste = editable
-//		imageFrameStyle = .None
 
 		if let layer = layer {
+			layer.backgroundColor = NSColor(SRGBRed: 0.863, green: 0.863, blue: 0.863, alpha: 1).CGColor
 			layer.addSublayer(imageLayer)
 			layoutLayers()
 		}

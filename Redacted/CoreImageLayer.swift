@@ -8,14 +8,20 @@
 
 import Cocoa
 import Quartz
+import RedactedKit
 
 class CoreImageLayer: CALayer {
+
+	// MARK: - Properties
 
 	var image: CIImage? {
 		didSet {
 			setNeedsDisplayInRect(bounds)
 		}
 	}
+
+
+	// MARK: - CALayer
 
 	override func drawInContext(ctx: CGContext!) {
 		if let image = image {
@@ -24,7 +30,17 @@ class CoreImageLayer: CALayer {
 				kCIContextWorkingColorSpace: NSNull()
 			])
 
-			ciContext.drawImage(image, inRect: bounds, fromRect: image.extent())
+			ciContext.drawImage(image, inRect: imageRectForBounds(bounds), fromRect: image.extent())
 		}
+	}
+
+
+	// MARK: - Private
+
+	private func imageRectForBounds(bounds: CGRect) -> CGRect {
+		if let image = image {
+			return RectAspectFit(image.extent().size, bounds)
+		}
+		return bounds
 	}
 }
