@@ -51,6 +51,22 @@ class WindowController: NSWindowController {
 
 	// MARK: - Actions
 
+	func save(sender: AnyObject?) {
+		if let window = window, image = editorViewController.renderedImage {
+			let savePanel = NSSavePanel()
+			savePanel.allowedFileTypes = ["png"]
+			savePanel.beginSheetModalForWindow(window) {
+				if $0 == NSFileHandlingPanelOKButton {
+					if let path = savePanel.URL?.path, cgImage = image.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue() {
+						let rep = NSBitmapImageRep(CGImage: cgImage)
+						let data = rep.representationUsingType(NSBitmapImageFileType.NSPNGFileType, properties: [NSObject: AnyObject]())
+						data?.writeToFile(path, atomically: true)
+					}
+				}
+			}
+		}
+	}
+
 	func copy(sender: AnyObject?) {
 		if let image = editorViewController.renderedImage {
 			let pasteboard = NSPasteboard.generalPasteboard()
