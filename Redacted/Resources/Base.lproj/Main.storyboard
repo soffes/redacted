@@ -218,7 +218,7 @@ CA
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="200" height="200"/>
-                        <toolbar key="toolbar" implicitIdentifier="F4E5C2DE-5F69-4075-ACF7-6A1D214536CD" displayMode="iconAndLabel" sizeMode="regular" id="tJy-B4-k21">
+                        <toolbar key="toolbar" implicitIdentifier="F4E5C2DE-5F69-4075-ACF7-6A1D214536CD" displayMode="iconOnly" sizeMode="regular" id="tJy-B4-k21">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="yMH-mM-Tge"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="k30-fi-DTN"/>

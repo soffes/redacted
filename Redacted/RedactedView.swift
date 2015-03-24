@@ -97,10 +97,13 @@ class RedactedView: NSView {
 	// MARK: - Private
 
 	private func updateRedactions() {
+		CATransaction.begin()
+		CATransaction.setDisableActions(true)
 		if let ciImage = ciImage {
 			imageLayer.image = redact(image: ciImage, withRedactions: redactions)
 		} else {
 			imageLayer.image = nil
 		}
+		CATransaction.commit()
 	}
 }
