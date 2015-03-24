@@ -58,9 +58,14 @@ public struct Redaction: Hashable, Equatable {
 			])!.outputImage
 
 		case .Blur:
+			let clamp = CIFilter(name: "CIAffineClamp", withInputParameters: [
+				"inputTransform": NSAffineTransform(),
+				"inputImage": image
+			])
+
 			processed = CIFilter(name: "CIGaussianBlur", withInputParameters: [
 				"inputRadius": 10,
-				"inputImage": image
+				"inputImage": clamp.outputImage
 			])!.outputImage
 		}
 
