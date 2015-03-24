@@ -21,6 +21,8 @@ class WindowController: NSWindowController {
 	override func windowDidLoad() {
 		super.windowDidLoad()
 
+		window?.delegate = self
+
 		editorViewController = contentViewController as? EditorViewController
 
 		if let button = shareItem.view as? NSButton {
@@ -33,5 +35,12 @@ class WindowController: NSWindowController {
 
 	@IBAction func shareImage(sender: AnyObject?) {
 		editorViewController.shareImage(fromView: shareItem.view!)
+	}
+}
+
+
+extension WindowController: NSWindowDelegate {
+	func windowWillClose(notification: NSNotification) {
+		NSApplication.sharedApplication().terminate(window)
 	}
 }
