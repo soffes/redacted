@@ -9,8 +9,17 @@
 import Foundation
 import CoreGraphics
 
-public enum RedactionType {
+public enum RedactionType: Int, Printable {
 	case Pixelate, Blur
+
+	public var description: String {
+		switch self {
+		case .Pixelate:
+			return "pixelate"
+		case .Blur:
+			return "blur"
+		}
+	}
 }
 
 public struct Redaction: Hashable, Equatable {

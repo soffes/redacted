@@ -15,23 +15,43 @@ class EditorViewController: NSViewController {
 
 	@IBOutlet var redactedView: RedactedView!
 
+	var mode: RedactionType = .Pixelate {
+		didSet {
+			println("Mode: \(mode)")
+		}
+	}
+
+	var image: NSImage? {
+		didSet {
+			redactedView.image = image
+			NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.imageDidChangeNotification, object: image)
+		}
+	}
+
+	class var imageDidChangeNotification: String {
+		return "EditorViewController.imageDidChangeNotification"
+	}
+
 
 	// MARK: - NSViewController
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let image = NSImage(named: "test")!
-		redactedView.image = image
-
 		let pan = NSPanGestureRecognizer(target: self, action: "panned:")
 		view.addGestureRecognizer(pan)
 
+		redactedView.delegate = self
 		redactedView.redactions = [
 			Redaction(type: .Pixelate, rect: CGRectMake(0.1, 0.1, 0.3, 0.5)),
 			Redaction(type: .Blur, rect: CGRectMake(0.7, 0.3, 0.2, 0.2))
 		]
 	}
+
+//	override func viewDidAppear() {
+//		super.viewDidAppear()
+//		view.registerForDraggedTypes([NSFilenamesPboardType])
+//	}
 
 
 	// MARK: - Actions
@@ -52,5 +72,12 @@ class EditorViewController: NSViewController {
 		} else if sender.state == .Ended {
 			println("End: \(sender.locationInView(view))")
 		}
+	}
+}
+
+
+extension EditorViewController: ImageDragDestinationViewDelegate {
+	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage) {
+		self.image = image
 	}
 }

@@ -22,6 +22,7 @@
 		2149F2C11AC0DFD100F4AF7E /* ChainFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C01AC0DFD100F4AF7E /* ChainFilter.swift */; };
 		2149F2C31AC0E85E00F4AF7E /* CoreImageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C21AC0E85E00F4AF7E /* CoreImageLayer.swift */; };
 		2149F2C51AC0EECC00F4AF7E /* CGRect+RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C41AC0EECC00F4AF7E /* CGRect+RedactedKit.swift */; };
+		2149F2C71AC1040100F4AF7E /* ImageDragDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C61AC1040100F4AF7E /* ImageDragDestinationView.swift */; };
 		21D1F3491AC0C85600E07BE8 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1F3481AC0C85600E07BE8 /* WindowController.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		2149F2C01AC0DFD100F4AF7E /* ChainFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainFilter.swift; sourceTree = "<group>"; };
 		2149F2C21AC0E85E00F4AF7E /* CoreImageLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreImageLayer.swift; sourceTree = "<group>"; };
 		2149F2C41AC0EECC00F4AF7E /* CGRect+RedactedKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+RedactedKit.swift"; sourceTree = "<group>"; };
+		2149F2C61AC1040100F4AF7E /* ImageDragDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDragDestinationView.swift; sourceTree = "<group>"; };
 		21D1F3481AC0C85600E07BE8 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,6 +255,7 @@
 		2149F2BC1AC0D4A100F4AF7E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2149F2C61AC1040100F4AF7E /* ImageDragDestinationView.swift */,
 				210EF37E1AC0A47A00ED8E97 /* RedactedView.swift */,
 				2149F2C21AC0E85E00F4AF7E /* CoreImageLayer.swift */,
 			);
@@ -438,6 +441,7 @@
 				21D1F3491AC0C85600E07BE8 /* WindowController.swift in Sources */,
 				210EF37F1AC0A47A00ED8E97 /* RedactedView.swift in Sources */,
 				210EF33D1AC0A35C00ED8E97 /* AppDelegate.swift in Sources */,
+				2149F2C71AC1040100F4AF7E /* ImageDragDestinationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -56,11 +56,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
-                                            <connections>
-                                                <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="openDocument:" target="Ady-hI-5gd" id="bVn-NM-KNZ"/>
@@ -80,37 +75,9 @@
                                             </menu>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
-                                        <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
-                                            <connections>
-                                                <action selector="performClose:" target="Ady-hI-5gd" id="HmO-Ls-i7Q"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
+                                        <menuItem title="Share…" keyEquivalent="s" id="pxx-59-PXV">
                                             <connections>
                                                 <action selector="saveDocument:" target="Ady-hI-5gd" id="teZ-XB-qJY"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
-                                            <connections>
-                                                <action selector="saveDocumentAs:" target="Ady-hI-5gd" id="mDf-zr-I0C"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Revert to Saved" id="KaW-ft-85H">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="revertDocumentToSaved:" target="Ady-hI-5gd" id="iJ3-Pv-kwq"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
-                                        <menuItem title="Page Setup…" keyEquivalent="P" id="qIS-W8-SiK">
-                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="runPageLayout:" target="Ady-hI-5gd" id="Din-rz-gC5"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Print…" keyEquivalent="p" id="aTl-1u-JFS">
-                                            <connections>
-                                                <action selector="print:" target="Ady-hI-5gd" id="qaZ-4w-aoO"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -160,6 +127,9 @@ CA
                                                 <action selector="selectAll:" target="Ady-hI-5gd" id="VNm-Mi-diN"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="aj3-L2-AE5"/>
+                                        <menuItem title="Pixelate" keyEquivalent="1" id="GYt-l8-zmc"/>
+                                        <menuItem title="Blur" keyEquivalent="2" id="VrF-gj-uGs"/>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -240,38 +210,80 @@ CA
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <toolbar key="toolbar" implicitIdentifier="F4E5C2DE-5F69-4075-ACF7-6A1D214536CD" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="tJy-B4-k21">
+                        <toolbar key="toolbar" implicitIdentifier="F4E5C2DE-5F69-4075-ACF7-6A1D214536CD" displayMode="iconAndLabel" sizeMode="regular" id="tJy-B4-k21">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="40FDC50E-2574-4CE2-949F-F9EC9732BC44" explicitItemIdentifier="pixelate" label="Pixelate" paletteLabel="Pixelate" id="BWd-R3-egZ"/>
-                                <toolbarItem implicitItemIdentifier="D38EDE31-1322-4391-9110-ED8091058018" explicitItemIdentifier="blackbar" label="Black Bar" paletteLabel="Black Bar" tag="1" id="icI-It-dC8"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="gyL-Y0-cuc"/>
-                                <toolbarItem implicitItemIdentifier="B5CC4FEA-B844-4926-9138-96987E8DBC5B" explicitItemIdentifier="share" label="Share" paletteLabel="Share" tag="2" image="NSShareTemplate" id="baC-aj-L84">
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="yMH-mM-Tge"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="k30-fi-DTN"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="fzw-88-lbR"/>
+                                <toolbarItem implicitItemIdentifier="813755AA-BDF8-4F36-B13C-7BCAEAA36916" explicitItemIdentifier="share" label="Share" paletteLabel="Share" tag="2" image="NSShareTemplate" id="cYw-Mz-8wy">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="70" height="21"/>
-                                    <size key="maxSize" width="82" height="32"/>
-                                    <button key="view" tag="2" id="lKD-qb-IoB">
-                                        <rect key="frame" x="6" y="21" width="70" height="21"/>
+                                    <size key="minSize" width="40" height="28"/>
+                                    <size key="maxSize" width="40" height="39"/>
+                                    <button key="view" verticalHuggingPriority="750" tag="2" id="mEn-6H-ENO">
+                                        <rect key="frame" x="0.0" y="14" width="40" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSShareTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="DVb-0q-fuJ">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="P1k-kx-jTP">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
                                     <connections>
-                                        <action selector="shareImage:" target="Oky-zY-oP4" id="UnZ-3m-ucA"/>
+                                        <action selector="shareImage:" target="B8D-0N-5wS" id="gcb-vK-RBC"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="01B02621-DDD8-4231-B921-76F78E70D19D" explicitItemIdentifier="clear" label="Clear" paletteLabel="Clear Image" tag="1" image="NSStopProgressFreestandingTemplate" id="SWC-U0-tA0">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="40" height="28"/>
+                                    <size key="maxSize" width="40" height="39"/>
+                                    <button key="view" verticalHuggingPriority="750" tag="1" id="EhM-GM-7Du">
+                                        <rect key="frame" x="0.0" y="14" width="40" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IVC-fo-QYf">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="clearImage:" target="B8D-0N-5wS" id="iX6-0a-ukE"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="1E92E7CB-CD45-420D-9A0F-C78EE3B653FF" explicitItemIdentifier="mode" label="Mode" paletteLabel="Mode" tag="1" id="OMs-VQ-mXr">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="71" height="24"/>
+                                    <size key="maxSize" width="71" height="28"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" tag="1" id="Bbx-cJ-SpM">
+                                        <rect key="frame" x="0.0" y="14" width="71" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="Qd2-U0-G6C">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment image="NSIconViewTemplate" width="32" selected="YES">
+                                                    <nil key="label"/>
+                                                </segment>
+                                                <segment image="NSBluetoothTemplate" width="32" tag="1">
+                                                    <nil key="label"/>
+                                                </segment>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                    <connections>
+                                        <action selector="changeMode:" target="B8D-0N-5wS" id="qAR-gi-6hW"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="HF5-4q-4wk"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="BWd-R3-egZ"/>
-                                <toolbarItem reference="icI-It-dC8"/>
-                                <toolbarItem reference="gyL-Y0-cuc"/>
-                                <toolbarItem reference="baC-aj-L84"/>
+                                <toolbarItem reference="OMs-VQ-mXr"/>
+                                <toolbarItem reference="yMH-mM-Tge"/>
+                                <toolbarItem reference="SWC-U0-tA0"/>
+                                <toolbarItem reference="cYw-Mz-8wy"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
                     <connections>
-                        <outlet property="shareItem" destination="baC-aj-L84" id="kBR-Nq-6zW"/>
+                        <outlet property="modeControl" destination="Bbx-cJ-SpM" id="ZfW-S1-pxm"/>
+                        <outlet property="shareItem" destination="cYw-Mz-8wy" id="pqF-ie-zuC"/>
+                        <outlet property="toolbar" destination="tJy-B4-k21" id="ocm-7I-Qh2"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>
@@ -283,7 +295,7 @@ CA
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="EditorViewController" customModule="Redacted" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
+                    <view key="view" id="m2S-Jp-Qdl" customClass="ImageDragDestinationView" customModule="Redacted" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -308,6 +320,9 @@ CA
         </scene>
     </scenes>
     <resources>
+        <image name="NSBluetoothTemplate" width="7" height="14"/>
+        <image name="NSIconViewTemplate" width="10" height="10"/>
         <image name="NSShareTemplate" width="11" height="16"/>
+        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
     </resources>
 </document>
