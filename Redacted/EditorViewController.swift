@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import RedactedKit
 
 class EditorViewController: NSViewController {
 
@@ -21,7 +22,15 @@ class EditorViewController: NSViewController {
 		super.viewDidLoad()
 
 		let image = NSImage(named: "test")!
-		self.redactedView.image = image
+		redactedView.image = image
+
+		let pan = NSPanGestureRecognizer(target: self, action: "panned:")
+		view.addGestureRecognizer(pan)
+
+		redactedView.redactions = [
+			Redaction(rect: CGRectMake(0.1, 0.1, 0.3, 0.5)),
+			Redaction(rect: CGRectMake(0.7, 0.3, 0.2, 0.2))
+		]
 	}
 
 
@@ -35,5 +44,13 @@ class EditorViewController: NSViewController {
 		let edge = NSRectEdge(CGRectEdge.MinYEdge.rawValue)
 
 		sharingServicePicker.showRelativeToRect(NSZeroRect, ofView: sender, preferredEdge: edge)
+	}
+
+	func panned(sender: NSPanGestureRecognizer) {
+		if sender.state == .Began {
+			println("Start: \(sender.locationInView(view))")
+		} else if sender.state == .Ended {
+			println("End: \(sender.locationInView(view))")
+		}
 	}
 }

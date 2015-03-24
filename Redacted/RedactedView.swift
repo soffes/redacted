@@ -15,11 +15,29 @@ class RedactedView: NSView {
 
 	var image: NSImage? {
 		didSet {
-			imageLayer.contents = image
+			if let image = image {
+				let cgImage = image.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue()
+				ciImage = CIImage(CGImage: cgImage)
+			} else {
+				ciImage = nil
+			}
 		}
 	}
 
-	private let imageLayer = CALayer()
+	private var ciImage: CIImage? {
+		didSet {
+			updateRedactions()
+		}
+	}
+
+	var redactions = [Redaction]() {
+		didSet {
+			updateRedactions()
+		}
+	}
+
+	private let imageLayer = CoreImageLayer()
+
 	private let dragHighlightLayer: CALayer = {
 		let layer = CALayer()
 		layer.borderWidth = 4
@@ -44,10 +62,6 @@ class RedactedView: NSView {
 
 	// MARK: - NSView
 
-	override var flipped: Bool {
-		return true
-	}
-
 	override func layout() {
 		super.layout()
 		layoutLayers()
@@ -60,8 +74,6 @@ class RedactedView: NSView {
 		wantsLayer = true
 
 		registerForDraggedTypes([NSFilenamesPboardType])
-
-		imageLayer.contentsGravity = kCAGravityResizeAspect
 
 		if let layer = layer {
 			layer.addSublayer(imageLayer)
@@ -77,6 +89,19 @@ class RedactedView: NSView {
 			imageLayer.frame = layer.bounds
 			dragHighlightLayer.frame = layer.bounds
 			CATransaction.commit()
+		}
+
+		updateRedactions()
+	}
+
+	
+	// MARK: - Private
+
+	private func updateRedactions() {
+		if let ciImage = ciImage {
+			imageLayer.image = redact(image: ciImage, withRedactions: redactions)
+		} else {
+			imageLayer.image = nil
 		}
 	}
 }
