@@ -28,8 +28,8 @@ class EditorViewController: NSViewController {
 		view.addGestureRecognizer(pan)
 
 		redactedView.redactions = [
-			Redaction(rect: CGRectMake(0.1, 0.1, 0.3, 0.5)),
-			Redaction(rect: CGRectMake(0.7, 0.3, 0.2, 0.2))
+			Redaction(type: .Pixelate, rect: CGRectMake(0.1, 0.1, 0.3, 0.5)),
+			Redaction(type: .Blur, rect: CGRectMake(0.7, 0.3, 0.2, 0.2))
 		]
 	}
 

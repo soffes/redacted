@@ -9,6 +9,11 @@
 import CoreGraphics
 
 extension CGRect {
+
+	public var center: CGPoint {
+		return CGPoint(x: midX, y: midY)
+	}
+
 	public func flippedInRect(bounds: CGRect) -> CGRect {
 		return CGRect(
 			x: origin.x,

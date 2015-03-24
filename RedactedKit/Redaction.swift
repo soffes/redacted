@@ -9,17 +9,55 @@
 import Foundation
 import CoreGraphics
 
+public enum RedactionType {
+	case Pixelate, Blur
+}
+
 public struct Redaction: Hashable, Equatable {
+
 	public let UUID: String
+	public let type: RedactionType
 	public var rect: CGRect
 
-	public init(UUID: String = NSUUID().UUIDString, rect: CGRect) {
+	public init(UUID: String = NSUUID().UUIDString, type: RedactionType, rect: CGRect) {
 		self.UUID = UUID
+		self.type = type
 		self.rect = rect
 	}
 
 	public var hashValue: Int {
 		return UUID.hashValue
+	}
+
+	public func filter(image: CIImage) -> CIFilter {
+		let extent = image.extent()
+		let scaledRect = CGRect(
+			x: rect.origin.x * extent.size.width,
+			y: rect.origin.y * extent.size.height,
+			width: rect.size.width * extent.size.width,
+			height: rect.size.height * extent.size.width
+		).flippedInRect(extent)
+
+		let processed: CIImage
+
+		switch type {
+		case .Pixelate:
+			processed = CIFilter(name: "CIPixellate", withInputParameters: [
+				"inputScale": 10,
+				"inputCenter": CIVector(CGPoint: extent.center),
+				"inputImage": image
+			])!.outputImage
+
+		case .Blur:
+			processed = CIFilter(name: "CIGaussianBlur", withInputParameters: [
+				"inputRadius": 10,
+				"inputImage": image
+			])!.outputImage
+		}
+
+		return CIFilter(name: "CISourceOverCompositing", withInputParameters: [
+			"inputImage": processed.imageByCroppingToRect(scaledRect)
+		])
 	}
 }
 
@@ -30,27 +68,8 @@ public func ==(lhs: Redaction, rhs: Redaction) -> Bool {
 
 
 public func redact(image ciImage: CIImage, withRedactions redactions: [Redaction]) -> CIImage {
-	let extent = ciImage.extent()
-	var filters = [CIFilter]()
-
-	for redaction in redactions {
-		let rect = CGRect(
-			x: redaction.rect.origin.x * extent.size.width,
-			y: redaction.rect.origin.y * extent.size.height,
-			width: redaction.rect.size.width * extent.size.width,
-			height: redaction.rect.size.height * extent.size.width
-		).flippedInRect(extent)
-
-		let blur = CIFilter(name: "CIGaussianBlur")!
-		blur.setValue(5, forKey: "inputRadius")
-		blur.setValue(ciImage, forKey: "inputImage")
-
-		let blurred = blur.outputImage.imageByCroppingToRect(rect)
-		filters.append(CIFilter(name: "CISourceOverCompositing", withInputParameters: ["inputImage": blurred]))
-	}
-
 	let chain = ChainFilter()
 	chain.inputImage = ciImage
-	chain.inputFilters = filters
-	return chain.outputImage!.imageByCroppingToRect(extent)
+	chain.inputFilters = redactions.map({ $0.filter(ciImage) })
+	return chain.outputImage!.imageByCroppingToRect(ciImage.extent())
 }
