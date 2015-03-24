@@ -13,18 +13,18 @@ class RedactedView: NSView {
 
 	// MARK: - Properties
 
-	var image: NSImage? {
+	var originalImage: NSImage? {
 		didSet {
-			if let image = image {
-				let cgImage = image.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue()
-				ciImage = CIImage(CGImage: cgImage)
+			if let originalImage = originalImage {
+				let cgImage = originalImage.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue()
+				originalCIImage = CIImage(CGImage: cgImage)
 			} else {
-				ciImage = nil
+				originalCIImage = nil
 			}
 		}
 	}
 
-	private var ciImage: CIImage? {
+	var originalCIImage: CIImage? {
 		didSet {
 			updateRedactions()
 		}
@@ -37,6 +37,10 @@ class RedactedView: NSView {
 	}
 
 	private let imageLayer = CoreImageLayer()
+
+	var imageRect: CGRect {
+		return imageLayer.imageRectForBounds(imageLayer.bounds)
+	}
 
 
 	// MARK: - Initializers
@@ -99,7 +103,7 @@ class RedactedView: NSView {
 	private func updateRedactions() {
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
-		if let ciImage = ciImage {
+		if let ciImage = originalCIImage {
 			imageLayer.image = redact(image: ciImage, withRedactions: redactions)
 		} else {
 			imageLayer.image = nil

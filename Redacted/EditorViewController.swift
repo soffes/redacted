@@ -23,7 +23,7 @@ class EditorViewController: NSViewController {
 
 	var image: NSImage? {
 		didSet {
-			redactedView.image = image
+			redactedView.originalImage = image
 			NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.imageDidChangeNotification, object: image)
 		}
 	}
@@ -31,6 +31,8 @@ class EditorViewController: NSViewController {
 	class var imageDidChangeNotification: String {
 		return "EditorViewController.imageDidChangeNotification"
 	}
+
+	private var startPoint: CGPoint = CGPointZero
 
 
 	// MARK: - NSViewController
@@ -46,8 +48,7 @@ class EditorViewController: NSViewController {
 		}
 		
 		redactedView.redactions = [
-			Redaction(type: .Pixelate, rect: CGRectMake(0.1, 0.1, 0.3, 0.5)),
-			Redaction(type: .Blur, rect: CGRectMake(0.7, 0.3, 0.2, 0.2))
+			Redaction(type: .Pixelate, rect: CGRectZero),
 		]
 	}
 
@@ -56,20 +57,36 @@ class EditorViewController: NSViewController {
 
 	func shareImage(fromView sender: NSView) {
 		// TODO: Get image
-		let image = NSImage(named: "test")!
-
-		let sharingServicePicker = NSSharingServicePicker(items: [image])
-		let edge = NSRectEdge(CGRectEdge.MinYEdge.rawValue)
-
-		sharingServicePicker.showRelativeToRect(NSZeroRect, ofView: sender, preferredEdge: edge)
+		if let ciImage = redactedView.originalCIImage {
+			let image = redact(image: ciImage, withRedactions: redactedView.redactions).renderedImage
+			let sharingServicePicker = NSSharingServicePicker(items: [image])
+			let edge = NSRectEdge(CGRectEdge.MinYEdge.rawValue)
+			sharingServicePicker.showRelativeToRect(NSZeroRect, ofView: sender, preferredEdge: edge)
+		}
 	}
 
 	func panned(sender: NSPanGestureRecognizer) {
+		let bounds = redactedView.imageRect
+		var point = sender.locationInView(view)
+
+		point = point.flippedInRect(bounds)
+		point.x -= bounds.origin.x
+		point.y -= bounds.origin.y
+
 		if sender.state == .Began {
-			println("Start: \(sender.locationInView(view))")
-		} else if sender.state == .Ended {
-			println("End: \(sender.locationInView(view))")
+			startPoint = point
 		}
+
+		let rect = CGRect(
+			x: startPoint.x / bounds.size.width,
+			y: startPoint.y / bounds.size.height,
+			width: (point.x / bounds.size.width) - (startPoint.x / bounds.size.width),
+			height: (point.y / bounds.size.height) - (startPoint.y / bounds.size.height)
+		)
+
+		redactedView.redactions = [
+			Redaction(type: mode, rect: rect),
+		]
 	}
 }
 

@@ -37,7 +37,7 @@ class CoreImageLayer: CALayer {
 
 	// MARK: - Private
 
-	private func imageRectForBounds(bounds: CGRect) -> CGRect {
+	func imageRectForBounds(bounds: CGRect) -> CGRect {
 		if let image = image {
 			return RectAspectFit(image.extent().size, bounds)
 		}

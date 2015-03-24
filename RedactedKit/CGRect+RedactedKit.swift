@@ -23,3 +23,12 @@ extension CGRect {
 		)
 	}
 }
+
+extension CGPoint {
+	public func flippedInRect(bounds: CGRect) -> CGPoint {
+		return CGPoint(
+			x: x,
+			y: bounds.size.height - y
+		)
+	}
+}

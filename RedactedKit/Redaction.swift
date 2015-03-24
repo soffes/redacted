@@ -44,7 +44,7 @@ public struct Redaction: Hashable, Equatable {
 			x: rect.origin.x * extent.size.width,
 			y: rect.origin.y * extent.size.height,
 			width: rect.size.width * extent.size.width,
-			height: rect.size.height * extent.size.width
+			height: rect.size.height * extent.size.height
 		).flippedInRect(extent)
 
 		let processed: CIImage

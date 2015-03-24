@@ -266,10 +266,13 @@ CA
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="rWV-CV-kvs">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment image="NSIconViewTemplate" width="32"/>
-                                                <segment image="NSBluetoothTemplate" width="32" selected="YES" tag="1"/>
+                                                <segment image="NSIconViewTemplate" width="32" selected="YES"/>
+                                                <segment image="NSBluetoothTemplate" width="32" tag="1"/>
                                             </segments>
                                         </segmentedCell>
+                                        <connections>
+                                            <action selector="changeMode:" target="B8D-0N-5wS" id="acc-e5-tek"/>
+                                        </connections>
                                     </segmentedControl>
                                 </toolbarItem>
                             </allowedToolbarItems>
@@ -282,6 +285,7 @@ CA
                         </toolbar>
                     </window>
                     <connections>
+                        <outlet property="modeControl" destination="FtH-vU-pEZ" id="DMD-Pb-wFN"/>
                         <outlet property="shareItem" destination="cYw-Mz-8wy" id="pqF-ie-zuC"/>
                         <outlet property="toolbar" destination="tJy-B4-k21" id="ocm-7I-Qh2"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
