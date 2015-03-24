@@ -41,17 +41,15 @@ class EditorViewController: NSViewController {
 		let pan = NSPanGestureRecognizer(target: self, action: "panned:")
 		view.addGestureRecognizer(pan)
 
-		redactedView.delegate = self
+		if let view = view as? ImageDragDestinationView {
+			view.delegate = self
+		}
+		
 		redactedView.redactions = [
 			Redaction(type: .Pixelate, rect: CGRectMake(0.1, 0.1, 0.3, 0.5)),
 			Redaction(type: .Blur, rect: CGRectMake(0.7, 0.3, 0.2, 0.2))
 		]
 	}
-
-//	override func viewDidAppear() {
-//		super.viewDidAppear()
-//		view.registerForDraggedTypes([NSFilenamesPboardType])
-//	}
 
 
 	// MARK: - Actions

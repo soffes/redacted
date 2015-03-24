@@ -9,7 +9,7 @@
 import Cocoa
 import RedactedKit
 
-class RedactedView: ImageDragDestinationView {
+class RedactedView: NSView {
 
 	// MARK: - Properties
 
@@ -64,8 +64,9 @@ class RedactedView: ImageDragDestinationView {
 
 	private func initialize() {
 		wantsLayer = true
-
-		registerForDraggedTypes([NSFilenamesPboardType])
+//		editable = true
+//		allowsCutCopyPaste = editable
+//		imageFrameStyle = .None
 
 		if let layer = layer {
 			layer.addSublayer(imageLayer)
