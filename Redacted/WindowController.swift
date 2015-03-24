@@ -51,6 +51,20 @@ class WindowController: NSWindowController {
 
 	// MARK: - Actions
 
+	func copy(sender: AnyObject?) {
+		if let image = editorViewController.renderedImage {
+			let pasteboard = NSPasteboard.generalPasteboard()
+			pasteboard.clearContents()
+			pasteboard.writeObjects([image])
+		}
+	}
+
+	func paste(sender: AnyObject?) {
+		if let data = NSPasteboard.generalPasteboard().dataForType(String(kUTTypeTIFF)) {
+			editorViewController.image = NSImage(data: data)
+		}
+	}
+
 	@IBAction func changeMode(sender: AnyObject?) {
 		if let mode = RedactionType(rawValue: modeControl.integerValue) where editorViewController.mode != mode {
 			editorViewController.mode = mode

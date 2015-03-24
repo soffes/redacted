@@ -34,6 +34,13 @@ class EditorViewController: NSViewController {
 
 	private var startPoint: CGPoint = CGPointZero
 
+	var renderedImage: NSImage? {
+		if let ciImage = redactedView.originalCIImage {
+			return redact(image: ciImage, withRedactions: redactedView.redactions).renderedImage
+		}
+		return nil
+	}
+
 
 	// MARK: - NSViewController
 
@@ -56,9 +63,7 @@ class EditorViewController: NSViewController {
 	// MARK: - Actions
 
 	func shareImage(fromView sender: NSView) {
-		// TODO: Get image
-		if let ciImage = redactedView.originalCIImage {
-			let image = redact(image: ciImage, withRedactions: redactedView.redactions).renderedImage
+		if let image = renderedImage {
 			let sharingServicePicker = NSSharingServicePicker(items: [image])
 			let edge = NSRectEdge(CGRectEdge.MinYEdge.rawValue)
 			sharingServicePicker.showRelativeToRect(NSZeroRect, ofView: sender, preferredEdge: edge)
