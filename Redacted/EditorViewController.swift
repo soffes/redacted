@@ -15,12 +15,8 @@ class EditorViewController: NSViewController {
 
 	@IBOutlet var redactedView: RedactedView!
 
-	var mode: RedactionType = .Pixelate {
-		didSet {
-			println("Mode: \(mode)")
-		}
-	}
-
+	var mode: RedactionType = .Pixelate
+	
 	var image: NSImage? {
 		didSet {
 			redactedView.originalImage = image
