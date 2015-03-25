@@ -259,8 +259,12 @@ CA
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="rWV-CV-kvs">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment image="NSIconViewTemplate" width="32" selected="YES"/>
-                                                <segment image="NSBluetoothTemplate" width="32" tag="1"/>
+                                                <segment image="pixelate" width="32" selected="YES">
+                                                    <nil key="label"/>
+                                                </segment>
+                                                <segment image="blur" width="32" tag="1">
+                                                    <nil key="label"/>
+                                                </segment>
                                             </segments>
                                         </segmentedCell>
                                         <connections>
@@ -317,9 +321,9 @@ CA
         </scene>
     </scenes>
     <resources>
-        <image name="NSBluetoothTemplate" width="7" height="14"/>
-        <image name="NSIconViewTemplate" width="10" height="10"/>
         <image name="NSShareTemplate" width="11" height="16"/>
         <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
+        <image name="blur" width="16" height="16"/>
+        <image name="pixelate" width="16" height="16"/>
     </resources>
 </document>
