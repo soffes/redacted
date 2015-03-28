@@ -175,11 +175,11 @@ extension WindowController {
 extension WindowController: ImageDragDestinationViewDelegate {
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage) {
 		editorViewController.image = image
-		NSApplication.sharedApplication().activateIgnoringOtherApps(true)
+		NSRunningApplication.currentApplication().activateWithOptions(.ActivateIgnoringOtherApps)
 	}
 
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptURL URL: NSURL) {
 		openURL(URL)
-		NSApplication.sharedApplication().activateIgnoringOtherApps(true)
+		NSRunningApplication.currentApplication().activateWithOptions(.ActivateIgnoringOtherApps)
 	}
 }
