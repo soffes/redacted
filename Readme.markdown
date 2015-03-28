@@ -4,7 +4,7 @@
 
 - [x] Drop onto dock icon
 - [ ] Bounding box
-- [ ] Percentage based radius
+- [x] Percentage based radius
 - [ ] App icon
 - [ ] Create multiple redactions
 - [ ] Delete redactions
