@@ -48,10 +48,6 @@ class EditorViewController: NSViewController {
 
 		let pan = NSPanGestureRecognizer(target: self, action: "panned:")
 		view.addGestureRecognizer(pan)
-
-		if let view = view as? ImageDragDestinationView {
-			view.delegate = self
-		}
 		
 		redactedView.redactedLayer.redactions = [
 			Redaction(type: .Pixelate, rect: CGRectZero),
@@ -91,12 +87,5 @@ class EditorViewController: NSViewController {
 		redactedView.redactedLayer.redactions = [
 			Redaction(type: mode, rect: rect),
 		]
-	}
-}
-
-
-extension EditorViewController: ImageDragDestinationViewDelegate {
-	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage) {
-		self.image = image
 	}
 }

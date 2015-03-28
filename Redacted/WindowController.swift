@@ -36,6 +36,10 @@ class WindowController: NSWindowController {
 
 		editorViewController = contentViewController as? EditorViewController
 
+		if let view = editorViewController.view as? ImageDragDestinationView {
+			view.delegate = self
+		}
+
 		// Setup share button
 		if let button = shareItem.view as? NSButton {
 			button.sendActionOn(Int(NSEventMask.LeftMouseDownMask.rawValue))
@@ -50,6 +54,19 @@ class WindowController: NSWindowController {
 
 
 	// MARK: - Actions
+
+	func openDocument(sender: AnyObject?) {
+		let openPanel = NSOpenPanel()
+		openPanel.allowsMultipleSelection = false
+		openPanel.canChooseDirectories = false
+		openPanel.canCreateDirectories = false
+		openPanel.canChooseFiles = true
+		openPanel.beginSheetModalForWindow(window!) { result in
+			if let URL = openPanel.URL where result == NSFileHandlingPanelOKButton {
+				self.openURL(URL)
+			}
+		}
+	}
 
 	func save(sender: AnyObject?) {
 		if let window = window, image = editorViewController.renderedImage {
@@ -96,6 +113,18 @@ class WindowController: NSWindowController {
 	}
 
 
+	// MARK: - Public
+
+	func openURL(URL: NSURL?) -> Bool {
+		if let URL = URL, image = NSImage(contentsOfURL: URL) {
+			NSDocumentController.sharedDocumentController().noteNewRecentDocumentURL(URL)
+			self.editorViewController.image = image
+			return true
+		}
+		return false
+	}
+
+
 	// MARK: - Private
 
 	func imageDidChange(notification: NSNotification?) {
@@ -139,5 +168,18 @@ extension WindowController {
 			return editorViewController.image != nil
 		}
 		return true
+	}
+}
+
+
+extension WindowController: ImageDragDestinationViewDelegate {
+	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage) {
+		editorViewController.image = image
+		NSApplication.sharedApplication().activateIgnoringOtherApps(true)
+	}
+
+	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptURL URL: NSURL) {
+		openURL(URL)
+		NSApplication.sharedApplication().activateIgnoringOtherApps(true)
 	}
 }

@@ -10,6 +10,7 @@ import Cocoa
 
 @objc protocol ImageDragDestinationViewDelegate: AnyObject {
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage)
+	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptURL URL: NSURL)
 }
 
 class ImageDragDestinationView: NSView {
@@ -132,10 +133,8 @@ extension ImageDragDestinationView: NSDraggingDestination {
 
 			// File path
 			if let paths = pasteboard.propertyListForType(NSFilenamesPboardType) as? [String], path = paths.first, URL = NSURL(fileURLWithPath: path) {
-				if let image = NSImage(contentsOfURL: URL) {
-					delegate.imageDragDestinationView(self, didAcceptImage: image)
-					return true
-				}
+				delegate.imageDragDestinationView(self, didAcceptURL: URL)
+				return true
 			}
 		}
 

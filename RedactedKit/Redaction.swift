@@ -47,12 +47,14 @@ public struct Redaction: Hashable, Equatable {
 			height: rect.size.height * extent.size.height
 		).flippedInRect(extent)
 
+		let edge = max(extent.size.width, extent.size.height)
+
 		let processed: CIImage
 
 		switch type {
 		case .Pixelate:
 			processed = CIFilter(name: "CIPixellate", withInputParameters: [
-				"inputScale": 10,
+				"inputScale": edge * 0.015,
 				"inputCenter": CIVector(CGPoint: extent.center),
 				"inputImage": image
 			])!.outputImage
@@ -64,7 +66,7 @@ public struct Redaction: Hashable, Equatable {
 			])
 
 			processed = CIFilter(name: "CIGaussianBlur", withInputParameters: [
-				"inputRadius": 10,
+				"inputRadius": edge * 0.015,
 				"inputImage": clamp.outputImage
 			])!.outputImage
 		}
