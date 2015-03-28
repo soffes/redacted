@@ -11,6 +11,13 @@ import RedactedKit
 
 class EditorViewController: NSViewController {
 
+	// MARK: - Constants
+
+	class var imageDidChangeNotification: String {
+		return "EditorViewController.imageDidChangeNotification"
+	}
+
+
 	// MARK: - Properties
 
 	@IBOutlet var redactedView: RedactedView!
@@ -24,18 +31,14 @@ class EditorViewController: NSViewController {
 		}
 	}
 
-	class var imageDidChangeNotification: String {
-		return "EditorViewController.imageDidChangeNotification"
-	}
-
-	private var startPoint: CGPoint = CGPointZero
-
 	var renderedImage: NSImage? {
 		if let ciImage = redactedView.redactedLayer.originalCIImage {
 			return redact(image: ciImage, withRedactions: redactedView.redactedLayer.redactions).renderedImage
 		}
 		return nil
 	}
+
+	private var startPoint: CGPoint = CGPointZero
 
 
 	// MARK: - NSViewController
