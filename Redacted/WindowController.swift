@@ -128,13 +128,8 @@ class WindowController: NSWindowController {
 	// MARK: - Private
 
 	func imageDidChange(notification: NSNotification?) {
+		NSRunningApplication.currentApplication().activateWithOptions(.ActivateIgnoringOtherApps)
 		validateToolbar()
-
-//		if let window = window, image = editorViewController.image {
-//			var frame = window.frame
-//			frame.size.height = round(frame.size.width) * image.size.height / image.size.width
-//			window.setFrame(frame, display: true)
-//		}
 	}
 }
 
@@ -143,14 +138,6 @@ extension WindowController: NSWindowDelegate {
 	func windowWillClose(notification: NSNotification) {
 		NSApplication.sharedApplication().terminate(window)
 	}
-
-//	func windowWillResize(sender: NSWindow, toSize frameSize: NSSize) -> NSSize {
-//		var size = frameSize
-//		if let image = editorViewController.image {
-//			size.height = round(size.width) * image.size.height / image.size.width
-//		}
-//		return size
-//	}
 }
 
 
@@ -175,11 +162,9 @@ extension WindowController {
 extension WindowController: ImageDragDestinationViewDelegate {
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage) {
 		editorViewController.image = image
-		NSRunningApplication.currentApplication().activateWithOptions(.ActivateIgnoringOtherApps)
 	}
 
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptURL URL: NSURL) {
 		openURL(URL)
-		NSRunningApplication.currentApplication().activateWithOptions(.ActivateIgnoringOtherApps)
 	}
 }

@@ -38,7 +38,7 @@ class EditorViewController: NSViewController {
 		return nil
 	}
 
-	private var startPoint: CGPoint = CGPointZero
+	private var editingUUID: String?
 
 
 	// MARK: - NSViewController
@@ -69,23 +69,36 @@ class EditorViewController: NSViewController {
 		let bounds = redactedView.redactedLayer.imageRect
 		var point = sender.locationInView(view)
 
+		// Convert point
 		point = point.flippedInRect(bounds)
-		point.x -= bounds.origin.x
-		point.y -= bounds.origin.y
+		point.x = (point.x - bounds.origin.x) / bounds.size.width
+		point.y = (point.y - bounds.origin.y) / bounds.size.height
 
+		// Start
 		if sender.state == .Began {
-			startPoint = point
+			let redaction = Redaction(type: mode, rect: CGRect(origin: point, size: CGSizeZero))
+			editingUUID = redaction.UUID
+			redactedView.redactedLayer.redactions.append(redaction)
 		}
 
-		let rect = CGRect(
-			x: startPoint.x / bounds.size.width,
-			y: startPoint.y / bounds.size.height,
-			width: (point.x / bounds.size.width) - (startPoint.x / bounds.size.width),
-			height: (point.y / bounds.size.height) - (startPoint.y / bounds.size.height)
-		)
+		// Find the currently dragging redaction
+		if let editingUUID = editingUUID, index = find(redactedView.redactedLayer.redactions.map({ $0.UUID }), editingUUID) {
+			var redaction = redactedView.redactedLayer.redactions[index]
+			let startPoint = redaction.rect.origin
+			redaction.rect = CGRect(
+				x: startPoint.x,
+				y: startPoint.y,
+				width: point.x - startPoint.x,
+				height: point.y - startPoint.y
+			)
 
-		redactedView.redactedLayer.redactions = [
-			Redaction(type: mode, rect: rect),
-		]
+			redactedView.redactedLayer.redactions[index] = redaction
+		}
+
+		// Finished dragging
+		if sender.state == .Ended {
+			// TODO: Check for too small of a rect
+			editingUUID = nil
+		}
 	}
 }

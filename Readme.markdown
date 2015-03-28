@@ -6,6 +6,6 @@
 - [ ] Bounding box
 - [x] Percentage based radius
 - [ ] App icon
-- [ ] Create multiple redactions
+- [x] Create multiple redactions
 - [ ] Delete redactions
 - [ ] Blur is really slow sometimes
