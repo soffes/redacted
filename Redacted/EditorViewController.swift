@@ -19,7 +19,7 @@ class EditorViewController: NSViewController {
 	
 	var image: NSImage? {
 		didSet {
-			redactedView.originalImage = image
+			redactedView.redactedLayer.originalImage = image
 			NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.imageDidChangeNotification, object: image)
 		}
 	}
@@ -31,8 +31,8 @@ class EditorViewController: NSViewController {
 	private var startPoint: CGPoint = CGPointZero
 
 	var renderedImage: NSImage? {
-		if let ciImage = redactedView.originalCIImage {
-			return redact(image: ciImage, withRedactions: redactedView.redactions).renderedImage
+		if let ciImage = redactedView.redactedLayer.originalCIImage {
+			return redact(image: ciImage, withRedactions: redactedView.redactedLayer.redactions).renderedImage
 		}
 		return nil
 	}
@@ -50,7 +50,7 @@ class EditorViewController: NSViewController {
 			view.delegate = self
 		}
 		
-		redactedView.redactions = [
+		redactedView.redactedLayer.redactions = [
 			Redaction(type: .Pixelate, rect: CGRectZero),
 		]
 	}
@@ -67,7 +67,7 @@ class EditorViewController: NSViewController {
 	}
 
 	func panned(sender: NSPanGestureRecognizer) {
-		let bounds = redactedView.imageRect
+		let bounds = redactedView.redactedLayer.imageRect
 		var point = sender.locationInView(view)
 
 		point = point.flippedInRect(bounds)
@@ -85,7 +85,7 @@ class EditorViewController: NSViewController {
 			height: (point.y / bounds.size.height) - (startPoint.y / bounds.size.height)
 		)
 
-		redactedView.redactions = [
+		redactedView.redactedLayer.redactions = [
 			Redaction(type: mode, rect: rect),
 		]
 	}

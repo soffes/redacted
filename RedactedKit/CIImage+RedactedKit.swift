@@ -9,8 +9,11 @@
 import Cocoa
 import QuartzCore
 
+public typealias Image = NSImage
+
 extension CIImage {
-	public var renderedImage: NSImage {
+	// TODO: iOS
+	public var renderedImage: Image {
 		let colorSpace = CGColorSpaceCreateDeviceRGB()
 		let options = [
 			kCIContextWorkingColorSpace: colorSpace,

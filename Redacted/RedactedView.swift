@@ -13,34 +13,7 @@ class RedactedView: NSView {
 
 	// MARK: - Properties
 
-	var originalImage: NSImage? {
-		didSet {
-			if let originalImage = originalImage {
-				let cgImage = originalImage.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue()
-				originalCIImage = CIImage(CGImage: cgImage)
-			} else {
-				originalCIImage = nil
-			}
-		}
-	}
-
-	var originalCIImage: CIImage? {
-		didSet {
-			updateRedactions()
-		}
-	}
-
-	var redactions = [Redaction]() {
-		didSet {
-			updateRedactions()
-		}
-	}
-
-	private let imageLayer = CoreImageLayer()
-
-	var imageRect: CGRect {
-		return imageLayer.imageRectForBounds(imageLayer.bounds)
-	}
+	let redactedLayer = RedactedLayer()
 
 
 	// MARK: - Initializers
@@ -69,7 +42,7 @@ class RedactedView: NSView {
 
 		if let scale = window?.screen?.backingScaleFactor {
 			layer?.contentsScale = scale
-			imageLayer.contentsScale = scale
+			redactedLayer.contentsScale = scale
 		}
 	}
 
@@ -81,7 +54,7 @@ class RedactedView: NSView {
 
 		if let layer = layer {
 			layer.backgroundColor = NSColor(SRGBRed: 0.863, green: 0.863, blue: 0.863, alpha: 1).CGColor
-			layer.addSublayer(imageLayer)
+			layer.addSublayer(redactedLayer)
 			layoutLayers()
 		}
 	}
@@ -90,24 +63,8 @@ class RedactedView: NSView {
 		if let layer = layer {
 			CATransaction.begin()
 			CATransaction.setDisableActions(true)
-			imageLayer.frame = layer.bounds
+			redactedLayer.frame = layer.bounds
 			CATransaction.commit()
 		}
-
-		updateRedactions()
-	}
-
-	
-	// MARK: - Private
-
-	private func updateRedactions() {
-		CATransaction.begin()
-		CATransaction.setDisableActions(true)
-		if let ciImage = originalCIImage {
-			imageLayer.image = redact(image: ciImage, withRedactions: redactions)
-		} else {
-			imageLayer.image = nil
-		}
-		CATransaction.commit()
 	}
 }

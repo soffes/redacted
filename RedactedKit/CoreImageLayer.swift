@@ -2,15 +2,14 @@
 //  CoreImageLayer.swift
 //  Redacted
 //
-//  Created by Sam Soffes on 3/23/15.
+//  Created by Sam Soffes on 3/28/15.
 //  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 import Quartz
-import RedactedKit
 
-class CoreImageLayer: CALayer {
+public class CoreImageLayer: CALayer {
 
 	// MARK: - Properties
 
@@ -23,8 +22,9 @@ class CoreImageLayer: CALayer {
 
 	// MARK: - CALayer
 
-	override func drawInContext(ctx: CGContext!) {
+	public override func drawInContext(ctx: CGContext!) {
 		if let image = image {
+			// TODO: iOS
 			let ciContext = CIContext(CGContext: ctx, options: [
 				kCIContextUseSoftwareRenderer: false,
 				kCIContextWorkingColorSpace: NSNull()
