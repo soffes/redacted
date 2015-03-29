@@ -41,6 +41,8 @@ public class RedactedLayer: CoreImageLayer {
 		return imageRectForBounds(bounds)
 	}
 
+	private var boundingBoxes = [CALayer]()
+
 
 	// MARK: - CALayer
 
@@ -58,8 +60,23 @@ public class RedactedLayer: CoreImageLayer {
 	private func updateRedactions() {
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
+
+		for layer in boundingBoxes {
+			layer.removeFromSuperlayer()
+		}
+
 		if let ciImage = originalCIImage {
 			image = redact(image: ciImage, withRedactions: redactions)
+
+			for redaction in redactions {
+				let layer = CALayer()
+				layer.borderWidth = 1
+				layer.borderColor = CGColorCreateGenericRGB(0, 0, 0, 0.2)
+				layer.frame = redaction.filteredRectForBounds(imageRect)
+				boundingBoxes.append(layer)
+				addSublayer(layer)
+			}
+
 		} else {
 			image = nil
 		}

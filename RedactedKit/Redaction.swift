@@ -38,14 +38,18 @@ public struct Redaction: Hashable, Equatable {
 		return UUID.hashValue
 	}
 
+	public func filteredRectForBounds(bounds: CGRect) -> CGRect {
+		return CGRect(
+			x: bounds.origin.x + (rect.origin.x * bounds.size.width),
+			y: bounds.origin.y + (rect.origin.y * bounds.size.height),
+			width: rect.size.width * bounds.size.width,
+			height: rect.size.height * bounds.size.height
+		).flippedInRect(bounds)
+	}
+
 	public func filter(image: CIImage) -> CIFilter {
 		let extent = image.extent()
-		let scaledRect = CGRect(
-			x: rect.origin.x * extent.size.width,
-			y: rect.origin.y * extent.size.height,
-			width: rect.size.width * extent.size.width,
-			height: rect.size.height * extent.size.height
-		).flippedInRect(extent)
+		let scaledRect = filteredRectForBounds(extent)
 
 		let edge = max(extent.size.width, extent.size.height)
 
