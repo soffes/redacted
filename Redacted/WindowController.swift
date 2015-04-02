@@ -99,8 +99,8 @@ class WindowController: NSWindowController {
 	}
 
 	@IBAction func changeMode(sender: AnyObject?) {
-		if let mode = RedactionType(rawValue: modeControl.integerValue) where editorViewController.mode != mode {
-			editorViewController.mode = mode
+		if let mode = RedactionType(rawValue: modeControl.integerValue) where editorViewController.redactedLayer.mode != mode {
+			editorViewController.redactedLayer.mode = mode
 		}
 	}
 
