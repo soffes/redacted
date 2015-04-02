@@ -160,7 +160,6 @@ public class RedactedLayer: CoreImageLayer {
 				let redaction = redactions[index]
 				if let layer = boundingBoxes[redaction.UUID] {
 					layer.frame = redaction.filteredRectForBounds(imageRect)
-					println("layer.frame = \(layer.frame)")
 				}
 			}
 		}
