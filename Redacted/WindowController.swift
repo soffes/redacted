@@ -50,6 +50,15 @@ class WindowController: NSWindowController {
 
 		// Notifications
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageDidChange:", name: EditorViewController.imageDidChangeNotification, object: nil)
+
+		// Restore state
+		if let mode = RedactionType(rawValue: NSUserDefaults.standardUserDefaults().integerForKey("RedactionMode")) {
+			modeControl.selectedSegment = mode.rawValue
+		}
+
+		if let path = NSUserDefaults.standardUserDefaults().stringForKey("LastImagePath"), URL = NSURL(fileURLWithPath: path) {
+			openURL(URL)
+		}
 	}
 
 
@@ -101,11 +110,13 @@ class WindowController: NSWindowController {
 	@IBAction func changeMode(sender: AnyObject?) {
 		if let mode = RedactionType(rawValue: modeControl.selectedSegment) where editorViewController.redactedLayer.mode != mode {
 			editorViewController.redactedLayer.mode = mode
+			NSUserDefaults.standardUserDefaults().setInteger(mode.rawValue, forKey: "RedactionMode")
 		}
 	}
 
 	@IBAction func clearImage(sender: AnyObject?) {
 		editorViewController.image = nil
+		NSUserDefaults.standardUserDefaults().removeObjectForKey("LastImagePath")
 	}
 
 	@IBAction func shareImage(sender: AnyObject?) {
@@ -162,9 +173,11 @@ extension WindowController {
 extension WindowController: ImageDragDestinationViewDelegate {
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage) {
 		editorViewController.image = image
+		NSUserDefaults.standardUserDefaults().removeObjectForKey("LastImagePath")
 	}
 
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptURL URL: NSURL) {
 		openURL(URL)
+		NSUserDefaults.standardUserDefaults().setObject(URL.path, forKey: "LastImagePath")
 	}
 }
