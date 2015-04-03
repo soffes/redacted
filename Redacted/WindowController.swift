@@ -18,12 +18,43 @@ class WindowController: NSWindowController {
 	@IBOutlet var modeControl: NSSegmentedControl!
 
 	var editorViewController: EditorViewController!
+	var modeIndex: Int = 0 {
+		didSet {
+			invalidateRestorableState()
+
+			modeControl.selectedSegment = modeIndex
+
+			if let mode = RedactionType(rawValue: modeIndex) {
+				editorViewController.redactedLayer.mode = mode
+			}
+		}
+	}
 
 
 	// MARK: - Initializers
 
 	deinit {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+
+
+	// MARK: - NSResponder
+
+	override func encodeRestorableStateWithCoder(coder: NSCoder) {
+		super.encodeRestorableStateWithCoder(coder)
+
+		coder.encodeInteger(modeControl.selectedSegment, forKey: "modeIndex")
+	}
+
+
+	override func restoreStateWithCoder(coder: NSCoder) {
+		super.restoreStateWithCoder(coder)
+
+		modeIndex = coder.decodeIntegerForKey("modeIndex")
+
+//		if let URL = NSDocumentController.sharedDocumentController().recentDocumentURLs.first as? NSURL {
+//			openURL(URL)
+//		}
 	}
 
 
@@ -50,15 +81,6 @@ class WindowController: NSWindowController {
 
 		// Notifications
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageDidChange:", name: EditorViewController.imageDidChangeNotification, object: nil)
-
-		// Restore state
-		if let mode = RedactionType(rawValue: NSUserDefaults.standardUserDefaults().integerForKey("RedactionMode")) {
-			modeControl.selectedSegment = mode.rawValue
-		}
-
-		if let path = NSUserDefaults.standardUserDefaults().stringForKey("LastImagePath"), URL = NSURL(fileURLWithPath: path) {
-			openURL(URL)
-		}
 	}
 
 
@@ -107,16 +129,12 @@ class WindowController: NSWindowController {
 		}
 	}
 
-	@IBAction func changeMode(sender: AnyObject?) {
-		if let mode = RedactionType(rawValue: modeControl.selectedSegment) where editorViewController.redactedLayer.mode != mode {
-			editorViewController.redactedLayer.mode = mode
-			NSUserDefaults.standardUserDefaults().setInteger(mode.rawValue, forKey: "RedactionMode")
-		}
+	@IBAction func modeDidChange(sender: AnyObject?) {
+		modeIndex = modeControl.selectedSegment
 	}
 
 	@IBAction func clearImage(sender: AnyObject?) {
 		editorViewController.image = nil
-		NSUserDefaults.standardUserDefaults().removeObjectForKey("LastImagePath")
 	}
 
 	@IBAction func shareImage(sender: AnyObject?) {
@@ -128,6 +146,7 @@ class WindowController: NSWindowController {
 
 	func openURL(URL: NSURL?) -> Bool {
 		if let URL = URL, image = NSImage(contentsOfURL: URL) {
+//			invalidateRestorableState()
 			NSDocumentController.sharedDocumentController().noteNewRecentDocumentURL(URL)
 			self.editorViewController.image = image
 			return true
@@ -173,11 +192,9 @@ extension WindowController {
 extension WindowController: ImageDragDestinationViewDelegate {
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage) {
 		editorViewController.image = image
-		NSUserDefaults.standardUserDefaults().removeObjectForKey("LastImagePath")
 	}
 
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptURL URL: NSURL) {
 		openURL(URL)
-		NSUserDefaults.standardUserDefaults().setObject(URL.path, forKey: "LastImagePath")
 	}
 }
