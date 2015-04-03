@@ -94,7 +94,7 @@ public class RedactedLayer: CoreImageLayer {
 		}
 	}
 
-	public func tap(#point: CGPoint) {
+	public func tap(#point: CGPoint, exclusive: Bool = true) {
 		let point = converPointToUnits(point)
 
 		for redaction in reverse(redactions) {
@@ -102,6 +102,9 @@ public class RedactedLayer: CoreImageLayer {
 				if selected(redaction) {
 					deselect(redaction)
 				} else {
+					if exclusive {
+						deselectAll()
+					}
 					select(redaction)
 				}
 				return

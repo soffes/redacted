@@ -51,6 +51,10 @@ class EditorViewController: NSViewController {
 
 		let click = NSClickGestureRecognizer(target: self, action: "clicked:")
 		view.addGestureRecognizer(click)
+
+		let shiftClick = ModifierClickGestureRecognizer(target: self, action: "shiftClicked:")
+		shiftClick.modifier = .ShiftKeyMask
+		view.addGestureRecognizer(shiftClick)
 	}
 
 
@@ -71,6 +75,12 @@ class EditorViewController: NSViewController {
 	func clicked(sender: NSClickGestureRecognizer) {
 		if sender.state == .Ended {
 			redactedLayer.tap(point: sender.locationInView(view))
+		}
+	}
+
+	func shiftClicked(sender: NSClickGestureRecognizer) {
+		if sender.state == .Ended {
+			redactedLayer.tap(point: sender.locationInView(view), exclusive: false)
 		}
 	}
 }

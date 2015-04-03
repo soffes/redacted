@@ -16,6 +16,7 @@
 		210EF3751AC0A39900ED8E97 /* RedactedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */; };
 		210EF3761AC0A39900ED8E97 /* RedactedKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		210EF37F1AC0A47A00ED8E97 /* RedactedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EF37E1AC0A47A00ED8E97 /* RedactedView.swift */; };
+		213764811ACF340400F7024D /* ModifierClickGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213764801ACF340400F7024D /* ModifierClickGestureRecognizer.swift */; };
 		2149F2B61AC0D48100F4AF7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2149F2B21AC0D48100F4AF7E /* Main.storyboard */; };
 		2149F2B71AC0D48100F4AF7E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2149F2B41AC0D48100F4AF7E /* Images.xcassets */; };
 		2149F2BF1AC0DB2900F4AF7E /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */; };
@@ -88,6 +89,7 @@
 		210EF3701AC0A39900ED8E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		210EF3711AC0A39900ED8E97 /* RedactedKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactedKitTests.swift; sourceTree = "<group>"; };
 		210EF37E1AC0A47A00ED8E97 /* RedactedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedView.swift; sourceTree = "<group>"; };
+		213764801ACF340400F7024D /* ModifierClickGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifierClickGestureRecognizer.swift; sourceTree = "<group>"; };
 		2149F2B31AC0D48100F4AF7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2149F2B41AC0D48100F4AF7E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2149F2B51AC0D48100F4AF7E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		210EF3391AC0A35C00ED8E97 /* Redacted */ = {
 			isa = PBXGroup;
 			children = (
+				2137647F1ACF33F700F7024D /* Utilities */,
 				2149F2B91AC0D49100F4AF7E /* Application */,
 				2149F2BA1AC0D49500F4AF7E /* Window Controllers */,
 				2149F2BB1AC0D49C00F4AF7E /* View Controllers */,
@@ -222,6 +225,14 @@
 				210EF3701AC0A39900ED8E97 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2137647F1ACF33F700F7024D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				213764801ACF340400F7024D /* ModifierClickGestureRecognizer.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		2149F2B11AC0D48100F4AF7E /* Resources */ = {
@@ -474,6 +485,7 @@
 				210EF37F1AC0A47A00ED8E97 /* RedactedView.swift in Sources */,
 				210EF33D1AC0A35C00ED8E97 /* AppDelegate.swift in Sources */,
 				2149F2C71AC1040100F4AF7E /* ImageDragDestinationView.swift in Sources */,
+				213764811ACF340400F7024D /* ModifierClickGestureRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
