@@ -148,6 +148,12 @@ public class RedactedLayer: CoreImageLayer {
 		}
 	}
 
+	public func selectAll() {
+		for redaction in redactions {
+			select(redaction)
+		}
+	}
+
 
 	// MARK: - Private
 

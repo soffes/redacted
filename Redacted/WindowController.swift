@@ -133,6 +133,10 @@ class WindowController: NSWindowController {
 		editorViewController.redactedLayer.delete()
 	}
 
+	override func selectAll(sender: AnyObject?) {
+		editorViewController.redactedLayer.selectAll()
+	}
+
 	@IBAction func modeDidChange(sender: AnyObject?) {
 		modeIndex = modeControl.selectedSegment
 	}
