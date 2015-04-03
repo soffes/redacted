@@ -190,15 +190,11 @@
 		210EF35F1AC0A39900ED8E97 /* RedactedKit */ = {
 			isa = PBXGroup;
 			children = (
-				2149F2CC1AC145B400F4AF7E /* CIImage+RedactedKit.swift */,
 				210EF3621AC0A39900ED8E97 /* RedactedKit.h */,
+				216596001ACE124200D22DB0 /* Utilities */,
+				216596011ACE124600D22DB0 /* Models */,
+				216595FF1ACE123600D22DB0 /* Layers */,
 				210EF3601AC0A39900ED8E97 /* Supporting Files */,
-				2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */,
-				2149F2C01AC0DFD100F4AF7E /* ChainFilter.swift */,
-				2149F2C41AC0EECC00F4AF7E /* CGRect+RedactedKit.swift */,
-				2149F2CA1AC1326200F4AF7E /* Aspect.swift */,
-				2151870E1AC7095C00937CD0 /* RedactedLayer.swift */,
-				215187101AC709CE00937CD0 /* CoreImageLayer.swift */,
 			);
 			path = RedactedKit;
 			sourceTree = SOURCE_ROOT;
@@ -269,6 +265,34 @@
 				210EF37E1AC0A47A00ED8E97 /* RedactedView.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		216595FF1ACE123600D22DB0 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				215187101AC709CE00937CD0 /* CoreImageLayer.swift */,
+				2151870E1AC7095C00937CD0 /* RedactedLayer.swift */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
+		216596001ACE124200D22DB0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2149F2CC1AC145B400F4AF7E /* CIImage+RedactedKit.swift */,
+				2149F2C01AC0DFD100F4AF7E /* ChainFilter.swift */,
+				2149F2C41AC0EECC00F4AF7E /* CGRect+RedactedKit.swift */,
+				2149F2CA1AC1326200F4AF7E /* Aspect.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		216596011ACE124600D22DB0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

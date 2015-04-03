@@ -74,23 +74,29 @@ public class RedactedLayer: CoreImageLayer {
 	// MARK: - Manipulation
 
 	public func tap(#point: CGPoint) {
-		
+		let point = converPointToUnits(point)
+
+		for redaction in reverse(redactions) {
+			if redaction.rect.contains(point) {
+				if selected(redaction) {
+					deselect(redaction)
+				} else {
+					select(redaction)
+				}
+				return
+			}
+		}
 	}
 
 	public func drag(#point: CGPoint, state: GestureRecognizerState) {
-		let bounds = imageRect
-
-		// Convert point
-		var point = point.flippedInRect(bounds)
-		point.x = (point.x - bounds.origin.x) / bounds.size.width
-		point.y = (point.y - bounds.origin.y) / bounds.size.height
+		let point = converPointToUnits(point)
 
 		// Start
 		if state == .Began {
 			let redaction = Redaction(type: mode, rect: CGRect(origin: point, size: CGSizeZero))
 			editingUUID = redaction.UUID
 			redactions.append(redaction)
-			selectRedaction(redaction)
+			select(redaction)
 		}
 
 		// Find the currently dragging redaction
@@ -109,10 +115,6 @@ public class RedactedLayer: CoreImageLayer {
 
 		// Finished dragging
 		if state == .Ended {
-			if let editingUUID = editingUUID, index = find(redactions.map({ $0.UUID }), editingUUID) {
-				deselectRedaction(redactions[index])
-			}
-
 			// TODO: Check for too small of a rect
 			editingUUID = nil
 		}
@@ -121,7 +123,23 @@ public class RedactedLayer: CoreImageLayer {
 
 	// MARK: - Private
 
-	private func selectRedaction(redaction: Redaction) {
+	private func converPointToUnits(point: CGPoint) -> CGPoint {
+		let rect = imageRect
+		var point = point.flippedInRect(bounds)
+		point.x = (point.x - rect.origin.x) / rect.size.width
+		point.y = (point.y - rect.origin.y) / rect.size.height
+		return point
+	}
+
+	private func selected(redaction: Redaction) -> Bool {
+		return selectedUUIDs.contains(redaction.UUID)
+	}
+
+	private func select(redaction: Redaction) {
+		if selected(redaction) {
+			return
+		}
+
 		selectedUUIDs.insert(redaction.UUID)
 
 		let layer = CALayer()
@@ -133,7 +151,7 @@ public class RedactedLayer: CoreImageLayer {
 		updateSelections()
 	}
 
-	private func deselectRedaction(redaction: Redaction) {
+	private func deselect(redaction: Redaction) {
 		if let layer = boundingBoxes[redaction.UUID] {
 			layer.removeFromSuperlayer()
 		}
@@ -159,7 +177,7 @@ public class RedactedLayer: CoreImageLayer {
 			if let index = find(redactions.map({ $0.UUID }), UUID) {
 				let redaction = redactions[index]
 				if let layer = boundingBoxes[redaction.UUID] {
-					layer.frame = redaction.filteredRectForBounds(imageRect)
+					layer.frame = redaction.rectForBounds(imageRect).flippedInRect(bounds)
 				}
 			}
 		}

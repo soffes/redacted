@@ -48,6 +48,9 @@ class EditorViewController: NSViewController {
 
 		let pan = NSPanGestureRecognizer(target: self, action: "panned:")
 		view.addGestureRecognizer(pan)
+
+		let click = NSClickGestureRecognizer(target: self, action: "clicked:")
+		view.addGestureRecognizer(click)
 	}
 
 
@@ -63,5 +66,12 @@ class EditorViewController: NSViewController {
 
 	func panned(sender: NSPanGestureRecognizer) {
 		redactedLayer.drag(point: sender.locationInView(view), state: sender.state)
+	}
+
+	func clicked(sender: NSClickGestureRecognizer) {
+		if sender.state != .Began {
+			return
+		}
+		redactedLayer.tap(point: sender.locationInView(view))
 	}
 }
