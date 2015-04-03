@@ -70,6 +70,8 @@ public class RedactedLayer: CoreImageLayer {
 	private var editingUUID: String?
 	private var boundingBoxes = [String: CALayer]()
 
+	public var undoManager: NSUndoManager?
+
 
 	// MARK: - CALayer
 
@@ -85,13 +87,20 @@ public class RedactedLayer: CoreImageLayer {
 	// MARK: - Manipulation
 
 	public func delete() {
+
+		var dictionaries = [[String: AnyObject]]()
+
 		for UUID in selectedUUIDs {
 			if let index = find(redactions.map({ $0.UUID }), UUID) {
 				let redaction = redactions[index]
 				deselect(redaction)
+				dictionaries.append(redaction.dictionaryRepresentation)
 				redactions.removeAtIndex(index)
 			}
 		}
+
+		undoManager?.setActionName("Delete Redactions") // TODO: Inflect
+		undoManager?.registerUndoWithTarget(self, selector: "insertRedactionDictionaries:", object: dictionaries)
 	}
 
 	public func tap(#point: CGPoint, exclusive: Bool = true) {
@@ -148,12 +157,6 @@ public class RedactedLayer: CoreImageLayer {
 		}
 	}
 
-	public func selectAll() {
-		for redaction in redactions {
-			select(redaction)
-		}
-	}
-
 
 	// MARK: - Private
 
@@ -164,6 +167,40 @@ public class RedactedLayer: CoreImageLayer {
 		point.y = (point.y - rect.origin.y) / rect.size.height
 		return point
 	}
+
+	private func updateRedactions() {
+		if let ciImage = originalCIImage {
+			image = redact(image: ciImage, withRedactions: redactions)
+		} else {
+			image = nil
+		}
+
+		updateSelections()
+	}
+
+	@objc private func insertRedactionDictionaries(dictionaries: [[String: AnyObject]]) {
+		for dictionary in dictionaries {
+			if let redaction = Redaction(dictionary: dictionary) {
+				redactions.append(redaction)
+			}
+		}
+	}
+}
+
+
+// Selection
+extension RedactedLayer {
+
+	// MARK: - Public
+
+	public func selectAll() {
+		for redaction in redactions {
+			select(redaction)
+		}
+	}
+
+
+	// MARK: - Private
 
 	private func selected(redaction: Redaction) -> Bool {
 		return selectedUUIDs.contains(redaction.UUID)
@@ -197,16 +234,6 @@ public class RedactedLayer: CoreImageLayer {
 		for redaction in selectedRedactions {
 			deselect(redaction)
 		}
-	}
-
-	private func updateRedactions() {
-		if let ciImage = originalCIImage {
-			image = redact(image: ciImage, withRedactions: redactions)
-		} else {
-			image = nil
-		}
-
-		updateSelections()
 	}
 
 	private func updateSelections() {

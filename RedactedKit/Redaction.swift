@@ -82,6 +82,27 @@ public struct Redaction: Hashable, Equatable {
 }
 
 
+extension Redaction {
+	var dictionaryRepresentation: [String: AnyObject] {
+		return [
+			"UUID": UUID,
+			"type": type.rawValue,
+			"rect": NSStringFromRect(rect)
+		]
+	}
+
+	init?(dictionary: [String: AnyObject]) {
+		if let UUID = dictionary["UUID"] as? String, typeString = dictionary["type"] as? Int, type = RedactionType(rawValue: typeString), rectString = dictionary["rect"] as? String {
+			self.UUID = UUID
+			self.type = type
+			self.rect = NSRectFromString(rectString) as CGRect
+			return
+		}
+		return nil
+	}
+}
+
+
 public func ==(lhs: Redaction, rhs: Redaction) -> Bool {
 	return lhs.hashValue == rhs.hashValue
 }

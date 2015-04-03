@@ -30,6 +30,8 @@ class WindowController: NSWindowController {
 		}
 	}
 
+	private let _undoManager = NSUndoManager()
+
 
 	// MARK: - Initializers
 
@@ -66,6 +68,7 @@ class WindowController: NSWindowController {
 		window?.delegate = self
 
 		editorViewController = contentViewController as? EditorViewController
+		editorViewController.redactedLayer.undoManager = window?.undoManager
 
 		if let view = editorViewController.view as? ImageDragDestinationView {
 			view.delegate = self
@@ -175,6 +178,10 @@ class WindowController: NSWindowController {
 extension WindowController: NSWindowDelegate {
 	func windowWillClose(notification: NSNotification) {
 		NSApplication.sharedApplication().terminate(window)
+	}
+
+	func windowWillReturnUndoManager(window: NSWindow) -> NSUndoManager? {
+		return _undoManager
 	}
 }
 
