@@ -107,6 +107,8 @@ public class RedactedLayer: CoreImageLayer {
 				return
 			}
 		}
+
+		deselectAll()
 	}
 
 	public func drag(#point: CGPoint, state: GestureRecognizerState) {

@@ -122,6 +122,9 @@ CA
                                             <string key="keyEquivalent" base64-UTF8="YES">
 CA
 </string>
+                                            <connections>
+                                                <action selector="clearImage:" target="Ady-hI-5gd" id="UUs-LF-P1g"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="p8W-dX-ZNr"/>
                                         <menuItem title="Pixelate" keyEquivalent="1" id="GYt-l8-zmc"/>
