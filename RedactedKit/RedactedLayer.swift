@@ -87,20 +87,7 @@ public class RedactedLayer: CoreImageLayer {
 	// MARK: - Manipulation
 
 	public func delete() {
-
-		var dictionaries = [[String: AnyObject]]()
-
-		for UUID in selectedUUIDs {
-			if let index = find(redactions.map({ $0.UUID }), UUID) {
-				let redaction = redactions[index]
-				deselect(redaction)
-				dictionaries.append(redaction.dictionaryRepresentation)
-				redactions.removeAtIndex(index)
-			}
-		}
-
-		undoManager?.setActionName("Delete Redactions") // TODO: Inflect
-		undoManager?.registerUndoWithTarget(self, selector: "insertRedactionDictionaries:", object: dictionaries)
+		removeRedactions(selectedRedactions)
 	}
 
 	public func tap(#point: CGPoint, exclusive: Bool = true) {
@@ -179,11 +166,33 @@ public class RedactedLayer: CoreImageLayer {
 	}
 
 	@objc private func insertRedactionDictionaries(dictionaries: [[String: AnyObject]]) {
-		for dictionary in dictionaries {
-			if let redaction = Redaction(dictionary: dictionary) {
-				redactions.append(redaction)
+		let array = dictionaries.map({ Redaction(dictionary: $0) }).filter({ $0 != nil }).map({ $0! })
+		insertRedactions(array)
+	}
+
+	@objc private func removeRedactionDictionaries(dictionaries: [[String: AnyObject]]) {
+		let array = dictionaries.map({ Redaction(dictionary: $0) }).filter({ $0 != nil }).map({ $0! })
+		removeRedactions(array)
+	}
+
+	private func insertRedactions(redactions: [Redaction]) {
+		self.redactions += redactions
+
+		undoManager?.setActionName("Delete Redactions") // TODO: Inflect
+		undoManager?.registerUndoWithTarget(self, selector: "removeRedactionDictionaries:", object: redactions.map({ $0.dictionaryRepresentation }))
+	}
+
+	private func removeRedactions(redactions: [Redaction]) {
+		for UUID in redactions.map({ $0.UUID }) {
+			if let index = find(self.redactions.map({ $0.UUID }), UUID) {
+				let redaction = self.redactions[index]
+				deselect(redaction)
+				self.redactions.removeAtIndex(index)
 			}
 		}
+
+		undoManager?.setActionName("Insert Redactions") // TODO: Inflect
+		undoManager?.registerUndoWithTarget(self, selector: "insertRedactionDictionaries:", object: redactions.map({ $0.dictionaryRepresentation }))
 	}
 }
 
