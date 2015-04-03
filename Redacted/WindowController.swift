@@ -129,6 +129,10 @@ class WindowController: NSWindowController {
 		}
 	}
 
+	func delete(sender: AnyObject?) {
+		editorViewController.redactedLayer.delete()
+	}
+
 	@IBAction func modeDidChange(sender: AnyObject?) {
 		modeIndex = modeControl.selectedSegment
 	}

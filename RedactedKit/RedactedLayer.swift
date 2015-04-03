@@ -46,10 +46,21 @@ public class RedactedLayer: CoreImageLayer {
 		}
 	}
 
-	public var selectedUUIDs = Set<String>() {
+	private var selectedUUIDs = Set<String>() {
 		didSet {
 			updateSelections()
 		}
+	}
+
+	public var selectedRedactions: [Redaction] {
+		var selected = [Redaction]()
+		let allUUIDs = redactions.map({ $0.UUID })
+		for UUID in selectedUUIDs {
+			if let index = find(allUUIDs, UUID) {
+				selected.append(redactions[index])
+			}
+		}
+		return selected
 	}
 
 	public var imageRect: CGRect {
@@ -73,6 +84,16 @@ public class RedactedLayer: CoreImageLayer {
 
 	// MARK: - Manipulation
 
+	public func delete() {
+		for UUID in selectedUUIDs {
+			if let index = find(redactions.map({ $0.UUID }), UUID) {
+				let redaction = redactions[index]
+				deselect(redaction)
+				redactions.removeAtIndex(index)
+			}
+		}
+	}
+
 	public func tap(#point: CGPoint) {
 		let point = converPointToUnits(point)
 
@@ -93,6 +114,8 @@ public class RedactedLayer: CoreImageLayer {
 
 		// Start
 		if state == .Began {
+			deselectAll()
+
 			let redaction = Redaction(type: mode, rect: CGRect(origin: point, size: CGSizeZero))
 			editingUUID = redaction.UUID
 			redactions.append(redaction)
@@ -159,6 +182,12 @@ public class RedactedLayer: CoreImageLayer {
 		selectedUUIDs.remove(redaction.UUID)
 	}
 
+	private func deselectAll() {
+		for redaction in selectedRedactions {
+			deselect(redaction)
+		}
+	}
+
 	private func updateRedactions() {
 		if let ciImage = originalCIImage {
 			image = redact(image: ciImage, withRedactions: redactions)
@@ -173,12 +202,9 @@ public class RedactedLayer: CoreImageLayer {
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
 
-		for UUID in selectedUUIDs {
-			if let index = find(redactions.map({ $0.UUID }), UUID) {
-				let redaction = redactions[index]
-				if let layer = boundingBoxes[redaction.UUID] {
-					layer.frame = redaction.rectForBounds(imageRect).flippedInRect(bounds)
-				}
+		for redaction in selectedRedactions {
+			if let layer = boundingBoxes[redaction.UUID] {
+				layer.frame = redaction.rectForBounds(imageRect).flippedInRect(bounds)
 			}
 		}
 

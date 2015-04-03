@@ -98,24 +98,27 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="WRV-NI-Exz"/>
-                                        <menuItem title="Copy" keyEquivalent="c" id="x3v-GG-iWU">
+                                        <menuItem title="Copy Image" keyEquivalent="c" id="x3v-GG-iWU">
                                             <connections>
                                                 <action selector="copy:" target="Ady-hI-5gd" id="G1f-GL-Joy"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Paste" keyEquivalent="v" id="gVA-U4-sdL">
+                                        <menuItem title="Paste Image" keyEquivalent="v" id="gVA-U4-sdL">
                                             <connections>
                                                 <action selector="paste:" target="Ady-hI-5gd" id="UvS-8e-Qdg"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="aj3-L2-AE5"/>
-                                        <menuItem title="Clear Redactions" id="pId-Ca-jkf">
+                                        <menuItem title="Delete Redaction" id="vUX-YX-21I">
                                             <string key="keyEquivalent" base64-UTF8="YES">
 CA
 </string>
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="delete:" target="Ady-hI-5gd" id="hcR-zd-r5d"/>
+                                            </connections>
                                         </menuItem>
-                                        <menuItem title="Remove Image" id="CU7-WH-zkx">
+                                        <menuItem isSeparatorItem="YES" id="aj3-L2-AE5"/>
+                                        <menuItem title="Clear Image" id="CU7-WH-zkx">
                                             <string key="keyEquivalent" base64-UTF8="YES">
 CA
 </string>
