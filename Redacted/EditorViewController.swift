@@ -69,9 +69,8 @@ class EditorViewController: NSViewController {
 	}
 
 	func clicked(sender: NSClickGestureRecognizer) {
-		if sender.state != .Began {
-			return
+		if sender.state == .Ended {
+			redactedLayer.tap(point: sender.locationInView(view))
 		}
-		redactedLayer.tap(point: sender.locationInView(view))
 	}
 }
