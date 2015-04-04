@@ -139,7 +139,12 @@ public class RedactedLayer: CoreImageLayer {
 
 		// Finished dragging
 		if state == .Ended {
-			// TODO: Check for too small of a rect
+			if let editingUUID = editingUUID, index = find(redactions.map({ $0.UUID }), editingUUID) {
+				// TODO: Check for too small of a rect
+				let redaction = redactions[index]
+				redactions.removeAtIndex(index)
+				insertRedactions([redaction])
+			}
 			editingUUID = nil
 		}
 	}
@@ -178,7 +183,10 @@ public class RedactedLayer: CoreImageLayer {
 	private func insertRedactions(redactions: [Redaction]) {
 		self.redactions += redactions
 
-		undoManager?.setActionName("Delete Redactions") // TODO: Inflect
+		if !(undoManager?.undoing ?? false) {
+			let s = redactions.count == 1 ? "" : "s"
+			undoManager?.setActionName("Insert Redaction\(s)")
+		}
 		undoManager?.registerUndoWithTarget(self, selector: "removeRedactionDictionaries:", object: redactions.map({ $0.dictionaryRepresentation }))
 	}
 
@@ -191,7 +199,10 @@ public class RedactedLayer: CoreImageLayer {
 			}
 		}
 
-		undoManager?.setActionName("Insert Redactions") // TODO: Inflect
+		if !(undoManager?.undoing ?? false) {
+			let s = redactions.count == 1 ? "" : "s"
+			undoManager?.setActionName("Delete Redaction\(s)")
+		}
 		undoManager?.registerUndoWithTarget(self, selector: "insertRedactionDictionaries:", object: redactions.map({ $0.dictionaryRepresentation }))
 	}
 }
