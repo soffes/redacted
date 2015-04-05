@@ -178,12 +178,12 @@
 		210EF32E1AC0A35C00ED8E97 = {
 			isa = PBXGroup;
 			children = (
+				210EF35F1AC0A39900ED8E97 /* RedactedKit */,
+				210EF36E1AC0A39900ED8E97 /* RedactedKitTests */,
 				2192BAA51AD0E62E00AC87E2 /* Mac */,
 				2192BAB11AD0E62E00AC87E2 /* MacTests */,
 				2192BAE61AD0E6FD00AC87E2 /* iOS */,
 				2192BAF51AD0E70200AC87E2 /* iOSTests */,
-				210EF35F1AC0A39900ED8E97 /* RedactedKit */,
-				210EF36E1AC0A39900ED8E97 /* RedactedKitTests */,
 				210EF3381AC0A35C00ED8E97 /* Products */,
 			);
 			sourceTree = "<group>";

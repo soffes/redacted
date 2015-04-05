@@ -93,18 +93,16 @@ public class RedactedLayer: CoreImageLayer {
 	public func tap(#point: CGPoint, exclusive: Bool = true) {
 		let point = converPointToUnits(point)
 
-		for redaction in reverse(redactions) {
-			if redaction.rect.contains(point) {
-				if selected(redaction) {
-					deselect(redaction)
-				} else {
-					if exclusive {
-						deselectAll()
-					}
-					select(redaction)
+		if let redaction = hitTestRedaction(point) {
+			if selected(redaction) {
+				deselect(redaction)
+			} else {
+				if exclusive {
+					deselectAll()
 				}
-				return
+				select(redaction)
 			}
+			return
 		}
 
 		deselectAll()
@@ -158,6 +156,15 @@ public class RedactedLayer: CoreImageLayer {
 		point.x = (point.x - rect.origin.x) / rect.size.width
 		point.y = (point.y - rect.origin.y) / rect.size.height
 		return point
+	}
+
+	private func hitTestRedaction(point: CGPoint) -> Redaction? {
+		for redaction in reverse(redactions) {
+			if redaction.rect.contains(point) {
+				return redaction
+			}
+		}
+		return nil
 	}
 
 	private func updateRedactions() {
