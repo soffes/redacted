@@ -18,7 +18,7 @@ public class RedactedLayer: CoreImageLayer {
 
 	enum DraggingMode {
 		case Creating(String)
-		case Moving(String)
+		case Moving(String, CGRect, CGPoint)
 	}
 
 
@@ -125,7 +125,8 @@ public class RedactedLayer: CoreImageLayer {
 
 			// Start moving
 			if let redaction = hitTestRedaction(point) {
-
+				draggingMode = .Moving(redaction.UUID, redaction.rect, point)
+				select(redaction)
 			}
 
 			// Start creating
@@ -161,8 +162,17 @@ public class RedactedLayer: CoreImageLayer {
 					}
 				}
 
-			case let .Moving(UUID):
-				println("UUID: \(UUID)")
+			case let .Moving(UUID, rect, startPoint):
+				// Find the currently dragging redaction
+				if let index = find(redactions.map({ $0.UUID }), UUID) {
+					var redaction = redactions[index]
+					var rect = rect
+					rect.origin.x += point.x - startPoint.x
+					rect.origin.y += point.y - startPoint.y
+					redaction.rect = rect
+
+					redactions[index] = redaction
+				}
 			}
 		}
 
