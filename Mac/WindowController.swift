@@ -53,10 +53,6 @@ class WindowController: NSWindowController {
 		super.restoreStateWithCoder(coder)
 
 		modeIndex = coder.decodeIntegerForKey("modeIndex")
-
-//		if let URL = NSDocumentController.sharedDocumentController().recentDocumentURLs.first as? NSURL {
-//			openURL(URL)
-//		}
 	}
 
 
@@ -157,7 +153,6 @@ class WindowController: NSWindowController {
 
 	func openURL(URL: NSURL?) -> Bool {
 		if let URL = URL, image = NSImage(contentsOfURL: URL) {
-//			invalidateRestorableState()
 			NSDocumentController.sharedDocumentController().noteNewRecentDocumentURL(URL)
 			self.editorViewController.image = image
 			return true
