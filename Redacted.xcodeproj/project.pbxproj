@@ -20,6 +20,8 @@
 		2151870F1AC7095C00937CD0 /* RedactedLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151870E1AC7095C00937CD0 /* RedactedLayer.swift */; };
 		215187111AC709CE00937CD0 /* CoreImageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215187101AC709CE00937CD0 /* CoreImageLayer.swift */; };
 		217268751AD1023B00F5F269 /* CGRect+RedactionKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217268741AD1023B00F5F269 /* CGRect+RedactionKit.swift */; };
+		217268771AD1075800F5F269 /* BoundingBoxLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217268761AD1075800F5F269 /* BoundingBoxLayer.swift */; };
+		217268791AD1086A00F5F269 /* HandleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217268781AD1086A00F5F269 /* HandleLayer.swift */; };
 		2192BAB41AD0E62E00AC87E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */; };
 		2192BAB51AD0E62E00AC87E2 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA71AD0E62E00AC87E2 /* EditorViewController.swift */; };
 		2192BAB61AD0E62E00AC87E2 /* ImageDragDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA81AD0E62E00AC87E2 /* ImageDragDestinationView.swift */; };
@@ -106,6 +108,8 @@
 		2151870E1AC7095C00937CD0 /* RedactedLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedLayer.swift; sourceTree = "<group>"; };
 		215187101AC709CE00937CD0 /* CoreImageLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreImageLayer.swift; sourceTree = "<group>"; };
 		217268741AD1023B00F5F269 /* CGRect+RedactionKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+RedactionKit.swift"; sourceTree = "<group>"; };
+		217268761AD1075800F5F269 /* BoundingBoxLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxLayer.swift; sourceTree = "<group>"; };
+		217268781AD1086A00F5F269 /* HandleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleLayer.swift; sourceTree = "<group>"; };
 		2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2192BAA71AD0E62E00AC87E2 /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		2192BAA81AD0E62E00AC87E2 /* ImageDragDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDragDestinationView.swift; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 			children = (
 				215187101AC709CE00937CD0 /* CoreImageLayer.swift */,
 				2151870E1AC7095C00937CD0 /* RedactedLayer.swift */,
+				217268761AD1075800F5F269 /* BoundingBoxLayer.swift */,
+				217268781AD1086A00F5F269 /* HandleLayer.swift */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -586,8 +592,10 @@
 				2149F2C11AC0DFD100F4AF7E /* ChainFilter.swift in Sources */,
 				2149F2CB1AC1326200F4AF7E /* Aspect.swift in Sources */,
 				2149F2CD1AC145B400F4AF7E /* CIImage+RedactedKit.swift in Sources */,
+				217268771AD1075800F5F269 /* BoundingBoxLayer.swift in Sources */,
 				215187111AC709CE00937CD0 /* CoreImageLayer.swift in Sources */,
 				2151870F1AC7095C00937CD0 /* RedactedLayer.swift in Sources */,
+				217268791AD1086A00F5F269 /* HandleLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

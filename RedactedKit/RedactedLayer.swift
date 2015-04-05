@@ -275,21 +275,29 @@ extension RedactedLayer {
 
 		selectedUUIDs.insert(redaction.UUID)
 
-		let layer = CALayer()
-		layer.borderWidth = 1
-		layer.borderColor = CGColorCreateGenericRGB(0, 0, 0, 0.2)
+		CATransaction.begin()
+		CATransaction.setDisableActions(true)
+
+		let layer = BoundingBoxLayer()
 		boundingBoxes[redaction.UUID] = layer
 		addSublayer(layer)
 
 		updateSelections()
+
+		CATransaction.commit()
 	}
 
 	private func deselect(redaction: Redaction) {
+		CATransaction.begin()
+		CATransaction.setDisableActions(true)
+
 		if let layer = boundingBoxes[redaction.UUID] {
 			layer.removeFromSuperlayer()
 		}
 		boundingBoxes.removeValueForKey(redaction.UUID)
 		selectedUUIDs.remove(redaction.UUID)
+
+		CATransaction.commit()
 	}
 
 	private func deselectAll() {
