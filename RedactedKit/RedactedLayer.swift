@@ -14,6 +14,14 @@ public typealias GestureRecognizerState = NSGestureRecognizerState
 
 public class RedactedLayer: CoreImageLayer {
 
+	// MARK: - Types
+
+	enum DraggingMode {
+		case Creating(String)
+		case Moving(String)
+	}
+
+
 	// MARK: - Properties
 
 	public var originalImage: Image? {
@@ -67,7 +75,7 @@ public class RedactedLayer: CoreImageLayer {
 		return imageRectForBounds(bounds)
 	}
 
-	private var editingUUID: String?
+	private var draggingMode: DraggingMode?
 	private var boundingBoxes = [String: CALayer]()
 
 	public var undoManager: NSUndoManager?
@@ -111,39 +119,56 @@ public class RedactedLayer: CoreImageLayer {
 	public func drag(#point: CGPoint, state: GestureRecognizerState) {
 		let point = converPointToUnits(point)
 
-		// Start
+		// Begin
 		if state == .Began {
 			deselectAll()
 
-			let redaction = Redaction(type: mode, rect: CGRect(origin: point, size: CGSizeZero))
-			editingUUID = redaction.UUID
-			redactions.append(redaction)
-			select(redaction)
-		}
+			// Start moving
+			if let redaction = hitTestRedaction(point) {
 
-		// Find the currently dragging redaction
-		if let editingUUID = editingUUID, index = find(redactions.map({ $0.UUID }), editingUUID) {
-			var redaction = redactions[index]
-			let startPoint = redaction.rect.origin
-			redaction.rect = CGRect(
-				x: startPoint.x,
-				y: startPoint.y,
-				width: point.x - startPoint.x,
-				height: point.y - startPoint.y
-			)
-
-			redactions[index] = redaction
-		}
-
-		// Finished dragging
-		if state == .Ended {
-			if let editingUUID = editingUUID, index = find(redactions.map({ $0.UUID }), editingUUID) {
-				// TODO: Check for too small of a rect
-				let redaction = redactions[index]
-				redactions.removeAtIndex(index)
-				insertRedactions([redaction])
 			}
-			editingUUID = nil
+
+			// Start creating
+			else {
+				let redaction = Redaction(type: mode, rect: CGRect(origin: point, size: CGSizeZero))
+				draggingMode = .Creating(redaction.UUID)
+				redactions.append(redaction)
+				select(redaction)
+			}
+		}
+
+		// Continue
+		if let draggingMode = draggingMode {
+			switch draggingMode {
+			case let .Creating(UUID):
+				// Find the currently dragging redaction
+				if let index = find(redactions.map({ $0.UUID }), UUID) {
+					var redaction = redactions[index]
+					let startPoint = redaction.rect.origin
+					redaction.rect = CGRect(
+						x: startPoint.x,
+						y: startPoint.y,
+						width: point.x - startPoint.x,
+						height: point.y - startPoint.y
+					)
+
+					redactions[index] = redaction
+
+					// Finished dragging
+					if state == .Ended {
+						redactions.removeAtIndex(index)
+						insertRedactions([redaction])
+					}
+				}
+
+			case let .Moving(UUID):
+				println("UUID: \(UUID)")
+			}
+		}
+
+		// End
+		if state == .Ended {
+			draggingMode = nil
 		}
 	}
 
