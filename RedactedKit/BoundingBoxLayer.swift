@@ -13,15 +13,15 @@ class BoundingBoxLayer: CALayer {
 	// MARK: - Properties
 
 	let border = CALayer()
-	let topLeft = HandleLayer()
-	let topCenter = HandleLayer()
-	let topRight = HandleLayer()
-	let middleLeft = HandleLayer()
-	let middleRight = HandleLayer()
-	let bottomLeft = HandleLayer()
-	let bottomCenter = HandleLayer()
-	let bottomRight = HandleLayer()
-	
+//	let topLeft = HandleLayer()
+//	let topCenter = HandleLayer()
+//	let topRight = HandleLayer()
+//	let middleLeft = HandleLayer()
+//	let middleRight = HandleLayer()
+//	let bottomLeft = HandleLayer()
+//	let bottomCenter = HandleLayer()
+//	let bottomRight = HandleLayer()
+
 
 	// MARK: - Initializers
 
@@ -51,16 +51,16 @@ class BoundingBoxLayer: CALayer {
 
 		border.frame = bounds
 
-		topLeft.frame = CGRect(x: bounds.minX - 3, y: bounds.maxY - 3, width: 6, height: 6)
-		topCenter.frame = CGRect(x: bounds.midX - 3, y: bounds.maxY - 3, width: 6, height: 6)
-		topRight.frame = CGRect(x: bounds.maxX - 3, y: bounds.maxY - 3, width: 6, height: 6)
-
-		middleLeft.frame = CGRect(x: bounds.minX - 3, y: bounds.midY - 3, width: 6, height: 6)
-		middleRight.frame = CGRect(x: bounds.maxX - 3, y: bounds.midY - 3, width: 6, height: 6)
-
-		bottomLeft.frame = CGRect(x: bounds.minX - 3, y: bounds.minY - 3, width: 6, height: 6)
-		bottomCenter.frame = CGRect(x: bounds.midX - 3, y: bounds.minY - 3, width: 6, height: 6)
-		bottomRight.frame = CGRect(x: bounds.maxX - 3, y: bounds.minY - 3, width: 6, height: 6)
+//		topLeft.frame = CGRect(x: bounds.minX - 3, y: bounds.maxY - 3, width: 6, height: 6)
+//		topCenter.frame = CGRect(x: bounds.midX - 3, y: bounds.maxY - 3, width: 6, height: 6)
+//		topRight.frame = CGRect(x: bounds.maxX - 3, y: bounds.maxY - 3, width: 6, height: 6)
+//
+//		middleLeft.frame = CGRect(x: bounds.minX - 3, y: bounds.midY - 3, width: 6, height: 6)
+//		middleRight.frame = CGRect(x: bounds.maxX - 3, y: bounds.midY - 3, width: 6, height: 6)
+//
+//		bottomLeft.frame = CGRect(x: bounds.minX - 3, y: bounds.minY - 3, width: 6, height: 6)
+//		bottomCenter.frame = CGRect(x: bounds.midX - 3, y: bounds.minY - 3, width: 6, height: 6)
+//		bottomRight.frame = CGRect(x: bounds.maxX - 3, y: bounds.minY - 3, width: 6, height: 6)
 
 		CATransaction.commit()
 	}
@@ -71,18 +71,17 @@ class BoundingBoxLayer: CALayer {
 	private func initialize() {
 		border.borderWidth = 1
 		border.borderColor = CGColorCreateGenericRGB(0.788, 0.788, 0.788, 1)
-
 		addSublayer(border)
 		
-		addSublayer(topLeft)
-		addSublayer(topCenter)
-		addSublayer(topRight)
-
-		addSublayer(middleLeft)
-		addSublayer(middleRight)
-
-		addSublayer(bottomLeft)
-		addSublayer(bottomCenter)
-		addSublayer(bottomRight)
+//		addSublayer(topLeft)
+//		addSublayer(topCenter)
+//		addSublayer(topRight)
+//
+//		addSublayer(middleLeft)
+//		addSublayer(middleRight)
+//
+//		addSublayer(bottomLeft)
+//		addSublayer(bottomCenter)
+//		addSublayer(bottomRight)
 	}
 }
