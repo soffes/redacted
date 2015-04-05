@@ -274,8 +274,8 @@
 				2192BAA81AD0E62E00AC87E2 /* ImageDragDestinationView.swift */,
 				2192BAA91AD0E62E00AC87E2 /* ModifierClickGestureRecognizer.swift */,
 				2192BAAA1AD0E62E00AC87E2 /* RedactedView.swift */,
-				2192BAAB1AD0E62E00AC87E2 /* Resources */,
 				2192BAB01AD0E62E00AC87E2 /* WindowController.swift */,
+				2192BAAB1AD0E62E00AC87E2 /* Resources */,
 			);
 			path = Mac;
 			sourceTree = "<group>";
@@ -303,11 +303,11 @@
 			isa = PBXGroup;
 			children = (
 				2192BAE71AD0E6FD00AC87E2 /* AppDelegate.swift */,
+				2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */,
 				2192BAE81AD0E6FD00AC87E2 /* LaunchScreen.xib */,
 				2192BAEA1AD0E6FD00AC87E2 /* Main.storyboard */,
 				2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */,
 				2192BAED1AD0E6FD00AC87E2 /* Info.plist */,
-				2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
