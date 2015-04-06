@@ -58,7 +58,7 @@ public struct Redaction: Hashable, Equatable {
 		switch type {
 		case .Pixelate:
 			processed = CIFilter(name: "CIPixellate", withInputParameters: [
-				"inputScale": edge * 0.015,
+				"inputScale": edge * 0.01,
 				"inputCenter": CIVector(CGPoint: extent.center),
 				"inputImage": image
 			])!.outputImage
@@ -70,7 +70,7 @@ public struct Redaction: Hashable, Equatable {
 			])
 
 			processed = CIFilter(name: "CIGaussianBlur", withInputParameters: [
-				"inputRadius": edge * 0.015,
+				"inputRadius": edge * 0.01,
 				"inputImage": clamp.outputImage
 			])!.outputImage
 		}
