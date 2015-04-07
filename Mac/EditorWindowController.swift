@@ -1,5 +1,5 @@
 //
-//  WindowController.swift
+//  EditorWindowController.swift
 //  Redacted
 //
 //  Created by Sam Soffes on 3/23/15.
@@ -9,7 +9,7 @@
 import Cocoa
 import RedactedKit
 
-class WindowController: NSWindowController {
+class EditorWindowController: NSWindowController {
 
 	// MARK: - Properties
 
@@ -170,7 +170,7 @@ class WindowController: NSWindowController {
 }
 
 
-extension WindowController: NSWindowDelegate {
+extension EditorWindowController: NSWindowDelegate {
 	func windowWillClose(notification: NSNotification) {
 		NSApplication.sharedApplication().terminate(window)
 	}
@@ -181,7 +181,7 @@ extension WindowController: NSWindowDelegate {
 }
 
 
-extension WindowController {
+extension EditorWindowController {
 	private func validateToolbar() {
 		if let items = toolbar.visibleItems as? [NSToolbarItem] {
 			for item in items {
@@ -199,7 +199,7 @@ extension WindowController {
 }
 
 
-extension WindowController: ImageDragDestinationViewDelegate {
+extension EditorWindowController: ImageDragDestinationViewDelegate {
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage) {
 		editorViewController.image = image
 	}

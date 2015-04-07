@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14D113c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14D130a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7519.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -18,6 +19,7 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                                <segue destination="kGY-f7-1aK" kind="show" id="1be-b9-BDr"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -214,7 +216,7 @@ CA
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="WindowController" customModule="Redacted" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="EditorWindowController" customModule="Redacted" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Redacted" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="Window" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
@@ -301,7 +303,7 @@ CA
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="80" y="147"/>
         </scene>
         <!--Editor View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -328,10 +330,108 @@ CA
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="80" y="533"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="8cY-ed-rhr">
+            <objects>
+                <viewController title="About" showSeguePresentationStyle="single" id="4hD-bt-0Aa" customClass="AboutViewController" customModule="Redacted" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="cNm-8f-sdn">
+                        <rect key="frame" x="0.0" y="0.0" width="244" height="377"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RCM-ja-Hod">
+                                <rect key="frame" x="27" y="167" width="190" height="190"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="DMp-ix-eJn"/>
+                                    <constraint firstAttribute="width" secondItem="RCM-ja-Hod" secondAttribute="height" multiplier="1:1" id="DVf-Nf-zk5"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="AppIcon" id="nrN-vz-Tik"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nqv-Bg-dma">
+                                <rect key="frame" x="54" y="125" width="136" height="34"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Redacted" id="4Yy-dA-lcB">
+                                    <font key="font" metaFont="systemBold" size="28"/>
+                                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ASa-J6-PLp">
+                                <rect key="frame" x="72" y="100" width="100" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Version 0.0 (0)" id="MID-Hp-Kew">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kWV-yQ-CgU">
+                                <rect key="frame" x="31" y="20" width="182" height="12"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Copyright © 2015 Nothing Magical Inc." usesSingleLineMode="YES" id="aLd-r9-4xO">
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvv-Dg-9ZU">
+                                <rect key="frame" x="32" y="52" width="181" height="28"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="L9u-I5-bma">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <string key="title">Designed and developed
+by Nothing Magical in California.</string>
+                                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RCM-ja-Hod" secondAttribute="trailing" constant="20" id="8nt-Ks-6I7"/>
+                            <constraint firstItem="RCM-ja-Hod" firstAttribute="top" secondItem="cNm-8f-sdn" secondAttribute="top" constant="20" id="9Cd-Jz-B53"/>
+                            <constraint firstItem="kWV-yQ-CgU" firstAttribute="top" secondItem="wvv-Dg-9ZU" secondAttribute="bottom" constant="20" id="Evl-H1-Yos"/>
+                            <constraint firstAttribute="centerX" secondItem="wvv-Dg-9ZU" secondAttribute="centerX" constant="-0.5" id="Ey0-tF-NDz"/>
+                            <constraint firstItem="RCM-ja-Hod" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cNm-8f-sdn" secondAttribute="leading" constant="20" id="GEU-de-nfV"/>
+                            <constraint firstItem="wvv-Dg-9ZU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cNm-8f-sdn" secondAttribute="leading" constant="20" id="HDB-rC-SLC"/>
+                            <constraint firstAttribute="bottom" secondItem="kWV-yQ-CgU" secondAttribute="bottom" constant="20" id="K2h-lD-evD"/>
+                            <constraint firstItem="nqv-Bg-dma" firstAttribute="top" secondItem="RCM-ja-Hod" secondAttribute="bottom" constant="8" id="LO0-88-6fI"/>
+                            <constraint firstAttribute="centerX" secondItem="ASa-J6-PLp" secondAttribute="centerX" id="PWR-Qp-vIJ"/>
+                            <constraint firstAttribute="centerX" secondItem="nqv-Bg-dma" secondAttribute="centerX" id="Tv1-Nv-RiO"/>
+                            <constraint firstItem="ASa-J6-PLp" firstAttribute="top" secondItem="nqv-Bg-dma" secondAttribute="bottom" constant="8" id="VwX-HL-s0A"/>
+                            <constraint firstAttribute="centerX" secondItem="RCM-ja-Hod" secondAttribute="centerX" id="aYp-0b-w8D"/>
+                            <constraint firstItem="wvv-Dg-9ZU" firstAttribute="top" secondItem="ASa-J6-PLp" secondAttribute="bottom" constant="20" id="cD5-Ij-glo"/>
+                            <constraint firstAttribute="centerX" secondItem="kWV-yQ-CgU" secondAttribute="centerX" id="fTe-rO-q1l"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wvv-Dg-9ZU" secondAttribute="trailing" constant="20" id="n2Y-6q-cRi"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kWV-yQ-CgU" secondAttribute="trailing" constant="20" id="pGy-3Z-zjf"/>
+                            <constraint firstItem="kWV-yQ-CgU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cNm-8f-sdn" secondAttribute="leading" constant="20" id="wIG-zO-aMC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="versionLabel" destination="ASa-J6-PLp" id="Ir7-wZ-3rU"/>
+                    </connections>
+                </viewController>
+                <customObject id="d2Z-KH-bwg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="575" y="-384.5"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="cjv-4T-3hm">
+            <objects>
+                <windowController id="kGY-f7-1aK" customClass="AboutWindowController" customModule="Redacted" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="eBb-od-gQ7">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="163" y="199" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+                    </window>
+                    <connections>
+                        <segue destination="4hD-bt-0Aa" kind="relationship" relationship="window.shadowedContentViewController" id="PjG-2w-JwL"/>
+                    </connections>
+                </windowController>
+                <customObject id="nk2-hZ-oZ1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="80" y="-384"/>
         </scene>
     </scenes>
     <resources>
+        <image name="AppIcon" width="128" height="128"/>
         <image name="NSShareTemplate" width="11" height="16"/>
         <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
         <image name="blur" width="16" height="16"/>

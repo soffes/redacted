@@ -10,7 +10,7 @@ import Cocoa
 
 @NSApplicationMain class AppDelegate: NSObject, NSApplicationDelegate {
 	func application(sender: NSApplication, openFile filename: String) -> Bool {
-		let windowController = NSApplication.sharedApplication().windows.first?.windowController() as? WindowController
+		let windowController = NSApplication.sharedApplication().windows.first?.windowController() as? EditorWindowController
 		if let windowController = windowController {
 			return windowController.openURL(NSURL(fileURLWithPath: filename))
 		}
