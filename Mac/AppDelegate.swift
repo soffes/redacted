@@ -8,7 +8,17 @@
 
 import Cocoa
 
-@NSApplicationMain class AppDelegate: NSObject, NSApplicationDelegate {
+@NSApplicationMain class AppDelegate: NSObject {
+
+	// MARK: - Actions
+
+	@IBAction func showHelp(sender: AnyObject?) {
+		NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://useredacted.com/help")!)
+	}
+}
+
+
+extension AppDelegate: NSApplicationDelegate {
 	func application(sender: NSApplication, openFile filename: String) -> Bool {
 		let windowController = NSApplication.sharedApplication().windows.first?.windowController() as? EditorWindowController
 		if let windowController = windowController {
