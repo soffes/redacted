@@ -10,11 +10,11 @@ import CoreGraphics
 
 extension CGRect {
 
-	public var center: CGPoint {
+	var center: CGPoint {
 		return CGPoint(x: midX, y: midY)
 	}
 
-	public func flippedInRect(bounds: CGRect) -> CGRect {
+	func flippedInRect(bounds: CGRect) -> CGRect {
 		return CGRect(
 			x: origin.x,
 			y: bounds.size.height - size.height - origin.y,
@@ -23,7 +23,7 @@ extension CGRect {
 		)
 	}
 
-	public func aspectFit(aspectRatio: CGSize) -> CGRect {
+	func aspectFit(aspectRatio: CGSize) -> CGRect {
 		let size = self.size.aspectFit(aspectRatio)
 		var origin = self.origin
 		origin.x += (self.size.width - size.width) / 2.0
@@ -34,7 +34,7 @@ extension CGRect {
 
 
 extension CGSize {
-	public func aspectFit(aspectRatio: CGSize) -> CGSize {
+	func aspectFit(aspectRatio: CGSize) -> CGSize {
 		let widthRatio = (width / aspectRatio.width)
 		let heightRatio = (height / aspectRatio.height)
 		var size = self
@@ -50,7 +50,7 @@ extension CGSize {
 
 
 extension CGPoint {
-	public func flippedInRect(bounds: CGRect) -> CGPoint {
+	func flippedInRect(bounds: CGRect) -> CGPoint {
 		return CGPoint(
 			x: x,
 			y: bounds.size.height - y

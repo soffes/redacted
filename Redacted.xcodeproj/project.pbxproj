@@ -212,9 +212,9 @@
 			isa = PBXGroup;
 			children = (
 				210EF3621AC0A39900ED8E97 /* RedactedKit.h */,
-				216596001ACE124200D22DB0 /* Utilities */,
 				216596011ACE124600D22DB0 /* Models */,
 				216595FF1ACE123600D22DB0 /* Layers */,
+				216596001ACE124200D22DB0 /* Utilities */,
 				210EF3601AC0A39900ED8E97 /* Supporting Files */,
 			);
 			path = RedactedKit;

@@ -8,12 +8,12 @@
 
 import QuartzCore
 
-public class ChainFilter: CIFilter {
+class ChainFilter: CIFilter {
 
-	public var inputImage: CIImage?
-	public var inputFilters: [CIFilter]?
+	var inputImage: CIImage?
+	var inputFilters: [CIFilter]?
 
-	public override var outputImage: CIImage? {
+	override var outputImage: CIImage? {
 		if var image = inputImage, let filters = inputFilters {
 			for filter in filters {
 				filter.setValue(image, forKey: "inputBackgroundImage")
