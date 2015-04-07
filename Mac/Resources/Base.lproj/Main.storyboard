@@ -77,7 +77,7 @@
                                             </menu>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
-                                        <menuItem title="Save…" keyEquivalent="s" id="V4A-kr-CXQ">
+                                        <menuItem title="Export Image…" keyEquivalent="s" id="V4A-kr-CXQ">
                                             <connections>
                                                 <action selector="save:" target="Ady-hI-5gd" id="Lta-ve-joZ"/>
                                             </connections>
@@ -226,42 +226,6 @@ CA
                         <value key="minSize" type="size" width="200" height="200"/>
                         <toolbar key="toolbar" implicitIdentifier="F4E5C2DE-5F69-4075-ACF7-6A1D214536CD" displayMode="iconAndLabel" sizeMode="regular" id="tJy-B4-k21">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="yMH-mM-Tge"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="k30-fi-DTN"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="fzw-88-lbR"/>
-                                <toolbarItem implicitItemIdentifier="813755AA-BDF8-4F36-B13C-7BCAEAA36916" explicitItemIdentifier="share" label="Share" paletteLabel="Share" tag="2" image="NSShareTemplate" id="cYw-Mz-8wy">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="40" height="28"/>
-                                    <size key="maxSize" width="40" height="39"/>
-                                    <button key="view" verticalHuggingPriority="750" tag="2" id="mEn-6H-ENO">
-                                        <rect key="frame" x="0.0" y="14" width="40" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="P1k-kx-jTP">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
-                                    <connections>
-                                        <action selector="shareImage:" target="B8D-0N-5wS" id="gcb-vK-RBC"/>
-                                    </connections>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="01B02621-DDD8-4231-B921-76F78E70D19D" explicitItemIdentifier="clear" label="Clear" paletteLabel="Clear Image" tag="1" image="NSStopProgressFreestandingTemplate" id="SWC-U0-tA0">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="40" height="28"/>
-                                    <size key="maxSize" width="40" height="39"/>
-                                    <button key="view" verticalHuggingPriority="750" tag="1" id="EhM-GM-7Du">
-                                        <rect key="frame" x="0.0" y="14" width="40" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IVC-fo-QYf">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
-                                    <connections>
-                                        <action selector="clearImage:" target="B8D-0N-5wS" id="iX6-0a-ukE"/>
-                                    </connections>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="HF5-4q-4wk"/>
                                 <toolbarItem implicitItemIdentifier="B5DBD10B-8CAB-4E4A-8767-0DE5BA0302DA" explicitItemIdentifier="mode" label="Mode" paletteLabel="Mode" id="m3V-Mi-ixQ">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="67" height="28"/>
@@ -285,18 +249,54 @@ CA
                                         </connections>
                                     </segmentedControl>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="B6EDDFE6-8E03-4946-8637-D378BD8B9922" explicitItemIdentifier="clear" label="Clear" paletteLabel="Clear Image" tag="1" image="NSStopProgressFreestandingTemplate" id="ZBv-j4-Tiu">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="40" height="28"/>
+                                    <size key="maxSize" width="40" height="39"/>
+                                    <button key="view" verticalHuggingPriority="750" tag="1" id="UbA-5R-CyW">
+                                        <rect key="frame" x="0.0" y="14" width="40" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Mve-cU-aEK">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="clearImage:" target="B8D-0N-5wS" id="Dzh-a4-5hS"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="3A149F7E-B0BE-4E92-9E87-D977A3F74AC6" explicitItemIdentifier="share" label="Share" paletteLabel="Share" tag="2" image="NSShareTemplate" id="JVS-8C-fuQ">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="40" height="28"/>
+                                    <size key="maxSize" width="40" height="39"/>
+                                    <button key="view" verticalHuggingPriority="750" tag="2" id="3Za-NF-8vf">
+                                        <rect key="frame" x="0.0" y="14" width="40" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dG0-wy-jv4">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="shareImage:" target="B8D-0N-5wS" id="O0J-pO-G1Z"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="42d-1S-9YM"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="0eU-eG-wzo"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="kPd-uO-p4I"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="3qR-we-c4r"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="m3V-Mi-ixQ"/>
-                                <toolbarItem reference="yMH-mM-Tge"/>
-                                <toolbarItem reference="SWC-U0-tA0"/>
-                                <toolbarItem reference="cYw-Mz-8wy"/>
+                                <toolbarItem reference="42d-1S-9YM"/>
+                                <toolbarItem reference="ZBv-j4-Tiu"/>
+                                <toolbarItem reference="JVS-8C-fuQ"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
                     <connections>
                         <outlet property="modeControl" destination="FtH-vU-pEZ" id="DMD-Pb-wFN"/>
-                        <outlet property="shareItem" destination="cYw-Mz-8wy" id="pqF-ie-zuC"/>
+                        <outlet property="shareItem" destination="JVS-8C-fuQ" id="AXb-Zi-517"/>
                         <outlet property="toolbar" destination="tJy-B4-k21" id="ocm-7I-Qh2"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
