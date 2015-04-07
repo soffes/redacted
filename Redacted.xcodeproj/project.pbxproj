@@ -14,12 +14,10 @@
 		210EF3761AC0A39900ED8E97 /* RedactedKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2149F2BF1AC0DB2900F4AF7E /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */; };
 		2149F2C11AC0DFD100F4AF7E /* ChainFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C01AC0DFD100F4AF7E /* ChainFilter.swift */; };
-		2149F2C51AC0EECC00F4AF7E /* CGRect+RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C41AC0EECC00F4AF7E /* CGRect+RedactedKit.swift */; };
-		2149F2CB1AC1326200F4AF7E /* Aspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2CA1AC1326200F4AF7E /* Aspect.swift */; };
+		2149F2C51AC0EECC00F4AF7E /* CoreGraphics+RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C41AC0EECC00F4AF7E /* CoreGraphics+RedactedKit.swift */; };
 		2149F2CD1AC145B400F4AF7E /* CIImage+RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2CC1AC145B400F4AF7E /* CIImage+RedactedKit.swift */; };
 		2151870F1AC7095C00937CD0 /* RedactedLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151870E1AC7095C00937CD0 /* RedactedLayer.swift */; };
 		215187111AC709CE00937CD0 /* CoreImageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215187101AC709CE00937CD0 /* CoreImageLayer.swift */; };
-		217268751AD1023B00F5F269 /* CGRect+RedactionKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217268741AD1023B00F5F269 /* CGRect+RedactionKit.swift */; };
 		217268771AD1075800F5F269 /* BoundingBoxLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217268761AD1075800F5F269 /* BoundingBoxLayer.swift */; };
 		217268791AD1086A00F5F269 /* HandleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217268781AD1086A00F5F269 /* HandleLayer.swift */; };
 		2192BAB41AD0E62E00AC87E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */; };
@@ -104,12 +102,10 @@
 		210EF3711AC0A39900ED8E97 /* RedactedKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactedKitTests.swift; sourceTree = "<group>"; };
 		2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Redaction.swift; sourceTree = "<group>"; };
 		2149F2C01AC0DFD100F4AF7E /* ChainFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainFilter.swift; sourceTree = "<group>"; };
-		2149F2C41AC0EECC00F4AF7E /* CGRect+RedactedKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+RedactedKit.swift"; sourceTree = "<group>"; };
-		2149F2CA1AC1326200F4AF7E /* Aspect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aspect.swift; sourceTree = "<group>"; };
+		2149F2C41AC0EECC00F4AF7E /* CoreGraphics+RedactedKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+RedactedKit.swift"; sourceTree = "<group>"; };
 		2149F2CC1AC145B400F4AF7E /* CIImage+RedactedKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CIImage+RedactedKit.swift"; sourceTree = "<group>"; };
 		2151870E1AC7095C00937CD0 /* RedactedLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedLayer.swift; sourceTree = "<group>"; };
 		215187101AC709CE00937CD0 /* CoreImageLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreImageLayer.swift; sourceTree = "<group>"; };
-		217268741AD1023B00F5F269 /* CGRect+RedactionKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+RedactionKit.swift"; sourceTree = "<group>"; };
 		217268761AD1075800F5F269 /* BoundingBoxLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxLayer.swift; sourceTree = "<group>"; };
 		217268781AD1086A00F5F269 /* HandleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleLayer.swift; sourceTree = "<group>"; };
 		2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +192,7 @@
 				2192BAF51AD0E70200AC87E2 /* iOSTests */,
 				210EF3381AC0A35C00ED8E97 /* Products */,
 			);
+			indentWidth = 3;
 			sourceTree = "<group>";
 		};
 		210EF3381AC0A35C00ED8E97 /* Products */ = {
@@ -262,11 +259,9 @@
 		216596001ACE124200D22DB0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				2149F2CC1AC145B400F4AF7E /* CIImage+RedactedKit.swift */,
 				2149F2C01AC0DFD100F4AF7E /* ChainFilter.swift */,
-				2149F2C41AC0EECC00F4AF7E /* CGRect+RedactedKit.swift */,
-				2149F2CA1AC1326200F4AF7E /* Aspect.swift */,
-				217268741AD1023B00F5F269 /* CGRect+RedactionKit.swift */,
+				2149F2CC1AC145B400F4AF7E /* CIImage+RedactedKit.swift */,
+				2149F2C41AC0EECC00F4AF7E /* CoreGraphics+RedactedKit.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -634,11 +629,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				217268751AD1023B00F5F269 /* CGRect+RedactionKit.swift in Sources */,
 				2149F2BF1AC0DB2900F4AF7E /* Redaction.swift in Sources */,
-				2149F2C51AC0EECC00F4AF7E /* CGRect+RedactedKit.swift in Sources */,
+				2149F2C51AC0EECC00F4AF7E /* CoreGraphics+RedactedKit.swift in Sources */,
 				2149F2C11AC0DFD100F4AF7E /* ChainFilter.swift in Sources */,
-				2149F2CB1AC1326200F4AF7E /* Aspect.swift in Sources */,
 				2149F2CD1AC145B400F4AF7E /* CIImage+RedactedKit.swift in Sources */,
 				217268771AD1075800F5F269 /* BoundingBoxLayer.swift in Sources */,
 				215187111AC709CE00937CD0 /* CoreImageLayer.swift in Sources */,
