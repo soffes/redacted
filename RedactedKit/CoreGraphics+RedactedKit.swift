@@ -8,8 +8,15 @@
 
 import CoreGraphics
 
-extension CGRect {
+#if os(iOS)
+	import UIKit
 
+	func CGColorCreateGenericRGB(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> CGColor! {
+		return UIColor(red: red, green: green, blue: blue, alpha: alpha).CGColor
+	}
+#endif
+
+extension CGRect {
 	var center: CGPoint {
 		return CGPoint(x: midX, y: midY)
 	}
@@ -29,6 +36,22 @@ extension CGRect {
 		origin.x += (self.size.width - size.width) / 2.0
 		origin.y += (self.size.height - size.height) / 2.0
 		return CGRect(origin: origin, size: size)
+	}
+
+	var stringRepresentation: String {
+		#if os(iOS)
+			return NSStringFromCGRect(self)
+		#else
+			return NSStringFromRect(self)
+		#endif
+	}
+
+	init(string: String) {
+		#if os(iOS)
+			self = CGRectFromString(string)
+		#else
+			self = NSRectFromString(string) as CGRect
+		#endif
 	}
 }
 

@@ -48,6 +48,20 @@
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "212456B31AD92CC70038D30D"
+               BuildableName = "RedactedKit-iOSTests.xctest"
+               BlueprintName = "RedactedKit-iOSTests"
+               ReferencedContainer = "container:Redacted.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -73,6 +87,16 @@
                BlueprintIdentifier = "210EF3671AC0A39900ED8E97"
                BuildableName = "RedactedKitTests.xctest"
                BlueprintName = "RedactedKitTests"
+               ReferencedContainer = "container:Redacted.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "212456B31AD92CC70038D30D"
+               BuildableName = "RedactedKit-iOSTests.xctest"
+               BlueprintName = "RedactedKit-iOSTests"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
          </TestableReference>

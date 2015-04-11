@@ -7,7 +7,11 @@
 //
 
 import Foundation
-import Quartz
+import QuartzCore
+
+#if os(iOS)
+	import CoreImage
+#endif
 
 public class CoreImageLayer: CALayer {
 
@@ -24,11 +28,16 @@ public class CoreImageLayer: CALayer {
 
 	public override func drawInContext(ctx: CGContext!) {
 		if let image = image {
-			// TODO: iOS
-			let ciContext = CIContext(CGContext: ctx, options: [
+			let options = [
 				kCIContextUseSoftwareRenderer: false,
 				kCIContextWorkingColorSpace: NSNull()
-			])
+			]
+
+			#if os(iOS)
+				let ciContext = CIContext(options: options)
+			#else
+				let ciContext = CIContext(CGContext: ctx, options: options)
+			#endif
 
 			ciContext.drawImage(image, inRect: imageRectForBounds(bounds), fromRect: image.extent())
 		}

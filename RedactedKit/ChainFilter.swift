@@ -6,7 +6,11 @@
 //  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
 //
 
-import QuartzCore
+#if os(iOS)
+	import CoreImage
+#else
+	import QuartzCore
+#endif
 
 class ChainFilter: CIFilter {
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Foundation;
 
 //! Project version number for RedactedKit.
 FOUNDATION_EXPORT double RedactedKitVersionNumber;

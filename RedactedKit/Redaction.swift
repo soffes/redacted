@@ -9,6 +9,12 @@
 import Foundation
 import CoreGraphics
 
+#if os(iOS)
+	import CoreImage
+#else
+	import QuartzCore
+#endif
+
 public enum RedactionType: Int, Printable {
 	case Pixelate, Blur
 
@@ -64,8 +70,14 @@ public struct Redaction: Hashable, Equatable {
 			])!.outputImage
 
 		case .Blur:
+			#if os(iOS)
+				let transform = NSValue(CGAffineTransform: CGAffineTransformIdentity)
+			#else
+				let transform = NSAffineTransform()
+			#endif
+
 			let clamp = CIFilter(name: "CIAffineClamp", withInputParameters: [
-				"inputTransform": NSAffineTransform(),
+				"inputTransform": transform,
 				"inputImage": image
 			])
 
@@ -87,7 +99,7 @@ extension Redaction {
 		return [
 			"UUID": UUID,
 			"type": type.rawValue,
-			"rect": NSStringFromRect(rect)
+			"rect": rect.stringRepresentation
 		]
 	}
 
@@ -95,7 +107,7 @@ extension Redaction {
 		if let UUID = dictionary["UUID"] as? String, typeString = dictionary["type"] as? Int, type = RedactionType(rawValue: typeString), rectString = dictionary["rect"] as? String {
 			self.UUID = UUID
 			self.type = type
-			self.rect = NSRectFromString(rectString) as CGRect
+			self.rect = CGRect(string: rectString)
 			return
 		}
 		return nil

@@ -9,8 +9,14 @@
 import Foundation
 import QuartzCore
 
-// TODO: iOS
-public typealias GestureRecognizerState = NSGestureRecognizerState
+#if os(iOS)
+	import CoreImage
+	import UIKit.UIGestureRecognizer
+	public typealias GestureRecognizerState = UIGestureRecognizerState
+#else
+	import AppKit.NSGestureRecognizer
+	public typealias GestureRecognizerState = NSGestureRecognizerState
+#endif
 
 public class RedactedLayer: CoreImageLayer {
 
@@ -27,9 +33,7 @@ public class RedactedLayer: CoreImageLayer {
 	public var originalImage: Image? {
 		didSet {
 			if let originalImage = originalImage {
-				// TODO: iOS
-				let cgImage = originalImage.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue()
-				originalCIImage = CIImage(CGImage: cgImage)
+				originalCIImage = CIImage(CGImage: originalImage.CGImage)
 			} else {
 				originalCIImage = nil
 			}
