@@ -34,10 +34,7 @@ class EditorViewController: NSViewController {
 	}
 
 	var renderedImage: NSImage? {
-		if let ciImage = redactedLayer.originalCIImage {
-			return redact(image: ciImage, withRedactions: redactedLayer.redactions).renderedImage
-		}
-		return nil
+		return redactedLayer.renderedImage()
 	}
 
 

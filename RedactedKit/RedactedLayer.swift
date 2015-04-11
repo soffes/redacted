@@ -31,29 +31,33 @@ public class RedactedLayer: CoreImageLayer {
 	// MARK: - Properties
 
 	public var originalImage: Image? {
-		didSet {
-			if let originalImage = originalImage {
-				originalCIImage = CIImage(CGImage: originalImage.CGImage)
-			} else {
-				originalCIImage = nil
-			}
+		get {
+			return redactionsController.image
+		}
+		
+		set {
+			redactionsController.image = newValue
 
 			boundingBoxes.removeAll()
 			selectedUUIDs.removeAll()
 			redactions.removeAll()
-		}
-	}
 
-	public var originalCIImage: CIImage? {
-		didSet {
-			updateRedactions()
+			// TODO: Allow for undoing images
+			undoManager?.removeAllActions()
 		}
 	}
 
 	public var mode: RedactionType = .Pixelate
 
-	public var redactions = [Redaction]() {
-		didSet {
+	private var redactionsController = RedactionsController()
+
+	public var redactions: [Redaction] {
+		get {
+			return redactionsController.redactions
+		}
+
+		set {
+			redactionsController.redactions = newValue
 			updateRedactions()
 		}
 	}
@@ -187,6 +191,13 @@ public class RedactedLayer: CoreImageLayer {
 	}
 
 
+	// MARK: - Rendering
+
+	public func renderedImage() -> Image? {
+		return redactionsController.process()?.renderedImage
+	}
+
+
 	// MARK: - Private
 
 	private func converPointToUnits(point: CGPoint) -> CGPoint {
@@ -207,12 +218,7 @@ public class RedactedLayer: CoreImageLayer {
 	}
 
 	private func updateRedactions() {
-		if let ciImage = originalCIImage {
-			image = redact(image: ciImage, withRedactions: redactions)
-		} else {
-			image = nil
-		}
-
+		image = redactionsController.process()
 		updateSelections()
 	}
 

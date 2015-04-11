@@ -118,11 +118,3 @@ extension Redaction {
 public func ==(lhs: Redaction, rhs: Redaction) -> Bool {
 	return lhs.hashValue == rhs.hashValue
 }
-
-
-public func redact(image ciImage: CIImage, withRedactions redactions: [Redaction]) -> CIImage {
-	let chain = ChainFilter()
-	chain.inputImage = ciImage
-	chain.inputFilters = redactions.map({ $0.filter(ciImage) })
-	return chain.outputImage!.imageByCroppingToRect(ciImage.extent())
-}
