@@ -11,6 +11,10 @@
 - [ ] Precache blur & pixelate
 - [x] Move
 - [ ] Placeholder illustration
+- [ ] Better menu validation
+- [ ] Japanese localization
+- [ ] French localization
+
 
 ## Launch
 
