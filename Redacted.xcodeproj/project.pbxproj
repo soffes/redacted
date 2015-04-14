@@ -22,6 +22,9 @@
 		2149F2CD1AC145B400F4AF7E /* CIImage+RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2CC1AC145B400F4AF7E /* CIImage+RedactedKit.swift */; };
 		2151870F1AC7095C00937CD0 /* RedactedLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151870E1AC7095C00937CD0 /* RedactedLayer.swift */; };
 		215187111AC709CE00937CD0 /* CoreImageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215187101AC709CE00937CD0 /* CoreImageLayer.swift */; };
+		215288991ADD00BF00C0AEBA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 215288971ADD00BF00C0AEBA /* Localizable.strings */; };
+		2152889B1ADD01F200C0AEBA /* RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152889A1ADD01F200C0AEBA /* RedactedKit.swift */; };
+		2152889E1ADD03F800C0AEBA /* RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152889A1ADD01F200C0AEBA /* RedactedKit.swift */; };
 		217268771AD1075800F5F269 /* BoundingBoxLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217268761AD1075800F5F269 /* BoundingBoxLayer.swift */; };
 		217268791AD1086A00F5F269 /* HandleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217268781AD1086A00F5F269 /* HandleLayer.swift */; };
 		2192BAB41AD0E62E00AC87E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */; };
@@ -131,7 +134,6 @@
 		210EF3371AC0A35C00ED8E97 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		210EF3491AC0A35D00ED8E97 /* MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedactedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		210EF3611AC0A39900ED8E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		210EF3621AC0A39900ED8E97 /* RedactedKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedactedKit.h; sourceTree = "<group>"; };
 		210EF3681AC0A39900ED8E97 /* RedactedKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedactedKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		210EF3701AC0A39900ED8E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,6 +147,11 @@
 		2149F2CC1AC145B400F4AF7E /* CIImage+RedactedKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CIImage+RedactedKit.swift"; sourceTree = "<group>"; };
 		2151870E1AC7095C00937CD0 /* RedactedLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedLayer.swift; sourceTree = "<group>"; };
 		215187101AC709CE00937CD0 /* CoreImageLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreImageLayer.swift; sourceTree = "<group>"; };
+		215288981ADD00BF00C0AEBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2152889A1ADD01F200C0AEBA /* RedactedKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedKit.swift; sourceTree = "<group>"; };
+		2152889C1ADD024500C0AEBA /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "Resources/Info-iOS.plist"; sourceTree = "<group>"; };
+		2152889D1ADD024500C0AEBA /* Info-Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Mac.plist"; path = "Resources/Info-Mac.plist"; sourceTree = "<group>"; };
+		215288A01ADD06BE00C0AEBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		217268761AD1075800F5F269 /* BoundingBoxLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxLayer.swift; sourceTree = "<group>"; };
 		217268781AD1086A00F5F269 /* HandleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleLayer.swift; sourceTree = "<group>"; };
 		2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -270,20 +277,23 @@
 			isa = PBXGroup;
 			children = (
 				210EF3621AC0A39900ED8E97 /* RedactedKit.h */,
+				2152889A1ADD01F200C0AEBA /* RedactedKit.swift */,
 				216596011ACE124600D22DB0 /* Models */,
 				216595FF1ACE123600D22DB0 /* Layers */,
 				216596001ACE124200D22DB0 /* Utilities */,
-				210EF3601AC0A39900ED8E97 /* Supporting Files */,
+				210EF3601AC0A39900ED8E97 /* Resources */,
 			);
 			path = RedactedKit;
 			sourceTree = SOURCE_ROOT;
 		};
-		210EF3601AC0A39900ED8E97 /* Supporting Files */ = {
+		210EF3601AC0A39900ED8E97 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				210EF3611AC0A39900ED8E97 /* Info.plist */,
+				2152889C1ADD024500C0AEBA /* Info-iOS.plist */,
+				2152889D1ADD024500C0AEBA /* Info-Mac.plist */,
+				215288971ADD00BF00C0AEBA /* Localizable.strings */,
 			);
-			name = "Supporting Files";
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		210EF36E1AC0A39900ED8E97 /* RedactedKitTests */ = {
@@ -639,6 +649,7 @@
 					};
 					2192BAC31AD0E6C500AC87E2 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = UP9C8XM22A;
 					};
 					2192BAD71AD0E6C500AC87E2 = {
 						CreatedOnToolsVersion = 6.3;
@@ -653,6 +664,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 210EF32E1AC0A35C00ED8E97;
 			productRefGroup = 210EF3381AC0A35C00ED8E97 /* Products */;
@@ -692,6 +704,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				215288991ADD00BF00C0AEBA /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +778,7 @@
 			files = (
 				2149F2BF1AC0DB2900F4AF7E /* Redaction.swift in Sources */,
 				2149F2C51AC0EECC00F4AF7E /* CoreGraphics+RedactedKit.swift in Sources */,
+				2152889B1ADD01F200C0AEBA /* RedactedKit.swift in Sources */,
 				2149F2C11AC0DFD100F4AF7E /* ChainFilter.swift in Sources */,
 				212456CC1AD941940038D30D /* RedactionsController.swift in Sources */,
 				2149F2CD1AC145B400F4AF7E /* CIImage+RedactedKit.swift in Sources */,
@@ -787,6 +801,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2152889E1ADD03F800C0AEBA /* RedactedKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,10 +875,19 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		215288971ADD00BF00C0AEBA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				215288981ADD00BF00C0AEBA /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		2192BAAC1AD0E62E00AC87E2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2192BAAD1AD0E62E00AC87E2 /* Base */,
+				215288A01ADD06BE00C0AEBA /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1056,7 +1080,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = RedactedKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/Info-Mac.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1080,7 +1104,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = RedactedKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/Info-Mac.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1139,7 +1163,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = RedactedKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1162,7 +1186,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = RedactedKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1219,6 +1243,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1241,6 +1266,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

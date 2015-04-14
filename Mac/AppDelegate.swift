@@ -7,8 +7,14 @@
 //
 
 import Cocoa
+import RedactedKit
 
 @NSApplicationMain class AppDelegate: NSObject {
+
+	// MARK: - Properties
+
+	@IBOutlet var pixelateMenuItem: NSMenuItem!
+	@IBOutlet var blurMenuItem: NSMenuItem!
 
 	// MARK: - Actions
 
@@ -19,6 +25,11 @@ import Cocoa
 
 
 extension AppDelegate: NSApplicationDelegate {
+	func applicationDidFinishLaunching(notification: NSNotification) {
+		pixelateMenuItem.title = string("PIXELATE")
+		blurMenuItem.title = string("BLUR")
+	}
+
 	func application(sender: NSApplication, openFile filename: String) -> Bool {
 		let windowController = NSApplication.sharedApplication().windows.first?.windowController() as? EditorWindowController
 		if let windowController = windowController {

@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  Redacted
+
+  Created by Sam Soffes on 4/14/15.
+  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
+*/
+
+"PIXELATE" = "Pixelate";
+"BLUR" = "Blur";
+
+/* Undo actions */
+"INSERT_REDACTION" = "Insert Redaction";
+"INSERT_REDACTIONS" = "Insert Redactions";
+"DELETE_REDACTION" = "Delete Redaction";
+"DELETE_REDACTIONS" = "Delete Redactions";
+
+"VERSION_FORMAT" = "Version %@";

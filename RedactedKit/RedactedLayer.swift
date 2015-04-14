@@ -236,8 +236,8 @@ public class RedactedLayer: CoreImageLayer {
 		self.redactions += redactions
 
 		if !(undoManager?.undoing ?? false) {
-			let s = redactions.count == 1 ? "" : "s"
-			undoManager?.setActionName("Insert Redaction\(s)")
+			let s = redactions.count == 1 ? "" : "S"
+			undoManager?.setActionName(string("INSERT_REDACTION\(s)"))
 		}
 		undoManager?.registerUndoWithTarget(self, selector: "removeRedactionDictionaries:", object: redactions.map({ $0.dictionaryRepresentation }))
 	}
@@ -252,8 +252,8 @@ public class RedactedLayer: CoreImageLayer {
 		}
 
 		if !(undoManager?.undoing ?? false) {
-			let s = redactions.count == 1 ? "" : "s"
-			undoManager?.setActionName("Delete Redaction\(s)")
+			let s = redactions.count == 1 ? "" : "S"
+			undoManager?.setActionName(string("DELETE_REDACTION\(s)"))
 		}
 		undoManager?.registerUndoWithTarget(self, selector: "insertRedactionDictionaries:", object: redactions.map({ $0.dictionaryRepresentation }))
 	}

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import RedactedKit
 
 class AboutViewController: NSViewController {
 
@@ -23,11 +24,6 @@ class AboutViewController: NSViewController {
 		let info = NSBundle.mainBundle().infoDictionary!
 		let shortVersion = (info["CFBundleShortVersionString"] as! String)
 		let version = (info["CFBundleVersion"] as! String)
-		versionLabel.stringValue = "Version \(shortVersion) (\(version))"
+		versionLabel.stringValue = NSString(format: string("VERSION_FORMAT"), locale: nil, "\(shortVersion) (\(version))") as String
 	}
-
-//	override func viewDidAppear() {
-//		super.viewDidAppear()
-//		view.window?.styleMask = NSTitledWindowMask | NSClosableWindowMask
-//	}
 }

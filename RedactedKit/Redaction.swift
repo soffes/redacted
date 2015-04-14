@@ -21,10 +21,14 @@ public enum RedactionType: Int, Printable {
 	public var description: String {
 		switch self {
 		case .Pixelate:
-			return "pixelate"
+			return string("PIXELATE")
 		case .Blur:
-			return "blur"
+			return string("BLUR")
 		}
+	}
+
+	public static var allTypes: [RedactionType] {
+		return [.Pixelate, .Blur]
 	}
 }
 
