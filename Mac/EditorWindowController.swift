@@ -72,6 +72,13 @@ class EditorWindowController: NSWindowController {
 			view.delegate = self
 		}
 
+		// Notifications
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageDidChange:", name: EditorViewController.imageDidChangeNotification, object: nil)
+	}
+
+	override func awakeFromNib() {
+		super.awakeFromNib()
+
 		// Setup share button
 		if let button = shareItem.view as? NSButton {
 			button.sendActionOn(Int(NSEventMask.LeftMouseDownMask.rawValue))
@@ -84,10 +91,9 @@ class EditorWindowController: NSWindowController {
 		clearItem.paletteLabel = string("CLEAR_IMAGE")
 		shareItem.label = string("SHARE")
 		shareItem.paletteLabel = shareItem.label
-		validateToolbar()
 
-		// Notifications
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageDidChange:", name: EditorViewController.imageDidChangeNotification, object: nil)
+		// For some reason, this only works in `awakeFromNib`. Oh AppKit.
+		validateToolbar()
 	}
 
 
@@ -191,7 +197,9 @@ extension EditorWindowController: NSWindowDelegate {
 
 extension EditorWindowController {
 	private func validateToolbar() {
+		println("validate toolbar")
 		if let items = toolbar.visibleItems as? [NSToolbarItem] {
+			println("toolbar items: \(items)")
 			for item in items {
 				item.enabled = validateToolbarItem(item)
 			}
@@ -200,7 +208,9 @@ extension EditorWindowController {
 
 	override func validateToolbarItem(theItem: NSToolbarItem) -> Bool {
 		if contains(["mode", "clear", "share"], theItem.itemIdentifier) {
-			return editorViewController.image != nil
+			let enabled = editorViewController.image != nil
+			println("toolbar item `\(theItem.itemIdentifier)`: \(enabled)")
+			return enabled
 		}
 		return true
 	}
