@@ -131,12 +131,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		210513FB1ADE688A009599D2 /* RedactedKit-Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RedactedKit-Info-iOS.plist"; path = "Resources/RedactedKit-Info-iOS.plist"; sourceTree = "<group>"; };
+		210513FC1ADE688A009599D2 /* RedactedKit-Info-Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RedactedKit-Info-Mac.plist"; path = "Resources/RedactedKit-Info-Mac.plist"; sourceTree = "<group>"; };
+		210513FF1ADE68AF009599D2 /* Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mac-Info.plist"; sourceTree = "<group>"; };
+		210514001ADE68BD009599D2 /* MacTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacTests-Info.plist"; sourceTree = "<group>"; };
+		210514011ADE68CC009599D2 /* iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS-Info.plist"; sourceTree = "<group>"; };
+		210514021ADE68D8009599D2 /* iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOSTests-Info.plist"; sourceTree = "<group>"; };
+		210514031ADE69CF009599D2 /* RedactedKitTests-Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RedactedKitTests-Info-iOS.plist"; sourceTree = "<group>"; };
+		210514041ADE69CF009599D2 /* RedactedKitTests-Info-Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RedactedKitTests-Info-Mac.plist"; sourceTree = "<group>"; };
 		210EF3371AC0A35C00ED8E97 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		210EF3491AC0A35D00ED8E97 /* MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedactedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		210EF3621AC0A39900ED8E97 /* RedactedKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedactedKit.h; sourceTree = "<group>"; };
 		210EF3681AC0A39900ED8E97 /* RedactedKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedactedKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		210EF3701AC0A39900ED8E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		210EF3711AC0A39900ED8E97 /* RedactedKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactedKitTests.swift; sourceTree = "<group>"; };
 		212456AA1AD92CC70038D30D /* RedactedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedactedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		212456B41AD92CC70038D30D /* RedactedKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RedactedKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,8 +156,6 @@
 		215187101AC709CE00937CD0 /* CoreImageLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreImageLayer.swift; sourceTree = "<group>"; };
 		215288981ADD00BF00C0AEBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2152889A1ADD01F200C0AEBA /* RedactedKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedKit.swift; sourceTree = "<group>"; };
-		2152889C1ADD024500C0AEBA /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "Resources/Info-iOS.plist"; sourceTree = "<group>"; };
-		2152889D1ADD024500C0AEBA /* Info-Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Mac.plist"; path = "Resources/Info-Mac.plist"; sourceTree = "<group>"; };
 		215288A01ADD06BE00C0AEBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		217268761AD1075800F5F269 /* BoundingBoxLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxLayer.swift; sourceTree = "<group>"; };
 		217268781AD1086A00F5F269 /* HandleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleLayer.swift; sourceTree = "<group>"; };
@@ -161,9 +166,7 @@
 		2192BAAA1AD0E62E00AC87E2 /* RedactedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedView.swift; sourceTree = "<group>"; };
 		2192BAAD1AD0E62E00AC87E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2192BAAE1AD0E62E00AC87E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2192BAAF1AD0E62E00AC87E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2192BAB01AD0E62E00AC87E2 /* EditorWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorWindowController.swift; sourceTree = "<group>"; };
-		2192BAB21AD0E62E00AC87E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2192BAB31AD0E62E00AC87E2 /* RedactedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedTests.swift; sourceTree = "<group>"; };
 		2192BAC41AD0E6C500AC87E2 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2192BAD81AD0E6C500AC87E2 /* iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,9 +174,7 @@
 		2192BAE91AD0E6FD00AC87E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2192BAEB1AD0E6FD00AC87E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2192BAED1AD0E6FD00AC87E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2192BAF61AD0E70200AC87E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2192BAF71AD0E70200AC87E2 /* RedactedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedTests.swift; sourceTree = "<group>"; };
 		21DCDDAC1ADA560A00629E8F /* Redacted.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Redacted.entitlements; sourceTree = "<group>"; };
 		21DF29691AD386B3007EB2F2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -289,8 +290,8 @@
 		210EF3601AC0A39900ED8E97 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2152889C1ADD024500C0AEBA /* Info-iOS.plist */,
-				2152889D1ADD024500C0AEBA /* Info-Mac.plist */,
+				210513FB1ADE688A009599D2 /* RedactedKit-Info-iOS.plist */,
+				210513FC1ADE688A009599D2 /* RedactedKit-Info-Mac.plist */,
 				215288971ADD00BF00C0AEBA /* Localizable.strings */,
 			);
 			name = Resources;
@@ -308,7 +309,8 @@
 		210EF36F1AC0A39900ED8E97 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				210EF3701AC0A39900ED8E97 /* Info.plist */,
+				210514031ADE69CF009599D2 /* RedactedKitTests-Info-iOS.plist */,
+				210514041ADE69CF009599D2 /* RedactedKitTests-Info-Mac.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -359,10 +361,10 @@
 		2192BAAB1AD0E62E00AC87E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				210513FF1ADE68AF009599D2 /* Mac-Info.plist */,
 				21DCDDAC1ADA560A00629E8F /* Redacted.entitlements */,
 				2192BAAC1AD0E62E00AC87E2 /* Main.storyboard */,
 				2192BAAE1AD0E62E00AC87E2 /* Images.xcassets */,
-				2192BAAF1AD0E62E00AC87E2 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -370,7 +372,7 @@
 		2192BAB11AD0E62E00AC87E2 /* MacTests */ = {
 			isa = PBXGroup;
 			children = (
-				2192BAB21AD0E62E00AC87E2 /* Info.plist */,
+				210514001ADE68BD009599D2 /* MacTests-Info.plist */,
 				2192BAB31AD0E62E00AC87E2 /* RedactedTests.swift */,
 			);
 			path = MacTests;
@@ -379,12 +381,12 @@
 		2192BAE61AD0E6FD00AC87E2 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				210514011ADE68CC009599D2 /* iOS-Info.plist */,
 				2192BAE71AD0E6FD00AC87E2 /* AppDelegate.swift */,
 				2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */,
 				2192BAE81AD0E6FD00AC87E2 /* LaunchScreen.xib */,
 				2192BAEA1AD0E6FD00AC87E2 /* Main.storyboard */,
 				2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */,
-				2192BAED1AD0E6FD00AC87E2 /* Info.plist */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -392,7 +394,7 @@
 		2192BAF51AD0E70200AC87E2 /* iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				2192BAF61AD0E70200AC87E2 /* Info.plist */,
+				210514021ADE68D8009599D2 /* iOSTests-Info.plist */,
 				2192BAF71AD0E70200AC87E2 /* RedactedTests.swift */,
 			);
 			path = iOSTests;
@@ -664,7 +666,6 @@
 			knownRegions = (
 				en,
 				Base,
-				es,
 			);
 			mainGroup = 210EF32E1AC0A35C00ED8E97;
 			productRefGroup = 210EF3381AC0A35C00ED8E97 /* Products */;
@@ -1002,7 +1003,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Mac/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Mac/Resources/Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = Redacted;
 				PROVISIONING_PROFILE = "";
@@ -1019,7 +1020,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Mac/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Mac/Resources/Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = Redacted;
 				PROVISIONING_PROFILE = "";
@@ -1040,7 +1041,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = MacTests/Info.plist;
+				INFOPLIST_FILE = "MacTests/MacTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Contents/MacOS/Redacted";
@@ -1056,7 +1057,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = MacTests/Info.plist;
+				INFOPLIST_FILE = "MacTests/MacTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Contents/MacOS/Redacted";
@@ -1080,7 +1081,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/Info-Mac.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/RedactedKit-Info-Mac.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1104,7 +1105,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/Info-Mac.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/RedactedKit-Info-Mac.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1127,7 +1128,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = RedactedKitTests/Info.plist;
+				INFOPLIST_FILE = "RedactedKitTests/RedactedKitTests-Info-Mac.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Contents/MacOS/Redacted";
@@ -1142,7 +1143,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = RedactedKitTests/Info.plist;
+				INFOPLIST_FILE = "RedactedKitTests/RedactedKitTests-Info-Mac.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Contents/MacOS/Redacted";
@@ -1163,7 +1164,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/Info-iOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/RedactedKit-Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1186,7 +1187,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/Info-iOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/RedactedKit-Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1212,7 +1213,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = RedactedKitTests/Info.plist;
+				INFOPLIST_FILE = "RedactedKitTests/RedactedKitTests-Info-iOS.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1229,7 +1230,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = RedactedKitTests/Info.plist;
+				INFOPLIST_FILE = "RedactedKitTests/RedactedKitTests-Info-iOS.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1253,7 +1254,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Redacted;
@@ -1272,7 +1273,7 @@
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Redacted-dxuxvilcedhbknbjvgdunyeexepy/Build/Products/Debug-iphoneos",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Redacted;
@@ -1294,7 +1295,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = iOSTests/Info.plist;
+				INFOPLIST_FILE = "iOSTests/iOSTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1311,7 +1312,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = iOSTests/Info.plist;
+				INFOPLIST_FILE = "iOSTests/iOSTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
