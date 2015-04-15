@@ -13,8 +13,14 @@ import RedactedKit
 
 	// MARK: - Properties
 
+	@IBOutlet var exportMenuItem: NSMenuItem!
+	@IBOutlet var copyMenuItem: NSMenuItem!
+	@IBOutlet var pasteMenuItem: NSMenuItem!
+	@IBOutlet var deleteMenuItem: NSMenuItem!
+	@IBOutlet var selectAllMenuItem: NSMenuItem!
 	@IBOutlet var pixelateMenuItem: NSMenuItem!
 	@IBOutlet var blurMenuItem: NSMenuItem!
+	@IBOutlet var clearMenuItem: NSMenuItem!
 
 	// MARK: - Actions
 
@@ -26,8 +32,14 @@ import RedactedKit
 
 extension AppDelegate: NSApplicationDelegate {
 	func applicationDidFinishLaunching(notification: NSNotification) {
+		exportMenuItem.title = string("EXPORT_IMAGE")
+		copyMenuItem.title = string("COPY_IMAGE")
+		pasteMenuItem.title = string("PASTE_IMAGE")
+		deleteMenuItem.title = string("DELETE_REDACTION")
+		selectAllMenuItem.title = string("SELECT_ALL_REDACTIONS")
 		pixelateMenuItem.title = string("PIXELATE")
 		blurMenuItem.title = string("BLUR")
+		clearMenuItem.title = string("CLEAR_IMAGE")
 	}
 
 	func application(sender: NSApplication, openFile filename: String) -> Bool {

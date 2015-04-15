@@ -211,7 +211,13 @@ CA
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Redacted" customModuleProvider="target">
                     <connections>
                         <outlet property="blurMenuItem" destination="VrF-gj-uGs" id="3Uo-gP-DBs"/>
+                        <outlet property="clearMenuItem" destination="CU7-WH-zkx" id="mrR-xS-auP"/>
+                        <outlet property="copyMenuItem" destination="x3v-GG-iWU" id="Chf-pm-NmG"/>
+                        <outlet property="deleteMenuItem" destination="vUX-YX-21I" id="RIm-Za-AR0"/>
+                        <outlet property="exportMenuItem" destination="V4A-kr-CXQ" id="1bb-U3-kKa"/>
+                        <outlet property="pasteMenuItem" destination="gVA-U4-sdL" id="1sv-aj-jRw"/>
                         <outlet property="pixelateMenuItem" destination="GYt-l8-zmc" id="e0x-iM-PAy"/>
+                        <outlet property="selectAllMenuItem" destination="Wro-F8-Hrl" id="UzX-YM-eqg"/>
                     </connections>
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -300,8 +306,10 @@ CA
                         </toolbar>
                     </window>
                     <connections>
+                        <outlet property="clearItem" destination="ZBv-j4-Tiu" id="CWA-IP-ePe"/>
                         <outlet property="modeControl" destination="FtH-vU-pEZ" id="DMD-Pb-wFN"/>
-                        <outlet property="shareItem" destination="JVS-8C-fuQ" id="AXb-Zi-517"/>
+                        <outlet property="modeItem" destination="m3V-Mi-ixQ" id="oZD-wb-spo"/>
+                        <outlet property="shareItem" destination="JVS-8C-fuQ" id="HkP-WL-ELB"/>
                         <outlet property="toolbar" destination="tJy-B4-k21" id="ocm-7I-Qh2"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
@@ -409,6 +417,8 @@ by Nothing Magical in California.</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="copyrightLabel" destination="kWV-yQ-CgU" id="SYk-Sr-r67"/>
+                        <outlet property="creditsLabel" destination="wvv-Dg-9ZU" id="2ho-Q1-0iC"/>
                         <outlet property="versionLabel" destination="ASa-J6-PLp" id="Ir7-wZ-3rU"/>
                     </connections>
                 </viewController>

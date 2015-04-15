@@ -6,13 +6,30 @@
   Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
 */
 
+// Modes
+"MODE" = "Mode";
 "PIXELATE" = "Pixelate";
 "BLUR" = "Blur";
 
-/* Undo actions */
+// Actions
+"SHARE" = "Share";
+"CLEAR" = "Clear";
+"CLEAR_IMAGE" = "Clear Image";
+"EXPORT_IMAGE" = "Export Image…";
+
+// Edit menu
+"COPY_IMAGE" = "Copy Image";
+"PASTE_IMAGE" = "Paste Image";
+"DELETE_REDACTION" = "Delete Redaction";
+"SELECT_ALL_REDACTIONS" = "Select All Redactions";
+
+// Undo actions
 "INSERT_REDACTION" = "Insert Redaction";
 "INSERT_REDACTIONS" = "Insert Redactions";
 "DELETE_REDACTION" = "Delete Redaction";
 "DELETE_REDACTIONS" = "Delete Redactions";
 
+// About
 "VERSION_FORMAT" = "Version %@";
+"CREDITS" = "Designed & developed by Nothing Magical in California.";
+"COPYRIGHT" = "Copyright © 2015 Nothing Magical Inc.";

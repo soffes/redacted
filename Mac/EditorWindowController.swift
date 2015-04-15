@@ -14,8 +14,10 @@ class EditorWindowController: NSWindowController {
 	// MARK: - Properties
 
 	@IBOutlet var toolbar: NSToolbar!
-	@IBOutlet var shareItem: NSToolbarItem!
+	@IBOutlet var modeItem: NSToolbarItem!
 	@IBOutlet var modeControl: NSSegmentedControl!
+	@IBOutlet var clearItem: NSToolbarItem!
+	@IBOutlet var shareItem: NSToolbarItem!
 
 	var editorViewController: EditorViewController!
 	var modeIndex: Int = 0 {
@@ -75,7 +77,13 @@ class EditorWindowController: NSWindowController {
 			button.sendActionOn(Int(NSEventMask.LeftMouseDownMask.rawValue))
 		}
 
-		// Validate toolbar
+		// Setup toolbar
+		modeItem.label = string("MODE")
+		modeItem.paletteLabel = modeItem.label
+		clearItem.label = string("CLEAR")
+		clearItem.paletteLabel = string("CLEAR_IMAGE")
+		shareItem.label = string("SHARE")
+		shareItem.paletteLabel = shareItem.label
 		validateToolbar()
 
 		// Notifications
