@@ -350,43 +350,43 @@ CA
             <objects>
                 <viewController title="About" showSeguePresentationStyle="single" id="4hD-bt-0Aa" customClass="AboutViewController" customModule="Redacted" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="cNm-8f-sdn">
-                        <rect key="frame" x="0.0" y="0.0" width="244" height="377"/>
+                        <rect key="frame" x="0.0" y="0.0" width="244" height="376"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RCM-ja-Hod">
-                                <rect key="frame" x="27" y="167" width="190" height="190"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RCM-ja-Hod">
+                                <rect key="frame" x="27" y="166" width="190" height="190"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="DMp-ix-eJn"/>
                                     <constraint firstAttribute="width" secondItem="RCM-ja-Hod" secondAttribute="height" multiplier="1:1" id="DVf-Nf-zk5"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="AppIcon" id="nrN-vz-Tik"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nqv-Bg-dma">
-                                <rect key="frame" x="54" y="125" width="136" height="34"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqv-Bg-dma">
+                                <rect key="frame" x="54" y="124" width="136" height="34"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Redacted" id="4Yy-dA-lcB">
                                     <font key="font" metaFont="systemBold" size="28"/>
                                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ASa-J6-PLp">
-                                <rect key="frame" x="72" y="100" width="100" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ASa-J6-PLp">
+                                <rect key="frame" x="72" y="99" width="100" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Version 0.0 (0)" id="MID-Hp-Kew">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kWV-yQ-CgU">
-                                <rect key="frame" x="31" y="20" width="182" height="12"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Copyright © 2015 Nothing Magical Inc." usesSingleLineMode="YES" id="aLd-r9-4xO">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kWV-yQ-CgU">
+                                <rect key="frame" x="55" y="20" width="135" height="11"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="© 2015 Nothing Magical Inc." usesSingleLineMode="YES" id="aLd-r9-4xO">
                                     <font key="font" metaFont="miniSystem"/>
                                     <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvv-Dg-9ZU">
-                                <rect key="frame" x="32" y="52" width="181" height="28"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvv-Dg-9ZU">
+                                <rect key="frame" x="32" y="51" width="181" height="28"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="L9u-I5-bma">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">Designed and developed
