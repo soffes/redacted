@@ -12,9 +12,6 @@
 - [x] Move
 - [ ] Placeholder illustration
 - [x] Better menu validation
-- [ ] Japanese localization
-- [ ] French localization
-
 
 ## Launch
 
@@ -22,3 +19,10 @@
 - [ ] Support page
 - [ ] App description
 - [ ] Screenshots
+
+## Backlog
+
+- [ ] Japanese localization
+- [ ] French localization
+- [ ] Bounding boxes
+- [ ] Brush
