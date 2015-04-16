@@ -197,7 +197,6 @@ extension EditorWindowController: NSWindowDelegate {
 
 extension EditorWindowController {
 	private func validateToolbar() {
-		println("validate toolbar")
 		if let items = toolbar.visibleItems as? [NSToolbarItem] {
 			println("toolbar items: \(items)")
 			for item in items {
@@ -208,9 +207,7 @@ extension EditorWindowController {
 
 	override func validateToolbarItem(theItem: NSToolbarItem) -> Bool {
 		if contains(["mode", "clear", "share"], theItem.itemIdentifier) {
-			let enabled = editorViewController.image != nil
-			println("toolbar item `\(theItem.itemIdentifier)`: \(enabled)")
-			return enabled
+			return editorViewController.image != nil
 		}
 		return true
 	}
