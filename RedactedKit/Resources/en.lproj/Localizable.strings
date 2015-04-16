@@ -20,7 +20,6 @@
 /* Edit menu */
 "COPY_IMAGE" = "Copy Image";
 "PASTE_IMAGE" = "Paste Image";
-"DELETE_REDACTION" = "Delete Redaction";
 "SELECT_ALL_REDACTIONS" = "Select All Redactions";
 
 /* Undo actions */

@@ -58,7 +58,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
+                                        <menuItem title="Open…" tag="900" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="openDocument:" target="Ady-hI-5gd" id="bVn-NM-KNZ"/>
                                             </connections>
@@ -110,7 +110,7 @@
                                                 <action selector="paste:" target="Ady-hI-5gd" id="UvS-8e-Qdg"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Delete Redaction" id="vUX-YX-21I">
+                                        <menuItem title="Delete Redaction" tag="901" id="vUX-YX-21I">
                                             <string key="keyEquivalent" base64-UTF8="YES">
 CA
 </string>
@@ -134,8 +134,16 @@ CA
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="p8W-dX-ZNr"/>
-                                        <menuItem title="Pixelate" keyEquivalent="1" id="GYt-l8-zmc"/>
-                                        <menuItem title="Blur" keyEquivalent="2" id="VrF-gj-uGs"/>
+                                        <menuItem title="Pixelate" keyEquivalent="1" id="GYt-l8-zmc">
+                                            <connections>
+                                                <action selector="usePixelate:" target="Ady-hI-5gd" id="YTf-go-R6C"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Blur" keyEquivalent="2" id="VrF-gj-uGs">
+                                            <connections>
+                                                <action selector="useBlur:" target="Ady-hI-5gd" id="eZ1-mQ-dzX"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -255,10 +263,10 @@ CA
                                                 </segment>
                                             </segments>
                                         </segmentedCell>
-                                        <connections>
-                                            <action selector="modeDidChange:" target="B8D-0N-5wS" id="rfZ-S3-K2K"/>
-                                        </connections>
                                     </segmentedControl>
+                                    <connections>
+                                        <action selector="changeMode:" target="B8D-0N-5wS" id="7o4-av-AFB"/>
+                                    </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="B6EDDFE6-8E03-4946-8637-D378BD8B9922" explicitItemIdentifier="clear" label="Clear" paletteLabel="Clear Image" tag="1" image="NSStopProgressFreestandingTemplate" id="ZBv-j4-Tiu">
                                     <nil key="toolTip"/>
@@ -350,11 +358,11 @@ CA
             <objects>
                 <viewController title="About" showSeguePresentationStyle="single" id="4hD-bt-0Aa" customClass="AboutViewController" customModule="Redacted" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="cNm-8f-sdn">
-                        <rect key="frame" x="0.0" y="0.0" width="244" height="377"/>
+                        <rect key="frame" x="0.0" y="0.0" width="244" height="374"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RCM-ja-Hod">
-                                <rect key="frame" x="27" y="167" width="190" height="190"/>
+                                <rect key="frame" x="27" y="164" width="190" height="190"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="DMp-ix-eJn"/>
                                     <constraint firstAttribute="width" secondItem="RCM-ja-Hod" secondAttribute="height" multiplier="1:1" id="DVf-Nf-zk5"/>
@@ -362,7 +370,7 @@ CA
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="AppIcon" id="nrN-vz-Tik"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nqv-Bg-dma">
-                                <rect key="frame" x="54" y="125" width="136" height="34"/>
+                                <rect key="frame" x="54" y="122" width="136" height="34"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Redacted" id="4Yy-dA-lcB">
                                     <font key="font" metaFont="systemBold" size="28"/>
                                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="deviceRGB"/>
@@ -370,7 +378,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ASa-J6-PLp">
-                                <rect key="frame" x="72" y="100" width="100" height="17"/>
+                                <rect key="frame" x="72" y="97" width="100" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Version 0.0 (0)" id="MID-Hp-Kew">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -378,7 +386,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kWV-yQ-CgU">
-                                <rect key="frame" x="55" y="20" width="135" height="12"/>
+                                <rect key="frame" x="55" y="20" width="135" height="11"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="© 2015 Nothing Magical Inc." usesSingleLineMode="YES" id="aLd-r9-4xO">
                                     <font key="font" metaFont="miniSystem"/>
                                     <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -386,7 +394,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvv-Dg-9ZU">
-                                <rect key="frame" x="32" y="52" width="181" height="28"/>
+                                <rect key="frame" x="32" y="51" width="181" height="26"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="L9u-I5-bma">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">Designed and developed

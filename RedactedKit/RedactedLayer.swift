@@ -20,6 +20,17 @@ import QuartzCore
 
 public class RedactedLayer: CoreImageLayer {
 
+	// MARK: - Constants
+
+	public class var modeDidChangeNotificationName: String {
+		return "RedactedLayer.modeDidChangeNotificationName"
+	}
+
+	public class var selectionDidChangeNotificationName: String {
+		return "RedactedLayer.selectionDidChangeNotificationName"
+	}
+
+
 	// MARK: - Types
 
 	enum DraggingMode {
@@ -47,7 +58,11 @@ public class RedactedLayer: CoreImageLayer {
 		}
 	}
 
-	public var mode: RedactionType = .Pixelate
+	public var mode: RedactionType = .Pixelate {
+		didSet {
+			NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.modeDidChangeNotificationName, object: self)
+		}
+	}
 
 	private var redactionsController = RedactionsController()
 
@@ -110,7 +125,7 @@ public class RedactedLayer: CoreImageLayer {
 		let point = converPointToUnits(point)
 
 		if let redaction = hitTestRedaction(point) {
-			if selected(redaction) {
+			if isSelected(redaction) {
 				deselect(redaction)
 			} else {
 				if exclusive {
@@ -271,15 +286,19 @@ extension RedactedLayer {
 		}
 	}
 
+	public var selectionCount: Int {
+		return selectedUUIDs.count
+	}
+
 
 	// MARK: - Private
 
-	private func selected(redaction: Redaction) -> Bool {
+	private func isSelected(redaction: Redaction) -> Bool {
 		return selectedUUIDs.contains(redaction.UUID)
 	}
 
 	private func select(redaction: Redaction) {
-		if selected(redaction) {
+		if isSelected(redaction) {
 			return
 		}
 
@@ -327,5 +346,7 @@ extension RedactedLayer {
 		}
 
 		CATransaction.commit()
+
+		NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.selectionDidChangeNotificationName, object: self)
 	}
 }

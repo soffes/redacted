@@ -11,6 +11,13 @@ import RedactedKit
 
 class EditorWindowController: NSWindowController {
 
+	// MARK: - Types
+
+	private enum MenuItem: Int {
+		case Open = 900
+		case DeleteRedaction = 901
+	}
+
 	// MARK: - Properties
 
 	@IBOutlet var toolbar: NSToolbar!
@@ -150,7 +157,7 @@ class EditorWindowController: NSWindowController {
 		editorViewController.redactedLayer.selectAll()
 	}
 
-	@IBAction func modeDidChange(sender: AnyObject?) {
+	@IBAction func changeMode(sender: AnyObject?) {
 		modeIndex = modeControl.selectedSegment
 	}
 
@@ -160,6 +167,14 @@ class EditorWindowController: NSWindowController {
 
 	@IBAction func shareImage(sender: AnyObject?) {
 		editorViewController.shareImage(fromView: shareItem.view!)
+	}
+
+	@IBAction func usePixelate(sender: AnyObject?) {
+		modeIndex = RedactionType.Pixelate.rawValue
+	}
+
+	@IBAction func useBlur(sender: AnyObject?) {
+		modeIndex = RedactionType.Blur.rawValue
 	}
 
 
@@ -195,10 +210,10 @@ extension EditorWindowController: NSWindowDelegate {
 }
 
 
+// NSToolbarValidation
 extension EditorWindowController {
 	private func validateToolbar() {
-		if let items = toolbar.visibleItems as? [NSToolbarItem] {
-			println("toolbar items: \(items)")
+		if let items = toolbar.items as? [NSToolbarItem] {
 			for item in items {
 				item.enabled = validateToolbarItem(item)
 			}
@@ -210,6 +225,22 @@ extension EditorWindowController {
 			return editorViewController.image != nil
 		}
 		return true
+	}
+}
+
+
+// NSMenuItemValidation
+extension EditorWindowController {
+	override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
+		if menuItem.tag == MenuItem.Open.rawValue {
+			return true
+		}
+
+		if menuItem.tag == MenuItem.DeleteRedaction.rawValue {
+			return editorViewController.redactedLayer.selectionCount > 0
+		}
+
+		return editorViewController.image != nil
 	}
 }
 
