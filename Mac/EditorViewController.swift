@@ -21,6 +21,7 @@ class EditorViewController: NSViewController {
 	// MARK: - Properties
 
 	@IBOutlet var redactedView: RedactedView!
+	@IBOutlet var placeholderLabel: NSTextField!
 
 	var redactedLayer: RedactedLayer {
 		return redactedView.redactedLayer
@@ -30,6 +31,8 @@ class EditorViewController: NSViewController {
 		didSet {
 			redactedLayer.originalImage = image
 			NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.imageDidChangeNotification, object: image)
+
+			placeholderLabel.hidden = image != nil
 		}
 	}
 

@@ -10,8 +10,9 @@
 - [x] Delete redactions
 - [ ] Precache blur & pixelate
 - [x] Move
-- [ ] Placeholder illustration
+- [x] Placeholder illustration
 - [x] Better menu validation
+- [ ] Tutorial on first run
 
 ## Launch
 
