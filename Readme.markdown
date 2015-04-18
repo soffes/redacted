@@ -8,7 +8,7 @@
 - [x] App icon
 - [x] Create multiple redactions
 - [x] Delete redactions
-- [ ] Precache blur & pixelate
+- [x] Precache blur & pixelate
 - [x] Move
 - [x] Placeholder illustration
 - [x] Better menu validation

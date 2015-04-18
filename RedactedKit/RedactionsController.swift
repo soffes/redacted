@@ -12,7 +12,7 @@
 	import QuartzCore
 #endif
 
-public struct RedactionsController {
+public class RedactionsController {
 
 	// MARK: - Properties
 
@@ -44,9 +44,7 @@ public struct RedactionsController {
 			if redactions.count > 0 {
 				let chain = ChainFilter()
 				chain.inputImage = ciImage
-
-				// TODO: Use precached images
-				chain.inputFilters = redactions.map({ $0.filter(ciImage) })
+				chain.inputFilters = redactions.map({ $0.filter(ciImage, preprocessor: self.preprocess) })
 				outputImage = chain.outputImage!
 			}
 			
@@ -58,11 +56,26 @@ public struct RedactionsController {
 
 	// MARK: - Private
 
+	private var pixelatedImage: CIImage?
 	private var blurredImage: CIImage?
 
-	private var pixelatedImage: CIImage?
-
 	private func updateImages() {
-		// TODO: Set blurred and pixelated
+		if let ciImage = ciImage {
+			pixelatedImage = Redaction.preprocess(ciImage, type: .Pixelate)
+			blurredImage = Redaction.preprocess(ciImage, type: .Blur)
+		} else {
+			pixelatedImage = nil
+			blurredImage = nil
+		}
+
+	}
+
+	private func preprocess(image: CIImage, type: RedactionType) -> CIImage {
+		switch type {
+		case .Pixelate:
+			return pixelatedImage!
+		case .Blur:
+			return blurredImage!
+		}
 	}
 }

@@ -15,6 +15,8 @@ import CoreGraphics
 	import QuartzCore
 #endif
 
+public typealias Preprocessor = (image: CIImage, type: RedactionType) -> CIImage
+
 public enum RedactionType: Int, Printable {
 	case Pixelate, Blur
 
@@ -57,26 +59,32 @@ public struct Redaction: Hashable, Equatable {
 		)
 	}
 
-	public func filter(image: CIImage) -> CIFilter {
+	public func filter(image: CIImage, preprocessor: Preprocessor = Redaction.preprocess) -> CIFilter {
 		let extent = image.extent()
 		let scaledRect = rectForBounds(extent).flippedInRect(extent)
+		let processed = preprocessor(image: image, type: type)
 
+		return CIFilter(name: "CISourceOverCompositing", withInputParameters: [
+			"inputImage": processed.imageByCroppingToRect(scaledRect)
+		])
+	}
+
+	public static func preprocess(image: CIImage, type: RedactionType) -> CIImage {
+		let extent = image.extent()
 		let edge = max(extent.size.width, extent.size.height)
-
-		let processed: CIImage
 
 		switch type {
 		case .Pixelate:
-			processed = CIFilter(name: "CIPixellate", withInputParameters: [
+			return CIFilter(name: "CIPixellate", withInputParameters: [
 				"inputScale": edge * 0.01,
 				"inputCenter": CIVector(CGPoint: extent.center),
 				"inputImage": image
-			])!.outputImage
+				])!.outputImage
 
 		case .Blur:
 			#if os(iOS)
 				let transform = NSValue(CGAffineTransform: CGAffineTransformIdentity)
-			#else
+				#else
 				let transform = NSAffineTransform()
 			#endif
 
@@ -85,15 +93,11 @@ public struct Redaction: Hashable, Equatable {
 				"inputImage": image
 			])
 
-			processed = CIFilter(name: "CIGaussianBlur", withInputParameters: [
+			return CIFilter(name: "CIGaussianBlur", withInputParameters: [
 				"inputRadius": edge * 0.01,
 				"inputImage": clamp.outputImage
-			])!.outputImage
+				])!.outputImage
 		}
-
-		return CIFilter(name: "CISourceOverCompositing", withInputParameters: [
-			"inputImage": processed.imageByCroppingToRect(scaledRect)
-		])
 	}
 }
 
