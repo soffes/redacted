@@ -10,6 +10,7 @@
 "MODE" = "Mode";
 "PIXELATE" = "Pixelate";
 "BLUR" = "Blur";
+"BLACK_BAR" = "Black Bar";
 
 /* Actions */
 "SHARE" = "Share";

@@ -18,7 +18,7 @@ import CoreGraphics
 public typealias Preprocessor = (image: CIImage, type: RedactionType) -> CIImage
 
 public enum RedactionType: Int, Printable {
-	case Pixelate, Blur
+	case Pixelate, Blur, BlackBar
 
 	public var description: String {
 		switch self {
@@ -26,11 +26,13 @@ public enum RedactionType: Int, Printable {
 			return string("PIXELATE")
 		case .Blur:
 			return string("BLUR")
+		case .BlackBar:
+			return string("BLACK_BAR")
 		}
 	}
 
 	public static var allTypes: [RedactionType] {
-		return [.Pixelate, .Blur]
+		return [.Pixelate, .Blur, .BlackBar]
 	}
 }
 
@@ -79,7 +81,7 @@ public struct Redaction: Hashable, Equatable {
 				"inputScale": edge * 0.01,
 				"inputCenter": CIVector(CGPoint: extent.center),
 				"inputImage": image
-				])!.outputImage
+			])!.outputImage
 
 		case .Blur:
 			#if os(iOS)
@@ -96,7 +98,12 @@ public struct Redaction: Hashable, Equatable {
 			return CIFilter(name: "CIGaussianBlur", withInputParameters: [
 				"inputRadius": edge * 0.01,
 				"inputImage": clamp.outputImage
-				])!.outputImage
+			])!.outputImage
+
+		case .BlackBar:
+			return CIFilter(name: "CIConstantColorGenerator", withInputParameters: [
+				"inputColor": CIColor(red: 0, green: 0, blue: 0, alpha: 1)
+			]).outputImage
 		}
 	}
 }

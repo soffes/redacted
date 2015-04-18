@@ -76,6 +76,8 @@ public class RedactionsController {
 			return pixelatedImage!
 		case .Blur:
 			return blurredImage!
+		default:
+			return Redaction.preprocess(image, type: type)
 		}
 	}
 }
