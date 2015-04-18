@@ -6,14 +6,8 @@
  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
  */
 
-/* Class = "NSMenuItem"; title = "About Redacted"; ObjectID = "5kV-Vb-QxS"; */
+/* Menu items */
 "5kV-Vb-QxS.title" = "About Redacted";
-
-/* Class = "NSMenuItem"; title = "Hide Redacted"; ObjectID = "Olw-nP-bQN"; */
 "Olw-nP-bQN.title" = "Hide Redacted";
-
-/* Class = "NSMenuItem"; title = "Quit Redacted"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Quit Redacted";
-
-/* Class = "NSMenuItem"; title = "Redacted Help"; ObjectID = "FKE-Sm-Kum"; */
 "FKE-Sm-Kum.title" = "Redacted Help";

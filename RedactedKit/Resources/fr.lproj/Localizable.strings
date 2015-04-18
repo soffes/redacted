@@ -1,0 +1,37 @@
+/*
+  Localizable.strings
+  Redacted
+
+  Created by Sam Soffes on 4/14/15.
+  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
+*/
+
+/* Modes */
+"MODE" = "Mode";
+"PIXELATE" = "Pixéliser";
+"BLUR" = "Brouiller";
+
+/* Actions */
+"SHARE" = "Partager";
+"CLEAR" = "Éffacer";
+"CLEAR_IMAGE" = "Éffacer l'image";
+"EXPORT_IMAGE" = "Exporter l'image…";
+
+/* Edit menu */
+"COPY_IMAGE" = "Copier l'image";
+"PASTE_IMAGE" = "Coller l'image";
+"SELECT_ALL_REDACTIONS" = "Sélectioner toutes les rédactions";
+
+/* Undo actions */
+"INSERT_REDACTION" = "Insérer une rédaction";
+"INSERT_REDACTIONS" = "Insérer les rédactions";
+"DELETE_REDACTION" = "Suprimer la rédaction";
+"DELETE_REDACTIONS" = "Suprimer les redactions";
+
+/* About */
+"VERSION_FORMAT" = "Version %@";
+"CREDITS" = "Créé et développé par Nothing Magical en Californie.";
+
+/* Tutorial */
+"DRAG_TO_GET_STARTED" = "Glissez une image ici";
+"CLICK_AND_DRAG" = "Cliquez et glissez pour créer une rédaction";

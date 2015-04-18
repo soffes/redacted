@@ -157,6 +157,9 @@
 		215288981ADD00BF00C0AEBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2152889A1ADD01F200C0AEBA /* RedactedKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedKit.swift; sourceTree = "<group>"; };
 		215288A01ADD06BE00C0AEBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		2171EF7F1AE2CA710001F781 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		2171EF801AE2CA710001F781 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		2171EF811AE2CA710001F781 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Resources/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		217268761AD1075800F5F269 /* BoundingBoxLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxLayer.swift; sourceTree = "<group>"; };
 		217268781AD1086A00F5F269 /* HandleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleLayer.swift; sourceTree = "<group>"; };
 		2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -666,6 +669,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 210EF32E1AC0A35C00ED8E97;
 			productRefGroup = 210EF3381AC0A35C00ED8E97 /* Products */;
@@ -880,6 +884,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				215288981ADD00BF00C0AEBA /* en */,
+				2171EF811AE2CA710001F781 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -889,6 +894,7 @@
 			children = (
 				2192BAAD1AD0E62E00AC87E2 /* Base */,
 				215288A01ADD06BE00C0AEBA /* en */,
+				2171EF7F1AE2CA710001F781 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -905,6 +911,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2192BAEB1AD0E6FD00AC87E2 /* Base */,
+				2171EF801AE2CA710001F781 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
