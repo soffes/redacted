@@ -13,6 +13,8 @@
 - [x] Placeholder illustration
 - [x] Better menu validation
 - [ ] Tutorial on first run
+- [ ] Japanese localization
+- [ ] French localization
 
 ## Launch
 
@@ -23,7 +25,6 @@
 
 ## Backlog
 
-- [ ] Japanese localization
-- [x] French localization
+- [ ] Zoom
 - [ ] Bounding boxes
 - [ ] Brush

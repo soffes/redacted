@@ -69,8 +69,8 @@ class BoundingBoxLayer: CALayer {
 	// MARK: - Private
 
 	private func initialize() {
-		border.borderWidth = 1
-		border.borderColor = CGColorCreateGenericRGB(0.788, 0.788, 0.788, 1)
+		border.borderWidth = 2
+		border.borderColor = selectionColor.CGColor
 		addSublayer(border)
 		
 //		addSublayer(topLeft)

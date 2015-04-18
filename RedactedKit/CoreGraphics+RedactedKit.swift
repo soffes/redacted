@@ -8,14 +8,6 @@
 
 import CoreGraphics
 
-#if os(iOS)
-	import UIKit
-
-	func CGColorCreateGenericRGB(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> CGColor! {
-		return UIColor(red: red, green: green, blue: blue, alpha: alpha).CGColor
-	}
-#endif
-
 extension CGRect {
 	var center: CGPoint {
 		return CGPoint(x: midX, y: midY)
