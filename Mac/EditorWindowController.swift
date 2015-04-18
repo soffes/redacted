@@ -177,6 +177,10 @@ class EditorWindowController: NSWindowController {
 		modeIndex = RedactionType.Blur.rawValue
 	}
 
+	@IBAction func useBlackBar(sender: AnyObject?) {
+		modeIndex = RedactionType.BlackBar.rawValue
+	}
+
 
 	// MARK: - Public
 

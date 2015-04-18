@@ -25,8 +25,10 @@ import RedactedKit
 	@IBOutlet var pasteMenuItem: NSMenuItem!
 	@IBOutlet var deleteMenuItem: NSMenuItem!
 	@IBOutlet var selectAllMenuItem: NSMenuItem!
+	@IBOutlet var modeMenuItem: NSMenuItem!
 	@IBOutlet var pixelateMenuItem: NSMenuItem!
 	@IBOutlet var blurMenuItem: NSMenuItem!
+	@IBOutlet var blackBarMenuItem: NSMenuItem!
 	@IBOutlet var clearMenuItem: NSMenuItem!
 
 
@@ -52,6 +54,7 @@ import RedactedKit
 	private func updateMode(layer: RedactedLayer) {
 		pixelateMenuItem.state = layer.mode == .Pixelate ? NSOnState : NSOffState
 		blurMenuItem.state = layer.mode == .Blur ? NSOnState : NSOffState
+		blackBarMenuItem.state = layer.mode == .BlackBar ? NSOnState : NSOffState
 	}
 
 	@objc private func selectionDidChange(notification: NSNotification?) {
@@ -69,8 +72,10 @@ extension AppDelegate: NSApplicationDelegate {
 		pasteMenuItem.title = string("PASTE_IMAGE")
 		deleteMenuItem.title = string("DELETE_REDACTION")
 		selectAllMenuItem.title = string("SELECT_ALL_REDACTIONS")
+		modeMenuItem.title = string("MODE")
 		pixelateMenuItem.title = string("PIXELATE")
 		blurMenuItem.title = string("BLUR")
+		blackBarMenuItem.title = string("BLACK_BAR")
 		clearMenuItem.title = string("CLEAR_IMAGE")
 
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "selectionDidChange:", name: RedactedLayer.selectionDidChangeNotificationName, object: nil)

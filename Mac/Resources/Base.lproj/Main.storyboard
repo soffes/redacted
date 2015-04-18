@@ -125,23 +125,37 @@ CA
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="aj3-L2-AE5"/>
+                                        <menuItem title="Mode" id="GYt-l8-zmc">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Mode" id="Ms1-q0-lqR">
+                                                <items>
+                                                    <menuItem title="Pixelate" keyEquivalent="1" id="yBF-4k-mAb">
+                                                        <connections>
+                                                            <action selector="usePixelate:" target="Ady-hI-5gd" id="NIY-ay-XjS"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Blur" keyEquivalent="2" id="am5-TU-bAw">
+                                                        <connections>
+                                                            <action selector="useBlur:" target="Ady-hI-5gd" id="t1p-AD-nDE"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Black Bar" keyEquivalent="3" id="7fG-oZ-6c7">
+                                                        <connections>
+                                                            <action selector="useBlackBar:" target="Ady-hI-5gd" id="kK6-fl-H77"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                            <connections>
+                                                <action selector="usePixelate:" target="Ady-hI-5gd" id="YTf-go-R6C"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Clear Image" id="CU7-WH-zkx">
                                             <string key="keyEquivalent" base64-UTF8="YES">
 CA
 </string>
                                             <connections>
                                                 <action selector="clearImage:" target="Ady-hI-5gd" id="UUs-LF-P1g"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="p8W-dX-ZNr"/>
-                                        <menuItem title="Pixelate" keyEquivalent="1" id="GYt-l8-zmc">
-                                            <connections>
-                                                <action selector="usePixelate:" target="Ady-hI-5gd" id="YTf-go-R6C"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Blur" keyEquivalent="2" id="VrF-gj-uGs">
-                                            <connections>
-                                                <action selector="useBlur:" target="Ady-hI-5gd" id="eZ1-mQ-dzX"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -218,13 +232,15 @@ CA
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Redacted" customModuleProvider="target">
                     <connections>
-                        <outlet property="blurMenuItem" destination="VrF-gj-uGs" id="3Uo-gP-DBs"/>
+                        <outlet property="blackBarMenuItem" destination="7fG-oZ-6c7" id="kMZ-a1-1Mq"/>
+                        <outlet property="blurMenuItem" destination="am5-TU-bAw" id="1f2-dJ-2Tl"/>
                         <outlet property="clearMenuItem" destination="CU7-WH-zkx" id="mrR-xS-auP"/>
                         <outlet property="copyMenuItem" destination="x3v-GG-iWU" id="Chf-pm-NmG"/>
                         <outlet property="deleteMenuItem" destination="vUX-YX-21I" id="RIm-Za-AR0"/>
                         <outlet property="exportMenuItem" destination="V4A-kr-CXQ" id="1bb-U3-kKa"/>
+                        <outlet property="modeMenuItem" destination="GYt-l8-zmc" id="xRo-u4-eW1"/>
                         <outlet property="pasteMenuItem" destination="gVA-U4-sdL" id="1sv-aj-jRw"/>
-                        <outlet property="pixelateMenuItem" destination="GYt-l8-zmc" id="e0x-iM-PAy"/>
+                        <outlet property="pixelateMenuItem" destination="yBF-4k-mAb" id="LZP-mz-uNi"/>
                         <outlet property="selectAllMenuItem" destination="Wro-F8-Hrl" id="UzX-YM-eqg"/>
                     </connections>
                 </customObject>
