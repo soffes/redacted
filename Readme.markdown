@@ -24,6 +24,6 @@
 ## Backlog
 
 - [ ] Japanese localization
-- [ ] French localization
+- [x] French localization
 - [ ] Bounding boxes
 - [ ] Brush

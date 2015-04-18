@@ -49,8 +49,7 @@ public class RedactedLayer: CoreImageLayer {
 		set {
 			redactionsController.image = newValue
 
-			boundingBoxes.removeAll()
-			selectedUUIDs.removeAll()
+			deselectAll()
 			redactions.removeAll()
 
 			// TODO: Allow for undoing images
