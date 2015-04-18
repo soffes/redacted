@@ -14,12 +14,12 @@
 - [x] Better menu validation
 - [ ] Tutorial on first run
 - [ ] Japanese localization
-- [ ] French localization
+- [ ] Finish French localization
 
 ## Launch
 
 - [ ] Marketing website
-- [ ] Support page
+- [x] Support page
 - [ ] App description
 - [ ] Screenshots
 

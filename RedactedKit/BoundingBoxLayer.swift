@@ -51,16 +51,19 @@ class BoundingBoxLayer: CALayer {
 
 		border.frame = bounds
 
-//		topLeft.frame = CGRect(x: bounds.minX - 3, y: bounds.maxY - 3, width: 6, height: 6)
-//		topCenter.frame = CGRect(x: bounds.midX - 3, y: bounds.maxY - 3, width: 6, height: 6)
-//		topRight.frame = CGRect(x: bounds.maxX - 3, y: bounds.maxY - 3, width: 6, height: 6)
+//		let size = 6.0
+//		let half = size / 2.0
 //
-//		middleLeft.frame = CGRect(x: bounds.minX - 3, y: bounds.midY - 3, width: 6, height: 6)
-//		middleRight.frame = CGRect(x: bounds.maxX - 3, y: bounds.midY - 3, width: 6, height: 6)
+//		topLeft.frame = CGRect(x: bounds.minX - half, y: bounds.maxY - half, width: size, height: size)
+//		topCenter.frame = CGRect(x: bounds.midX - half, y: bounds.maxY - half, width: size, height: size)
+//		topRight.frame = CGRect(x: bounds.maxX - half, y: bounds.maxY - half, width: size, height: size)
 //
-//		bottomLeft.frame = CGRect(x: bounds.minX - 3, y: bounds.minY - 3, width: 6, height: 6)
-//		bottomCenter.frame = CGRect(x: bounds.midX - 3, y: bounds.minY - 3, width: 6, height: 6)
-//		bottomRight.frame = CGRect(x: bounds.maxX - 3, y: bounds.minY - 3, width: 6, height: 6)
+//		middleLeft.frame = CGRect(x: bounds.minX - half, y: bounds.midY - half, width: size, height: size)
+//		middleRight.frame = CGRect(x: bounds.maxX - half, y: bounds.midY - half, width: size, height: size)
+//
+//		bottomLeft.frame = CGRect(x: bounds.minX - half, y: bounds.minY - half, width: size, height: size)
+//		bottomCenter.frame = CGRect(x: bounds.midX - half, y: bounds.minY - half, width: size, height: size)
+//		bottomRight.frame = CGRect(x: bounds.maxX - half, y: bounds.minY - half, width: size, height: size)
 
 		CATransaction.commit()
 	}
