@@ -26,6 +26,7 @@
 		215288991ADD00BF00C0AEBA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 215288971ADD00BF00C0AEBA /* Localizable.strings */; };
 		2152889B1ADD01F200C0AEBA /* RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152889A1ADD01F200C0AEBA /* RedactedKit.swift */; };
 		2152889E1ADD03F800C0AEBA /* RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152889A1ADD01F200C0AEBA /* RedactedKit.swift */; };
+		216507F01AE3E16A00B0A6AE /* NSSegmentedControl+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216507EF1AE3E16A00B0A6AE /* NSSegmentedControl+Redacted.swift */; };
 		217268771AD1075800F5F269 /* BoundingBoxLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217268761AD1075800F5F269 /* BoundingBoxLayer.swift */; };
 		217268791AD1086A00F5F269 /* HandleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217268781AD1086A00F5F269 /* HandleLayer.swift */; };
 		2192BAB41AD0E62E00AC87E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */; };
@@ -159,6 +160,7 @@
 		215288981ADD00BF00C0AEBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2152889A1ADD01F200C0AEBA /* RedactedKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedKit.swift; sourceTree = "<group>"; };
 		215288A01ADD06BE00C0AEBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		216507EF1AE3E16A00B0A6AE /* NSSegmentedControl+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSSegmentedControl+Redacted.swift"; sourceTree = "<group>"; };
 		2171EF7F1AE2CA710001F781 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		2171EF801AE2CA710001F781 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		2171EF811AE2CA710001F781 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Resources/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -320,6 +322,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		216507EE1AE3E15D00B0A6AE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				216507EF1AE3E16A00B0A6AE /* NSSegmentedControl+Redacted.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		216595FF1ACE123600D22DB0 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +369,7 @@
 				21DF296E1AD38CAA007EB2F2 /* View Controllers */,
 				21DF29701AD38CBC007EB2F2 /* Views */,
 				21DF29711AD38CBF007EB2F2 /* Utilities */,
+				216507EE1AE3E15D00B0A6AE /* Extensions */,
 				2192BAAB1AD0E62E00AC87E2 /* Resources */,
 			);
 			path = Mac;
@@ -764,6 +775,7 @@
 				2192BAB41AD0E62E00AC87E2 /* AppDelegate.swift in Sources */,
 				2192BABC1AD0E62E00AC87E2 /* EditorWindowController.swift in Sources */,
 				2192BAB51AD0E62E00AC87E2 /* EditorViewController.swift in Sources */,
+				216507F01AE3E16A00B0A6AE /* NSSegmentedControl+Redacted.swift in Sources */,
 				21DF296A1AD386B3007EB2F2 /* AboutViewController.swift in Sources */,
 				2192BAB61AD0E62E00AC87E2 /* ImageDragDestinationView.swift in Sources */,
 				21DF296C1AD38A95007EB2F2 /* AboutWindowController.swift in Sources */,

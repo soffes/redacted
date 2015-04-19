@@ -24,6 +24,10 @@
 - [x] Support page
 - [ ] App description
 - [ ] Screenshots
+- [ ] Update Nothing Magical website
+- [ ] Blog post
+- [ ] Email tech blogs
+
 
 ## Backlog
 
