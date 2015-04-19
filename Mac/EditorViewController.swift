@@ -55,6 +55,8 @@ class EditorViewController: NSViewController {
 		let shiftClick = ModifierClickGestureRecognizer(target: self, action: "shiftClicked:")
 		shiftClick.modifier = .ShiftKeyMask
 		view.addGestureRecognizer(shiftClick)
+
+		placeholderLabel.stringValue = string("DRAG_TO_GET_STARTED")
 	}
 
 

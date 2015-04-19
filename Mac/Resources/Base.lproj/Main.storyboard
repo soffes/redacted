@@ -356,8 +356,8 @@ CA
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="nzf-wF-VC3" customClass="RedactedView" customModule="Redacted" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             </customView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IjT-Hi-4ZI">
-                                <rect key="frame" x="178" y="126" width="125" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IjT-Hi-4ZI">
+                                <rect key="frame" x="181" y="125" width="118" height="19"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drag an image here" id="Pyi-gk-LN8">
                                     <font key="font" size="13" name="HelveticaNeue"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
