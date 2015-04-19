@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
 //
 
-import Cocoa
+import AppKit
 
 class AboutWindowController: NSWindowController {
 
