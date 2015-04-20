@@ -23,6 +23,13 @@ class EditorViewController: NSViewController {
 	@IBOutlet var redactedView: RedactedView!
 	@IBOutlet var placeholderLabel: NSTextField!
 
+	let toolTipView: ToolTipView = {
+		let view = ToolTipView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.textLabel.stringValue = string("CLICK_AND_DRAG")
+		return view
+	}()
+
 	var redactedLayer: RedactedLayer {
 		return redactedView.redactedLayer
 	}
@@ -57,6 +64,10 @@ class EditorViewController: NSViewController {
 		view.addGestureRecognizer(shiftClick)
 
 		placeholderLabel.stringValue = string("DRAG_TO_GET_STARTED")
+
+		view.addSubview(toolTipView)
+		view.addConstraint(NSLayoutConstraint(item: toolTipView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0))
+		view.addConstraint(NSLayoutConstraint(item: toolTipView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: -32))
 	}
 
 

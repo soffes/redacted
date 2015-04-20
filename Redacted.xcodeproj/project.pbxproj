@@ -44,6 +44,7 @@
 		2192BAF21AD0E6FD00AC87E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */; };
 		2192BAF41AD0E6FD00AC87E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */; };
 		2192BAF91AD0E70200AC87E2 /* RedactedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAF71AD0E70200AC87E2 /* RedactedTests.swift */; };
+		21DC72741AE420FF007C12DB /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC72731AE420FF007C12DB /* ToolTipView.swift */; };
 		21DF296A1AD386B3007EB2F2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF29691AD386B3007EB2F2 /* AboutViewController.swift */; };
 		21DF296C1AD38A95007EB2F2 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF296B1AD38A95007EB2F2 /* AboutWindowController.swift */; };
 /* End PBXBuildFile section */
@@ -183,6 +184,7 @@
 		2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2192BAF71AD0E70200AC87E2 /* RedactedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedTests.swift; sourceTree = "<group>"; };
+		21DC72731AE420FF007C12DB /* ToolTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		21DCDDAC1ADA560A00629E8F /* Redacted.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Redacted.entitlements; sourceTree = "<group>"; };
 		21DF29691AD386B3007EB2F2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		21DF296B1AD38A95007EB2F2 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 			children = (
 				2192BAA81AD0E62E00AC87E2 /* ImageDragDestinationView.swift */,
 				2192BAAA1AD0E62E00AC87E2 /* RedactedView.swift */,
+				21DC72731AE420FF007C12DB /* ToolTipView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 			files = (
 				2192BAB41AD0E62E00AC87E2 /* AppDelegate.swift in Sources */,
 				2192BABC1AD0E62E00AC87E2 /* EditorWindowController.swift in Sources */,
+				21DC72741AE420FF007C12DB /* ToolTipView.swift in Sources */,
 				2192BAB51AD0E62E00AC87E2 /* EditorViewController.swift in Sources */,
 				216507F01AE3E16A00B0A6AE /* NSSegmentedControl+Redacted.swift in Sources */,
 				21DF296A1AD386B3007EB2F2 /* AboutViewController.swift in Sources */,
