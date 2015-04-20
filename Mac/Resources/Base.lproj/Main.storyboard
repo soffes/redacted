@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -258,7 +258,7 @@ CA
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="200" height="200"/>
+                        <value key="minSize" type="size" width="234" height="200"/>
                         <toolbar key="toolbar" implicitIdentifier="F4E5C2DE-5F69-4075-ACF7-6A1D214536CD" displayMode="iconAndLabel" sizeMode="regular" id="tJy-B4-k21">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="B5DBD10B-8CAB-4E4A-8767-0DE5BA0302DA" explicitItemIdentifier="mode" label="Mode" paletteLabel="Mode" id="m3V-Mi-ixQ">
