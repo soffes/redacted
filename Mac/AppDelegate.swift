@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import IOKit
 import RedactedKit
 
 @NSApplicationMain class AppDelegate: NSObject {
@@ -30,6 +31,17 @@ import RedactedKit
 	@IBOutlet var blurMenuItem: NSMenuItem!
 	@IBOutlet var blackBarMenuItem: NSMenuItem!
 	@IBOutlet var clearMenuItem: NSMenuItem!
+
+	var uniqueIdentifier: String {
+		let key = "Identifier"
+		if let identifier = NSUserDefaults.standardUserDefaults().stringForKey(key) {
+			return identifier
+		}
+
+		let identifier = NSUUID().UUIDString
+		NSUserDefaults.standardUserDefaults().setObject(identifier, forKey: key)
+		return identifier
+	}
 
 
 	// MARK: - Actions
@@ -67,6 +79,8 @@ import RedactedKit
 
 extension AppDelegate: NSApplicationDelegate {
 	func applicationDidFinishLaunching(notification: NSNotification) {
+		mixpanel.identify(uniqueIdentifier)
+
 		exportMenuItem.title = string("EXPORT_IMAGE")
 		copyMenuItem.title = string("COPY_IMAGE")
 		pasteMenuItem.title = string("PASTE_IMAGE")
