@@ -117,7 +117,7 @@ class EditorWindowController: NSWindowController {
 		openPanel.canChooseFiles = true
 		openPanel.beginSheetModalForWindow(window!) { result in
 			if let URL = openPanel.URL where result == NSFileHandlingPanelOKButton {
-				self.openURL(URL)
+				self.openURL(URL, source: "Open")
 			}
 		}
 	}
@@ -187,10 +187,15 @@ class EditorWindowController: NSWindowController {
 
 	// MARK: - Public
 
-	func openURL(URL: NSURL?) -> Bool {
+	func openURL(URL: NSURL?, source: String) -> Bool {
 		if let URL = URL, image = NSImage(contentsOfURL: URL) {
 			NSDocumentController.sharedDocumentController().noteNewRecentDocumentURL(URL)
 			self.editorViewController.image = image
+
+			mixpanel.track("Import image", parameters: [
+				"source": source
+			])
+
 			return true
 		}
 		return false
@@ -255,9 +260,13 @@ extension EditorWindowController {
 extension EditorWindowController: ImageDragDestinationViewDelegate {
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage) {
 		editorViewController.image = image
+
+		mixpanel.track("Import image", parameters: [
+			"source": "Drag image"
+		])
 	}
 
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptURL URL: NSURL) {
-		openURL(URL)
+		openURL(URL, source: "Drag URL")
 	}
 }

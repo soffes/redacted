@@ -108,55 +108,6 @@
 			remoteGlobalIDString = 2192BAC31AD0E6C500AC87E2;
 			remoteInfo = Redacted;
 		};
-		21B8D2511AE6B61D00E18566 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21B8D2371AE6B61D00E18566 /* Crypto.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 211216831AE68D26004E1CE6;
-			remoteInfo = CommonCrypto;
-		};
-		21B8D2531AE6B61D00E18566 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21B8D2371AE6B61D00E18566 /* Crypto.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2112163D1AE68AD2004E1CE6;
-			remoteInfo = Crypto;
-		};
-		21B8D2551AE6B61D00E18566 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21B8D2371AE6B61D00E18566 /* Crypto.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 211216481AE68AD3004E1CE6;
-			remoteInfo = CryptoTests;
-		};
-		21B8D2571AE6B61D00E18566 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21B8D2371AE6B61D00E18566 /* Crypto.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 216CAE341AE6B273009A69EF;
-			remoteInfo = "CommonCrypto-iOS";
-		};
-		21B8D2591AE6B61D00E18566 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21B8D2371AE6B61D00E18566 /* Crypto.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 21FD8C5B1AE6B03F008DCDBA;
-			remoteInfo = "Crypto-iOS";
-		};
-		21B8D25B1AE6B61D00E18566 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21B8D2371AE6B61D00E18566 /* Crypto.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 21FD8C651AE6B03F008DCDBA;
-			remoteInfo = "Crypto-iOSTests";
-		};
-		21B8D25D1AE6B62F00E18566 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21B8D2371AE6B61D00E18566 /* Crypto.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 2112163C1AE68AD2004E1CE6;
-			remoteInfo = Crypto;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -247,7 +198,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21B8D25F1AE6B63500E18566 /* Crypto.framework in Frameworks */,
 				210EF3751AC0A39900ED8E97 /* RedactedKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,7 +266,6 @@
 				2192BAB11AD0E62E00AC87E2 /* MacTests */,
 				2192BAE61AD0E6FD00AC87E2 /* iOS */,
 				2192BAF51AD0E70200AC87E2 /* iOSTests */,
-				21B8D22A1AE6B61D00E18566 /* Vendor */,
 				210EF3381AC0A35C00ED8E97 /* Products */,
 			);
 			indentWidth = 4;
@@ -474,35 +423,6 @@
 			path = iOSTests;
 			sourceTree = "<group>";
 		};
-		21B8D22A1AE6B61D00E18566 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				21B8D22B1AE6B61D00E18566 /* Crypto */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
-		21B8D22B1AE6B61D00E18566 /* Crypto */ = {
-			isa = PBXGroup;
-			children = (
-				21B8D2371AE6B61D00E18566 /* Crypto.xcodeproj */,
-			);
-			path = Crypto;
-			sourceTree = "<group>";
-		};
-		21B8D2381AE6B61D00E18566 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				21B8D2521AE6B61D00E18566 /* CommonCrypto.framework */,
-				21B8D2541AE6B61D00E18566 /* Crypto.framework */,
-				21B8D2561AE6B61D00E18566 /* CryptoTests.xctest */,
-				21B8D2581AE6B61D00E18566 /* CommonCrypto.framework */,
-				21B8D25A1AE6B61D00E18566 /* Crypto.framework */,
-				21B8D25C1AE6B61D00E18566 /* Crypto-iOSTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		21DF296D1AD38CA2007EB2F2 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,7 +500,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				21B8D25E1AE6B62F00E18566 /* PBXTargetDependency */,
 				210EF3741AC0A39900ED8E97 /* PBXTargetDependency */,
 			);
 			name = Mac;
@@ -776,12 +695,6 @@
 			mainGroup = 210EF32E1AC0A35C00ED8E97;
 			productRefGroup = 210EF3381AC0A35C00ED8E97 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 21B8D2381AE6B61D00E18566 /* Products */;
-					ProjectRef = 21B8D2371AE6B61D00E18566 /* Crypto.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				210EF3361AC0A35C00ED8E97 /* Mac */,
@@ -795,51 +708,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		21B8D2521AE6B61D00E18566 /* CommonCrypto.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CommonCrypto.framework;
-			remoteRef = 21B8D2511AE6B61D00E18566 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		21B8D2541AE6B61D00E18566 /* Crypto.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Crypto.framework;
-			remoteRef = 21B8D2531AE6B61D00E18566 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		21B8D2561AE6B61D00E18566 /* CryptoTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CryptoTests.xctest;
-			remoteRef = 21B8D2551AE6B61D00E18566 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		21B8D2581AE6B61D00E18566 /* CommonCrypto.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CommonCrypto.framework;
-			remoteRef = 21B8D2571AE6B61D00E18566 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		21B8D25A1AE6B61D00E18566 /* Crypto.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Crypto.framework;
-			remoteRef = 21B8D2591AE6B61D00E18566 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		21B8D25C1AE6B61D00E18566 /* Crypto-iOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Crypto-iOSTests.xctest";
-			remoteRef = 21B8D25B1AE6B61D00E18566 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		210EF3351AC0A35C00ED8E97 /* Resources */ = {
@@ -1034,11 +902,6 @@
 			isa = PBXTargetDependency;
 			target = 2192BAC31AD0E6C500AC87E2 /* iOS */;
 			targetProxy = 2192BAD91AD0E6C500AC87E2 /* PBXContainerItemProxy */;
-		};
-		21B8D25E1AE6B62F00E18566 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Crypto;
-			targetProxy = 21B8D25D1AE6B62F00E18566 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

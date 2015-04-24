@@ -76,6 +76,7 @@ class EditorViewController: NSViewController {
 	func shareImage(fromView sender: NSView) {
 		if let image = renderedImage {
 			let sharingServicePicker = NSSharingServicePicker(items: [image])
+			sharingServicePicker.delegate = self
 			let edge = NSRectEdge(CGRectEdge.MinYEdge.rawValue)
 			sharingServicePicker.showRelativeToRect(NSZeroRect, ofView: sender, preferredEdge: edge)
 		}
@@ -94,6 +95,17 @@ class EditorViewController: NSViewController {
 	func shiftClicked(sender: NSClickGestureRecognizer) {
 		if sender.state == .Ended {
 			redactedLayer.tap(point: sender.locationInView(view), exclusive: false)
+		}
+	}
+}
+
+
+extension EditorViewController: NSSharingServicePickerDelegate {
+	func sharingServicePicker(sharingServicePicker: NSSharingServicePicker, didChooseSharingService service: NSSharingService) {
+		if let service = service.title {
+			mixpanel.track("Share image", parameters: [
+				"service": service
+			])
 		}
 	}
 }
