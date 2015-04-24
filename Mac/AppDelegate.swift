@@ -80,6 +80,7 @@ import RedactedKit
 extension AppDelegate: NSApplicationDelegate {
 	func applicationDidFinishLaunching(notification: NSNotification) {
 		mixpanel.identify(uniqueIdentifier)
+		mixpanel.track("Launch")
 
 		exportMenuItem.title = string("EXPORT_IMAGE")
 		copyMenuItem.title = string("COPY_IMAGE")
@@ -102,7 +103,7 @@ extension AppDelegate: NSApplicationDelegate {
 
 	func application(sender: NSApplication, openFile filename: String) -> Bool {
 		if let windowController = windowController {
-			return windowController.openURL(NSURL(fileURLWithPath: filename))
+			return windowController.openURL(NSURL(fileURLWithPath: filename), source: "App icon")
 		}
 		return false
 	}
