@@ -104,7 +104,8 @@ extension EditorViewController: NSSharingServicePickerDelegate {
 	func sharingServicePicker(sharingServicePicker: NSSharingServicePicker, didChooseSharingService service: NSSharingService) {
 		if let service = service.title {
 			mixpanel.track("Share image", parameters: [
-				"service": service
+				"service": service,
+				"redactions_count": redactedLayer.redactions.count
 			])
 		}
 	}
