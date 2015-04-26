@@ -6,89 +6,95 @@
  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
  */
 
-/* Menu items */
+/* About Redacted */
 "5kV-Vb-QxS.title" = "À propos de Redacted";
+
+/* Hide Redacted */
 "Olw-nP-bQN.title" = "Masker Redacted";
+
+/* Quit Redacted */
 "4sb-4s-VLi.title" = "Quitter Redacted";
+
+/* Redacted Help */
 "FKE-Sm-Kum.title" = "Aide Redacted";
 
 
-/* Default menu items */
+/* -- Default menu items -- */
 
-/* Class = "NSMenuItem"; title = "Customize Toolbar…"; ObjectID = "1UK-8n-QPP"; */
+/* Customize Toolbar… */
 "1UK-8n-QPP.title" = "Personnaliser la barre d’outils…";
 
-/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
+/* Edit */
 "5QF-Oa-p0T.title" = "Éditer";
 
-/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "6dh-zS-Vam"; */
+/* Redo */
 "6dh-zS-Vam.title" = "Rétablir";
 
-/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+/* Help */
 "F2S-fz-NVQ.title" = "Aide";
 
-/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
+/* View */
 "H8h-7b-M4v.title" = "Présentation";
 
-/* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
+/* View */
 "HyV-fh-RgO.title" = "Vue";
 
-/* Class = "NSMenuItem"; title = "Open…"; ObjectID = "IAo-SY-fd9"; */
+/* Open… */
 "IAo-SY-fd9.title" = "Ouvrir…";
 
-/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+/* Show All */
 "Kd2-mp-pUS.title" = "Tout montrer";
 
-/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+/* Bring All to Front */
 "LE2-aR-0XJ.title" = "Tout ramener au premier plan";
 
-/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+/* Services */
 "NMo-om-nkz.title" = "Services";
 
-/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+/* Minimize */
 "OY7-WF-poV.title" = "Réduire";
 
-/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+/* Zoom */
 "R4o-n2-Eq4.title" = "Zoom";
 
-/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+/* Window */
 "Td7-aD-5lo.title" = "Fenêtre";
 
-/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+/* Hide Others */
 "Vdr-fp-XzO.title" = "Masquer les autres";
 
-/* Class = "NSMenu"; title = "Edit"; ObjectID = "W48-6f-4Dl"; */
+/* Edit */
 "W48-6f-4Dl.title" = "Éditer";
 
-/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+/* Window */
 "aUF-d1-5bR.title" = "Fenêtre";
 
-/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+/* File */
 "bib-Uj-vzu.title" = "Fichier";
 
-/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+/* File */
 "dMs-cI-mzQ.title" = "Fichier";
 
-/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "dRJ-4n-Yzg"; */
+/* Undo */
 "dRJ-4n-Yzg.title" = "Annuler";
 
-/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+/* Services */
 "hz9-B4-Xy5.title" = "Services";
 
-/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "lOm-0W-U7v"; */
+/* Enter Full Screen */
 "lOm-0W-U7v.title" = "Mode plein écran";
 
-/* Class = "NSMenu"; title = "Open Recent"; ObjectID = "oas-Oc-fiZ"; */
+/* Open Recent */
 "oas-Oc-fiZ.title" = "Ouvrir l’élément récent";
 
-/* Class = "NSMenuItem"; title = "Show Toolbar"; ObjectID = "snW-S8-Cw5"; */
+/* Show Toolbar */
 "snW-S8-Cw5.title" = "Afficher la barre d’outils";
 
-/* Class = "NSMenuItem"; title = "Open Recent"; ObjectID = "tXI-mr-wws"; */
+/* Open Recent */
 "tXI-mr-wws.title" = "Ouvrir l’élément récent";
 
-/* Class = "NSMenuItem"; title = "Clear Menu"; ObjectID = "vNY-rz-j42"; */
+/* Clear Menu */
 "vNY-rz-j42.title" = "Effacer le menu";
 
-/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+/* Help */
 "wpr-3q-Mcd.title" = "Aide";
