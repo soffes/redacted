@@ -64,6 +64,15 @@ class EditorWindowController: NSWindowController {
 		modeIndex = coder.decodeIntegerForKey("modeIndex")
 	}
 
+	override func keyDown(theEvent: NSEvent) {
+		super.keyDown(theEvent)
+
+		// Support ⌘W
+		if (theEvent.characters ?? "") == "w" && (theEvent.modifierFlags & .CommandKeyMask) == .CommandKeyMask {
+			window?.close()
+		}
+	}
+
 
 	// MARK: - NSWindowController
 
