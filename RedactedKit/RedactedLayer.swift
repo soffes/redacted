@@ -121,6 +121,10 @@ public class RedactedLayer: CoreImageLayer {
 	}
 
 	public func tap(#point: CGPoint, exclusive: Bool = true) {
+		if image == nil {
+			return
+		}
+
 		let point = converPointToUnits(point)
 
 		if let redaction = hitTestRedaction(point) {
@@ -139,6 +143,10 @@ public class RedactedLayer: CoreImageLayer {
 	}
 
 	public func drag(#point: CGPoint, state: GestureRecognizerState) {
+		if image == nil {
+			return
+		}
+		
 		let point = converPointToUnits(point)
 
 		// Begin
