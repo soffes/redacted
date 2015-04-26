@@ -53,14 +53,12 @@ class EditorWindowController: NSWindowController {
 
 	override func encodeRestorableStateWithCoder(coder: NSCoder) {
 		super.encodeRestorableStateWithCoder(coder)
-
 		coder.encodeInteger(modeControl.selectedSegment, forKey: "modeIndex")
 	}
 
 
 	override func restoreStateWithCoder(coder: NSCoder) {
 		super.restoreStateWithCoder(coder)
-
 		modeIndex = coder.decodeIntegerForKey("modeIndex")
 	}
 
