@@ -152,12 +152,21 @@ class EditorWindowController: NSWindowController {
 			let pasteboard = NSPasteboard.generalPasteboard()
 			pasteboard.clearContents()
 			pasteboard.writeObjects([image])
+
+			mixpanel.track("Share image", parameters: [
+				"service": "Copy",
+				"redactions_count": redactedLayer.redactions.count
+			])
 		}
 	}
 
 	func paste(sender: AnyObject?) {
 		if let data = NSPasteboard.generalPasteboard().dataForType(String(kUTTypeTIFF)) {
 			editorViewController.image = NSImage(data: data)
+
+			mixpanel.track("Import image", parameters: [
+				"source": "Paste image"
+			])
 		}
 	}
 
