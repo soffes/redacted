@@ -10,6 +10,7 @@
 "MODE" = "Mode";
 "PIXELATE" = "Pixéliser";
 "BLUR" = "Brouiller";
+"BLACK_BAR" = "Barre de censure";
 
 /* Actions */
 "SHARE" = "Partager";

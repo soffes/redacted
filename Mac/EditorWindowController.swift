@@ -155,7 +155,7 @@ class EditorWindowController: NSWindowController {
 
 			mixpanel.track("Share image", parameters: [
 				"service": "Copy",
-				"redactions_count": redactedLayer.redactions.count
+				"redactions_count": editorViewController.redactedLayer.redactions.count
 			])
 		}
 	}
