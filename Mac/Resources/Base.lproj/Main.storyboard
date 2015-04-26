@@ -358,7 +358,7 @@ CA
                             </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IjT-Hi-4ZI">
                                 <rect key="frame" x="181" y="125" width="118" height="19"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drag an image here" id="Pyi-gk-LN8">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" enabled="NO" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Drag an image here" usesSingleLineMode="YES" id="Pyi-gk-LN8">
                                     <font key="font" size="13" name="HelveticaNeue"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
