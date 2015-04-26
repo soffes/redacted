@@ -14,6 +14,8 @@ import Foundation
 	import AppKit
 #endif
 
+/// Simple wrapper for Mixpanel. All requests are sent to the network in the background. If there is no
+/// Internet connection, it will silently fail.
 public class Mixpanel {
 
 	// MARK: - Types
@@ -22,6 +24,9 @@ public class Mixpanel {
 
 	
 	// MARK: - Properties
+
+	/// Easily disable tracking when desired.
+	public var enabled: Bool = true
 
 	private var token: String
 	private var URLSession: NSURLSession
@@ -98,6 +103,11 @@ public class Mixpanel {
 
 
 	public func track(event: String, parameters: [String: AnyObject]? = nil, time: NSDate = NSDate(), completion: Completion? = nil) {
+		if !enabled {
+			completion?(success: false)
+			return
+		}
+
 		var properties = defaultProperties
 
 		if let parameters = parameters {
