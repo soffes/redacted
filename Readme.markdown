@@ -12,7 +12,7 @@
 - [x] Move
 - [x] Placeholder illustration
 - [x] Better menu validation
-- [ ] Set mode control tool tips
+- [x] Set mode control tool tips
 - [ ] Tutorial on first run
 - [ ] Japanese localization
 - [ ] Finish French localization (BLACK_BAR)
