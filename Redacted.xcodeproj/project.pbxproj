@@ -20,6 +20,7 @@
 		212456C21AD92CC70038D30D /* RedactedKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 212456AA1AD92CC70038D30D /* RedactedKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		212456CC1AD941940038D30D /* RedactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212456CB1AD941940038D30D /* RedactionsController.swift */; };
 		214128F81AEDA62300CC5693 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214128F71AEDA62300CC5693 /* Label.swift */; };
+		214128FA1AEDC09A00CC5693 /* NSBezierPath+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214128F91AEDC09A00CC5693 /* NSBezierPath+Redacted.swift */; };
 		2149F2BF1AC0DB2900F4AF7E /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */; };
 		2149F2C11AC0DFD100F4AF7E /* ChainFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C01AC0DFD100F4AF7E /* ChainFilter.swift */; };
 		2149F2C51AC0EECC00F4AF7E /* CoreGraphics+RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2C41AC0EECC00F4AF7E /* CoreGraphics+RedactedKit.swift */; };
@@ -157,6 +158,7 @@
 		212456B41AD92CC70038D30D /* RedactedKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RedactedKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		212456CB1AD941940038D30D /* RedactionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactionsController.swift; sourceTree = "<group>"; };
 		214128F71AEDA62300CC5693 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		214128F91AEDC09A00CC5693 /* NSBezierPath+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Redacted.swift"; sourceTree = "<group>"; };
 		2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Redaction.swift; sourceTree = "<group>"; };
 		2149F2C01AC0DFD100F4AF7E /* ChainFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainFilter.swift; sourceTree = "<group>"; };
 		2149F2C41AC0EECC00F4AF7E /* CoreGraphics+RedactedKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+RedactedKit.swift"; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				216507EF1AE3E16A00B0A6AE /* NSSegmentedControl+Redacted.swift */,
+				214128F91AEDC09A00CC5693 /* NSBezierPath+Redacted.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				214128FA1AEDC09A00CC5693 /* NSBezierPath+Redacted.swift in Sources */,
 				2192BAB41AD0E62E00AC87E2 /* AppDelegate.swift in Sources */,
 				2192BABC1AD0E62E00AC87E2 /* EditorWindowController.swift in Sources */,
 				21DC72741AE420FF007C12DB /* ToolTipView.swift in Sources */,

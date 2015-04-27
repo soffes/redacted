@@ -348,7 +348,9 @@ extension RedactedLayer {
 
 		for redaction in selectedRedactions {
 			if let layer = boundingBoxes[redaction.UUID] {
-				layer.frame = redaction.rectForBounds(imageRect).flippedInRect(bounds).inset(-2)
+				var rect = redaction.rectForBounds(imageRect).flippedInRect(bounds)
+				rect.inset(dx: -2, dy: -2)
+				layer.frame = rect
 			}
 		}
 

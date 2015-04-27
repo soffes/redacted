@@ -28,6 +28,15 @@ class ToolTipView: NSView {
 		return label
 	}()
 
+	private let shadowLayer: CALayer = {
+		let layer = CALayer()
+		layer.shadowColor = Color.blackColor().CGColor
+		layer.shadowOffset = CGSizeZero
+		layer.shadowRadius = 8
+		layer.shadowOpacity = 1
+		return layer
+	}()
+
 
 	// MARK: - Initializers
 
@@ -42,9 +51,27 @@ class ToolTipView: NSView {
 	}
 
 
+	// MARK: - NSView
+
+	override func layout() {
+		super.layout()
+
+		if let layer = textLabel.layer {
+			shadowLayer.frame = layer.frame
+
+			var rect = shadowLayer.bounds
+			rect.inset(dx: 8, dy: 8)
+
+			shadowLayer.shadowPath = NSBezierPath(roundedRect: rect, xRadius: 10, yRadius: 10).CGPath
+		}
+	}
+
+
 	// MARK: - Private
 
 	private func initialize() {
+		wantsLayer = true
+		layer?.addSublayer(shadowLayer)
 		addSubview(textLabel)
 
 		let views = [ "textLabel": textLabel ]

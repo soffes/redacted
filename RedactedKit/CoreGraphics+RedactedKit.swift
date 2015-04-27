@@ -45,14 +45,6 @@ extension CGRect {
 			self = NSRectFromString(string) as CGRect
 		#endif
 	}
-
-	func inset(x: CGFloat) -> CGRect {
-		return inset(x: x, y: x)
-	}
-
-	func inset(#x: CGFloat, y: CGFloat) -> CGRect {
-		return CGRectInset(self, x, y)
-	}
 }
 
 
