@@ -13,12 +13,21 @@ class ToolTipView: NSView {
 
 	// MARK: - Properties
 
-	let textLabel: NSTextField = {
-		let label = NSTextField()
+	let textLabel: Label = {
+		let label = Label()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.textColor = toolTipTextColor
+		label.contentInsets = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+
+		label.wantsLayer = true
+		if let layer = label.layer {
+			layer.backgroundColor = toolTipColor.CGColor
+			layer.cornerRadius = 10
+		}
+
 		return label
 	}()
+
 
 	// MARK: - Initializers
 
@@ -36,24 +45,10 @@ class ToolTipView: NSView {
 	// MARK: - Private
 
 	private func initialize() {
-		wantsLayer = true
-
-		if let layer = layer {
-			layer.backgroundColor = toolTipColor.CGColor
-			layer.cornerRadius = 10
-			layer.shadowColor = Color.blackColor().CGColor
-			layer.shadowOffset = CGSize(width: 16, height: 16)
-			layer.shadowOpacity = 0.5
-		}
-
 		addSubview(textLabel)
 
-		let padding: CGFloat = 0
-		addConstraints([
-			NSLayoutConstraint(item: textLabel, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: padding),
-			NSLayoutConstraint(item: textLabel, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0),
-			NSLayoutConstraint(item: textLabel, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0),
-			NSLayoutConstraint(item: textLabel, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: padding)
-		])
+		let views = [ "textLabel": textLabel ]
+		addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-8-[textLabel]-8-|", options: nil, metrics: nil, views: views))
+		addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-8-[textLabel]-8-|", options: nil, metrics: nil, views: views))
 	}
 }
