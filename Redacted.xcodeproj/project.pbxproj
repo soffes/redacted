@@ -339,6 +339,17 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		212CB9841AF02E48005D1844 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				210514011ADE68CC009599D2 /* iOS-Info.plist */,
+				2192BAE81AD0E6FD00AC87E2 /* LaunchScreen.xib */,
+				2192BAEA1AD0E6FD00AC87E2 /* Main.storyboard */,
+				2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		216507EE1AE3E15D00B0A6AE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,12 +420,9 @@
 		2192BAE61AD0E6FD00AC87E2 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				210514011ADE68CC009599D2 /* iOS-Info.plist */,
 				2192BAE71AD0E6FD00AC87E2 /* AppDelegate.swift */,
 				2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */,
-				2192BAE81AD0E6FD00AC87E2 /* LaunchScreen.xib */,
-				2192BAEA1AD0E6FD00AC87E2 /* Main.storyboard */,
-				2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */,
+				212CB9841AF02E48005D1844 /* Resources */,
 				212CB97F1AF02CE4005D1844 /* Tests */,
 			);
 			path = iOS;
