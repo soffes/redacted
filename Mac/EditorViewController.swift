@@ -30,6 +30,8 @@ class EditorViewController: NSViewController {
 		return view
 	}()
 
+	private var toolTipBottomConstraint: NSLayoutConstraint?
+
 	var redactedLayer: RedactedLayer {
 		return redactedView.redactedLayer
 	}
@@ -40,6 +42,19 @@ class EditorViewController: NSViewController {
 			NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.imageDidChangeNotification, object: image)
 
 			placeholderLabel.hidden = image != nil
+
+			if image == nil {
+				return
+			}
+
+			if let constraint = toolTipBottomConstraint {
+				constraint.constant = -16
+				NSAnimationContext.runAnimationGroup({ context in
+					context.duration = 0.3
+					context.allowsImplicitAnimation = true
+					self.view.layoutSubtreeIfNeeded()
+				}, completionHandler: nil)
+			}
 		}
 	}
 
@@ -65,9 +80,14 @@ class EditorViewController: NSViewController {
 
 		placeholderLabel.stringValue = string("DRAG_TO_GET_STARTED")
 
-		view.addSubview(toolTipView)
-		view.addConstraint(NSLayoutConstraint(item: toolTipView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0))
-		view.addConstraint(NSLayoutConstraint(item: toolTipView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: -32))
+		if !NSUserDefaults.standardUserDefaults().boolForKey("CreatedRedaction") {
+			view.addSubview(toolTipView)
+			view.addConstraint(NSLayoutConstraint(item: toolTipView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0))
+
+			let constraint = NSLayoutConstraint(item: toolTipView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 64)
+			view.addConstraint(constraint)
+			toolTipBottomConstraint = constraint
+		}
 	}
 
 
@@ -84,6 +104,22 @@ class EditorViewController: NSViewController {
 
 	func panned(sender: NSPanGestureRecognizer) {
 		redactedLayer.drag(point: sender.locationInView(view), state: sender.state)
+
+		if sender.state == .Ended && redactedLayer.redactions.count > 0 {
+			if let constraint = toolTipBottomConstraint {
+				constraint.constant = 64
+				NSAnimationContext.runAnimationGroup({ context in
+					context.duration = 0.3
+					context.allowsImplicitAnimation = true
+					self.view.layoutSubtreeIfNeeded()
+					self.toolTipView.alphaValue = 0
+				}, completionHandler: {
+					NSUserDefaults.standardUserDefaults().setBool(true, forKey: "CreatedRedaction")
+					self.toolTipBottomConstraint = nil
+					self.toolTipView.removeFromSuperview()
+				})
+			}
+		}
 	}
 
 	func clicked(sender: NSClickGestureRecognizer) {

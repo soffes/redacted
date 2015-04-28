@@ -265,11 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				210EF35F1AC0A39900ED8E97 /* RedactedKit */,
-				210EF36E1AC0A39900ED8E97 /* RedactedKitTests */,
 				2192BAA51AD0E62E00AC87E2 /* Mac */,
-				2192BAB11AD0E62E00AC87E2 /* MacTests */,
 				2192BAE61AD0E6FD00AC87E2 /* iOS */,
-				2192BAF51AD0E70200AC87E2 /* iOSTests */,
 				210EF3381AC0A35C00ED8E97 /* Products */,
 			);
 			indentWidth = 4;
@@ -299,6 +296,7 @@
 				216595FF1ACE123600D22DB0 /* Layers */,
 				216596001ACE124200D22DB0 /* Utilities */,
 				210EF3601AC0A39900ED8E97 /* Resources */,
+				210EF36E1AC0A39900ED8E97 /* Tests */,
 			);
 			path = RedactedKit;
 			sourceTree = SOURCE_ROOT;
@@ -313,14 +311,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		210EF36E1AC0A39900ED8E97 /* RedactedKitTests */ = {
+		210EF36E1AC0A39900ED8E97 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				210EF3711AC0A39900ED8E97 /* RedactedKitTests.swift */,
 				210EF36F1AC0A39900ED8E97 /* Supporting Files */,
 			);
+			name = Tests;
 			path = RedactedKitTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		210EF36F1AC0A39900ED8E97 /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -382,6 +381,7 @@
 				21DF29711AD38CBF007EB2F2 /* Utilities */,
 				216507EE1AE3E15D00B0A6AE /* Extensions */,
 				2192BAAB1AD0E62E00AC87E2 /* Resources */,
+				2192BAB11AD0E62E00AC87E2 /* Tests */,
 			);
 			path = Mac;
 			sourceTree = "<group>";
@@ -397,14 +397,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		2192BAB11AD0E62E00AC87E2 /* MacTests */ = {
+		2192BAB11AD0E62E00AC87E2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				210514001ADE68BD009599D2 /* MacTests-Info.plist */,
 				2192BAB31AD0E62E00AC87E2 /* RedactedTests.swift */,
 			);
+			name = Tests;
 			path = MacTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		2192BAE61AD0E6FD00AC87E2 /* iOS */ = {
 			isa = PBXGroup;
@@ -415,18 +416,20 @@
 				2192BAE81AD0E6FD00AC87E2 /* LaunchScreen.xib */,
 				2192BAEA1AD0E6FD00AC87E2 /* Main.storyboard */,
 				2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */,
+				2192BAF51AD0E70200AC87E2 /* Tests */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
 		};
-		2192BAF51AD0E70200AC87E2 /* iOSTests */ = {
+		2192BAF51AD0E70200AC87E2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				210514021ADE68D8009599D2 /* iOSTests-Info.plist */,
 				2192BAF71AD0E70200AC87E2 /* RedactedTests.swift */,
 			);
+			name = Tests;
 			path = iOSTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		21DF296D1AD38CA2007EB2F2 /* Application */ = {
 			isa = PBXGroup;
@@ -1016,12 +1019,14 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
