@@ -9,6 +9,9 @@
 import AppKit
 import IOKit
 import RedactedKit
+import Mixpanel
+
+let mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 
 @NSApplicationMain class AppDelegate: NSObject {
 

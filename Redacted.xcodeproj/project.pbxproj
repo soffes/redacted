@@ -11,8 +11,12 @@
 		210EF3691AC0A39900ED8E97 /* RedactedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */; };
 		210EF3751AC0A39900ED8E97 /* RedactedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */; };
 		210EF3761AC0A39900ED8E97 /* RedactedKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		211215C31AE63F12004E1CE6 /* Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211215C21AE63F12004E1CE6 /* Mixpanel.swift */; };
-		211215C41AE6814E004E1CE6 /* Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211215C21AE63F12004E1CE6 /* Mixpanel.swift */; };
+		21193BFE1AF04191009FD090 /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21193BFD1AF04191009FD090 /* Mixpanel.framework */; };
+		21193BFF1AF04191009FD090 /* Mixpanel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 21193BFD1AF04191009FD090 /* Mixpanel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		21193C031AF041AC009FD090 /* GradientView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21193C011AF041AC009FD090 /* GradientView.framework */; };
+		21193C041AF041AC009FD090 /* GradientView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 21193C011AF041AC009FD090 /* GradientView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		21193C051AF041AC009FD090 /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21193C021AF041AC009FD090 /* Mixpanel.framework */; };
+		21193C061AF041AC009FD090 /* Mixpanel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 21193C021AF041AC009FD090 /* Mixpanel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		211D51FA1AE2FC9A00F29762 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211D51F91AE2FC9A00F29762 /* Colors.swift */; };
 		212456B51AD92CC70038D30D /* RedactedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212456AA1AD92CC70038D30D /* RedactedKit.framework */; };
 		212456C11AD92CC70038D30D /* RedactedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212456AA1AD92CC70038D30D /* RedactedKit.framework */; };
@@ -119,6 +123,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				21193BFF1AF04191009FD090 /* Mixpanel.framework in Embed Frameworks */,
 				210EF3761AC0A39900ED8E97 /* RedactedKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -131,6 +136,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				212456C21AD92CC70038D30D /* RedactedKit.framework in Embed Frameworks */,
+				21193C061AF041AC009FD090 /* Mixpanel.framework in Embed Frameworks */,
+				21193C041AF041AC009FD090 /* GradientView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,7 +154,9 @@
 		210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedactedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		210EF3621AC0A39900ED8E97 /* RedactedKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedactedKit.h; sourceTree = "<group>"; };
 		210EF3681AC0A39900ED8E97 /* RedactedKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedactedKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		211215C21AE63F12004E1CE6 /* Mixpanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mixpanel.swift; sourceTree = "<group>"; };
+		21193BFD1AF04191009FD090 /* Mixpanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mixpanel.framework; path = Carthage/Build/Mac/Mixpanel.framework; sourceTree = "<group>"; };
+		21193C011AF041AC009FD090 /* GradientView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GradientView.framework; path = ../Carthage/Build/iOS/GradientView.framework; sourceTree = "<group>"; };
+		21193C021AF041AC009FD090 /* Mixpanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mixpanel.framework; path = ../Carthage/Build/iOS/Mixpanel.framework; sourceTree = "<group>"; };
 		211D51F91AE2FC9A00F29762 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		212456AA1AD92CC70038D30D /* RedactedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedactedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		212456B41AD92CC70038D30D /* RedactedKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RedactedKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21193BFE1AF04191009FD090 /* Mixpanel.framework in Frameworks */,
 				210EF3751AC0A39900ED8E97 /* RedactedKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +258,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				212456C11AD92CC70038D30D /* RedactedKit.framework in Frameworks */,
+				21193C051AF041AC009FD090 /* Mixpanel.framework in Frameworks */,
+				21193C031AF041AC009FD090 /* GradientView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +321,24 @@
 				215288971ADD00BF00C0AEBA /* Localizable.strings */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		21193C001AF04196009FD090 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21193BFD1AF04191009FD090 /* Mixpanel.framework */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		21193C071AF041BB009FD090 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21193C011AF041AC009FD090 /* GradientView.framework */,
+				21193C021AF041AC009FD090 /* Mixpanel.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		212CB9731AF02C65005D1844 /* Tests */ = {
@@ -378,7 +408,6 @@
 				2149F2C41AC0EECC00F4AF7E /* CoreGraphics+RedactedKit.swift */,
 				212456CB1AD941940038D30D /* RedactionsController.swift */,
 				211D51F91AE2FC9A00F29762 /* Colors.swift */,
-				211215C21AE63F12004E1CE6 /* Mixpanel.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -401,6 +430,7 @@
 				21DF29711AD38CBF007EB2F2 /* Utilities */,
 				216507EE1AE3E15D00B0A6AE /* Extensions */,
 				2192BAAB1AD0E62E00AC87E2 /* Resources */,
+				21193C001AF04196009FD090 /* Frameworks */,
 				212CB97A1AF02CAE005D1844 /* Tests */,
 			);
 			path = Mac;
@@ -423,6 +453,7 @@
 				2192BAE71AD0E6FD00AC87E2 /* AppDelegate.swift */,
 				2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */,
 				212CB9841AF02E48005D1844 /* Resources */,
+				21193C071AF041BB009FD090 /* Frameworks */,
 				212CB97F1AF02CE4005D1844 /* Tests */,
 			);
 			path = iOS;
@@ -819,7 +850,6 @@
 				2149F2C11AC0DFD100F4AF7E /* ChainFilter.swift in Sources */,
 				212456CC1AD941940038D30D /* RedactionsController.swift in Sources */,
 				2149F2CD1AC145B400F4AF7E /* CIImage+RedactedKit.swift in Sources */,
-				211215C31AE63F12004E1CE6 /* Mixpanel.swift in Sources */,
 				217268771AD1075800F5F269 /* BoundingBoxLayer.swift in Sources */,
 				215187111AC709CE00937CD0 /* CoreImageLayer.swift in Sources */,
 				2151870F1AC7095C00937CD0 /* RedactedLayer.swift in Sources */,
@@ -840,7 +870,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152889E1ADD03F800C0AEBA /* RedactedKit.swift in Sources */,
-				211215C41AE6814E004E1CE6 /* Mixpanel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1047,6 +1076,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Mac/Resources/Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = Redacted;
@@ -1064,6 +1097,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Mac/Resources/Mac-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = Redacted;
@@ -1293,6 +1330,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Redacted-dxuxvilcedhbknbjvgdunyeexepy/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1316,6 +1354,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Redacted-dxuxvilcedhbknbjvgdunyeexepy/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;

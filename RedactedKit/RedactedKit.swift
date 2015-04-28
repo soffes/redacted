@@ -10,10 +10,9 @@ import Foundation
 
 #if os(iOS)
 	public let bundleIdentifier = "com.nothingmagical.redacted-ios.redactedkit"
-	public let mixpanel = Mixpanel(token: "58ae93d9875496de97dbdc4cd7f0d927")
+//	public let mixpanel = Mixpanel(token: "58ae93d9875496de97dbdc4cd7f0d927")
 #else
 	public let bundleIdentifier = "com.nothingmagical.redacted-mac.redactedkit"
-	public let mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 #endif
 
 public func string(key: String) -> String {
