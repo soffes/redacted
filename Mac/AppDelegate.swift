@@ -79,8 +79,10 @@ import RedactedKit
 
 extension AppDelegate: NSApplicationDelegate {
 	func applicationDidFinishLaunching(notification: NSNotification) {
-		// TODO: Enable before submission
-		mixpanel.enabled = false
+		#if DEBUG
+			mixpanel.enabled = false
+			println("Mixpanel disabled")
+		#endif
 
 		mixpanel.identify(uniqueIdentifier)
 		mixpanel.track("Launch")
