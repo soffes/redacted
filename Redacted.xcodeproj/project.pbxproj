@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		210EF3631AC0A39900ED8E97 /* RedactedKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 210EF3621AC0A39900ED8E97 /* RedactedKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		210EF3691AC0A39900ED8E97 /* RedactedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */; };
-		210EF3721AC0A39900ED8E97 /* RedactedKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EF3711AC0A39900ED8E97 /* RedactedKitTests.swift */; };
 		210EF3751AC0A39900ED8E97 /* RedactedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */; };
 		210EF3761AC0A39900ED8E97 /* RedactedKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		211215C31AE63F12004E1CE6 /* Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211215C21AE63F12004E1CE6 /* Mixpanel.swift */; };
@@ -19,6 +18,9 @@
 		212456C11AD92CC70038D30D /* RedactedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212456AA1AD92CC70038D30D /* RedactedKit.framework */; };
 		212456C21AD92CC70038D30D /* RedactedKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 212456AA1AD92CC70038D30D /* RedactedKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		212456CC1AD941940038D30D /* RedactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212456CB1AD941940038D30D /* RedactionsController.swift */; };
+		212CB9791AF02C65005D1844 /* RedactedKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212CB9761AF02C65005D1844 /* RedactedKitTests.swift */; };
+		212CB97E1AF02CAE005D1844 /* RedactedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212CB97C1AF02CAE005D1844 /* RedactedTests.swift */; };
+		212CB9831AF02CE4005D1844 /* RedactedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212CB9811AF02CE4005D1844 /* RedactedTests.swift */; };
 		214128F81AEDA62300CC5693 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214128F71AEDA62300CC5693 /* Label.swift */; };
 		214128FA1AEDC09A00CC5693 /* NSBezierPath+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214128F91AEDC09A00CC5693 /* NSBezierPath+Redacted.swift */; };
 		2149F2BF1AC0DB2900F4AF7E /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */; };
@@ -41,13 +43,11 @@
 		2192BAB91AD0E62E00AC87E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2192BAAC1AD0E62E00AC87E2 /* Main.storyboard */; };
 		2192BABA1AD0E62E00AC87E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2192BAAE1AD0E62E00AC87E2 /* Images.xcassets */; };
 		2192BABC1AD0E62E00AC87E2 /* EditorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAB01AD0E62E00AC87E2 /* EditorWindowController.swift */; };
-		2192BABF1AD0E63400AC87E2 /* RedactedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAB31AD0E62E00AC87E2 /* RedactedTests.swift */; };
 		2192BAEF1AD0E6FD00AC87E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAE71AD0E6FD00AC87E2 /* AppDelegate.swift */; };
 		2192BAF01AD0E6FD00AC87E2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2192BAE81AD0E6FD00AC87E2 /* LaunchScreen.xib */; };
 		2192BAF11AD0E6FD00AC87E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2192BAEA1AD0E6FD00AC87E2 /* Main.storyboard */; };
 		2192BAF21AD0E6FD00AC87E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */; };
 		2192BAF41AD0E6FD00AC87E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */; };
-		2192BAF91AD0E70200AC87E2 /* RedactedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAF71AD0E70200AC87E2 /* RedactedTests.swift */; };
 		21DC72741AE420FF007C12DB /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC72731AE420FF007C12DB /* ToolTipView.swift */; };
 		21DF296A1AD386B3007EB2F2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF29691AD386B3007EB2F2 /* AboutViewController.swift */; };
 		21DF296C1AD38A95007EB2F2 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF296B1AD38A95007EB2F2 /* AboutWindowController.swift */; };
@@ -141,22 +141,24 @@
 		210513FB1ADE688A009599D2 /* RedactedKit-Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RedactedKit-Info-iOS.plist"; path = "Resources/RedactedKit-Info-iOS.plist"; sourceTree = "<group>"; };
 		210513FC1ADE688A009599D2 /* RedactedKit-Info-Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RedactedKit-Info-Mac.plist"; path = "Resources/RedactedKit-Info-Mac.plist"; sourceTree = "<group>"; };
 		210513FF1ADE68AF009599D2 /* Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mac-Info.plist"; sourceTree = "<group>"; };
-		210514001ADE68BD009599D2 /* MacTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacTests-Info.plist"; sourceTree = "<group>"; };
 		210514011ADE68CC009599D2 /* iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS-Info.plist"; sourceTree = "<group>"; };
-		210514021ADE68D8009599D2 /* iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOSTests-Info.plist"; sourceTree = "<group>"; };
-		210514031ADE69CF009599D2 /* RedactedKitTests-Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RedactedKitTests-Info-iOS.plist"; sourceTree = "<group>"; };
-		210514041ADE69CF009599D2 /* RedactedKitTests-Info-Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RedactedKitTests-Info-Mac.plist"; sourceTree = "<group>"; };
 		210EF3371AC0A35C00ED8E97 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		210EF3491AC0A35D00ED8E97 /* MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedactedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		210EF3621AC0A39900ED8E97 /* RedactedKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedactedKit.h; sourceTree = "<group>"; };
 		210EF3681AC0A39900ED8E97 /* RedactedKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedactedKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		210EF3711AC0A39900ED8E97 /* RedactedKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactedKitTests.swift; sourceTree = "<group>"; };
 		211215C21AE63F12004E1CE6 /* Mixpanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mixpanel.swift; sourceTree = "<group>"; };
 		211D51F91AE2FC9A00F29762 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		212456AA1AD92CC70038D30D /* RedactedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedactedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		212456B41AD92CC70038D30D /* RedactedKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RedactedKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		212456CB1AD941940038D30D /* RedactionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactionsController.swift; sourceTree = "<group>"; };
+		212CB9741AF02C65005D1844 /* RedactedKitTests-Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RedactedKitTests-Info-iOS.plist"; sourceTree = "<group>"; };
+		212CB9751AF02C65005D1844 /* RedactedKitTests-Info-Mac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RedactedKitTests-Info-Mac.plist"; sourceTree = "<group>"; };
+		212CB9761AF02C65005D1844 /* RedactedKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedKitTests.swift; sourceTree = "<group>"; };
+		212CB97B1AF02CAE005D1844 /* MacTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MacTests-Info.plist"; sourceTree = "<group>"; };
+		212CB97C1AF02CAE005D1844 /* RedactedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedTests.swift; sourceTree = "<group>"; };
+		212CB9801AF02CE4005D1844 /* iOSTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iOSTests-Info.plist"; sourceTree = "<group>"; };
+		212CB9811AF02CE4005D1844 /* RedactedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedTests.swift; sourceTree = "<group>"; };
 		214128F71AEDA62300CC5693 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		214128F91AEDC09A00CC5693 /* NSBezierPath+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Redacted.swift"; sourceTree = "<group>"; };
 		2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Redaction.swift; sourceTree = "<group>"; };
@@ -182,7 +184,6 @@
 		2192BAAD1AD0E62E00AC87E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2192BAAE1AD0E62E00AC87E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2192BAB01AD0E62E00AC87E2 /* EditorWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorWindowController.swift; sourceTree = "<group>"; };
-		2192BAB31AD0E62E00AC87E2 /* RedactedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedTests.swift; sourceTree = "<group>"; };
 		2192BAC41AD0E6C500AC87E2 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2192BAD81AD0E6C500AC87E2 /* iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2192BAE71AD0E6FD00AC87E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -190,7 +191,6 @@
 		2192BAEB1AD0E6FD00AC87E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2192BAF71AD0E70200AC87E2 /* RedactedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedTests.swift; sourceTree = "<group>"; };
 		21DC72731AE420FF007C12DB /* ToolTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		21DCDDAC1ADA560A00629E8F /* Redacted.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Redacted.entitlements; sourceTree = "<group>"; };
 		21DF29691AD386B3007EB2F2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 				216595FF1ACE123600D22DB0 /* Layers */,
 				216596001ACE124200D22DB0 /* Utilities */,
 				210EF3601AC0A39900ED8E97 /* Resources */,
-				210EF36E1AC0A39900ED8E97 /* Tests */,
+				212CB9731AF02C65005D1844 /* Tests */,
 			);
 			path = RedactedKit;
 			sourceTree = SOURCE_ROOT;
@@ -311,23 +311,32 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		210EF36E1AC0A39900ED8E97 /* Tests */ = {
+		212CB9731AF02C65005D1844 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				210EF3711AC0A39900ED8E97 /* RedactedKitTests.swift */,
-				210EF36F1AC0A39900ED8E97 /* Supporting Files */,
+				212CB9741AF02C65005D1844 /* RedactedKitTests-Info-iOS.plist */,
+				212CB9751AF02C65005D1844 /* RedactedKitTests-Info-Mac.plist */,
+				212CB9761AF02C65005D1844 /* RedactedKitTests.swift */,
 			);
-			name = Tests;
-			path = RedactedKitTests;
-			sourceTree = SOURCE_ROOT;
+			path = Tests;
+			sourceTree = "<group>";
 		};
-		210EF36F1AC0A39900ED8E97 /* Supporting Files */ = {
+		212CB97A1AF02CAE005D1844 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				210514031ADE69CF009599D2 /* RedactedKitTests-Info-iOS.plist */,
-				210514041ADE69CF009599D2 /* RedactedKitTests-Info-Mac.plist */,
+				212CB97B1AF02CAE005D1844 /* MacTests-Info.plist */,
+				212CB97C1AF02CAE005D1844 /* RedactedTests.swift */,
 			);
-			name = "Supporting Files";
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		212CB97F1AF02CE4005D1844 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				212CB9801AF02CE4005D1844 /* iOSTests-Info.plist */,
+				212CB9811AF02CE4005D1844 /* RedactedTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		216507EE1AE3E15D00B0A6AE /* Extensions */ = {
@@ -381,7 +390,7 @@
 				21DF29711AD38CBF007EB2F2 /* Utilities */,
 				216507EE1AE3E15D00B0A6AE /* Extensions */,
 				2192BAAB1AD0E62E00AC87E2 /* Resources */,
-				2192BAB11AD0E62E00AC87E2 /* Tests */,
+				212CB97A1AF02CAE005D1844 /* Tests */,
 			);
 			path = Mac;
 			sourceTree = "<group>";
@@ -397,16 +406,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		2192BAB11AD0E62E00AC87E2 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				210514001ADE68BD009599D2 /* MacTests-Info.plist */,
-				2192BAB31AD0E62E00AC87E2 /* RedactedTests.swift */,
-			);
-			name = Tests;
-			path = MacTests;
-			sourceTree = SOURCE_ROOT;
-		};
 		2192BAE61AD0E6FD00AC87E2 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,20 +415,10 @@
 				2192BAE81AD0E6FD00AC87E2 /* LaunchScreen.xib */,
 				2192BAEA1AD0E6FD00AC87E2 /* Main.storyboard */,
 				2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */,
-				2192BAF51AD0E70200AC87E2 /* Tests */,
+				212CB97F1AF02CE4005D1844 /* Tests */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
-		};
-		2192BAF51AD0E70200AC87E2 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				210514021ADE68D8009599D2 /* iOSTests-Info.plist */,
-				2192BAF71AD0E70200AC87E2 /* RedactedTests.swift */,
-			);
-			name = Tests;
-			path = iOSTests;
-			sourceTree = SOURCE_ROOT;
 		};
 		21DF296D1AD38CA2007EB2F2 /* Application */ = {
 			isa = PBXGroup;
@@ -807,7 +796,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2192BABF1AD0E63400AC87E2 /* RedactedTests.swift in Sources */,
+				212CB97E1AF02CAE005D1844 /* RedactedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,7 +823,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				210EF3721AC0A39900ED8E97 /* RedactedKitTests.swift in Sources */,
+				212CB9791AF02C65005D1844 /* RedactedKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,7 +856,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2192BAF91AD0E70200AC87E2 /* RedactedTests.swift in Sources */,
+				212CB9831AF02CE4005D1844 /* RedactedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1088,7 +1077,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "MacTests/MacTests-Info.plist";
+				INFOPLIST_FILE = "Mac/Tests/MacTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Contents/MacOS/Redacted";
@@ -1104,7 +1093,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "MacTests/MacTests-Info.plist";
+				INFOPLIST_FILE = "Mac/Tests/MacTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Contents/MacOS/Redacted";
@@ -1175,7 +1164,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "RedactedKitTests/RedactedKitTests-Info-Mac.plist";
+				INFOPLIST_FILE = "RedactedKit/Tests/RedactedKitTests-Info-Mac.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Contents/MacOS/Redacted";
@@ -1190,7 +1179,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "RedactedKitTests/RedactedKitTests-Info-Mac.plist";
+				INFOPLIST_FILE = "RedactedKit/Tests/RedactedKitTests-Info-Mac.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Contents/MacOS/Redacted";
@@ -1260,7 +1249,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "RedactedKitTests/RedactedKitTests-Info-iOS.plist";
+				INFOPLIST_FILE = "RedactedKit/Tests/RedactedKitTests-Info-iOS.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1277,7 +1266,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "RedactedKitTests/RedactedKitTests-Info-iOS.plist";
+				INFOPLIST_FILE = "RedactedKit/Tests/RedactedKitTests-Info-iOS.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1342,7 +1331,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "iOSTests/iOSTests-Info.plist";
+				INFOPLIST_FILE = "iOS/Tests/iOSTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1359,7 +1348,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "iOSTests/iOSTests-Info.plist";
+				INFOPLIST_FILE = "iOS/Tests/iOSTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
