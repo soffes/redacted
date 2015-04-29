@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import X
 
 #if os(iOS)
 	import CoreImage

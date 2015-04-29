@@ -8,14 +8,15 @@
 
 import Foundation
 import QuartzCore
+import X
 
 #if os(iOS)
 	import CoreImage
 	import UIKit.UIGestureRecognizer
-	public typealias GestureRecognizerState = UIGestureRecognizerState
+	public typealias GestureRecognizerState = UIGestureRecognizerState // TODO: Remove
 #else
 	import AppKit.NSGestureRecognizer
-	public typealias GestureRecognizerState = NSGestureRecognizerState
+	public typealias GestureRecognizerState = NSGestureRecognizerState // TODO: Remove
 #endif
 
 public class RedactedLayer: CoreImageLayer {

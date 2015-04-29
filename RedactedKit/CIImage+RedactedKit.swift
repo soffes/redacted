@@ -6,42 +6,32 @@
 //  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
 //
 
+import X
+
 #if os(iOS)
 	import CoreImage
-	import UIKit.UIColor
-	public typealias Image = UIImage
- #else
-	import AppKit.NSColor
-	public typealias Image = NSImage
-
-	extension NSImage {
-		var CGImage: CGImageRef! {
-			return CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue()
-		}
-	}
- #endif
-
-import QuartzCore
+#else
+	import QuartzCore
+#endif
 
 extension CIImage {
 	public var renderedImage: Image {
-	let colorSpace = CGColorSpaceCreateDeviceRGB()
-	let options = [
-		kCIContextWorkingColorSpace: colorSpace,
-		kCIContextOutputColorSpace: colorSpace,
-	]
+		let colorSpace = CGColorSpaceCreateDeviceRGB()
+		let options = [
+			kCIContextWorkingColorSpace: colorSpace,
+			kCIContextOutputColorSpace: colorSpace,
+		]
 
-	let extent = self.extent()
+		let extent = self.extent()
 
-	#if os(iOS)
-		let ciContext = CIContext(options: nil)
+		#if os(iOS)
+			let ciContext = CIContext(options: nil)
+		#else
+			let cgContext = CGBitmapContextCreate(nil, Int(extent.width), Int(extent.height), 8, 0, colorSpace, CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue))
+			let ciContext = CIContext(CGContext: cgContext, options: options)
+		#endif
+
 		let cgImage = ciContext.createCGImage(self, fromRect: extent)
-		return UIImage(CGImage: cgImage)!
-	#else
-		let cgContext = CGBitmapContextCreate(nil, Int(extent.width), Int(extent.height), 8, 0, colorSpace, CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue))
-		let ciContext = CIContext(CGContext: cgContext, options: options)
-		let cgImage = ciContext.createCGImage(self, fromRect: extent)
-		return NSImage(CGImage: cgImage, size: CGSizeZero)
-	#endif
+		return Image(CGImage: cgImage)!
 	}
 }

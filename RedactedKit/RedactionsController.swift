@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
 //
 
+import X
+
 #if os(iOS)
 	import CoreImage
 #else
