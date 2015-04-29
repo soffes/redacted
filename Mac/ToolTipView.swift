@@ -8,6 +8,7 @@
 
 import AppKit
 import RedactedKit
+import X
 
 class ToolTipView: NSView {
 

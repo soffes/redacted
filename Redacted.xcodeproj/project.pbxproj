@@ -52,6 +52,9 @@
 		2192BAF11AD0E6FD00AC87E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2192BAEA1AD0E6FD00AC87E2 /* Main.storyboard */; };
 		2192BAF21AD0E6FD00AC87E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */; };
 		2192BAF41AD0E6FD00AC87E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */; };
+		219865441AF08DC800872B50 /* X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219865431AF08DC800872B50 /* X.framework */; };
+		219865461AF08DD300872B50 /* X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219865451AF08DD300872B50 /* X.framework */; };
+		219865471AF08DD300872B50 /* X.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 219865451AF08DD300872B50 /* X.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		21DC72741AE420FF007C12DB /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC72731AE420FF007C12DB /* ToolTipView.swift */; };
 		21DF296A1AD386B3007EB2F2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF29691AD386B3007EB2F2 /* AboutViewController.swift */; };
 		21DF296C1AD38A95007EB2F2 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF296B1AD38A95007EB2F2 /* AboutWindowController.swift */; };
@@ -123,6 +126,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				219865471AF08DD300872B50 /* X.framework in Embed Frameworks */,
 				21193BFF1AF04191009FD090 /* Mixpanel.framework in Embed Frameworks */,
 				210EF3761AC0A39900ED8E97 /* RedactedKit.framework in Embed Frameworks */,
 			);
@@ -200,6 +204,8 @@
 		2192BAEB1AD0E6FD00AC87E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2192BAEE1AD0E6FD00AC87E2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		219865431AF08DC800872B50 /* X.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = X.framework; path = Carthage/Build/Mac/X.framework; sourceTree = "<group>"; };
+		219865451AF08DD300872B50 /* X.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = X.framework; path = Carthage/Build/Mac/X.framework; sourceTree = "<group>"; };
 		21DC72731AE420FF007C12DB /* ToolTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		21DCDDAC1ADA560A00629E8F /* Redacted.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Redacted.entitlements; sourceTree = "<group>"; };
 		21DF29691AD386B3007EB2F2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219865461AF08DD300872B50 /* X.framework in Frameworks */,
 				21193BFE1AF04191009FD090 /* Mixpanel.framework in Frameworks */,
 				210EF3751AC0A39900ED8E97 /* RedactedKit.framework in Frameworks */,
 			);
@@ -227,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219865441AF08DC800872B50 /* X.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +334,8 @@
 		21193C001AF04196009FD090 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				219865451AF08DD300872B50 /* X.framework */,
+				219865431AF08DC800872B50 /* X.framework */,
 				21193BFD1AF04191009FD090 /* Mixpanel.framework */,
 			);
 			name = Frameworks;
@@ -1157,6 +1167,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1185,6 +1199,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "$(SRCROOT)/RedactedKit/Resources/RedactedKit-Info-Mac.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
