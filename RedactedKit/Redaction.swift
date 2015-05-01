@@ -87,7 +87,7 @@ public struct Redaction: Hashable, Equatable {
 		case .Blur:
 			#if os(iOS)
 				let transform = NSValue(CGAffineTransform: CGAffineTransformIdentity)
-				#else
+			#else
 				let transform = NSAffineTransform()
 			#endif
 
