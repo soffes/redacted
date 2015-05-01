@@ -50,12 +50,12 @@
 		217268791AD1086A00F5F269 /* HandleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217268781AD1086A00F5F269 /* HandleLayer.swift */; };
 		2189E4B01AF3DC1300051BD6 /* X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2189E4AF1AF3DC1300051BD6 /* X.framework */; };
 		2189E4B21AF3DC1800051BD6 /* X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2189E4AF1AF3DC1300051BD6 /* X.framework */; };
-		2189E4BA1AF4114D00051BD6 /* RedcatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2189E4B91AF4114D00051BD6 /* RedcatedView.swift */; };
+		2189E4BD1AF4131100051BD6 /* RedactedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2189E4BC1AF4131100051BD6 /* RedactedView.swift */; };
+		2189E4BE1AF4131400051BD6 /* RedactedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2189E4BC1AF4131100051BD6 /* RedactedView.swift */; };
 		2192BAB41AD0E62E00AC87E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */; };
 		2192BAB51AD0E62E00AC87E2 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA71AD0E62E00AC87E2 /* EditorViewController.swift */; };
 		2192BAB61AD0E62E00AC87E2 /* ImageDragDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA81AD0E62E00AC87E2 /* ImageDragDestinationView.swift */; };
 		2192BAB71AD0E62E00AC87E2 /* ModifierClickGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA91AD0E62E00AC87E2 /* ModifierClickGestureRecognizer.swift */; };
-		2192BAB81AD0E62E00AC87E2 /* RedactedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAAA1AD0E62E00AC87E2 /* RedactedView.swift */; };
 		2192BAB91AD0E62E00AC87E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2192BAAC1AD0E62E00AC87E2 /* Main.storyboard */; };
 		2192BABA1AD0E62E00AC87E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2192BAAE1AD0E62E00AC87E2 /* Images.xcassets */; };
 		2192BABC1AD0E62E00AC87E2 /* EditorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAB01AD0E62E00AC87E2 /* EditorWindowController.swift */; };
@@ -200,12 +200,11 @@
 		217268761AD1075800F5F269 /* BoundingBoxLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxLayer.swift; sourceTree = "<group>"; };
 		217268781AD1086A00F5F269 /* HandleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleLayer.swift; sourceTree = "<group>"; };
 		2189E4AF1AF3DC1300051BD6 /* X.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = X.framework; path = ../Carthage/Build/iOS/X.framework; sourceTree = "<group>"; };
-		2189E4B91AF4114D00051BD6 /* RedcatedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedcatedView.swift; sourceTree = "<group>"; };
+		2189E4BC1AF4131100051BD6 /* RedactedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedView.swift; sourceTree = "<group>"; };
 		2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2192BAA71AD0E62E00AC87E2 /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		2192BAA81AD0E62E00AC87E2 /* ImageDragDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDragDestinationView.swift; sourceTree = "<group>"; };
 		2192BAA91AD0E62E00AC87E2 /* ModifierClickGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifierClickGestureRecognizer.swift; sourceTree = "<group>"; };
-		2192BAAA1AD0E62E00AC87E2 /* RedactedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedView.swift; sourceTree = "<group>"; };
 		2192BAAD1AD0E62E00AC87E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2192BAAE1AD0E62E00AC87E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2192BAB01AD0E62E00AC87E2 /* EditorWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorWindowController.swift; sourceTree = "<group>"; };
@@ -324,6 +323,7 @@
 		210EF35F1AC0A39900ED8E97 /* RedactedKit */ = {
 			isa = PBXGroup;
 			children = (
+				2189E4BB1AF4130800051BD6 /* Views */,
 				210EF3621AC0A39900ED8E97 /* RedactedKit.h */,
 				2152889A1ADD01F200C0AEBA /* RedactedKit.swift */,
 				216596011ACE124600D22DB0 /* Models */,
@@ -464,7 +464,14 @@
 		2189E4B81AF4113600051BD6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2189E4B91AF4114D00051BD6 /* RedcatedView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2189E4BB1AF4130800051BD6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2189E4BC1AF4131100051BD6 /* RedactedView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -539,7 +546,6 @@
 			isa = PBXGroup;
 			children = (
 				2192BAA81AD0E62E00AC87E2 /* ImageDragDestinationView.swift */,
-				2192BAAA1AD0E62E00AC87E2 /* RedactedView.swift */,
 				21DC72731AE420FF007C12DB /* ToolTipView.swift */,
 				214128F71AEDA62300CC5693 /* Label.swift */,
 			);
@@ -898,7 +904,6 @@
 				2192BAB61AD0E62E00AC87E2 /* ImageDragDestinationView.swift in Sources */,
 				21DF296C1AD38A95007EB2F2 /* AboutWindowController.swift in Sources */,
 				2192BAB71AD0E62E00AC87E2 /* ModifierClickGestureRecognizer.swift in Sources */,
-				2192BAB81AD0E62E00AC87E2 /* RedactedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,6 +923,7 @@
 				211D51FA1AE2FC9A00F29762 /* Colors.swift in Sources */,
 				2149F2C51AC0EECC00F4AF7E /* CoreGraphics+RedactedKit.swift in Sources */,
 				2152889B1ADD01F200C0AEBA /* RedactedKit.swift in Sources */,
+				2189E4BD1AF4131100051BD6 /* RedactedView.swift in Sources */,
 				2149F2C11AC0DFD100F4AF7E /* ChainFilter.swift in Sources */,
 				212456CC1AD941940038D30D /* RedactionsController.swift in Sources */,
 				2149F2CD1AC145B400F4AF7E /* CIImage+RedactedKit.swift in Sources */,
@@ -944,6 +950,7 @@
 				2119D06F1AF17A4800E8421F /* Colors.swift in Sources */,
 				2119D0691AF17A4800E8421F /* BoundingBoxLayer.swift in Sources */,
 				2119D06C1AF17A4800E8421F /* CIImage+RedactedKit.swift in Sources */,
+				2189E4BE1AF4131400051BD6 /* RedactedView.swift in Sources */,
 				2119D06E1AF17A4800E8421F /* RedactionsController.swift in Sources */,
 				2119D0661AF17A4800E8421F /* Redaction.swift in Sources */,
 				2119D0671AF17A4800E8421F /* CoreImageLayer.swift in Sources */,
@@ -965,7 +972,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2189E4BA1AF4114D00051BD6 /* RedcatedView.swift in Sources */,
 				2192BAF41AD0E6FD00AC87E2 /* EditorViewController.swift in Sources */,
 				2192BAEF1AD0E6FD00AC87E2 /* AppDelegate.swift in Sources */,
 			);

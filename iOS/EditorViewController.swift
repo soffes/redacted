@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RedactedKit
 
 class EditorViewController: UIViewController {
 
