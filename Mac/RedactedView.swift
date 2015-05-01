@@ -8,6 +8,7 @@
 
 import AppKit
 import RedactedKit
+import X
 
 class RedactedView: NSView {
 
@@ -53,7 +54,7 @@ class RedactedView: NSView {
 		wantsLayer = true
 
 		if let layer = layer {
-			layer.backgroundColor = NSColor(SRGBRed: 0.863, green: 0.863, blue: 0.863, alpha: 1).CGColor
+			layer.backgroundColor = Color(red: 0.863, green: 0.863, blue: 0.863, alpha: 1).CGColor
 			layer.addSublayer(redactedLayer)
 			layoutLayers()
 		}
