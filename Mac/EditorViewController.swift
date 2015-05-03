@@ -48,12 +48,7 @@ class EditorViewController: NSViewController {
 			}
 
 			if let constraint = toolTipBottomConstraint {
-				constraint.constant = -16
-				NSAnimationContext.runAnimationGroup({ context in
-					context.duration = 0.3
-					context.allowsImplicitAnimation = true
-					self.view.layoutSubtreeIfNeeded()
-				}, completionHandler: nil)
+				showTutorial()
 			}
 		}
 	}
@@ -81,12 +76,7 @@ class EditorViewController: NSViewController {
 		placeholderLabel.stringValue = string("DRAG_TO_GET_STARTED")
 
 		if !NSUserDefaults.standardUserDefaults().boolForKey("CreatedRedaction") {
-			view.addSubview(toolTipView)
-			view.addConstraint(NSLayoutConstraint(item: toolTipView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0))
-
-			let constraint = NSLayoutConstraint(item: toolTipView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 64)
-			view.addConstraint(constraint)
-			toolTipBottomConstraint = constraint
+			setupTutorial()
 		}
 	}
 
@@ -106,19 +96,7 @@ class EditorViewController: NSViewController {
 		redactedLayer.drag(point: sender.locationInView(view), state: sender.state)
 
 		if sender.state == .Ended && redactedLayer.redactions.count > 0 {
-			if let constraint = toolTipBottomConstraint {
-				constraint.constant = 64
-				NSAnimationContext.runAnimationGroup({ context in
-					context.duration = 0.3
-					context.allowsImplicitAnimation = true
-					self.view.layoutSubtreeIfNeeded()
-					self.toolTipView.alphaValue = 0
-				}, completionHandler: {
-					NSUserDefaults.standardUserDefaults().setBool(true, forKey: "CreatedRedaction")
-					self.toolTipBottomConstraint = nil
-					self.toolTipView.removeFromSuperview()
-				})
-			}
+			hideTutorial()
 		}
 	}
 
@@ -131,6 +109,43 @@ class EditorViewController: NSViewController {
 	func shiftClicked(sender: NSClickGestureRecognizer) {
 		if sender.state == .Ended {
 			redactedLayer.tap(point: sender.locationInView(view), exclusive: false)
+		}
+	}
+
+
+	// MARK: - Private
+
+	private func setupTutorial() {
+		view.addSubview(toolTipView)
+		view.addConstraint(NSLayoutConstraint(item: toolTipView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0))
+
+		let constraint = NSLayoutConstraint(item: toolTipView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 64)
+		view.addConstraint(constraint)
+		toolTipBottomConstraint = constraint
+	}
+
+	private func showTutorial() {
+		constraint.constant = -16
+		NSAnimationContext.runAnimationGroup({ context in
+			context.duration = 0.3
+			context.allowsImplicitAnimation = true
+			self.view.layoutSubtreeIfNeeded()
+		}, completionHandler: nil)
+	}
+
+	private func hideTutorial() {
+		if let constraint = toolTipBottomConstraint {
+			constraint.constant = 64
+			NSAnimationContext.runAnimationGroup({ context in
+				context.duration = 0.3
+				context.allowsImplicitAnimation = true
+				self.view.layoutSubtreeIfNeeded()
+				self.toolTipView.alphaValue = 0
+			}, completionHandler: {
+				NSUserDefaults.standardUserDefaults().setBool(true, forKey: "CreatedRedaction")
+				self.toolTipBottomConstraint = nil
+				self.toolTipView.removeFromSuperview()
+			})
 		}
 	}
 }
