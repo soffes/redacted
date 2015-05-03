@@ -47,9 +47,7 @@ class EditorViewController: NSViewController {
 				return
 			}
 
-			if let constraint = toolTipBottomConstraint {
-				showTutorial()
-			}
+			showTutorial()
 		}
 	}
 
@@ -125,12 +123,14 @@ class EditorViewController: NSViewController {
 	}
 
 	private func showTutorial() {
-		constraint.constant = -16
-		NSAnimationContext.runAnimationGroup({ context in
-			context.duration = 0.3
-			context.allowsImplicitAnimation = true
-			self.view.layoutSubtreeIfNeeded()
-		}, completionHandler: nil)
+		if let constraint = toolTipBottomConstraint {
+			constraint.constant = -16
+			NSAnimationContext.runAnimationGroup({ context in
+				context.duration = 0.3
+				context.allowsImplicitAnimation = true
+				self.view.layoutSubtreeIfNeeded()
+			}, completionHandler: nil)
+		}
 	}
 
 	private func hideTutorial() {

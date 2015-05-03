@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import X
 
 func bundle() -> NSBundle? {
 	return NSBundle(forClass: RedactedLayer.self)
