@@ -101,11 +101,17 @@ class EditorWindowController: NSWindowController {
 		// Setup toolbar
 		modeItem.label = string("MODE")
 		modeItem.paletteLabel = modeItem.label
+
 		modeControl.setToolTip(string("PIXELATE"), forSegment: 0)
+		modeControl.setImage(image("pixelate"), forSegment: 0)
 		modeControl.setToolTip(string("BLUR"), forSegment: 1)
+		modeControl.setImage(image("blur"), forSegment: 1)
 		modeControl.setToolTip(string("BLACK_BAR"), forSegment: 2)
+		modeControl.setImage(image("black-bar"), forSegment: 2)
+
 		clearItem.label = string("CLEAR")
 		clearItem.paletteLabel = string("CLEAR_IMAGE")
+
 		shareItem.label = string("SHARE")
 		shareItem.paletteLabel = shareItem.label
 
