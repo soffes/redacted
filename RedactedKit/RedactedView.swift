@@ -9,11 +9,70 @@
 import X
 import QuartzCore
 
+// TODO: Remove
+#if os(iOS)
+	import CoreImage
+	import UIKit.UIGestureRecognizer
+	public typealias GestureRecognizerState = UIGestureRecognizerState
+#else
+	import AppKit.NSGestureRecognizer
+	public typealias GestureRecognizerState = NSGestureRecognizerState
+#endif
+
 public class RedactedView: View {
+
+	// MARK: - Constants
+
+	public class var modeDidChangeNotificationName: String {
+		return "RedactedView.modeDidChangeNotificationName"
+	}
+
+	public class var selectionDidChangeNotificationName: String {
+		return "RedactedView.selectionDidChangeNotificationName"
+	}
+
 
 	// MARK: - Properties
 
-	public let redactedLayer = RedactedLayer()
+	private let redactedLayer = RedactedLayer()
+
+	public var originalImage: Image? {
+		get {
+			return redactedLayer.originalImage
+		}
+
+		set {
+			redactedLayer.originalImage = newValue
+		}
+	}
+
+	public var mode: RedactionType {
+		get {
+			return redactedLayer.mode
+		}
+
+		set {
+			redactedLayer.mode = newValue
+		}
+	}
+
+	public override var undoManager: NSUndoManager? {
+		get {
+			return redactedLayer.undoManager
+		}
+
+		set {
+			redactedLayer.undoManager = newValue
+		}
+	}
+
+	public var redactions: [Redaction] {
+		return redactedLayer.redactions
+	}
+
+	public var selectionCount: UInt {
+		return UInt(redactedLayer.redactions.count)
+	}
 
 
 	// MARK: - Initializers
@@ -46,6 +105,35 @@ public class RedactedView: View {
 	public override func didMoveToWindow() {
 		super.didMoveToWindow()
 		updateLayerScale()
+	}
+
+
+	// MARK: - Manipulation
+
+	public func deleteRedaction() {
+		redactedLayer.delete()
+	}
+
+	public func tap(#point: CGPoint, exclusive: Bool = true) {
+		redactedLayer.tap(point: point, exclusive: exclusive)
+	}
+
+	public func drag(#point: CGPoint, state: GestureRecognizerState) {
+		redactedLayer.drag(point: point, state: state)
+	}
+
+
+	// MARK: - Selection
+
+	public func selectAllRedactions() {
+		redactedLayer.selectAll()
+	}
+
+
+	// MARK: - Rendering
+
+	public func renderedImage() -> Image? {
+		return redactedLayer.redactionsController.process()?.renderedImage
 	}
 
 

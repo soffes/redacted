@@ -31,14 +31,10 @@ class EditorViewController: NSViewController {
 	}()
 
 	private var toolTipBottomConstraint: NSLayoutConstraint?
-
-	var redactedLayer: RedactedLayer {
-		return redactedView.redactedLayer
-	}
 	
 	var image: NSImage? {
 		didSet {
-			redactedLayer.originalImage = image
+			redactedView.originalImage = image
 			NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.imageDidChangeNotification, object: image)
 
 			placeholderLabel.hidden = image != nil
@@ -52,7 +48,7 @@ class EditorViewController: NSViewController {
 	}
 
 	var renderedImage: NSImage? {
-		return redactedLayer.renderedImage()
+		return redactedView.renderedImage()
 	}
 
 
@@ -91,22 +87,22 @@ class EditorViewController: NSViewController {
 	}
 
 	func panned(sender: NSPanGestureRecognizer) {
-		redactedLayer.drag(point: sender.locationInView(view), state: sender.state)
+		redactedView.drag(point: sender.locationInView(view), state: sender.state)
 
-		if sender.state == .Ended && redactedLayer.redactions.count > 0 {
+		if sender.state == .Ended && redactedView.redactions.count > 0 {
 			hideTutorial()
 		}
 	}
 
 	func clicked(sender: NSClickGestureRecognizer) {
 		if sender.state == .Ended {
-			redactedLayer.tap(point: sender.locationInView(view))
+			redactedView.tap(point: sender.locationInView(view))
 		}
 	}
 
 	func shiftClicked(sender: NSClickGestureRecognizer) {
 		if sender.state == .Ended {
-			redactedLayer.tap(point: sender.locationInView(view), exclusive: false)
+			redactedView.tap(point: sender.locationInView(view), exclusive: false)
 		}
 	}
 
@@ -156,7 +152,7 @@ extension EditorViewController: NSSharingServicePickerDelegate {
 		if let service = service.title {
 			mixpanel.track("Share image", parameters: [
 				"service": service,
-				"redactions_count": redactedLayer.redactions.count
+				"redactions_count": redactedView.redactions.count
 			])
 		}
 	}

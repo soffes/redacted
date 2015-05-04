@@ -61,20 +61,21 @@ let mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 	}
 
 	@objc private func modeDidChange(notification: NSNotification?) {
-		if let layer = notification?.object as? RedactedLayer {
-			updateMode(layer)
+		if let view = notification?.object as? RedactedView {
+			updateMode(view)
 		}
 	}
 
-	private func updateMode(layer: RedactedLayer) {
-		pixelateMenuItem.state = layer.mode == .Pixelate ? NSOnState : NSOffState
-		blurMenuItem.state = layer.mode == .Blur ? NSOnState : NSOffState
-		blackBarMenuItem.state = layer.mode == .BlackBar ? NSOnState : NSOffState
+	private func updateMode(view: RedactedView) {
+		let mode = view.mode
+		pixelateMenuItem.state = mode == .Pixelate ? NSOnState : NSOffState
+		blurMenuItem.state = mode == .Blur ? NSOnState : NSOffState
+		blackBarMenuItem.state = mode == .BlackBar ? NSOnState : NSOffState
 	}
 
 	@objc private func selectionDidChange(notification: NSNotification?) {
-		if let layer = notification?.object as? RedactedLayer {
-			deleteMenuItem.title = layer.selectionCount == 1 ? string("DELETE_REDACTION") : string("DELETE_REDACTIONS")
+		if let view = notification?.object as? RedactedView {
+			deleteMenuItem.title = view.selectionCount == 1 ? string("DELETE_REDACTION") : string("DELETE_REDACTIONS")
 		}
 	}
 }
@@ -101,11 +102,11 @@ extension AppDelegate: NSApplicationDelegate {
 		blackBarMenuItem.title = string("BLACK_BAR")
 		clearMenuItem.title = string("CLEAR_IMAGE")
 
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "selectionDidChange:", name: RedactedLayer.selectionDidChangeNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "modeDidChange:", name: RedactedLayer.modeDidChangeNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "selectionDidChange:", name: RedactedView.selectionDidChangeNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "modeDidChange:", name: RedactedView.modeDidChangeNotificationName, object: nil)
 
-		if let layer = windowController?.editorViewController.redactedLayer {
-			updateMode(layer)
+		if let view = windowController?.editorViewController.redactedView {
+			updateMode(view)
 		}
 	}
 

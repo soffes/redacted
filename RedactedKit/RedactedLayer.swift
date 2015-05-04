@@ -10,27 +10,7 @@ import Foundation
 import QuartzCore
 import X
 
-#if os(iOS)
-	import CoreImage
-	import UIKit.UIGestureRecognizer
-	public typealias GestureRecognizerState = UIGestureRecognizerState // TODO: Remove
-#else
-	import AppKit.NSGestureRecognizer
-	public typealias GestureRecognizerState = NSGestureRecognizerState // TODO: Remove
-#endif
-
-public class RedactedLayer: CoreImageLayer {
-
-	// MARK: - Constants
-
-	public class var modeDidChangeNotificationName: String {
-		return "RedactedLayer.modeDidChangeNotificationName"
-	}
-
-	public class var selectionDidChangeNotificationName: String {
-		return "RedactedLayer.selectionDidChangeNotificationName"
-	}
-
+class RedactedLayer: CoreImageLayer {
 
 	// MARK: - Types
 
@@ -42,7 +22,7 @@ public class RedactedLayer: CoreImageLayer {
 
 	// MARK: - Properties
 
-	public var originalImage: Image? {
+	var originalImage: Image? {
 		get {
 			return redactionsController.image
 		}
@@ -58,15 +38,15 @@ public class RedactedLayer: CoreImageLayer {
 		}
 	}
 
-	public var mode: RedactionType = .Pixelate {
+	var mode: RedactionType = .Pixelate {
 		didSet {
-			NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.modeDidChangeNotificationName, object: self)
+			NSNotificationCenter.defaultCenter().postNotificationName(RedactedView.modeDidChangeNotificationName, object: self)
 		}
 	}
 
-	private var redactionsController = RedactionsController()
+	var redactionsController = RedactionsController()
 
-	public var redactions: [Redaction] {
+	var redactions: [Redaction] {
 		get {
 			return redactionsController.redactions
 		}
@@ -83,7 +63,7 @@ public class RedactedLayer: CoreImageLayer {
 		}
 	}
 
-	public var selectedRedactions: [Redaction] {
+	var selectedRedactions: [Redaction] {
 		var selected = [Redaction]()
 		let allUUIDs = redactions.map({ $0.UUID })
 		for UUID in selectedUUIDs {
@@ -94,19 +74,19 @@ public class RedactedLayer: CoreImageLayer {
 		return selected
 	}
 
-	public var imageRect: CGRect {
+	var imageRect: CGRect {
 		return imageRectForBounds(bounds)
 	}
 
 	private var draggingMode: DraggingMode?
 	private var boundingBoxes = [String: CALayer]()
 
-	public var undoManager: NSUndoManager?
+	var undoManager: NSUndoManager?
 
 
 	// MARK: - CALayer
 
-	public override var frame: CGRect {
+	override var frame: CGRect {
 		didSet {
 			if oldValue.size != frame.size {
 				updateRedactions()
@@ -117,11 +97,11 @@ public class RedactedLayer: CoreImageLayer {
 
 	// MARK: - Manipulation
 
-	public func delete() {
+	func delete() {
 		removeRedactions(selectedRedactions)
 	}
 
-	public func tap(#point: CGPoint, exclusive: Bool = true) {
+	func tap(#point: CGPoint, exclusive: Bool = true) {
 		if image == nil {
 			return
 		}
@@ -143,7 +123,7 @@ public class RedactedLayer: CoreImageLayer {
 		deselectAll()
 	}
 
-	public func drag(#point: CGPoint, state: GestureRecognizerState) {
+	func drag(#point: CGPoint, state: GestureRecognizerState) {
 		if image == nil {
 			return
 		}
@@ -214,13 +194,6 @@ public class RedactedLayer: CoreImageLayer {
 	}
 
 
-	// MARK: - Rendering
-
-	public func renderedImage() -> Image? {
-		return redactionsController.process()?.renderedImage
-	}
-
-
 	// MARK: - Private
 
 	private func converPointToUnits(point: CGPoint) -> CGPoint {
@@ -288,13 +261,13 @@ extension RedactedLayer {
 
 	// MARK: - Public
 
-	public func selectAll() {
+	func selectAll() {
 		for redaction in redactions {
 			select(redaction)
 		}
 	}
 
-	public var selectionCount: Int {
+	var selectionCount: Int {
 		return selectedUUIDs.count
 	}
 
@@ -357,6 +330,6 @@ extension RedactedLayer {
 
 		CATransaction.commit()
 
-		NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.selectionDidChangeNotificationName, object: self)
+		NSNotificationCenter.defaultCenter().postNotificationName(RedactedView.selectionDidChangeNotificationName, object: self)
 	}
 }

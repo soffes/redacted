@@ -34,7 +34,7 @@ class EditorWindowController: NSWindowController {
 			modeControl.selectedSegment = modeIndex
 
 			if let mode = RedactionType(rawValue: modeIndex) {
-				editorViewController.redactedLayer.mode = mode
+				editorViewController.redactedView.mode = mode
 			}
 		}
 	}
@@ -80,7 +80,7 @@ class EditorWindowController: NSWindowController {
 		window?.delegate = self
 
 		editorViewController = contentViewController as? EditorViewController
-		editorViewController.redactedLayer.undoManager = window?.undoManager
+		editorViewController.redactedView.undoManager = window?.undoManager
 
 		if let view = editorViewController.view as? ImageDragDestinationView {
 			view.delegate = self
@@ -159,7 +159,7 @@ class EditorWindowController: NSWindowController {
 
 			mixpanel.track("Share image", parameters: [
 				"service": "Copy",
-				"redactions_count": editorViewController.redactedLayer.redactions.count
+				"redactions_count": editorViewController.redactedView.redactions.count
 			])
 		}
 	}
@@ -175,11 +175,11 @@ class EditorWindowController: NSWindowController {
 	}
 
 	func delete(sender: AnyObject?) {
-		editorViewController.redactedLayer.delete()
+		editorViewController.redactedView.deleteRedaction()
 	}
 
 	override func selectAll(sender: AnyObject?) {
-		editorViewController.redactedLayer.selectAll()
+		editorViewController.redactedView.selectAllRedactions()
 	}
 
 	@IBAction func changeMode(sender: AnyObject?) {
@@ -271,7 +271,7 @@ extension EditorWindowController {
 		}
 
 		if menuItem.tag == MenuItem.DeleteRedaction.rawValue {
-			return editorViewController.redactedLayer.selectionCount > 0
+			return editorViewController.redactedView.selectionCount > 0
 		}
 
 		return editorViewController.image != nil
