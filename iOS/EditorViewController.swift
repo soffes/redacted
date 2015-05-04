@@ -47,8 +47,6 @@ class EditorViewController: UIViewController {
 		let views = [ "redactedView": redactedView ]
 		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|[redactedView]|", options: nil, metrics: nil, views: views))
 		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[redactedView]|", options: nil, metrics: nil, views: views))
-
-		redactedView.redactedLayer.originalImage = Image(named: "test")
 	}
 
 	override func viewWillAppear(animated: Bool) {

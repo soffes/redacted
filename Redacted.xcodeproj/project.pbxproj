@@ -52,7 +52,6 @@
 		2189E4B21AF3DC1800051BD6 /* X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2189E4AF1AF3DC1300051BD6 /* X.framework */; };
 		2189E4BD1AF4131100051BD6 /* RedactedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2189E4BC1AF4131100051BD6 /* RedactedView.swift */; };
 		2189E4BE1AF4131400051BD6 /* RedactedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2189E4BC1AF4131100051BD6 /* RedactedView.swift */; };
-		219189951AF6BF3E003F05E5 /* OpenGLLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219189941AF6BF3E003F05E5 /* OpenGLLayer.swift */; };
 		2192BAB41AD0E62E00AC87E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */; };
 		2192BAB51AD0E62E00AC87E2 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA71AD0E62E00AC87E2 /* EditorViewController.swift */; };
 		2192BAB61AD0E62E00AC87E2 /* ImageDragDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192BAA81AD0E62E00AC87E2 /* ImageDragDestinationView.swift */; };
@@ -200,7 +199,6 @@
 		217268781AD1086A00F5F269 /* HandleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleLayer.swift; sourceTree = "<group>"; };
 		2189E4AF1AF3DC1300051BD6 /* X.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = X.framework; path = ../Carthage/Build/iOS/X.framework; sourceTree = "<group>"; };
 		2189E4BC1AF4131100051BD6 /* RedactedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedView.swift; sourceTree = "<group>"; };
-		219189941AF6BF3E003F05E5 /* OpenGLLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGLLayer.swift; sourceTree = "<group>"; };
 		2192BAA61AD0E62E00AC87E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2192BAA71AD0E62E00AC87E2 /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		2192BAA81AD0E62E00AC87E2 /* ImageDragDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDragDestinationView.swift; sourceTree = "<group>"; };
@@ -419,7 +417,6 @@
 				2151870E1AC7095C00937CD0 /* RedactedLayer.swift */,
 				217268761AD1075800F5F269 /* BoundingBoxLayer.swift */,
 				217268781AD1086A00F5F269 /* HandleLayer.swift */,
-				219189941AF6BF3E003F05E5 /* OpenGLLayer.swift */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -956,7 +953,6 @@
 				2119D0681AF17A4800E8421F /* RedactedLayer.swift in Sources */,
 				2119D06A1AF17A4800E8421F /* HandleLayer.swift in Sources */,
 				2119D06B1AF17A4800E8421F /* ChainFilter.swift in Sources */,
-				219189951AF6BF3E003F05E5 /* OpenGLLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
