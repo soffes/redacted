@@ -16,6 +16,7 @@ class EditorWindowController: NSWindowController {
 	private enum MenuItem: Int {
 		case Open = 900
 		case DeleteRedaction = 901
+		case PasteImage = 902
 	}
 
 	// MARK: - Properties
@@ -266,7 +267,7 @@ extension EditorWindowController {
 // NSMenuItemValidation
 extension EditorWindowController {
 	override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
-		if menuItem.tag == MenuItem.Open.rawValue {
+		if menuItem.tag == MenuItem.Open.rawValue || menuItem.tag == MenuItem.PasteImage.rawValue {
 			return true
 		}
 

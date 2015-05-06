@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E11f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -105,7 +105,7 @@
                                                 <action selector="copy:" target="Ady-hI-5gd" id="G1f-GL-Joy"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Paste Image" keyEquivalent="v" id="gVA-U4-sdL">
+                                        <menuItem title="Paste Image" tag="902" keyEquivalent="v" id="gVA-U4-sdL">
                                             <connections>
                                                 <action selector="paste:" target="Ady-hI-5gd" id="UvS-8e-Qdg"/>
                                             </connections>
