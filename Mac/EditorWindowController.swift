@@ -8,6 +8,7 @@
 
 import AppKit
 import RedactedKit
+import X
 
 class EditorWindowController: NSWindowController {
 
@@ -40,6 +41,7 @@ class EditorWindowController: NSWindowController {
 		}
 	}
 
+	private var imageURL: NSURL? = nil
 	private let _undoManager = NSUndoManager()
 
 
@@ -137,15 +139,21 @@ class EditorWindowController: NSWindowController {
 	}
 
 	func save(sender: AnyObject?) {
+		if let URL = imageURL, image = editorViewController.renderedImage {
+			save(image: image, toURL: URL)
+		} else {
+			export(sender)
+		}
+	}
+
+	func export(sender: AnyObject?) {
 		if let window = window, image = editorViewController.renderedImage {
 			let savePanel = NSSavePanel()
 			savePanel.allowedFileTypes = ["png"]
 			savePanel.beginSheetModalForWindow(window) {
 				if $0 == NSFileHandlingPanelOKButton {
-					if let path = savePanel.URL?.path, cgImage = image.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue() {
-						let rep = NSBitmapImageRep(CGImage: cgImage)
-						let data = rep.representationUsingType(NSBitmapImageFileType.NSPNGFileType, properties: [NSObject: AnyObject]())
-						data?.writeToFile(path, atomically: true)
+					if let URL = savePanel.URL {
+						self.save(image: image, toURL: URL)
 					}
 				}
 			}
@@ -212,6 +220,7 @@ class EditorWindowController: NSWindowController {
 
 	func openURL(URL: NSURL?, source: String) -> Bool {
 		if let URL = URL, image = NSImage(contentsOfURL: URL) {
+			imageURL = URL
 			NSDocumentController.sharedDocumentController().noteNewRecentDocumentURL(URL)
 			self.editorViewController.image = image
 
@@ -227,9 +236,20 @@ class EditorWindowController: NSWindowController {
 
 	// MARK: - Private
 
-	func imageDidChange(notification: NSNotification?) {
+	@objc private func imageDidChange(notification: NSNotification?) {
 		NSRunningApplication.currentApplication().activateWithOptions(.ActivateIgnoringOtherApps)
 		validateToolbar()
+	}
+
+	private func save(#image: Image, toURL URL: NSURL) -> Bool {
+		if let path = URL.path, cgImage = image.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue() {
+			let rep = NSBitmapImageRep(CGImage: cgImage)
+			if let data = rep.representationUsingType(NSBitmapImageFileType.NSPNGFileType, properties: [NSObject: AnyObject]()) {
+				data.writeToFile(path, atomically: true)
+				return true
+			}
+		}
+		return false
 	}
 }
 
@@ -282,6 +302,7 @@ extension EditorWindowController {
 
 extension EditorWindowController: ImageDragDestinationViewDelegate {
 	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage) {
+		imageURL = nil
 		editorViewController.image = image
 
 		mixpanel.track("Import image", parameters: [

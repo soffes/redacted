@@ -16,7 +16,8 @@
 "SHARE" = "Share";
 "CLEAR" = "Clear";
 "CLEAR_IMAGE" = "Clear Image";
-"EXPORT_IMAGE" = "Export Image…";
+"SAVE" = "Save";
+"EXPORT" = "Export…";
 
 /* Edit menu */
 "COPY_IMAGE" = "Copy Image";

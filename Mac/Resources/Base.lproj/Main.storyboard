@@ -77,9 +77,14 @@
                                             </menu>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
-                                        <menuItem title="Export Image…" keyEquivalent="s" id="V4A-kr-CXQ">
+                                        <menuItem title="Save" keyEquivalent="s" id="kV0-7w-36d">
                                             <connections>
-                                                <action selector="save:" target="Ady-hI-5gd" id="Lta-ve-joZ"/>
+                                                <action selector="save:" target="Ady-hI-5gd" id="WSB-bP-9cl"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Export…" keyEquivalent="e" id="V4A-kr-CXQ">
+                                            <connections>
+                                                <action selector="export:" target="Ady-hI-5gd" id="8OO-pE-nlx"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -119,6 +124,7 @@ CA
                                                 <action selector="delete:" target="Ady-hI-5gd" id="hcR-zd-r5d"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="dpZ-T5-bFR"/>
                                         <menuItem title="Select All Redactions" keyEquivalent="a" id="Wro-F8-Hrl">
                                             <connections>
                                                 <action selector="selectAll:" target="Ady-hI-5gd" id="U11-FC-hVr"/>
@@ -241,6 +247,7 @@ CA
                         <outlet property="modeMenuItem" destination="GYt-l8-zmc" id="xRo-u4-eW1"/>
                         <outlet property="pasteMenuItem" destination="gVA-U4-sdL" id="1sv-aj-jRw"/>
                         <outlet property="pixelateMenuItem" destination="yBF-4k-mAb" id="LZP-mz-uNi"/>
+                        <outlet property="saveMenuItem" destination="kV0-7w-36d" id="6T3-1N-hAm"/>
                         <outlet property="selectAllMenuItem" destination="Wro-F8-Hrl" id="UzX-YM-eqg"/>
                     </connections>
                 </customObject>

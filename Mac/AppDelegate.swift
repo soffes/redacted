@@ -24,6 +24,7 @@ let mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 
 	// MARK: - Properties
 
+	@IBOutlet var saveMenuItem: NSMenuItem!
 	@IBOutlet var exportMenuItem: NSMenuItem!
 	@IBOutlet var copyMenuItem: NSMenuItem!
 	@IBOutlet var pasteMenuItem: NSMenuItem!
@@ -85,13 +86,13 @@ extension AppDelegate: NSApplicationDelegate {
 	func applicationDidFinishLaunching(notification: NSNotification) {
 		#if DEBUG
 			mixpanel.enabled = false
-			println("Mixpanel disabled")
 		#endif
 
 		mixpanel.identify(uniqueIdentifier)
 		mixpanel.track("Launch")
 
-		exportMenuItem.title = string("EXPORT_IMAGE")
+		saveMenuItem.title = string("SAVE")
+		exportMenuItem.title = string("EXPORT")
 		copyMenuItem.title = string("COPY_IMAGE")
 		pasteMenuItem.title = string("PASTE_IMAGE")
 		deleteMenuItem.title = string("DELETE_REDACTION")
