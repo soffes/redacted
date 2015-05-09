@@ -6,6 +6,7 @@
 
 * ⌘S to save the image in place. ⌘E to export the image to a new location.
 * Fix pasting an image when there isn't already an image.
+* Add redacted:// URL scheme
 
 
 ## Version 1.0
