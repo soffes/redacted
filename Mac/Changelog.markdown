@@ -5,8 +5,9 @@
 *Unreleased*
 
 * ⌘S to save the image in place. ⌘E to export the image to a new location.
-* Fix pasting an image when there isn't already an image.
 * Add redacted:// URL scheme
+* Fix pasting an image when there isn't already an image.
+* Fix toolbar being disabled when File > Open is used.
 
 
 ## Version 1.0
