@@ -133,7 +133,9 @@ class EditorWindowController: NSWindowController {
 		openPanel.canChooseFiles = true
 		openPanel.beginSheetModalForWindow(window!) { result in
 			if let URL = openPanel.URL where result == NSFileHandlingPanelOKButton {
-				self.openURL(URL, source: "Open")
+				dispatch_async(dispatch_get_main_queue()) {
+					self.openURL(URL, source: "Open")
+				}
 			}
 		}
 	}

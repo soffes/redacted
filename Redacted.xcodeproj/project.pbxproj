@@ -66,8 +66,6 @@
 		219865441AF08DC800872B50 /* X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219865431AF08DC800872B50 /* X.framework */; };
 		219865461AF08DD300872B50 /* X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219865451AF08DD300872B50 /* X.framework */; };
 		219865471AF08DD300872B50 /* X.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 219865451AF08DD300872B50 /* X.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		21B3F82F1AF72BF800825D1D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21B3F82E1AF72BF800825D1D /* Images.xcassets */; };
-		21B3F8301AF72BF800825D1D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21B3F82E1AF72BF800825D1D /* Images.xcassets */; };
 		21DC72741AE420FF007C12DB /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC72731AE420FF007C12DB /* ToolTipView.swift */; };
 		21DF296A1AD386B3007EB2F2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF29691AD386B3007EB2F2 /* AboutViewController.swift */; };
 		21DF296C1AD38A95007EB2F2 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF296B1AD38A95007EB2F2 /* AboutWindowController.swift */; };
@@ -216,7 +214,6 @@
 		2192BAEE1AD0E6FD00AC87E2 /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		219865431AF08DC800872B50 /* X.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = X.framework; path = Carthage/Build/Mac/X.framework; sourceTree = "<group>"; };
 		219865451AF08DD300872B50 /* X.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = X.framework; path = Carthage/Build/Mac/X.framework; sourceTree = "<group>"; };
-		21B3F82E1AF72BF800825D1D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
 		21DC72731AE420FF007C12DB /* ToolTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		21DCDDAC1ADA560A00629E8F /* Redacted.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Redacted.entitlements; sourceTree = "<group>"; };
 		21DF29691AD386B3007EB2F2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -338,7 +335,6 @@
 		210EF3601AC0A39900ED8E97 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				21B3F82E1AF72BF800825D1D /* Images.xcassets */,
 				210513FB1ADE688A009599D2 /* RedactedKit-Info-iOS.plist */,
 				210513FC1ADE688A009599D2 /* RedactedKit-Info-Mac.plist */,
 				215288971ADD00BF00C0AEBA /* Localizable.strings */,
@@ -736,6 +732,7 @@
 		210EF32F1AC0A35C00ED8E97 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Nothing Magical Inc.";
 				TargetAttributes = {
@@ -825,7 +822,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				215288991ADD00BF00C0AEBA /* Localizable.strings in Resources */,
-				21B3F82F1AF72BF800825D1D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -841,7 +837,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2119D0701AF17A4D00E8421F /* Localizable.strings in Resources */,
-				21B3F8301AF72BF800825D1D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
