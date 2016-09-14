@@ -1,5 +1,10 @@
 # Redacted for Mac
 
+## Version 1.0.2
+
+Fix dragging toward the top right
+
+
 ## Version 1.0.1
 
 *Unreleased*
