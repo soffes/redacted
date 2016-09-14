@@ -50,7 +50,7 @@ var mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 
 	// MARK: - Actions
 
-	@IBAction func showHelp(sender: Any?) {
+	@IBAction func showHelp(_ sender: Any?) {
 		NSWorkspace.shared().open(URL(string: "http://useredacted.com/help")!)
 	}
 
