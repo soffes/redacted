@@ -2,12 +2,14 @@
 
 ## Version 1.0.2
 
+*Unreleased*
+
 Fix dragging toward the top right
 
 
 ## Version 1.0.1
 
-*Unreleased*
+*Released 2015-06-30*
 
 * ⌘S to save the image in place. ⌘E to export the image to a new location.
 * Add redacted:// URL scheme
