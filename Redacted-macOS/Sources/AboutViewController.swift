@@ -30,9 +30,5 @@ final class AboutViewController: NSViewController {
 
 		versionLabel.stringValue = String(format: string("VERSION_FORMAT"), "\(shortVersion) (\(version))")
 		creditsLabel.stringValue = string("CREDITS")
-
-		if let copyright = info["NSHumanReadableCopyright"] as? String {
-			copyrightLabel.stringValue = copyright
-		}
 	}
 }

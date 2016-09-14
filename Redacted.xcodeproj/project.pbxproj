@@ -387,6 +387,7 @@
 				210EF3341AC0A35C00ED8E97 /* Frameworks */,
 				210EF3351AC0A35C00ED8E97 /* Resources */,
 				210EF37A1AC0A39900ED8E97 /* Embed Frameworks */,
+				216677E21D89099D0031B903 /* Set Version */,
 			);
 			buildRules = (
 			);
@@ -406,6 +407,7 @@
 				210EF35A1AC0A39900ED8E97 /* Frameworks */,
 				210EF35B1AC0A39900ED8E97 /* Headers */,
 				210EF35C1AC0A39900ED8E97 /* Resources */,
+				216677E31D8909C90031B903 /* Set Version */,
 			);
 			buildRules = (
 			);
@@ -424,6 +426,7 @@
 				212456A61AD92CC70038D30D /* Frameworks */,
 				212456A71AD92CC70038D30D /* Headers */,
 				212456A81AD92CC70038D30D /* Resources */,
+				216677E51D8909F30031B903 /* Set Version */,
 			);
 			buildRules = (
 			);
@@ -442,7 +445,8 @@
 				2192BAC11AD0E6C500AC87E2 /* Frameworks */,
 				2192BAC21AD0E6C500AC87E2 /* Resources */,
 				212456701AD924400038D30D /* Embed Frameworks */,
-				2189E4B51AF3DD5F00051BD6 /* ShellScript */,
+				2189E4B51AF3DD5F00051BD6 /* Embed Carthage Frameworks */,
+				216677E41D8909D70031B903 /* Set Version */,
 			);
 			buildRules = (
 			);
@@ -549,7 +553,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2189E4B51AF3DD5F00051BD6 /* ShellScript */ = {
+		216677E21D89099D0031B903 /* Set Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/env ruby";
+			shellScript = "git = `sh /etc/profile; which git`.chomp\napp_build = `#{git} rev-list HEAD --count`.chomp.to_i\n`/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion #{app_build}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"`\nputs \"Updated #{ENV['TARGET_BUILD_DIR']}/#{ENV['INFOPLIST_PATH']}\"";
+		};
+		216677E31D8909C90031B903 /* Set Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/env ruby";
+			shellScript = "git = `sh /etc/profile; which git`.chomp\napp_build = `#{git} rev-list HEAD --count`.chomp.to_i\n`/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion #{app_build}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"`\nputs \"Updated #{ENV['TARGET_BUILD_DIR']}/#{ENV['INFOPLIST_PATH']}\"";
+		};
+		216677E41D8909D70031B903 /* Set Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/env ruby";
+			shellScript = "git = `sh /etc/profile; which git`.chomp\napp_build = `#{git} rev-list HEAD --count`.chomp.to_i\n`/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion #{app_build}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"`\nputs \"Updated #{ENV['TARGET_BUILD_DIR']}/#{ENV['INFOPLIST_PATH']}\"";
+		};
+		216677E51D8909F30031B903 /* Set Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/env ruby";
+			shellScript = "git = `sh /etc/profile; which git`.chomp\napp_build = `#{git} rev-list HEAD --count`.chomp.to_i\n`/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion #{app_build}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"`\nputs \"Updated #{ENV['TARGET_BUILD_DIR']}/#{ENV['INFOPLIST_PATH']}\"";
+		};
+		2189E4B51AF3DD5F00051BD6 /* Embed Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -559,6 +619,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/GradientView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Mixpanel.framework",
 			);
+			name = "Embed Carthage Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
