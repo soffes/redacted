@@ -12,7 +12,7 @@
 	import QuartzCore
 #endif
 
-class ChainFilter: CIFilter {
+final class ChainFilter: CIFilter {
 
 	var inputImage: CIImage?
 	var inputFilters: [CIFilter]?

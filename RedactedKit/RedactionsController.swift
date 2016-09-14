@@ -14,13 +14,13 @@ import X
 	import QuartzCore
 #endif
 
-open class RedactionsController {
+public final class RedactionsController {
 
 	// MARK: - Properties
 
-	open var redactions = [Redaction]()
+	public var redactions = [Redaction]()
 
-	open var image: Image? {
+	public  var image: Image? {
 		didSet {
 			if let image = image {
 				ciImage = CIImage(cgImage: image.cgImage!)
@@ -30,7 +30,7 @@ open class RedactionsController {
 		}
 	}
 
-	fileprivate var ciImage: CIImage? {
+	private var ciImage: CIImage? {
 		didSet {
 			updateImages()
 		}
@@ -39,7 +39,7 @@ open class RedactionsController {
 
 	// MARK: - Rendering
 
-	open func process() -> CIImage? {
+	public func process() -> CIImage? {
 		if let ciImage = ciImage {
 			var outputImage = ciImage
 
@@ -58,10 +58,10 @@ open class RedactionsController {
 
 	// MARK: - Private
 
-	fileprivate var pixelatedImage: CIImage?
-	fileprivate var blurredImage: CIImage?
+	private var pixelatedImage: CIImage?
+	private var blurredImage: CIImage?
 
-	fileprivate func updateImages() {
+	private func updateImages() {
 		if let ciImage = ciImage {
 			pixelatedImage = Redaction.preprocess(ciImage, type: .pixelate)
 			blurredImage = Redaction.preprocess(ciImage, type: .blur)
@@ -72,7 +72,7 @@ open class RedactionsController {
 
 	}
 
-	fileprivate func preprocess(_ image: CIImage, type: RedactionType) -> CIImage {
+	private func preprocess(_ image: CIImage, type: RedactionType) -> CIImage {
 		switch type {
 		case .pixelate:
 			return pixelatedImage!

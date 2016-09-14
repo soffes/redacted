@@ -9,7 +9,7 @@
 import QuartzCore
 import X
 
-class HandleLayer: CAGradientLayer {
+final class HandleLayer: CAGradientLayer {
 
 	// MARK: - Initializers
 
@@ -31,7 +31,7 @@ class HandleLayer: CAGradientLayer {
 
 	// MARK: - Private
 
-	fileprivate func initialize() {
+	private func initialize() {
 		colors = [
 			Color(red: 0.855, green: 0.855, blue: 0.855, alpha: 1).cgColor,
 			Color(red: 0.992, green: 0.992, blue: 0.992, alpha: 1).cgColor

@@ -10,7 +10,7 @@ import Foundation
 import QuartzCore
 import X
 
-class RedactedLayer: CoreImageLayer {
+final class RedactedLayer: CoreImageLayer {
 
 	// MARK: - Types
 
@@ -57,7 +57,7 @@ class RedactedLayer: CoreImageLayer {
 		}
 	}
 
-	fileprivate var selectedUUIDs = Set<String>() {
+	private var selectedUUIDs = Set<String>() {
 		didSet {
 			updateSelections()
 		}
@@ -78,8 +78,8 @@ class RedactedLayer: CoreImageLayer {
 		return imageRectForBounds(bounds)
 	}
 
-	fileprivate var draggingMode: DraggingMode?
-	fileprivate var boundingBoxes = [String: CALayer]()
+	private var draggingMode: DraggingMode?
+	private var boundingBoxes = [String: CALayer]()
 
 	var undoManager: UndoManager?
 
@@ -194,72 +194,7 @@ class RedactedLayer: CoreImageLayer {
 	}
 
 
-	// MARK: - Private
-
-	fileprivate func converPointToUnits(_ point: CGPoint) -> CGPoint {
-		let rect = imageRect
-		var point = point.flippedInRect(bounds)
-		point.x = (point.x - rect.origin.x) / rect.size.width
-		point.y = (point.y - rect.origin.y) / rect.size.height
-		return point
-	}
-
-	fileprivate func hitTestRedaction(_ point: CGPoint) -> Redaction? {
-		for redaction in redactions.reversed() {
-			if redaction.rect.contains(point) {
-				return redaction
-			}
-		}
-		return nil
-	}
-
-	fileprivate func updateRedactions() {
-		image = redactionsController.process()
-		updateSelections()
-	}
-
-	@objc fileprivate func insertRedactionDictionaries(_ dictionaries: [[String: Any]]) {
-		let array = dictionaries.map({ Redaction(dictionary: $0) }).filter({ $0 != nil }).map({ $0! })
-		insertRedactions(array)
-	}
-
-	@objc fileprivate func removeRedactionDictionaries(_ dictionaries: [[String: Any]]) {
-		let array = dictionaries.map({ Redaction(dictionary: $0) }).filter({ $0 != nil }).map({ $0! })
-		removeRedactions(array)
-	}
-
-	fileprivate func insertRedactions(_ redactions: [Redaction]) {
-		self.redactions += redactions
-
-		if !(undoManager?.isUndoing ?? false) {
-			let s = redactions.count == 1 ? "" : "S"
-			undoManager?.setActionName(string("INSERT_REDACTION\(s)"))
-		}
-		undoManager?.registerUndo(withTarget: self, selector: #selector(RedactedLayer.removeRedactionDictionaries(_:)), object: redactions.map({ $0.dictionaryRepresentation }))
-	}
-
-	fileprivate func removeRedactions(_ redactions: [Redaction]) {
-		for UUID in redactions.map({ $0.UUID }) {
-			if let index = self.redactions.map({ $0.UUID }).index(of: UUID) {
-				let redaction = self.redactions[index]
-				deselect(redaction)
-				self.redactions.remove(at: index)
-			}
-		}
-
-		if !(undoManager?.isUndoing ?? false) {
-			let s = redactions.count == 1 ? "" : "S"
-			undoManager?.setActionName(string("DELETE_REDACTION\(s)"))
-		}
-		undoManager?.registerUndo(withTarget: self, selector: #selector(RedactedLayer.insertRedactionDictionaries(_:)), object: redactions.map({ $0.dictionaryRepresentation }))
-	}
-}
-
-
-// Selection
-extension RedactedLayer {
-
-	// MARK: - Public
+	// MARK: - Selection
 
 	func selectAll() {
 		for redaction in redactions {
@@ -274,11 +209,69 @@ extension RedactedLayer {
 
 	// MARK: - Private
 
-	fileprivate func isSelected(_ redaction: Redaction) -> Bool {
+	private func converPointToUnits(_ point: CGPoint) -> CGPoint {
+		let rect = imageRect
+		var point = point.flippedInRect(bounds)
+		point.x = (point.x - rect.origin.x) / rect.size.width
+		point.y = (point.y - rect.origin.y) / rect.size.height
+		return point
+	}
+
+	private func hitTestRedaction(_ point: CGPoint) -> Redaction? {
+		for redaction in redactions.reversed() {
+			if redaction.rect.contains(point) {
+				return redaction
+			}
+		}
+		return nil
+	}
+
+	private func updateRedactions() {
+		image = redactionsController.process()
+		updateSelections()
+	}
+
+	@objc private func insertRedactionDictionaries(_ dictionaries: [[String: Any]]) {
+		let array = dictionaries.map({ Redaction(dictionary: $0) }).filter({ $0 != nil }).map({ $0! })
+		insertRedactions(array)
+	}
+
+	@objc private func removeRedactionDictionaries(_ dictionaries: [[String: Any]]) {
+		let array = dictionaries.map({ Redaction(dictionary: $0) }).filter({ $0 != nil }).map({ $0! })
+		removeRedactions(array)
+	}
+
+	private func insertRedactions(_ redactions: [Redaction]) {
+		self.redactions += redactions
+
+		if !(undoManager?.isUndoing ?? false) {
+			let s = redactions.count == 1 ? "" : "S"
+			undoManager?.setActionName(string("INSERT_REDACTION\(s)"))
+		}
+		undoManager?.registerUndo(withTarget: self, selector: #selector(RedactedLayer.removeRedactionDictionaries(_:)), object: redactions.map({ $0.dictionaryRepresentation }))
+	}
+
+	private func removeRedactions(_ redactions: [Redaction]) {
+		for UUID in redactions.map({ $0.UUID }) {
+			if let index = self.redactions.map({ $0.UUID }).index(of: UUID) {
+				let redaction = self.redactions[index]
+				deselect(redaction)
+				self.redactions.remove(at: index)
+			}
+		}
+
+		if !(undoManager?.isUndoing ?? false) {
+			let s = redactions.count == 1 ? "" : "S"
+			undoManager?.setActionName(string("DELETE_REDACTION\(s)"))
+		}
+		undoManager?.registerUndo(withTarget: self, selector: #selector(RedactedLayer.insertRedactionDictionaries(_:)), object: redactions.map({ $0.dictionaryRepresentation }))
+	}
+
+	private func isSelected(_ redaction: Redaction) -> Bool {
 		return selectedUUIDs.contains(redaction.UUID)
 	}
 
-	fileprivate func select(_ redaction: Redaction) {
+	private func select(_ redaction: Redaction) {
 		if isSelected(redaction) {
 			return
 		}
@@ -297,7 +290,7 @@ extension RedactedLayer {
 		CATransaction.commit()
 	}
 
-	fileprivate func deselect(_ redaction: Redaction) {
+	private func deselect(_ redaction: Redaction) {
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
 
@@ -310,13 +303,13 @@ extension RedactedLayer {
 		CATransaction.commit()
 	}
 
-	fileprivate func deselectAll() {
+	private func deselectAll() {
 		for redaction in selectedRedactions {
 			deselect(redaction)
 		}
 	}
 
-	fileprivate func updateSelections() {
+	private func updateSelections() {
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
 

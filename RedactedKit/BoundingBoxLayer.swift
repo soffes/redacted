@@ -8,7 +8,7 @@
 
 import QuartzCore
 
-class BoundingBoxLayer: CALayer {
+final class BoundingBoxLayer: CALayer {
 
 	// MARK: - Properties
 
@@ -71,7 +71,7 @@ class BoundingBoxLayer: CALayer {
 
 	// MARK: - Private
 
-	fileprivate func initialize() {
+	private func initialize() {
 		border.borderWidth = 2
 		border.borderColor = selectionColor.cgColor
 		addSublayer(border)

@@ -13,7 +13,7 @@ import QuartzCore
 	import CoreImage
 #endif
 
-open class CoreImageLayer: CALayer {
+class CoreImageLayer: CALayer {
 
 	// MARK: - Properties
 
@@ -26,7 +26,7 @@ open class CoreImageLayer: CALayer {
 
 	// MARK: - CALayer
 
-	open override func draw(in context: CGContext) {
+	override func draw(in context: CGContext) {
 		if let image = image {
 			let options = [
 				kCIContextUseSoftwareRenderer: false,
