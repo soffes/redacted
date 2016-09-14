@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "210EF3671AC0A39900ED8E97"
-               BuildableName = "RedactedKitTests-macOS.xctest"
+               BuildableName = "RedactedKitTests.xctest"
                BlueprintName = "RedactedKitTests-macOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "212456B31AD92CC70038D30D"
-               BuildableName = "RedactedKitTests-iOS.xctest"
+               BuildableName = "RedactedKitTests.xctest"
                BlueprintName = "RedactedKitTests-iOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
@@ -85,7 +85,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "210EF3671AC0A39900ED8E97"
-               BuildableName = "RedactedKitTests-macOS.xctest"
+               BuildableName = "RedactedKitTests.xctest"
                BlueprintName = "RedactedKitTests-macOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
@@ -95,7 +95,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "212456B31AD92CC70038D30D"
-               BuildableName = "RedactedKitTests-iOS.xctest"
+               BuildableName = "RedactedKitTests.xctest"
                BlueprintName = "RedactedKitTests-iOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
