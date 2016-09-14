@@ -98,7 +98,7 @@ public struct Redaction: Hashable, Equatable {
 
 			return CIFilter(name: "CIGaussianBlur", withInputParameters: [
 				"inputRadius": edge * 0.01,
-				"inputImage": clamp!.outputImage
+				"inputImage": clamp!.outputImage!
 			])!.outputImage!
 
 		case .blackBar:
