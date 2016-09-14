@@ -13,7 +13,7 @@ import AppKit
 	func imageDragDestinationView(_ view: ImageDragDestinationView, didAcceptURL url: URL)
 }
 
-class ImageDragDestinationView: NSView {
+final class ImageDragDestinationView: NSView {
 
 	// MARK: - Properties
 

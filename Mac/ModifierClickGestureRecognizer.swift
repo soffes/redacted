@@ -8,7 +8,7 @@
 
 import AppKit
 
-class ModifierClickGestureRecognizer: NSClickGestureRecognizer {
+final class ModifierClickGestureRecognizer: NSClickGestureRecognizer {
 	var modifier: NSEventModifierFlags?
 
 	override func mouseDown(with event: NSEvent) {

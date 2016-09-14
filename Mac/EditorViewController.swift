@@ -9,7 +9,7 @@
 import AppKit
 import RedactedKit
 
-class EditorViewController: NSViewController {
+final class EditorViewController: NSViewController {
 
 	// MARK: - Constants
 

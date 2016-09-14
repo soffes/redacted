@@ -9,7 +9,7 @@
 import AppKit
 import RedactedKit
 
-class AboutViewController: NSViewController {
+final class AboutViewController: NSViewController {
 
 	// MARK: - Properties
 

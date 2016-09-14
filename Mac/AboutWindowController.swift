@@ -8,7 +8,7 @@
 
 import AppKit
 
-class AboutWindowController: NSWindowController {
+final class AboutWindowController: NSWindowController {
 
 	// MARK: - NSResponder
 

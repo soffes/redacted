@@ -10,7 +10,7 @@ import AppKit
 import RedactedKit
 import X
 
-class ToolTipView: NSView {
+final class ToolTipView: NSView {
 
 	// MARK: - Properties
 

@@ -8,7 +8,7 @@
 
 import AppKit
 
-class LabelCell: NSTextFieldCell {
+final class LabelCell: NSTextFieldCell {
 
 	// MARK: - Properties
 
@@ -32,7 +32,7 @@ class LabelCell: NSTextFieldCell {
 }
 
 
-class Label: NSTextField {
+final class Label: NSTextField {
 
 	// MARK: - Properties
 

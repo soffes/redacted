@@ -10,7 +10,7 @@ import AppKit
 import RedactedKit
 import X
 
-class EditorWindowController: NSWindowController {
+final class EditorWindowController: NSWindowController {
 
 	// MARK: - Types
 
