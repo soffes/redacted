@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "210EF35D1AC0A39900ED8E97"
-               BuildableName = "RedactedKit.framework"
-               BlueprintName = "RedactedKit"
+               BuildableName = "RedactedKit-macOS.framework"
+               BlueprintName = "RedactedKit-macOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "210EF35D1AC0A39900ED8E97"
-            BuildableName = "RedactedKit.framework"
-            BlueprintName = "RedactedKit"
+            BuildableName = "RedactedKit-macOS.framework"
+            BlueprintName = "RedactedKit-macOS"
             ReferencedContainer = "container:Redacted.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "210EF35D1AC0A39900ED8E97"
-            BuildableName = "RedactedKit.framework"
-            BlueprintName = "RedactedKit"
+            BuildableName = "RedactedKit-macOS.framework"
+            BlueprintName = "RedactedKit-macOS"
             ReferencedContainer = "container:Redacted.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

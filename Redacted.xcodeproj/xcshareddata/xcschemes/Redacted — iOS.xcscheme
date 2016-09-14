@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2192BAC31AD0E6C500AC87E2"
                BuildableName = "Redacted.app"
-               BlueprintName = "iOS"
+               BlueprintName = "Redacted-iOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -58,7 +58,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2192BAC31AD0E6C500AC87E2"
             BuildableName = "Redacted.app"
-            BlueprintName = "iOS"
+            BlueprintName = "Redacted-iOS"
             ReferencedContainer = "container:Redacted.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2192BAC31AD0E6C500AC87E2"
             BuildableName = "Redacted.app"
-            BlueprintName = "iOS"
+            BlueprintName = "Redacted-iOS"
             ReferencedContainer = "container:Redacted.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -100,7 +100,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2192BAC31AD0E6C500AC87E2"
             BuildableName = "Redacted.app"
-            BlueprintName = "iOS"
+            BlueprintName = "Redacted-iOS"
             ReferencedContainer = "container:Redacted.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

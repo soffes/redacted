@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "210EF3361AC0A35C00ED8E97"
                BuildableName = "Redacted.app"
-               BlueprintName = "Mac"
+               BlueprintName = "Redacted-macOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "210EF3671AC0A39900ED8E97"
-               BuildableName = "RedactedKitTests.xctest"
-               BlueprintName = "RedactedKitTests"
+               BuildableName = "RedactedKitTests-macOS.xctest"
+               BlueprintName = "RedactedKitTests-macOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -57,8 +57,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "212456B31AD92CC70038D30D"
-               BuildableName = "RedactedKit-iOSTests.xctest"
-               BlueprintName = "RedactedKit-iOSTests"
+               BuildableName = "RedactedKitTests-iOS.xctest"
+               BlueprintName = "RedactedKitTests-iOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -85,8 +85,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "210EF3671AC0A39900ED8E97"
-               BuildableName = "RedactedKitTests.xctest"
-               BlueprintName = "RedactedKitTests"
+               BuildableName = "RedactedKitTests-macOS.xctest"
+               BlueprintName = "RedactedKitTests-macOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -95,8 +95,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "212456B31AD92CC70038D30D"
-               BuildableName = "RedactedKit-iOSTests.xctest"
-               BlueprintName = "RedactedKit-iOSTests"
+               BuildableName = "RedactedKitTests-iOS.xctest"
+               BlueprintName = "RedactedKitTests-iOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -106,7 +106,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "210EF3361AC0A35C00ED8E97"
             BuildableName = "Redacted.app"
-            BlueprintName = "Mac"
+            BlueprintName = "Redacted-macOS"
             ReferencedContainer = "container:Redacted.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -129,7 +129,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "210EF3361AC0A35C00ED8E97"
             BuildableName = "Redacted.app"
-            BlueprintName = "Mac"
+            BlueprintName = "Redacted-macOS"
             ReferencedContainer = "container:Redacted.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -148,7 +148,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "210EF3361AC0A35C00ED8E97"
             BuildableName = "Redacted.app"
-            BlueprintName = "Mac"
+            BlueprintName = "Redacted-macOS"
             ReferencedContainer = "container:Redacted.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

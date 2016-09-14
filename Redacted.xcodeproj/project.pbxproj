@@ -32,7 +32,6 @@
 		212456C21AD92CC70038D30D /* RedactedKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 212456AA1AD92CC70038D30D /* RedactedKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		212456CC1AD941940038D30D /* RedactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212456CB1AD941940038D30D /* RedactionsController.swift */; };
 		212CB9791AF02C65005D1844 /* RedactedKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212CB9761AF02C65005D1844 /* RedactedKitTests.swift */; };
-		212CB9831AF02CE4005D1844 /* RedactedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212CB9811AF02CE4005D1844 /* RedactedTests.swift */; };
 		214128F81AEDA62300CC5693 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214128F71AEDA62300CC5693 /* Label.swift */; };
 		214128FA1AEDC09A00CC5693 /* NSBezierPath+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214128F91AEDC09A00CC5693 /* NSBezierPath+Redacted.swift */; };
 		2149F2BF1AC0DB2900F4AF7E /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */; };
@@ -113,13 +112,6 @@
 			remoteGlobalIDString = 212456A91AD92CC70038D30D;
 			remoteInfo = "RedactedKit-iOS";
 		};
-		2192BAD91AD0E6C500AC87E2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 210EF32F1AC0A35C00ED8E97 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2192BAC31AD0E6C500AC87E2;
-			remoteInfo = Redacted;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -163,13 +155,11 @@
 		21193C021AF041AC009FD090 /* Mixpanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mixpanel.framework; path = ../Carthage/Build/iOS/Mixpanel.framework; sourceTree = "<group>"; };
 		211D51F91AE2FC9A00F29762 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		212456AA1AD92CC70038D30D /* RedactedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedactedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		212456B41AD92CC70038D30D /* RedactedKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RedactedKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		212456B41AD92CC70038D30D /* RedactedKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedactedKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		212456CB1AD941940038D30D /* RedactionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactionsController.swift; sourceTree = "<group>"; };
 		212CB9741AF02C65005D1844 /* RedactedKitTests-Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RedactedKitTests-Info-iOS.plist"; sourceTree = "<group>"; };
 		212CB9751AF02C65005D1844 /* RedactedKitTests-Info-Mac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RedactedKitTests-Info-Mac.plist"; sourceTree = "<group>"; };
 		212CB9761AF02C65005D1844 /* RedactedKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedKitTests.swift; sourceTree = "<group>"; };
-		212CB9801AF02CE4005D1844 /* iOSTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iOSTests-Info.plist"; sourceTree = "<group>"; };
-		212CB9811AF02CE4005D1844 /* RedactedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactedTests.swift; sourceTree = "<group>"; };
 		214128F71AEDA62300CC5693 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		214128F91AEDC09A00CC5693 /* NSBezierPath+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Redacted.swift"; sourceTree = "<group>"; };
 		2149F2BE1AC0DB2900F4AF7E /* Redaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Redaction.swift; sourceTree = "<group>"; };
@@ -196,7 +186,6 @@
 		2192BAAE1AD0E62E00AC87E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2192BAB01AD0E62E00AC87E2 /* EditorWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorWindowController.swift; sourceTree = "<group>"; };
 		2192BAC41AD0E6C500AC87E2 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2192BAD81AD0E6C500AC87E2 /* iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2192BAE71AD0E6FD00AC87E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2192BAE91AD0E6FD00AC87E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2192BAEC1AD0E6FD00AC87E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -263,13 +252,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2192BAD51AD0E6C500AC87E2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -291,9 +273,8 @@
 				210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */,
 				210EF3681AC0A39900ED8E97 /* RedactedKitTests.xctest */,
 				2192BAC41AD0E6C500AC87E2 /* Redacted.app */,
-				2192BAD81AD0E6C500AC87E2 /* iOSTests.xctest */,
 				212456AA1AD92CC70038D30D /* RedactedKit.framework */,
-				212456B41AD92CC70038D30D /* RedactedKit-iOSTests.xctest */,
+				212456B41AD92CC70038D30D /* RedactedKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -350,15 +331,6 @@
 				212CB9741AF02C65005D1844 /* RedactedKitTests-Info-iOS.plist */,
 				212CB9751AF02C65005D1844 /* RedactedKitTests-Info-Mac.plist */,
 				212CB9761AF02C65005D1844 /* RedactedKitTests.swift */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		212CB97F1AF02CE4005D1844 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				212CB9801AF02CE4005D1844 /* iOSTests-Info.plist */,
-				212CB9811AF02CE4005D1844 /* RedactedTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -478,7 +450,6 @@
 				2189E4B81AF4113600051BD6 /* Views */,
 				212CB9841AF02E48005D1844 /* Resources */,
 				21193C071AF041BB009FD090 /* Frameworks */,
-				212CB97F1AF02CE4005D1844 /* Tests */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -548,9 +519,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		210EF3361AC0A35C00ED8E97 /* Mac */ = {
+		210EF3361AC0A35C00ED8E97 /* Redacted-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 210EF3531AC0A35D00ED8E97 /* Build configuration list for PBXNativeTarget "Mac" */;
+			buildConfigurationList = 210EF3531AC0A35D00ED8E97 /* Build configuration list for PBXNativeTarget "Redacted-macOS" */;
 			buildPhases = (
 				210EF3331AC0A35C00ED8E97 /* Sources */,
 				210EF3341AC0A35C00ED8E97 /* Frameworks */,
@@ -562,14 +533,14 @@
 			dependencies = (
 				210EF3741AC0A39900ED8E97 /* PBXTargetDependency */,
 			);
-			name = Mac;
+			name = "Redacted-macOS";
 			productName = Redacted;
 			productReference = 210EF3371AC0A35C00ED8E97 /* Redacted.app */;
 			productType = "com.apple.product-type.application";
 		};
-		210EF35D1AC0A39900ED8E97 /* RedactedKit */ = {
+		210EF35D1AC0A39900ED8E97 /* RedactedKit-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 210EF3771AC0A39900ED8E97 /* Build configuration list for PBXNativeTarget "RedactedKit" */;
+			buildConfigurationList = 210EF3771AC0A39900ED8E97 /* Build configuration list for PBXNativeTarget "RedactedKit-macOS" */;
 			buildPhases = (
 				210EF3591AC0A39900ED8E97 /* Sources */,
 				210EF35A1AC0A39900ED8E97 /* Frameworks */,
@@ -580,14 +551,14 @@
 			);
 			dependencies = (
 			);
-			name = RedactedKit;
+			name = "RedactedKit-macOS";
 			productName = RedactedKit;
 			productReference = 210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		210EF3671AC0A39900ED8E97 /* RedactedKitTests */ = {
+		210EF3671AC0A39900ED8E97 /* RedactedKitTests-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 210EF37B1AC0A39900ED8E97 /* Build configuration list for PBXNativeTarget "RedactedKitTests" */;
+			buildConfigurationList = 210EF37B1AC0A39900ED8E97 /* Build configuration list for PBXNativeTarget "RedactedKitTests-macOS" */;
 			buildPhases = (
 				210EF3641AC0A39900ED8E97 /* Sources */,
 				210EF3651AC0A39900ED8E97 /* Frameworks */,
@@ -599,7 +570,7 @@
 				210EF36B1AC0A39900ED8E97 /* PBXTargetDependency */,
 				210EF36D1AC0A39900ED8E97 /* PBXTargetDependency */,
 			);
-			name = RedactedKitTests;
+			name = "RedactedKitTests-macOS";
 			productName = RedactedKitTests;
 			productReference = 210EF3681AC0A39900ED8E97 /* RedactedKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -622,9 +593,9 @@
 			productReference = 212456AA1AD92CC70038D30D /* RedactedKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		212456B31AD92CC70038D30D /* RedactedKit-iOSTests */ = {
+		212456B31AD92CC70038D30D /* RedactedKitTests-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 212456C61AD92CC70038D30D /* Build configuration list for PBXNativeTarget "RedactedKit-iOSTests" */;
+			buildConfigurationList = 212456C61AD92CC70038D30D /* Build configuration list for PBXNativeTarget "RedactedKitTests-iOS" */;
 			buildPhases = (
 				212456B01AD92CC70038D30D /* Sources */,
 				212456B11AD92CC70038D30D /* Frameworks */,
@@ -636,14 +607,14 @@
 				212456B71AD92CC70038D30D /* PBXTargetDependency */,
 				212456B91AD92CC70038D30D /* PBXTargetDependency */,
 			);
-			name = "RedactedKit-iOSTests";
+			name = "RedactedKitTests-iOS";
 			productName = "RedactedKit-iOSTests";
-			productReference = 212456B41AD92CC70038D30D /* RedactedKit-iOSTests.xctest */;
+			productReference = 212456B41AD92CC70038D30D /* RedactedKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		2192BAC31AD0E6C500AC87E2 /* iOS */ = {
+		2192BAC31AD0E6C500AC87E2 /* Redacted-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2192BAE01AD0E6C500AC87E2 /* Build configuration list for PBXNativeTarget "iOS" */;
+			buildConfigurationList = 2192BAE01AD0E6C500AC87E2 /* Build configuration list for PBXNativeTarget "Redacted-iOS" */;
 			buildPhases = (
 				2192BAC01AD0E6C500AC87E2 /* Sources */,
 				2192BAC11AD0E6C500AC87E2 /* Frameworks */,
@@ -656,28 +627,10 @@
 			dependencies = (
 				212456C01AD92CC70038D30D /* PBXTargetDependency */,
 			);
-			name = iOS;
+			name = "Redacted-iOS";
 			productName = Redacted;
 			productReference = 2192BAC41AD0E6C500AC87E2 /* Redacted.app */;
 			productType = "com.apple.product-type.application";
-		};
-		2192BAD71AD0E6C500AC87E2 /* iOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2192BAE31AD0E6C500AC87E2 /* Build configuration list for PBXNativeTarget "iOSTests" */;
-			buildPhases = (
-				2192BAD41AD0E6C500AC87E2 /* Sources */,
-				2192BAD51AD0E6C500AC87E2 /* Frameworks */,
-				2192BAD61AD0E6C500AC87E2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2192BADA1AD0E6C500AC87E2 /* PBXTargetDependency */,
-			);
-			name = iOSTests;
-			productName = RedactedTests;
-			productReference = 2192BAD81AD0E6C500AC87E2 /* iOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -719,11 +672,6 @@
 						DevelopmentTeam = UP9C8XM22A;
 						LastSwiftMigration = 0800;
 					};
-					2192BAD71AD0E6C500AC87E2 = {
-						CreatedOnToolsVersion = 6.3;
-						LastSwiftMigration = 0800;
-						TestTargetID = 2192BAC31AD0E6C500AC87E2;
-					};
 				};
 			};
 			buildConfigurationList = 210EF3321AC0A35C00ED8E97 /* Build configuration list for PBXProject "Redacted" */;
@@ -740,13 +688,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				210EF3361AC0A35C00ED8E97 /* Mac */,
-				210EF35D1AC0A39900ED8E97 /* RedactedKit */,
-				210EF3671AC0A39900ED8E97 /* RedactedKitTests */,
-				2192BAC31AD0E6C500AC87E2 /* iOS */,
-				2192BAD71AD0E6C500AC87E2 /* iOSTests */,
+				210EF3361AC0A35C00ED8E97 /* Redacted-macOS */,
+				210EF35D1AC0A39900ED8E97 /* RedactedKit-macOS */,
+				210EF3671AC0A39900ED8E97 /* RedactedKitTests-macOS */,
+				2192BAC31AD0E6C500AC87E2 /* Redacted-iOS */,
 				212456A91AD92CC70038D30D /* RedactedKit-iOS */,
-				212456B31AD92CC70038D30D /* RedactedKit-iOSTests */,
+				212456B31AD92CC70038D30D /* RedactedKitTests-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -797,13 +744,6 @@
 			files = (
 				2192BAF21AD0E6FD00AC87E2 /* Images.xcassets in Resources */,
 				2192BAF01AD0E6FD00AC87E2 /* LaunchScreen.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2192BAD61AD0E6C500AC87E2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -909,30 +849,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2192BAD41AD0E6C500AC87E2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				212CB9831AF02CE4005D1844 /* RedactedTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		210EF36B1AC0A39900ED8E97 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 210EF35D1AC0A39900ED8E97 /* RedactedKit */;
+			target = 210EF35D1AC0A39900ED8E97 /* RedactedKit-macOS */;
 			targetProxy = 210EF36A1AC0A39900ED8E97 /* PBXContainerItemProxy */;
 		};
 		210EF36D1AC0A39900ED8E97 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 210EF3361AC0A35C00ED8E97 /* Mac */;
+			target = 210EF3361AC0A35C00ED8E97 /* Redacted-macOS */;
 			targetProxy = 210EF36C1AC0A39900ED8E97 /* PBXContainerItemProxy */;
 		};
 		210EF3741AC0A39900ED8E97 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 210EF35D1AC0A39900ED8E97 /* RedactedKit */;
+			target = 210EF35D1AC0A39900ED8E97 /* RedactedKit-macOS */;
 			targetProxy = 210EF3731AC0A39900ED8E97 /* PBXContainerItemProxy */;
 		};
 		212456B71AD92CC70038D30D /* PBXTargetDependency */ = {
@@ -942,18 +874,13 @@
 		};
 		212456B91AD92CC70038D30D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2192BAC31AD0E6C500AC87E2 /* iOS */;
+			target = 2192BAC31AD0E6C500AC87E2 /* Redacted-iOS */;
 			targetProxy = 212456B81AD92CC70038D30D /* PBXContainerItemProxy */;
 		};
 		212456C01AD92CC70038D30D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 212456A91AD92CC70038D30D /* RedactedKit-iOS */;
 			targetProxy = 212456BF1AD92CC70038D30D /* PBXContainerItemProxy */;
-		};
-		2192BADA1AD0E6C500AC87E2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2192BAC31AD0E6C500AC87E2 /* iOS */;
-			targetProxy = 2192BAD91AD0E6C500AC87E2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1153,7 +1080,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-mac.redactedkit";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RedactedKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1183,7 +1110,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-mac.redactedkit";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RedactedKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1206,7 +1133,7 @@
 				INFOPLIST_FILE = "RedactedKit/Tests/RedactedKitTests-Info-Mac.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-mac.redactedkit.tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RedactedKitTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Contents/MacOS/Redacted";
 			};
 			name = Debug;
@@ -1222,7 +1149,7 @@
 				INFOPLIST_FILE = "RedactedKit/Tests/RedactedKitTests-Info-Mac.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-mac.redactedkit.tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RedactedKitTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Contents/MacOS/Redacted";
 			};
 			name = Release;
@@ -1302,7 +1229,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-ios.redactedkit.tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RedactedKitTests;
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Redacted";
 			};
@@ -1320,7 +1247,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-ios.redactedkit.tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RedactedKitTests;
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Redacted";
 				VALIDATE_PRODUCT = YES;
@@ -1372,47 +1299,6 @@
 			};
 			name = Release;
 		};
-		2192BAE41AD0E6C500AC87E2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "iOS/Tests/iOSTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Redacted";
-			};
-			name = Debug;
-		};
-		2192BAE51AD0E6C500AC87E2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "iOS/Tests/iOSTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redacted.app/Redacted";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1425,7 +1311,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		210EF3531AC0A35D00ED8E97 /* Build configuration list for PBXNativeTarget "Mac" */ = {
+		210EF3531AC0A35D00ED8E97 /* Build configuration list for PBXNativeTarget "Redacted-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				210EF3541AC0A35D00ED8E97 /* Debug */,
@@ -1434,7 +1320,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		210EF3771AC0A39900ED8E97 /* Build configuration list for PBXNativeTarget "RedactedKit" */ = {
+		210EF3771AC0A39900ED8E97 /* Build configuration list for PBXNativeTarget "RedactedKit-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				210EF3781AC0A39900ED8E97 /* Debug */,
@@ -1443,7 +1329,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		210EF37B1AC0A39900ED8E97 /* Build configuration list for PBXNativeTarget "RedactedKitTests" */ = {
+		210EF37B1AC0A39900ED8E97 /* Build configuration list for PBXNativeTarget "RedactedKitTests-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				210EF37C1AC0A39900ED8E97 /* Debug */,
@@ -1461,7 +1347,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		212456C61AD92CC70038D30D /* Build configuration list for PBXNativeTarget "RedactedKit-iOSTests" */ = {
+		212456C61AD92CC70038D30D /* Build configuration list for PBXNativeTarget "RedactedKitTests-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				212456C71AD92CC70038D30D /* Debug */,
@@ -1470,20 +1356,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2192BAE01AD0E6C500AC87E2 /* Build configuration list for PBXNativeTarget "iOS" */ = {
+		2192BAE01AD0E6C500AC87E2 /* Build configuration list for PBXNativeTarget "Redacted-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2192BAE11AD0E6C500AC87E2 /* Debug */,
 				2192BAE21AD0E6C500AC87E2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2192BAE31AD0E6C500AC87E2 /* Build configuration list for PBXNativeTarget "iOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2192BAE41AD0E6C500AC87E2 /* Debug */,
-				2192BAE51AD0E6C500AC87E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
