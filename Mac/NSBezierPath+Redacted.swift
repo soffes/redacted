@@ -9,33 +9,33 @@
 import AppKit
 
 extension NSBezierPath {
-	var CGPath: CGPathRef? {
-		var path = CGPathCreateMutable()
-		var points = NSPointArray.alloc(3)
+	var cgPath: CGPath? {
+		let path = CGMutablePath()
+		let points = NSPointArray.allocate(capacity: 3)
 		var closed = true
 
 		for index in 0..<self.elementCount {
-			let pathType = self.elementAtIndex(index, associatedPoints: points)
+			let pathType = self.element(at: index, associatedPoints: points)
 			switch pathType {
-			case .MoveToBezierPathElement:
-				CGPathMoveToPoint(path, nil, points[0].x, points[0].y)
+			case .moveToBezierPathElement:
+				path.move(to: points[0])
 				closed = false
-			case .LineToBezierPathElement:
-				CGPathAddLineToPoint(path, nil, points[0].x, points[0].y)
+			case .lineToBezierPathElement:
+				path.addLine(to: points[0])
 				closed = false
-			case .CurveToBezierPathElement:
-				CGPathAddCurveToPoint(path, nil, points[0].x, points[0].y, points[1].x, points[1].y, points[2].x, points[2].y)
+			case .curveToBezierPathElement:
+				path.addCurve(to: points[2], control1: points[0], control2: points[1])
 				closed = false
-			case .ClosePathBezierPathElement:
-				CGPathCloseSubpath(path)
+			case .closePathBezierPathElement:
+				path.closeSubpath()
 				closed = true
 			}
 		}
 
-		points.dealloc(3)
+		points.deallocate(capacity: 3)
 
 		if !closed {
-			CGPathCloseSubpath(path)
+			path.closeSubpath()
 		}
 
 		return path

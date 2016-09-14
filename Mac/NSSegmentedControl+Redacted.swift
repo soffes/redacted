@@ -14,10 +14,10 @@ extension NSSegmentedControl {
 	}
 
 	func toolTipForSegment(segment: Int) -> String? {
-		return segmentedCell?.toolTipForSegment(segment)
+		return segmentedCell?.toolTip(forSegment: segment)
 	}
 
 	var segmentedCell: NSSegmentedCell? {
-		return cell() as? NSSegmentedCell
+		return cell as? NSSegmentedCell
 	}
 }

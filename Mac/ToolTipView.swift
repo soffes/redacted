@@ -18,11 +18,11 @@ class ToolTipView: NSView {
 		let label = Label()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.textColor = toolTipTextColor
-		label.contentInsets = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+		label.contentInsets = EdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
 
 		label.wantsLayer = true
 		if let layer = label.layer {
-			layer.backgroundColor = toolTipColor.CGColor
+			layer.backgroundColor = toolTipColor.cgColor
 			layer.cornerRadius = 10
 		}
 
@@ -31,8 +31,8 @@ class ToolTipView: NSView {
 
 	private let shadowLayer: CALayer = {
 		let layer = CALayer()
-		layer.shadowColor = Color.blackColor().CGColor
-		layer.shadowOffset = CGSizeZero
+		layer.shadowColor = Color.black.cgColor
+		layer.shadowOffset = .zero
 		layer.shadowRadius = 8
 		layer.shadowOpacity = 1
 		return layer
@@ -61,9 +61,9 @@ class ToolTipView: NSView {
 			shadowLayer.frame = layer.frame
 
 			var rect = shadowLayer.bounds
-			rect.inset(dx: 8, dy: 8)
+			rect = rect.insetBy(dx: 8, dy: 8)
 
-			shadowLayer.shadowPath = NSBezierPath(roundedRect: rect, xRadius: 10, yRadius: 10).CGPath
+			shadowLayer.shadowPath = NSBezierPath(roundedRect: rect, xRadius: 10, yRadius: 10).cgPath
 		}
 	}
 
@@ -75,8 +75,9 @@ class ToolTipView: NSView {
 		layer?.addSublayer(shadowLayer)
 		addSubview(textLabel)
 
-		let views = [ "textLabel": textLabel ]
-		addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-8-[textLabel]-8-|", options: nil, metrics: nil, views: views))
-		addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-8-[textLabel]-8-|", options: nil, metrics: nil, views: views))
+		// TODO: Update
+//		let views = [ "textLabel": textLabel ]
+//		addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-8-[textLabel]-8-|", options: nil, metrics: nil, views: views))
+//		addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-8-[textLabel]-8-|", options: nil, metrics: nil, views: views))
 	}
 }

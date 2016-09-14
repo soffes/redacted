@@ -16,7 +16,7 @@ class EditorViewController: UIViewController {
 
 	let redactedView: RedactedView = {
 		let view = RedactedView()
-		view.setTranslatesAutoresizingMaskIntoConstraints(false)
+		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
 
@@ -38,23 +38,23 @@ class EditorViewController: UIViewController {
 		title = "Redacted"
 		toolbarItems = [
 			UIBarButtonItem(customView: modeControl),
-			UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-			UIBarButtonItem(barButtonSystemItem: .Action, target: nil, action: nil)
+			UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+			UIBarButtonItem(barButtonSystemItem: .action, target: nil, action: nil)
 		]
 
 		view.addSubview(redactedView)
 
-		let views = [ "redactedView": redactedView ]
-		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|[redactedView]|", options: nil, metrics: nil, views: views))
-		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[redactedView]|", options: nil, metrics: nil, views: views))
+//		let views = [ "redactedView": redactedView ]
+//		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|[redactedView]|", options: nil, metrics: nil, views: views))
+//		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[redactedView]|", options: nil, metrics: nil, views: views))
 	}
 
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		navigationController?.setToolbarHidden(false, animated: animated)
 	}
 
-	override func viewWillDisappear(animated: Bool) {
+	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		navigationController?.setToolbarHidden(true, animated: animated)
 	}

@@ -1,6 +1,6 @@
 # Both
-github "soffes/X"
-github "soffes/Mixpanel"
+github "soffes/X" "swift3"
+github "soffes/Mixpanel" "swift3"
 
 # iOS
-github "soffes/GradientView"
+github "soffes/GradientView" "swift3"

@@ -18,12 +18,12 @@ class HandleLayer: CAGradientLayer {
 		initialize()
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		initialize()
 	}
 
-	override init!(layer: AnyObject!) {
+	override init(layer: Any) {
 		super.init(layer: layer)
 		initialize()
 	}
@@ -31,13 +31,13 @@ class HandleLayer: CAGradientLayer {
 
 	// MARK: - Private
 
-	private func initialize() {
+	fileprivate func initialize() {
 		colors = [
-			Color(red: 0.855, green: 0.855, blue: 0.855, alpha: 1).CGColor,
-			Color(red: 0.992, green: 0.992, blue: 0.992, alpha: 1).CGColor
+			Color(red: 0.855, green: 0.855, blue: 0.855, alpha: 1).cgColor,
+			Color(red: 0.992, green: 0.992, blue: 0.992, alpha: 1).cgColor
 		]
 
-		shadowPath = CGPathCreateWithRect(CGRect(x: 0, y: 0, width: 6, height: 6), nil)
+		shadowPath = CGPath(rect: CGRect(x: 0, y: 0, width: 6, height: 6), transform: nil)
 		shadowOffset = CGSize(width: 0, height: -1)
 		shadowRadius = 5
 		shadowOpacity = 0.7

@@ -35,9 +35,9 @@ class EditorViewController: NSViewController {
 	var image: NSImage? {
 		didSet {
 			redactedView.originalImage = image
-			NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.imageDidChangeNotification, object: image)
+			NotificationCenter.default.post(name: NSNotification.Name(rawValue: type(of: self).imageDidChangeNotification), object: image)
 
-			placeholderLabel.hidden = image != nil
+			placeholderLabel.isHidden = image != nil
 
 			if image == nil {
 				return
@@ -57,19 +57,19 @@ class EditorViewController: NSViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let pan = NSPanGestureRecognizer(target: self, action: "panned:")
+		let pan = NSPanGestureRecognizer(target: self, action: #selector(panned))
 		view.addGestureRecognizer(pan)
 
-		let click = NSClickGestureRecognizer(target: self, action: "clicked:")
+		let click = NSClickGestureRecognizer(target: self, action: #selector(clicked))
 		view.addGestureRecognizer(click)
 
-		let shiftClick = ModifierClickGestureRecognizer(target: self, action: "shiftClicked:")
-		shiftClick.modifier = .ShiftKeyMask
+		let shiftClick = ModifierClickGestureRecognizer(target: self, action: #selector(shiftClicked))
+		shiftClick.modifier = .shift
 		view.addGestureRecognizer(shiftClick)
 
 		placeholderLabel.stringValue = string("DRAG_TO_GET_STARTED")
 
-		if !NSUserDefaults.standardUserDefaults().boolForKey("CreatedRedaction") {
+		if !UserDefaults.standard.bool(forKey: "CreatedRedaction") {
 			setupTutorial()
 		}
 	}
@@ -81,28 +81,27 @@ class EditorViewController: NSViewController {
 		if let image = renderedImage {
 			let sharingServicePicker = NSSharingServicePicker(items: [image])
 			sharingServicePicker.delegate = self
-			let edge = NSRectEdge(CGRectEdge.MinYEdge.rawValue)
-			sharingServicePicker.showRelativeToRect(NSZeroRect, ofView: sender, preferredEdge: edge)
+			sharingServicePicker.show(relativeTo: CGRect.zero, of: sender, preferredEdge: .minY)
 		}
 	}
 
 	func panned(sender: NSPanGestureRecognizer) {
-		redactedView.drag(point: sender.locationInView(view), state: sender.state)
+		redactedView.drag(point: sender.location(in: view), state: sender.state)
 
-		if sender.state == .Ended && redactedView.redactions.count > 0 {
+		if sender.state == .ended && redactedView.redactions.count > 0 {
 			hideTutorial()
 		}
 	}
 
 	func clicked(sender: NSClickGestureRecognizer) {
-		if sender.state == .Ended {
-			redactedView.tap(point: sender.locationInView(view))
+		if sender.state == .ended {
+			redactedView.tap(point: sender.location(in: view))
 		}
 	}
 
 	func shiftClicked(sender: NSClickGestureRecognizer) {
-		if sender.state == .Ended {
-			redactedView.tap(point: sender.locationInView(view), exclusive: false)
+		if sender.state == .ended {
+			redactedView.tap(point: sender.location(in: view), exclusive: false)
 		}
 	}
 
@@ -111,9 +110,9 @@ class EditorViewController: NSViewController {
 
 	private func setupTutorial() {
 		view.addSubview(toolTipView)
-		view.addConstraint(NSLayoutConstraint(item: toolTipView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0))
+		view.addConstraint(NSLayoutConstraint(item: toolTipView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
 
-		let constraint = NSLayoutConstraint(item: toolTipView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 64)
+		let constraint = NSLayoutConstraint(item: toolTipView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 64)
 		view.addConstraint(constraint)
 		toolTipBottomConstraint = constraint
 	}
@@ -138,7 +137,7 @@ class EditorViewController: NSViewController {
 				self.view.layoutSubtreeIfNeeded()
 				self.toolTipView.alphaValue = 0
 			}, completionHandler: {
-				NSUserDefaults.standardUserDefaults().setBool(true, forKey: "CreatedRedaction")
+				UserDefaults.standard.set(true, forKey: "CreatedRedaction")
 				self.toolTipBottomConstraint = nil
 				self.toolTipView.removeFromSuperview()
 			})
@@ -148,12 +147,12 @@ class EditorViewController: NSViewController {
 
 
 extension EditorViewController: NSSharingServicePickerDelegate {
-	func sharingServicePicker(sharingServicePicker: NSSharingServicePicker, didChooseSharingService service: NSSharingService) {
-		if let service = service.title {
-			mixpanel.track("Share image", parameters: [
-				"service": service,
-				"redactions_count": redactedView.redactions.count
-			])
-		}
+	func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker, didChoose service: NSSharingService?) {
+		guard let title = service?.title else { return }
+
+		mixpanel.track(event: "Share image", parameters: [
+			"service": title,
+			"redactions_count": redactedView.redactions.count
+		])
 	}
 }

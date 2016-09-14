@@ -22,16 +22,32 @@ extension CIImage {
 			kCIContextOutputColorSpace: colorSpace,
 		]
 
-		let extent = self.extent()
+		let extent = self.extent
 
 		#if os(iOS)
 			let ciContext = CIContext(options: nil)
 		#else
-			let cgContext = CGBitmapContextCreate(nil, Int(extent.width), Int(extent.height), 8, 0, colorSpace, CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue))
-			let ciContext = CIContext(CGContext: cgContext, options: options)
+			let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+			let cgContext = CGContext(
+				data: nil,
+				width: Int(extent.width),
+				height: Int(extent.height),
+				bitsPerComponent: 8,
+				bytesPerRow: 0,
+				space: CGColorSpaceCreateDeviceRGB(),
+				bitmapInfo: bitmapInfo.rawValue,
+				releaseCallback: nil,
+				releaseInfo: nil
+			)!
+			let ciContext = CIContext(cgContext: cgContext, options: options)
 		#endif
 
-		let cgImage = ciContext.createCGImage(self, fromRect: extent)
-		return Image(CGImage: cgImage)!
+		let cgImage = ciContext.createCGImage(self, from: extent)!
+
+		#if os(iOS)
+			return Image(cgImage: cgImage)
+		#else
+			return Image(cgImage: cgImage)!
+		#endif
 	}
 }

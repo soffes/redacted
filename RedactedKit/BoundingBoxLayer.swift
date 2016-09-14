@@ -30,12 +30,12 @@ class BoundingBoxLayer: CALayer {
 		initialize()
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		initialize()
 	}
 
-	override init!(layer: AnyObject!) {
+	override init(layer: Any) {
 		super.init(layer: layer)
 		initialize()
 	}
@@ -71,9 +71,9 @@ class BoundingBoxLayer: CALayer {
 
 	// MARK: - Private
 
-	private func initialize() {
+	fileprivate func initialize() {
 		border.borderWidth = 2
-		border.borderColor = selectionColor.CGColor
+		border.borderColor = selectionColor.cgColor
 		addSublayer(border)
 		
 //		addSublayer(topLeft)

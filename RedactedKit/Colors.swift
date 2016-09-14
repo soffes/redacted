@@ -16,5 +16,5 @@ public let toolTipTextColor = Color(red: 0.451, green: 0.302, blue: 0.071, alpha
 	public let selectionColor = blueColor
 #else
 	import AppKit.NSColor
-	public let selectionColor = NSColor.selectedControlColor()
+	public let selectionColor = NSColor.selectedControlColor
 #endif

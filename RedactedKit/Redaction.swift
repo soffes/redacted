@@ -16,24 +16,24 @@ import X
 	import QuartzCore
 #endif
 
-public typealias Preprocessor = (image: CIImage, type: RedactionType) -> CIImage
+public typealias Preprocessor = (_ image: CIImage, _ type: RedactionType) -> CIImage
 
-public enum RedactionType: Int, Printable {
-	case Pixelate, Blur, BlackBar
+public enum RedactionType: Int, CustomStringConvertible {
+	case pixelate, blur, blackBar
 
 	public var description: String {
 		switch self {
-		case .Pixelate:
+		case .pixelate:
 			return string("PIXELATE")
-		case .Blur:
+		case .blur:
 			return string("BLUR")
-		case .BlackBar:
+		case .blackBar:
 			return string("BLACK_BAR")
 		}
 	}
 
 	public static var allTypes: [RedactionType] {
-		return [.Pixelate, .Blur, .BlackBar]
+		return [.pixelate, .blur, .blackBar]
 	}
 }
 
@@ -43,7 +43,7 @@ public struct Redaction: Hashable, Equatable {
 	public let type: RedactionType
 	public var rect: CGRect
 
-	public init(UUID: String = NSUUID().UUIDString, type: RedactionType, rect: CGRect) {
+	public init(UUID: String = Foundation.UUID().uuidString, type: RedactionType, rect: CGRect) {
 		self.UUID = UUID
 		self.type = type
 		self.rect = rect
@@ -53,7 +53,7 @@ public struct Redaction: Hashable, Equatable {
 		return UUID.hashValue
 	}
 
-	public func rectForBounds(bounds: CGRect) -> CGRect {
+	public func rectForBounds(_ bounds: CGRect) -> CGRect {
 		return CGRect(
 			x: bounds.origin.x + (rect.origin.x * bounds.size.width),
 			y: bounds.origin.y + (rect.origin.y * bounds.size.height),
@@ -62,31 +62,31 @@ public struct Redaction: Hashable, Equatable {
 		)
 	}
 
-	public func filter(image: CIImage, preprocessor: Preprocessor = Redaction.preprocess) -> CIFilter {
-		let extent = image.extent()
+	public func filter(_ image: CIImage, preprocessor: Preprocessor = Redaction.preprocess) -> CIFilter {
+		let extent = image.extent
 		let scaledRect = rectForBounds(extent).flippedInRect(extent)
-		let processed = preprocessor(image: image, type: type)
+		let processed = preprocessor(image, type)
 
 		return CIFilter(name: "CISourceOverCompositing", withInputParameters: [
-			"inputImage": processed.imageByCroppingToRect(scaledRect)
-		])
+			"inputImage": processed.cropping(to: scaledRect)
+		])!
 	}
 
-	public static func preprocess(image: CIImage, type: RedactionType) -> CIImage {
-		let extent = image.extent()
+	public static func preprocess(_ image: CIImage, type: RedactionType) -> CIImage {
+		let extent = image.extent
 		let edge = max(extent.size.width, extent.size.height)
 
 		switch type {
-		case .Pixelate:
+		case .pixelate:
 			return CIFilter(name: "CIPixellate", withInputParameters: [
 				"inputScale": edge * 0.01,
-				"inputCenter": CIVector(CGPoint: extent.center),
+				"inputCenter": CIVector(cgPoint: extent.center),
 				"inputImage": image
-			])!.outputImage
+			])!.outputImage!
 
-		case .Blur:
+		case .blur:
 			#if os(iOS)
-				let transform = NSValue(CGAffineTransform: CGAffineTransformIdentity)
+				let transform = NSValue(cgAffineTransform: CGAffineTransform.identity)
 			#else
 				let transform = NSAffineTransform()
 			#endif
@@ -98,32 +98,32 @@ public struct Redaction: Hashable, Equatable {
 
 			return CIFilter(name: "CIGaussianBlur", withInputParameters: [
 				"inputRadius": edge * 0.01,
-				"inputImage": clamp.outputImage
-			])!.outputImage
+				"inputImage": clamp!.outputImage
+			])!.outputImage!
 
-		case .BlackBar:
+		case .blackBar:
 			return CIFilter(name: "CIConstantColorGenerator", withInputParameters: [
 				"inputColor": CIColor(red: 0, green: 0, blue: 0, alpha: 1)
-			]).outputImage
+			])!.outputImage!
 		}
 	}
 }
 
 
 extension Redaction {
-	var dictionaryRepresentation: [String: AnyObject] {
+	var dictionaryRepresentation: [String: Any] {
 		return [
-			"UUID": UUID,
-			"type": type.rawValue,
+			"UUID": UUID as Any,
+			"type": type.rawValue as Any,
 			"rect": rect.stringRepresentation
 		]
 	}
 
-	init?(dictionary: [String: AnyObject]) {
-		if let UUID = dictionary["UUID"] as? String, typeString = dictionary["type"] as? Int, type = RedactionType(rawValue: typeString), rectString = dictionary["rect"] as? String {
+	init?(dictionary: [String: Any]) {
+		if let UUID = dictionary["UUID"] as? String, let typeString = dictionary["type"] as? Int, let type = RedactionType(rawValue: typeString), let rectString = dictionary["rect"] as? String {
 			self.UUID = UUID
 			self.type = type
-			self.rect = CGRect(string: rectString)
+			self.rect = CGRect(dictionaryRepresentation: rectString as! CFDictionary)!
 			return
 		}
 		return nil

@@ -14,7 +14,7 @@ class AppDelegate: UIResponder {
 	// MARK: - Properties
 	
 	lazy var window: UIWindow? = {
-		let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+		let window = UIWindow(frame: UIScreen.main.bounds)
 		window.rootViewController = UINavigationController(rootViewController: EditorViewController())
 		return window
 	}()
@@ -22,7 +22,7 @@ class AppDelegate: UIResponder {
 
 
 extension AppDelegate: UIApplicationDelegate {
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		window?.makeKeyAndVisible()
 		return true
 	}

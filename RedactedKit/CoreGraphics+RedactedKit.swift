@@ -13,7 +13,7 @@ extension CGRect {
 		return CGPoint(x: midX, y: midY)
 	}
 
-	func flippedInRect(bounds: CGRect) -> CGRect {
+	func flippedInRect(_ bounds: CGRect) -> CGRect {
 		return CGRect(
 			x: origin.x,
 			y: bounds.size.height - size.height - origin.y,
@@ -22,7 +22,7 @@ extension CGRect {
 		)
 	}
 
-	func aspectFit(aspectRatio: CGSize) -> CGRect {
+	func aspectFit(_ aspectRatio: CGSize) -> CGRect {
 		let size = self.size.aspectFit(aspectRatio)
 		var origin = self.origin
 		origin.x += (self.size.width - size.width) / 2.0
@@ -33,7 +33,7 @@ extension CGRect {
 
 
 extension CGSize {
-	func aspectFit(aspectRatio: CGSize) -> CGSize {
+	func aspectFit(_ aspectRatio: CGSize) -> CGSize {
 		let widthRatio = (width / aspectRatio.width)
 		let heightRatio = (height / aspectRatio.height)
 		var size = self
@@ -43,13 +43,13 @@ extension CGSize {
 		else if heightRatio < widthRatio {
 			size.width = height / aspectRatio.height * aspectRatio.width
 		}
-		return CGSizeMake(ceil(size.width), ceil(size.height))
+		return CGSize(width: ceil(size.width), height: ceil(size.height))
 	}
 }
 
 
 extension CGPoint {
-	func flippedInRect(bounds: CGRect) -> CGPoint {
+	func flippedInRect(_ bounds: CGRect) -> CGPoint {
 		return CGPoint(
 			x: x,
 			y: bounds.size.height - y

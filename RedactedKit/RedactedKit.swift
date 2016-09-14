@@ -9,17 +9,17 @@
 import Foundation
 import X
 
-func bundle() -> NSBundle? {
-	return NSBundle(forClass: RedactedLayer.self)
+func bundle() -> Bundle? {
+	return Bundle(for: RedactedLayer.self)
 }
 
-public func string(key: String) -> String {
+public func string(_ key: String) -> String {
 	if let bundle = bundle() {
-		return bundle.localizedStringForKey(key, value: nil, table: nil)
+		return bundle.localizedString(forKey: key, value: nil, table: nil)
 	}
 	return key
 }
 
-public func image(name: String) -> Image? {
-	return Image(named: name, inBundle: bundle())
+public func image(_ name: String) -> Image? {
+	return Image(named: name, in: bundle())
 }

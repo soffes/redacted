@@ -11,14 +11,14 @@ import AppKit
 class ModifierClickGestureRecognizer: NSClickGestureRecognizer {
 	var modifier: NSEventModifierFlags?
 
-	override func mouseDown(event: NSEvent) {
+	override func mouseDown(with event: NSEvent) {
 		if let modifier = modifier {
-			if event.modifierFlags & modifier != nil {
-				super.mouseDown(event)
+			if event.modifierFlags.contains(modifier) {
+				super.mouseDown(with: event)
 			}
 			return
 		}
 
-		super.mouseDown(event)
+		super.mouseDown(with: event)
 	}
 }

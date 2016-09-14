@@ -8,9 +8,9 @@
 
 import AppKit
 
-@objc protocol ImageDragDestinationViewDelegate: AnyObject {
-	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptImage image: NSImage)
-	func imageDragDestinationView(imageDragDestinationView: ImageDragDestinationView, didAcceptURL URL: NSURL)
+@objc protocol ImageDragDestinationViewDelegate: Any {
+	func imageDragDestinationView(_ view: ImageDragDestinationView, didAcceptImage image: NSImage)
+	func imageDragDestinationView(_ view: ImageDragDestinationView, didAcceptURL url: URL)
 }
 
 class ImageDragDestinationView: NSView {
@@ -22,12 +22,12 @@ class ImageDragDestinationView: NSView {
 	private let selectionLayer: CALayer = {
 		let layer = CALayer()
 		layer.borderWidth = 4
-		layer.borderColor = NSColor.selectedControlColor().CGColor
-		layer.hidden = true
+		layer.borderColor = NSColor.selectedControlColor.cgColor
+		layer.isHidden = true
 		return layer
 	}()
 
-	private var showingSelection: Bool = false {
+	fileprivate var showingSelection: Bool = false {
 		didSet {
 			if showingSelection {
 				// Move to front
@@ -36,9 +36,9 @@ class ImageDragDestinationView: NSView {
 				layer?.addSublayer(selectionLayer)
 				CATransaction.commit()
 
-				selectionLayer.hidden = false
+				selectionLayer.isHidden = false
 			} else {
-				selectionLayer.hidden = true
+				selectionLayer.isHidden = true
 			}
 		}
 	}
@@ -69,7 +69,7 @@ class ImageDragDestinationView: NSView {
 
 	private func initialize() {
 		wantsLayer = true
-		registerForDraggedTypes([String(kUTTypeTIFF), NSFilenamesPboardType])
+		register(forDraggedTypes: [String(kUTTypeTIFF), NSFilenamesPboardType])
 	}
 
 	private func layoutLayers() {
@@ -83,57 +83,59 @@ class ImageDragDestinationView: NSView {
 }
 
 
-extension ImageDragDestinationView: NSDraggingDestination {
-	override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
+// NSDraggingDestination
+extension ImageDragDestinationView {
+	override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
 		if delegate == nil {
 			showingSelection = false
-			return NSDragOperation.None
+			return []
 		}
 
 		let pasteboard = sender.draggingPasteboard()
-		let workspace = NSWorkspace.sharedWorkspace()
+		let workspace = NSWorkspace.shared()
 		var accept = false
 
-		if let types = pasteboard.types as? [String] {
+		if let types = pasteboard.types {
 			// TIFF data
-			if let data = pasteboard.dataForType(String(kUTTypeTIFF)), image = NSImage(data: data) where contains(types, NSTIFFPboardType) {
+			if let data = pasteboard.data(forType: String(kUTTypeTIFF)), types.contains(NSTIFFPboardType), NSImage(data: data) != nil {
 				accept = true
 			}
 
 			// File path
-			if let paths = pasteboard.propertyListForType(NSFilenamesPboardType) as? [String], path = paths.first where !accept && contains(types, NSFilenamesPboardType) {
-				if let utiType = workspace.typeOfFile(path, error: nil) where workspace.type(utiType, conformsToType: String(kUTTypeImage)) {
+			if let paths = pasteboard.propertyList(forType: NSFilenamesPboardType) as? [String], let path = paths.first, !accept && types.contains(NSFilenamesPboardType) {
+				if let utiType = try? workspace.type(ofFile: path), workspace.type(utiType, conformsToType: String(kUTTypeImage)) {
 					accept = true
 				}
 			}
 		}
 
 		showingSelection = accept
-		return accept ? NSDragOperation.Every : NSDragOperation.None
+		return accept ? .every : []
 	}
 
-	override func draggingExited(sender: NSDraggingInfo?) {
+	override func draggingExited(_ sender: NSDraggingInfo?) {
 		showingSelection = false
 	}
 
-	override func prepareForDragOperation(sender: NSDraggingInfo) -> Bool {
+	override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
 		return delegate != nil
 	}
 
-	override func performDragOperation(sender: NSDraggingInfo) -> Bool {
+	override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
 		showingSelection = false
 		if let delegate = delegate {
 			let pasteboard = sender.draggingPasteboard()
 
 			// TIFF data
-			if let data = pasteboard.dataForType(String(kUTTypeTIFF)), image = NSImage(data: data) {
+			if let data = pasteboard.data(forType: String(kUTTypeTIFF)), let image = NSImage(data: data) {
 				delegate.imageDragDestinationView(self, didAcceptImage: image)
 				return true
 			}
 
 			// File path
-			if let paths = pasteboard.propertyListForType(NSFilenamesPboardType) as? [String], path = paths.first, URL = NSURL(fileURLWithPath: path) {
-				delegate.imageDragDestinationView(self, didAcceptURL: URL)
+			if let paths = pasteboard.propertyList(forType: NSFilenamesPboardType) as? [String], let path = paths.first {
+				let url = URL(fileURLWithPath: path)
+				delegate.imageDragDestinationView(self, didAcceptURL: url)
 				return true
 			}
 		}

@@ -14,23 +14,23 @@ import X
 	import QuartzCore
 #endif
 
-public class RedactionsController {
+open class RedactionsController {
 
 	// MARK: - Properties
 
-	public var redactions = [Redaction]()
+	open var redactions = [Redaction]()
 
-	public var image: Image? {
+	open var image: Image? {
 		didSet {
 			if let image = image {
-				ciImage = CIImage(CGImage: image.CGImage)
+				ciImage = CIImage(cgImage: image.cgImage!)
 			} else {
 				ciImage = nil
 			}
 		}
 	}
 
-	private var ciImage: CIImage? {
+	fileprivate var ciImage: CIImage? {
 		didSet {
 			updateImages()
 		}
@@ -39,7 +39,7 @@ public class RedactionsController {
 
 	// MARK: - Rendering
 
-	public func process() -> CIImage? {
+	open func process() -> CIImage? {
 		if let ciImage = ciImage {
 			var outputImage = ciImage
 
@@ -50,7 +50,7 @@ public class RedactionsController {
 				outputImage = chain.outputImage!
 			}
 			
-			return outputImage.imageByCroppingToRect(ciImage.extent())
+			return outputImage.cropping(to: ciImage.extent)
 		}
 		return nil
 	}
@@ -58,13 +58,13 @@ public class RedactionsController {
 
 	// MARK: - Private
 
-	private var pixelatedImage: CIImage?
-	private var blurredImage: CIImage?
+	fileprivate var pixelatedImage: CIImage?
+	fileprivate var blurredImage: CIImage?
 
-	private func updateImages() {
+	fileprivate func updateImages() {
 		if let ciImage = ciImage {
-			pixelatedImage = Redaction.preprocess(ciImage, type: .Pixelate)
-			blurredImage = Redaction.preprocess(ciImage, type: .Blur)
+			pixelatedImage = Redaction.preprocess(ciImage, type: .pixelate)
+			blurredImage = Redaction.preprocess(ciImage, type: .blur)
 		} else {
 			pixelatedImage = nil
 			blurredImage = nil
@@ -72,11 +72,11 @@ public class RedactionsController {
 
 	}
 
-	private func preprocess(image: CIImage, type: RedactionType) -> CIImage {
+	fileprivate func preprocess(_ image: CIImage, type: RedactionType) -> CIImage {
 		switch type {
-		case .Pixelate:
+		case .pixelate:
 			return pixelatedImage!
-		case .Blur:
+		case .blur:
 			return blurredImage!
 		default:
 			return Redaction.preprocess(image, type: type)

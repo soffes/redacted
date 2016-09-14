@@ -19,24 +19,24 @@ import QuartzCore
 	public typealias GestureRecognizerState = NSGestureRecognizerState
 #endif
 
-public class RedactedView: View {
+open class RedactedView: View {
 
 	// MARK: - Constants
 
-	public class var modeDidChangeNotificationName: String {
+	open class var modeDidChangeNotificationName: String {
 		return "RedactedView.modeDidChangeNotificationName"
 	}
 
-	public class var selectionDidChangeNotificationName: String {
+	open class var selectionDidChangeNotificationName: String {
 		return "RedactedView.selectionDidChangeNotificationName"
 	}
 
 
 	// MARK: - Properties
 
-	private let redactedLayer = RedactedLayer()
+	fileprivate let redactedLayer = RedactedLayer()
 
-	public var originalImage: Image? {
+	open var originalImage: Image? {
 		get {
 			return redactedLayer.originalImage
 		}
@@ -46,7 +46,7 @@ public class RedactedView: View {
 		}
 	}
 
-	public var mode: RedactionType {
+	open var mode: RedactionType {
 		get {
 			return redactedLayer.mode
 		}
@@ -56,7 +56,7 @@ public class RedactedView: View {
 		}
 	}
 
-	public override var undoManager: NSUndoManager? {
+	open override var undoManager: UndoManager? {
 		get {
 			return redactedLayer.undoManager
 		}
@@ -66,11 +66,11 @@ public class RedactedView: View {
 		}
 	}
 
-	public var redactions: [Redaction] {
+	open var redactions: [Redaction] {
 		return redactedLayer.redactions
 	}
 
-	public var selectionCount: UInt {
+	open var selectionCount: UInt {
 		return UInt(redactedLayer.redactions.count)
 	}
 
@@ -83,7 +83,7 @@ public class RedactedView: View {
 	}
 
 	#if os(iOS)
-		public required init(coder aDecoder: NSCoder) {
+		public required init?(coder aDecoder: NSCoder) {
 			super.init(coder: aDecoder)
 			initialize()
 		}
@@ -97,12 +97,12 @@ public class RedactedView: View {
 
 	// MARK: - View
 
-	public override func layoutSubviews() {
+	open override func layoutSubviews() {
 		super.layoutSubviews()
 		layoutLayers()
 	}
 
-	public override func didMoveToWindow() {
+	open override func didMoveToWindow() {
 		super.didMoveToWindow()
 		updateLayerScale()
 	}
@@ -110,53 +110,53 @@ public class RedactedView: View {
 
 	// MARK: - Manipulation
 
-	public func deleteRedaction() {
+	open func deleteRedaction() {
 		redactedLayer.delete()
 	}
 
-	public func tap(#point: CGPoint, exclusive: Bool = true) {
+	open func tap(point: CGPoint, exclusive: Bool = true) {
 		redactedLayer.tap(point: point, exclusive: exclusive)
 	}
 
-	public func drag(#point: CGPoint, state: GestureRecognizerState) {
+	open func drag(point: CGPoint, state: GestureRecognizerState) {
 		redactedLayer.drag(point: point, state: state)
 	}
 
 
 	// MARK: - Selection
 
-	public func selectAllRedactions() {
+	open func selectAllRedactions() {
 		redactedLayer.selectAll()
 	}
 
 
 	// MARK: - Rendering
 
-	public func renderedImage() -> Image? {
+	open func renderedImage() -> Image? {
 		return redactedLayer.redactionsController.process()?.renderedImage
 	}
 
 
 	// MARK: - Private
 
-	private func initialize() {
+	fileprivate func initialize() {
 		wantsLayer = true
 		let layer: CALayer? = self.layer
-		layer?.backgroundColor = Color(red: 0.863, green: 0.863, blue: 0.863, alpha: 1).CGColor
+		layer?.backgroundColor = Color(red: 0.863, green: 0.863, blue: 0.863, alpha: 1).cgColor
 		layer?.addSublayer(redactedLayer)
 		layoutLayers()
 	}
 
-	private func layoutLayers() {
+	fileprivate func layoutLayers() {
 		let layer: CALayer? = self.layer
 
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
-		redactedLayer.frame = layer?.bounds ?? CGRectZero
+		redactedLayer.frame = layer?.bounds ?? CGRect.zero
 		CATransaction.commit()
 	}
 
-	private func updateLayerScale() {
+	fileprivate func updateLayerScale() {
 		let screen: Screen? = window?.screen
 		let layer: CALayer? = self.layer
 		let scale = screen?.scale ?? 1.0

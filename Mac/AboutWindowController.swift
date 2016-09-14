@@ -12,11 +12,11 @@ class AboutWindowController: NSWindowController {
 
 	// MARK: - NSResponder
 
-	override func keyDown(theEvent: NSEvent) {
-		super.keyDown(theEvent)
+	override func keyDown(with event: NSEvent) {
+		super.keyDown(with: event)
 
 		// Support ⌘W
-		if (theEvent.characters ?? "") == "w" && (theEvent.modifierFlags & .CommandKeyMask) == .CommandKeyMask {
+		if (event.characters ?? "") == "w" && event.modifierFlags.contains(.command) {
 			close()
 		}
 	}
@@ -24,7 +24,7 @@ class AboutWindowController: NSWindowController {
 
 	// MARK: - NSWindowController
 
-	override func showWindow(sender: AnyObject?) {
+	override func showWindow(_ sender: Any?) {
 		window?.center()
 		super.showWindow(sender)
 	}

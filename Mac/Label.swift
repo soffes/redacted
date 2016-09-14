@@ -12,7 +12,9 @@ class LabelCell: NSTextFieldCell {
 
 	// MARK: - Properties
 
-	var contentInsets: NSEdgeInsets = NSEdgeInsetsZero {
+	var contentInsets: EdgeInsets = .zero
+
+		{
 		didSet {
 			controlView?.needsLayout = true
 		}
@@ -21,8 +23,8 @@ class LabelCell: NSTextFieldCell {
 
 	// MARK: - NSCell
 
-	override func drawingRectForBounds(theRect: NSRect) -> NSRect {
-		var rect = super.drawingRectForBounds(theRect)
+	override func drawingRect(forBounds theRect: NSRect) -> NSRect {
+		var rect = super.drawingRect(forBounds: theRect)
 		rect.origin.x += contentInsets.left
 		rect.origin.y += contentInsets.top
 		return rect
@@ -34,7 +36,7 @@ class Label: NSTextField {
 
 	// MARK: - Properties
 
-	var contentInsets: NSEdgeInsets {
+	var contentInsets: EdgeInsets {
 		set {
 			labelCell?.contentInsets = newValue
 		}
@@ -78,18 +80,18 @@ class Label: NSTextField {
 	// MARK: - Private
 
 	var labelCell: LabelCell? {
-		return cell() as? LabelCell
+		return cell as? LabelCell
 	}
 
 	private func initialize() {
 		if let cell = labelCell {
-			cell.editable = false
+			cell.isEditable = false
 			cell.drawsBackground = false
 			cell.usesSingleLineMode = true
-			cell.lineBreakMode = .ByTruncatingTail
-			cell.scrollable = false
-			cell.enabled = false
-			cell.bezeled = false
+			cell.lineBreakMode = .byTruncatingTail
+			cell.isScrollable = false
+			cell.isEnabled = false
+			cell.isBezeled = false
 		}
 	}
 }

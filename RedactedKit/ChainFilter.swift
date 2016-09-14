@@ -21,7 +21,7 @@ class ChainFilter: CIFilter {
 		if var image = inputImage, let filters = inputFilters {
 			for filter in filters {
 				filter.setValue(image, forKey: "inputBackgroundImage")
-				image = filter.valueForKey("outputImage") as! CIImage
+				image = filter.value(forKey: "outputImage") as! CIImage
 			}
 			return image
 		}

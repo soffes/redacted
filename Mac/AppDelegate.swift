@@ -11,14 +11,14 @@ import IOKit
 import RedactedKit
 import Mixpanel
 
-let mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
+var mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 
 @NSApplicationMain class AppDelegate: NSObject {
 
 	// MARK: - Initializers
 
 	deinit {
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 
 
@@ -38,43 +38,43 @@ let mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 
 	var uniqueIdentifier: String {
 		let key = "Identifier"
-		if let identifier = NSUserDefaults.standardUserDefaults().stringForKey(key) {
+		if let identifier = UserDefaults.standard.string(forKey: key) {
 			return identifier
 		}
 
-		let identifier = NSUUID().UUIDString
-		NSUserDefaults.standardUserDefaults().setObject(identifier, forKey: key)
+		let identifier = NSUUID().uuidString
+		UserDefaults.standard.set(identifier, forKey: key)
 		return identifier
 	}
 
 
 	// MARK: - Actions
 
-	@IBAction func showHelp(sender: AnyObject?) {
-		NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://useredacted.com/help")!)
+	@IBAction func showHelp(sender: Any?) {
+		NSWorkspace.shared().open(URL(string: "http://useredacted.com/help")!)
 	}
 
 
 	// MARK: - Private
 
-	private var windowController: EditorWindowController? {
-		return NSApplication.sharedApplication().windows.first?.windowController() as? EditorWindowController
+	fileprivate var windowController: EditorWindowController? {
+		return NSApplication.shared().windows.first?.windowController as? EditorWindowController
 	}
 
-	@objc private func modeDidChange(notification: NSNotification?) {
+	@objc fileprivate func modeDidChange(notification: NSNotification?) {
 		if let view = notification?.object as? RedactedView {
-			updateMode(view)
+			updateMode(view: view)
 		}
 	}
 
-	private func updateMode(view: RedactedView) {
+	fileprivate func updateMode(view: RedactedView) {
 		let mode = view.mode
-		pixelateMenuItem.state = mode == .Pixelate ? NSOnState : NSOffState
-		blurMenuItem.state = mode == .Blur ? NSOnState : NSOffState
-		blackBarMenuItem.state = mode == .BlackBar ? NSOnState : NSOffState
+		pixelateMenuItem.state = mode == .pixelate ? NSOnState : NSOffState
+		blurMenuItem.state = mode == .blur ? NSOnState : NSOffState
+		blackBarMenuItem.state = mode == .blackBar ? NSOnState : NSOffState
 	}
 
-	@objc private func selectionDidChange(notification: NSNotification?) {
+	@objc fileprivate func selectionDidChange(notification: NSNotification?) {
 		if let view = notification?.object as? RedactedView {
 			deleteMenuItem.title = view.selectionCount == 1 ? string("DELETE_REDACTION") : string("DELETE_REDACTIONS")
 		}
@@ -83,13 +83,13 @@ let mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 
 
 extension AppDelegate: NSApplicationDelegate {
-	func applicationDidFinishLaunching(notification: NSNotification) {
+	func applicationDidFinishLaunching(_ notification: Notification) {
 		#if DEBUG
 			mixpanel.enabled = false
 		#endif
 
-		mixpanel.identify(uniqueIdentifier)
-		mixpanel.track("Launch")
+		mixpanel.identify(identifier: uniqueIdentifier)
+		mixpanel.track(event: "Launch")
 
 		saveMenuItem.title = string("SAVE")
 		exportMenuItem.title = string("EXPORT")
@@ -103,17 +103,18 @@ extension AppDelegate: NSApplicationDelegate {
 		blackBarMenuItem.title = string("BLACK_BAR")
 		clearMenuItem.title = string("CLEAR_IMAGE")
 
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "selectionDidChange:", name: RedactedView.selectionDidChangeNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "modeDidChange:", name: RedactedView.modeDidChangeNotificationName, object: nil)
+		let center = NotificationCenter.default
+		center.addObserver(self, selector: #selector(selectionDidChange), name: NSNotification.Name(rawValue: RedactedView.selectionDidChangeNotificationName), object: nil)
+		center.addObserver(self, selector: #selector(modeDidChange), name: NSNotification.Name(rawValue: RedactedView.modeDidChangeNotificationName), object: nil)
 
 		if let view = windowController?.editorViewController.redactedView {
-			updateMode(view)
+			updateMode(view: view)
 		}
 	}
 
-	func application(sender: NSApplication, openFile filename: String) -> Bool {
+	func application(_ sender: NSApplication, openFile filename: String) -> Bool {
 		if let windowController = windowController {
-			return windowController.openURL(NSURL(fileURLWithPath: filename), source: "App icon")
+			return windowController.open(url: URL(fileURLWithPath: filename), source: "App icon")
 		}
 		return false
 	}

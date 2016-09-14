@@ -13,42 +13,42 @@ import QuartzCore
 	import CoreImage
 #endif
 
-public class CoreImageLayer: CALayer {
+open class CoreImageLayer: CALayer {
 
 	// MARK: - Properties
 
 	var image: CIImage? {
 		didSet {
-			setNeedsDisplayInRect(bounds)
+			setNeedsDisplayIn(bounds)
 		}
 	}
 
 
 	// MARK: - CALayer
 
-	public override func drawInContext(ctx: CGContext!) {
+	open override func draw(in context: CGContext) {
 		if let image = image {
 			let options = [
 				kCIContextUseSoftwareRenderer: false,
 				kCIContextWorkingColorSpace: NSNull()
-			]
+			] as [String : Any]
 
 			#if os(iOS)
 				let ciContext = CIContext(options: options)
 			#else
-				let ciContext = CIContext(CGContext: ctx, options: options)
+				let ciContext = CIContext(cgContext: context, options: options)
 			#endif
 
-			ciContext.drawImage(image, inRect: imageRectForBounds(bounds), fromRect: image.extent())
+			ciContext.draw(image, in: imageRectForBounds(bounds), from: image.extent)
 		}
 	}
 
 
 	// MARK: - Private
 
-	func imageRectForBounds(bounds: CGRect) -> CGRect {
+	func imageRectForBounds(_ bounds: CGRect) -> CGRect {
 		if let image = image {
-			return bounds.aspectFit(image.extent().size)
+			return bounds.aspectFit(image.extent.size)
 		}
 		return bounds
 	}
