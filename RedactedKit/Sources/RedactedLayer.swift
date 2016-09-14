@@ -15,8 +15,8 @@ final class RedactedLayer: CoreImageLayer {
 	// MARK: - Types
 
 	enum DraggingMode {
-		case creating(String)
-		case moving(String, CGRect, CGPoint)
+		case creating(uuid: String, startPoint: CGPoint)
+		case moving(uuid: String, rect: CGRect, startPoint: CGPoint)
 	}
 
 
@@ -65,7 +65,7 @@ final class RedactedLayer: CoreImageLayer {
 
 	var selectedRedactions: [Redaction] {
 		var selected = [Redaction]()
-		let allUUIDs = redactions.map({ $0.UUID })
+		let allUUIDs = redactions.map({ $0.uuid })
 		for UUID in selectedUUIDs {
 			if let index = allUUIDs.index(of: UUID) {
 				selected.append(redactions[index])
@@ -136,14 +136,14 @@ final class RedactedLayer: CoreImageLayer {
 
 			// Start moving
 			if let redaction = hitTestRedaction(point) {
-				draggingMode = .moving(redaction.UUID, redaction.rect, point)
+				draggingMode = .moving(uuid: redaction.uuid, rect: redaction.rect, startPoint: point)
 				select(redaction)
 			}
 
 			// Start creating
 			else {
 				let redaction = Redaction(type: mode, rect: CGRect(origin: point, size: CGSize.zero))
-				draggingMode = .creating(redaction.UUID)
+				draggingMode = .creating(uuid: redaction.uuid, startPoint: redaction.rect.origin)
 				redactions.append(redaction)
 				select(redaction)
 			}
@@ -152,16 +152,16 @@ final class RedactedLayer: CoreImageLayer {
 		// Continue
 		if let draggingMode = draggingMode {
 			switch draggingMode {
-			case let .creating(UUID):
+			case let .creating(uuid, startPoint):
 				// Find the currently dragging redaction
-				if let index = redactions.map({ $0.UUID }).index(of: UUID) {
+				if let index = redactions.map({ $0.uuid }).index(of: uuid) {
 					var redaction = redactions[index]
-					let startPoint = redaction.rect.origin
+					
 					redaction.rect = CGRect(
-						x: startPoint.x,
-						y: startPoint.y,
-						width: point.x - startPoint.x,
-						height: point.y - startPoint.y
+						x: min(point.x, startPoint.x),
+						y: min(point.y, startPoint.y),
+						width: max(point.x, startPoint.x) - min(point.x, startPoint.x),
+						height: max(point.y, startPoint.y) - min(point.y, startPoint.y)
 					)
 
 					redactions[index] = redaction
@@ -175,7 +175,7 @@ final class RedactedLayer: CoreImageLayer {
 
 			case let .moving(UUID, rect, startPoint):
 				// Find the currently dragging redaction
-				if let index = redactions.map({ $0.UUID }).index(of: UUID) {
+				if let index = redactions.map({ $0.uuid }).index(of: UUID) {
 					var redaction = redactions[index]
 					var rect = rect
 					rect.origin.x += point.x - startPoint.x
@@ -252,8 +252,8 @@ final class RedactedLayer: CoreImageLayer {
 	}
 
 	private func removeRedactions(_ redactions: [Redaction]) {
-		for UUID in redactions.map({ $0.UUID }) {
-			if let index = self.redactions.map({ $0.UUID }).index(of: UUID) {
+		for UUID in redactions.map({ $0.uuid }) {
+			if let index = self.redactions.map({ $0.uuid }).index(of: UUID) {
 				let redaction = self.redactions[index]
 				deselect(redaction)
 				self.redactions.remove(at: index)
@@ -268,7 +268,7 @@ final class RedactedLayer: CoreImageLayer {
 	}
 
 	private func isSelected(_ redaction: Redaction) -> Bool {
-		return selectedUUIDs.contains(redaction.UUID)
+		return selectedUUIDs.contains(redaction.uuid)
 	}
 
 	private func select(_ redaction: Redaction) {
@@ -276,13 +276,13 @@ final class RedactedLayer: CoreImageLayer {
 			return
 		}
 
-		selectedUUIDs.insert(redaction.UUID)
+		selectedUUIDs.insert(redaction.uuid)
 
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
 
 		let layer = BoundingBoxLayer()
-		boundingBoxes[redaction.UUID] = layer
+		boundingBoxes[redaction.uuid] = layer
 		addSublayer(layer)
 
 		updateSelections()
@@ -294,11 +294,11 @@ final class RedactedLayer: CoreImageLayer {
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
 
-		if let layer = boundingBoxes[redaction.UUID] {
+		if let layer = boundingBoxes[redaction.uuid] {
 			layer.removeFromSuperlayer()
 		}
-		boundingBoxes.removeValue(forKey: redaction.UUID)
-		selectedUUIDs.remove(redaction.UUID)
+		boundingBoxes.removeValue(forKey: redaction.uuid)
+		selectedUUIDs.remove(redaction.uuid)
 
 		CATransaction.commit()
 	}
@@ -314,7 +314,7 @@ final class RedactedLayer: CoreImageLayer {
 		CATransaction.setDisableActions(true)
 
 		for redaction in selectedRedactions {
-			if let layer = boundingBoxes[redaction.UUID] {
+			if let layer = boundingBoxes[redaction.uuid] {
 				layer.frame = redaction.rectForBounds(imageRect).flippedInRect(bounds).insetBy(dx: -2, dy: -2)
 			}
 		}

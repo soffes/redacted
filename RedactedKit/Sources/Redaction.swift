@@ -39,18 +39,18 @@ public enum RedactionType: Int, CustomStringConvertible {
 
 public struct Redaction: Hashable, Equatable {
 
-	public let UUID: String
+	public let uuid: String
 	public let type: RedactionType
 	public var rect: CGRect
 
-	public init(UUID: String = Foundation.UUID().uuidString, type: RedactionType, rect: CGRect) {
-		self.UUID = UUID
+	public init(uuid: String = UUID().uuidString, type: RedactionType, rect: CGRect) {
+		self.uuid = uuid
 		self.type = type
 		self.rect = rect
 	}
 
 	public var hashValue: Int {
-		return UUID.hashValue
+		return uuid.hashValue
 	}
 
 	public func rectForBounds(_ bounds: CGRect) -> CGRect {
@@ -113,15 +113,15 @@ public struct Redaction: Hashable, Equatable {
 extension Redaction {
 	var dictionaryRepresentation: [String: Any] {
 		return [
-			"UUID": UUID as Any,
-			"type": type.rawValue as Any,
+			"uuid": uuid,
+			"type": type.rawValue,
 			"rect": rect.stringRepresentation
 		]
 	}
 
 	init?(dictionary: [String: Any]) {
-		if let UUID = dictionary["UUID"] as? String, let typeString = dictionary["type"] as? Int, let type = RedactionType(rawValue: typeString), let rectString = dictionary["rect"] as? String {
-			self.UUID = UUID
+		if let uuid = dictionary["uuid"] as? String, let typeString = dictionary["type"] as? Int, let type = RedactionType(rawValue: typeString), let rectString = dictionary["rect"] as? String {
+			self.uuid = uuid
 			self.type = type
 			self.rect = CGRect(dictionaryRepresentation: rectString as! CFDictionary)!
 			return
