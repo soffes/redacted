@@ -81,6 +81,7 @@ final class EditorWindowController: NSWindowController {
 	override func windowDidLoad() {
 		super.windowDidLoad()
 
+		window?.titleVisibility = .hidden
 		window?.delegate = self
 
 		editorViewController = contentViewController as? EditorViewController
