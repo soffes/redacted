@@ -116,9 +116,11 @@ final class EditorWindowController: NSWindowController {
 
 		clearItem.label = string("CLEAR")
 		clearItem.paletteLabel = string("CLEAR_IMAGE")
+		clearItem.toolTip = clearItem.paletteLabel
 
 		shareItem.label = string("SHARE")
 		shareItem.paletteLabel = shareItem.label
+		shareItem.toolTip = shareItem.paletteLabel
 
 		// For some reason, this only works in `awakeFromNib`. Oh AppKit.
 		validateToolbar()
