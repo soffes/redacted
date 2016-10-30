@@ -1,3 +1,3 @@
-github "soffes/GradientView" "5ca4e9ab8d413b62ddd11c5f96666b8fa4b4ce4b"
-github "soffes/Mixpanel" "ae518e4a90efcb9c41ab09f8dca180a543276830"
-github "soffes/X" "935c556a5c4e5a65c5651487de31ac9dcc5a60c1"
+github "soffes/GradientView" "v2.2.0"
+github "soffes/Mixpanel" "v0.2.0"
+github "soffes/X" "v0.4.0"
