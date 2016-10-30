@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A319" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -266,12 +267,12 @@ CA
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="234" height="200"/>
-                        <toolbar key="toolbar" implicitIdentifier="F4E5C2DE-5F69-4075-ACF7-6A1D214536CD" displayMode="iconAndLabel" sizeMode="regular" id="tJy-B4-k21">
+                        <toolbar key="toolbar" implicitIdentifier="F4E5C2DE-5F69-4075-ACF7-6A1D214536CD" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="tJy-B4-k21">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="B5DBD10B-8CAB-4E4A-8767-0DE5BA0302DA" explicitItemIdentifier="mode" label="Mode" paletteLabel="Mode" id="m3V-Mi-ixQ">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="102" height="25"/>
-                                    <size key="maxSize" width="102" height="25"/>
+                                    <size key="maxSize" width="102" height="28"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="FtH-vU-pEZ">
                                         <rect key="frame" x="0.0" y="14" width="102" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -301,7 +302,7 @@ CA
                                     <button key="view" verticalHuggingPriority="750" tag="1" id="UbA-5R-CyW">
                                         <rect key="frame" x="15" y="14" width="40" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Mve-cU-aEK">
+                                        <buttonCell key="cell" type="roundTextured" alternateTitle="Clear Image" bezelStyle="texturedRounded" image="NSStopProgressFreestandingTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Mve-cU-aEK">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -317,7 +318,7 @@ CA
                                     <button key="view" verticalHuggingPriority="750" tag="2" id="3Za-NF-8vf">
                                         <rect key="frame" x="0.0" y="14" width="40" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dG0-wy-jv4">
+                                        <buttonCell key="cell" type="roundTextured" alternateTitle="Share" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dG0-wy-jv4">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -356,7 +357,7 @@ CA
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="EditorViewController" customModule="Redacted" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl" customClass="ImageDragDestinationView" customModule="Redacted" customModuleProvider="target">
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" customClass="ImageDragDestinationView" customModule="Redacted" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -396,8 +397,8 @@ CA
         <scene sceneID="8cY-ed-rhr">
             <objects>
                 <viewController title="About" showSeguePresentationStyle="single" id="4hD-bt-0Aa" customClass="AboutViewController" customModule="Redacted" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="cNm-8f-sdn">
-                        <rect key="frame" x="0.0" y="0.0" width="244" height="376"/>
+                    <view key="view" wantsLayer="YES" id="cNm-8f-sdn">
+                        <rect key="frame" x="0.0" y="0.0" width="244" height="379"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RCM-ja-Hod">
