@@ -258,10 +258,10 @@ CA
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="B5DBD10B-8CAB-4E4A-8767-0DE5BA0302DA" explicitItemIdentifier="mode" label="Mode" paletteLabel="Mode" id="m3V-Mi-ixQ">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="102" height="25"/>
-                                    <size key="maxSize" width="102" height="28"/>
+                                    <size key="minSize" width="101" height="28"/>
+                                    <size key="maxSize" width="105" height="28"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="FtH-vU-pEZ">
-                                        <rect key="frame" x="0.0" y="14" width="102" height="28"/>
+                                        <rect key="frame" x="0.0" y="14" width="104" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="rWV-CV-kvs">
                                             <font key="font" metaFont="system"/>
@@ -285,7 +285,7 @@ CA
                                 <toolbarItem implicitItemIdentifier="B6EDDFE6-8E03-4946-8637-D378BD8B9922" explicitItemIdentifier="clear" label="Clear" paletteLabel="Clear Image" tag="1" image="NSStopProgressFreestandingTemplate" id="ZBv-j4-Tiu">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="40" height="28"/>
-                                    <size key="maxSize" width="40" height="39"/>
+                                    <size key="maxSize" width="40" height="28"/>
                                     <button key="view" verticalHuggingPriority="750" tag="1" id="UbA-5R-CyW">
                                         <rect key="frame" x="15" y="14" width="40" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -301,7 +301,7 @@ CA
                                 <toolbarItem implicitItemIdentifier="3A149F7E-B0BE-4E92-9E87-D977A3F74AC6" explicitItemIdentifier="share" label="Share" paletteLabel="Share" tag="2" image="NSShareTemplate" id="JVS-8C-fuQ">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="40" height="28"/>
-                                    <size key="maxSize" width="40" height="39"/>
+                                    <size key="maxSize" width="40" height="28"/>
                                     <button key="view" verticalHuggingPriority="750" tag="2" id="3Za-NF-8vf">
                                         <rect key="frame" x="0.0" y="14" width="40" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -315,9 +315,6 @@ CA
                                     </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="42d-1S-9YM"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="0eU-eG-wzo"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="kPd-uO-p4I"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="3qR-we-c4r"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="m3V-Mi-ixQ"/>
