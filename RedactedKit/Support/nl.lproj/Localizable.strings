@@ -1,0 +1,39 @@
+/*
+  Localizable.strings
+  Redacted
+
+  Created by Sam Soffes on 4/14/15.
+  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
+*/
+
+/* Modes */
+"MODE" = "Modus";
+"PIXELATE" = "Verpixeling";
+"BLUR" = "Vervaag";
+"BLACK_BAR" = "Zwarte balk";
+
+/* Actions */
+"SHARE" = "Deel";
+"CLEAR" = "Wis";
+"CLEAR_IMAGE" = "Wis afbeelding";
+"SAVE" = "Opslaan";
+"EXPORT" = "Exporteer…";
+
+/* Edit menu */
+"COPY_IMAGE" = "Kopieer afbeelding";
+"PASTE_IMAGE" = "Afbeelding plakken";
+"SELECT_ALL_REDACTIONS" = "Selecteer alle effecten";
+
+/* Undo actions */
+"INSERT_REDACTION" = "Effect toevoegen";
+"INSERT_REDACTIONS" = "Effecten toevoegen";
+"DELETE_REDACTION" = "Verwijder effect";
+"DELETE_REDACTIONS" = "Verwijder effecten";
+
+/* About */
+"VERSION_FORMAT" = "Versie %@";
+"CREDITS" = "Ontwikkeld & ontworpen door Nothing Magical in California.";
+
+/* Tutorial */
+"DRAG_TO_GET_STARTED" = "Sleep hier uw afbeelding in";
+"CLICK_AND_DRAG" = "Klik en sleep om een effect toe te voegen";

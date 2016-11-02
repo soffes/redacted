@@ -1,0 +1,100 @@
+/*
+ Main.strings
+ Redacted
+
+ Created by Sam Soffes on 4/14/15.
+ Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
+ */
+
+/* About Redacted */
+"5kV-Vb-QxS.title" = "Over Redacted";
+
+/* Hide Redacted */
+"Olw-nP-bQN.title" = "Verberg Redacted";
+
+/* Quit Redacted */
+"4sb-4s-VLi.title" = "Stop Redacted";
+
+/* Redacted Help */
+"FKE-Sm-Kum.title" = "Redacted Help";
+
+
+/* -- Default menu items -- */
+
+/* Customize Toolbar… */
+"1UK-8n-QPP.title" = "Pas knoppenbalk aan…";
+
+/* Edit */
+"5QF-Oa-p0T.title" = "Wijzig";
+
+/* Redo */
+"6dh-zS-Vam.title" = "Opnieuw";
+
+/* Help */
+"F2S-fz-NVQ.title" = "Help";
+
+/* View */
+"H8h-7b-M4v.title" = "Weergave";
+
+/* View */
+"HyV-fh-RgO.title" = "Weergave";
+
+/* Open… */
+"IAo-SY-fd9.title" = "Open…";
+
+/* Show All */
+"Kd2-mp-pUS.title" = "Toon alles";
+
+/* Bring All to Front */
+"LE2-aR-0XJ.title" = "Alles op voorgrond";
+
+/* Services */
+"NMo-om-nkz.title" = "Voorzieningen";
+
+/* Minimize */
+"OY7-WF-poV.title" = "Minimaliseer";
+
+/* Zoom */
+"R4o-n2-Eq4.title" = "Vergroot/verklein";
+
+/* Window */
+"Td7-aD-5lo.title" = "Venster";
+
+/* Hide Others */
+"Vdr-fp-XzO.title" = "Verberg andere";
+
+/* Edit */
+"W48-6f-4Dl.title" = "Wijzig";
+
+/* Window */
+"aUF-d1-5bR.title" = "Venster";
+
+/* File */
+"bib-Uj-vzu.title" = "Bestand";
+
+/* File */
+"dMs-cI-mzQ.title" = "Bestand";
+
+/* Undo */
+"dRJ-4n-Yzg.title" = "Herstel";
+
+/* Services */
+"hz9-B4-Xy5.title" = "Voorzieningen";
+
+/* Enter Full Screen */
+"lOm-0W-U7v.title" = "Schakel schermvullende weergave in";
+
+/* Open Recent */
+"oas-Oc-fiZ.title" = "Open recente bestanden";
+
+/* Show Toolbar */
+"snW-S8-Cw5.title" = "Toon knoppenbalk";
+
+/* Open Recent */
+"tXI-mr-wws.title" = "Open recente bestanden";
+
+/* Clear Menu */
+"vNY-rz-j42.title" = "Wis menu";
+
+/* Help */
+"wpr-3q-Mcd.title" = "Help";
