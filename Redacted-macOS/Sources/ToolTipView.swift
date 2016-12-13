@@ -75,9 +75,11 @@ final class ToolTipView: NSView {
 		layer?.addSublayer(shadowLayer)
 		addSubview(textLabel)
 
-		// TODO: Update
-//		let views = [ "textLabel": textLabel ]
-//		addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-8-[textLabel]-8-|", options: nil, metrics: nil, views: views))
-//		addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-8-[textLabel]-8-|", options: nil, metrics: nil, views: views))
+		NSLayoutConstraint.activate([
+			textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+			textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+			textLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+			textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
+		])
 	}
 }
