@@ -123,7 +123,7 @@ extension Redaction {
 		if let uuid = dictionary["uuid"] as? String, let typeString = dictionary["type"] as? Int, let type = RedactionType(rawValue: typeString), let rectString = dictionary["rect"] as? String {
 			self.uuid = uuid
 			self.type = type
-			self.rect = CGRect(string: rectString)
+			rect = CGRect(string: rectString)
 			return
 		}
 		return nil

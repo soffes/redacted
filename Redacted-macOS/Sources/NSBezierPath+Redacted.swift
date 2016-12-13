@@ -14,8 +14,8 @@ extension NSBezierPath {
 		let points = NSPointArray.allocate(capacity: 3)
 		var closed = true
 
-		for index in 0..<self.elementCount {
-			let pathType = self.element(at: index, associatedPoints: points)
+		for index in 0..<elementCount {
+			let pathType = element(at: index, associatedPoints: points)
 			switch pathType {
 			case .moveToBezierPathElement:
 				path.move(to: points[0])

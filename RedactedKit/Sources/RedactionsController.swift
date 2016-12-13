@@ -46,7 +46,7 @@ public final class RedactionsController {
 			if redactions.count > 0 {
 				let chain = ChainFilter()
 				chain.inputImage = ciImage
-				chain.inputFilters = redactions.map({ $0.filter(ciImage, preprocessor: self.preprocess) })
+				chain.inputFilters = redactions.map({ $0.filter(ciImage, preprocessor: preprocess) })
 				outputImage = chain.outputImage!
 			}
 			

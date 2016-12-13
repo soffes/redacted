@@ -205,8 +205,8 @@
 		210EF32E1AC0A35C00ED8E97 = {
 			isa = PBXGroup;
 			children = (
-				21CC0D131D88FFAA00B3F5DF /* Redacted-iOS */,
 				21CC0D1C1D88FFAA00B3F5DF /* Redacted-macOS */,
+				21CC0D131D88FFAA00B3F5DF /* Redacted-iOS */,
 				21CC0D331D88FFAA00B3F5DF /* RedactedKit */,
 				21CC0D711D88FFB000B3F5DF /* Frameworks */,
 				210EF3381AC0A35C00ED8E97 /* Products */,
@@ -796,7 +796,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
@@ -842,7 +842,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -866,6 +866,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-mac";
 				PRODUCT_NAME = Redacted;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -886,6 +887,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-mac";
 				PRODUCT_NAME = Redacted;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -918,6 +920,7 @@
 				PRODUCT_NAME = RedactedKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -948,6 +951,7 @@
 				PRODUCT_NAME = RedactedKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -978,6 +982,7 @@
 				PRODUCT_NAME = RedactedKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1005,6 +1010,7 @@
 				PRODUCT_NAME = RedactedKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1033,6 +1039,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-ios";
 				PRODUCT_NAME = Redacted;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1054,6 +1061,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-ios";
 				PRODUCT_NAME = Redacted;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

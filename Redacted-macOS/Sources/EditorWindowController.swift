@@ -156,10 +156,10 @@ final class EditorWindowController: NSWindowController {
 		if let window = window, let image = editorViewController.renderedImage {
 			let savePanel = NSSavePanel()
 			savePanel.allowedFileTypes = ["png"]
-			savePanel.beginSheetModal(for: window) {
+			savePanel.beginSheetModal(for: window) { [weak self] in
 				if $0 == NSFileHandlingPanelOKButton {
 					if let url = savePanel.url {
-						self.save(image: image, toURL: url)
+						self?.save(image: image, toURL: url)
 					}
 				}
 			}
@@ -228,7 +228,7 @@ final class EditorWindowController: NSWindowController {
 		if let url = url, let image = NSImage(contentsOf: url) {
 			imageURL = url
 			NSDocumentController.shared().noteNewRecentDocumentURL(url)
-			self.editorViewController.image = image
+			editorViewController.image = image
 
 			mixpanel.track(event: "Import image", parameters: [
 				"source": source

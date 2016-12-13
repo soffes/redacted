@@ -134,15 +134,12 @@ public final class RedactedView: View {
 
 	private func initialize() {
 		wantsLayer = true
-		let layer: CALayer? = self.layer
 		layer?.backgroundColor = Color(red: 0.863, green: 0.863, blue: 0.863, alpha: 1).cgColor
 		layer?.addSublayer(redactedLayer)
 		layoutLayers()
 	}
 
 	private func layoutLayers() {
-		let layer: CALayer? = self.layer
-
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
 		redactedLayer.frame = layer?.bounds ?? CGRect.zero
@@ -151,7 +148,6 @@ public final class RedactedView: View {
 
 	private func updateLayerScale() {
 		let screen: Screen? = window?.screen
-		let layer: CALayer? = self.layer
 		let scale = screen?.scale ?? 1.0
 		layer?.contentsScale = scale
 		redactedLayer.contentsScale = scale

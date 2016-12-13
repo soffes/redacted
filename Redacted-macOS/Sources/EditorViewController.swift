@@ -110,20 +110,23 @@ final class EditorViewController: NSViewController {
 
 	private func setupTutorial() {
 		view.addSubview(toolTipView)
-		view.addConstraint(NSLayoutConstraint(item: toolTipView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
 
-		let constraint = NSLayoutConstraint(item: toolTipView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 64)
-		view.addConstraint(constraint)
-		toolTipBottomConstraint = constraint
+		let bottomConstraint = toolTipView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 64)
+		toolTipBottomConstraint = bottomConstraint
+
+		NSLayoutConstraint.activate([
+			toolTipView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			bottomConstraint
+		])
 	}
 
 	private func showTutorial() {
 		if let constraint = toolTipBottomConstraint {
 			constraint.constant = -16
-			NSAnimationContext.runAnimationGroup({ context in
+			NSAnimationContext.runAnimationGroup({ [weak self] context in
 				context.duration = 0.3
 				context.allowsImplicitAnimation = true
-				self.view.layoutSubtreeIfNeeded()
+				self?.view.layoutSubtreeIfNeeded()
 			}, completionHandler: nil)
 		}
 	}
@@ -131,15 +134,15 @@ final class EditorViewController: NSViewController {
 	private func hideTutorial() {
 		if let constraint = toolTipBottomConstraint {
 			constraint.constant = 64
-			NSAnimationContext.runAnimationGroup({ context in
+			NSAnimationContext.runAnimationGroup({ [weak self] context in
 				context.duration = 0.3
 				context.allowsImplicitAnimation = true
-				self.view.layoutSubtreeIfNeeded()
-				self.toolTipView.alphaValue = 0
-			}, completionHandler: {
+				self?.view.layoutSubtreeIfNeeded()
+				self?.toolTipView.alphaValue = 0
+			}, completionHandler: { [weak self] in
 				UserDefaults.standard.set(true, forKey: "CreatedRedaction")
-				self.toolTipBottomConstraint = nil
-				self.toolTipView.removeFromSuperview()
+				self?.toolTipBottomConstraint = nil
+				self?.toolTipView.removeFromSuperview()
 			})
 		}
 	}
