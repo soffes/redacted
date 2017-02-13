@@ -82,7 +82,7 @@ public struct Redaction: Hashable, Equatable {
 				"inputScale": edge * 0.01,
 				"inputCenter": CIVector(cgPoint: extent.center),
 				"inputImage": image
-			])!.outputImage!
+			])!.outputImage!.cropping(to: image.extent)
 
 		case .blur:
 			#if os(iOS)
@@ -99,12 +99,12 @@ public struct Redaction: Hashable, Equatable {
 			return CIFilter(name: "CIGaussianBlur", withInputParameters: [
 				"inputRadius": edge * 0.01,
 				"inputImage": clamp!.outputImage!
-			])!.outputImage!
+			])!.outputImage!.cropping(to: image.extent)
 
 		case .blackBar:
 			return CIFilter(name: "CIConstantColorGenerator", withInputParameters: [
 				"inputColor": CIColor(red: 0, green: 0, blue: 0, alpha: 1)
-			])!.outputImage!
+			])!.outputImage!.cropping(to: image.extent)
 		}
 	}
 }
