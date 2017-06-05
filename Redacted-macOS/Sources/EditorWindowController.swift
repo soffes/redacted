@@ -25,6 +25,7 @@ final class EditorWindowController: NSWindowController {
 	@IBOutlet var toolbar: NSToolbar!
 	@IBOutlet var modeItem: NSToolbarItem!
 	@IBOutlet var modeControl: NSSegmentedControl!
+	@IBOutlet var touchBarModeControl: NSSegmentedControl!
 	@IBOutlet var clearItem: NSToolbarItem!
 	@IBOutlet var shareItem: NSToolbarItem!
 
@@ -34,6 +35,7 @@ final class EditorWindowController: NSWindowController {
 			invalidateRestorableState()
 
 			modeControl.selectedSegment = modeIndex
+			touchBarModeControl.selectedSegment = modeIndex
 
 			if let mode = RedactionType(rawValue: modeIndex) {
 				editorViewController.redactedView.mode = mode
@@ -108,11 +110,8 @@ final class EditorWindowController: NSWindowController {
 		modeItem.paletteLabel = modeItem.label
 
 		modeControl.setToolTip(toolTip: string("PIXELATE"), forSegment: 0)
-		modeControl.setImage(image("pixelate"), forSegment: 0)
 		modeControl.setToolTip(toolTip: string("BLUR"), forSegment: 1)
-		modeControl.setImage(image("blur"), forSegment: 1)
 		modeControl.setToolTip(toolTip: string("BLACK_BAR"), forSegment: 2)
-		modeControl.setImage(image("black-bar"), forSegment: 2)
 
 		clearItem.label = string("CLEAR")
 		clearItem.paletteLabel = string("CLEAR_IMAGE")
@@ -197,8 +196,8 @@ final class EditorWindowController: NSWindowController {
 		editorViewController.redactedView.selectAllRedactions()
 	}
 
-	@IBAction func changeMode(_ sender: Any?) {
-		modeIndex = modeControl.selectedSegment
+	@IBAction func changeMode(_ sender: NSSegmentedControl) {
+		modeIndex = sender.selectedSegment
 	}
 
 	@IBAction func clearImage(_ sender: Any?) {
@@ -316,5 +315,19 @@ extension EditorWindowController: ImageDragDestinationViewDelegate {
 
 	func imageDragDestinationView(_ view: ImageDragDestinationView, didAcceptURL url: URL) {
 		open(url: url, source: "Drag URL")
+	}
+}
+
+@available(OSX 10.12.2, *)
+extension EditorWindowController: NSSharingServicePickerTouchBarItemDelegate {
+	func items(for pickerTouchBarItem: NSSharingServicePickerTouchBarItem) -> [Any] {
+		guard let image = editorViewController.renderedImage else { return [] }
+		return [image]
+	}
+}
+
+extension EditorWindowController: NSSharingServicePickerDelegate {
+	func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker, didChoose service: NSSharingService?) {
+		editorViewController.sharingServicePicker(sharingServicePicker, didChoose: service)
 	}
 }
