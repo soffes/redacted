@@ -23,7 +23,12 @@ public final class RedactionsController {
 	public  var image: Image? {
 		didSet {
 			if let image = image {
-				ciImage = CIImage(cgImage: image.cgImage!)
+				#if os(OSX)
+					ciImage = CIImage(cgImage: image.cgImage!)
+				#else
+					let img = CIImage(cgImage: image.cgImage!)
+					ciImage = img.applying(CGAffineTransform(scaleX: 1, y: -1).concatenating(CGAffineTransform(translationX: 0, y: img.extent.height)))
+				#endif
 			} else {
 				ciImage = nil
 			}

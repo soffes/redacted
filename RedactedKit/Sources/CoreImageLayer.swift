@@ -27,16 +27,15 @@ class CoreImageLayer: CALayer {
 	// MARK: - CALayer
 
 	override func draw(in context: CGContext) {
-		if let image = image {
-			let options = [
-				kCIContextUseSoftwareRenderer: false,
-				kCIContextWorkingColorSpace: NSNull()
-			] as [String : Any]
+		guard let image = image else { return }
 
+		let options = [
+			kCIContextUseSoftwareRenderer: false,
+			kCIContextWorkingColorSpace: NSNull()
+		] as [String : Any]
 
-			let ciContext = CIContext(cgContext: context, options: options)
-			ciContext.draw(image, in: imageRectForBounds(bounds), from: image.extent)
-		}
+		let ciContext = CIContext(cgContext: context, options: options)
+		ciContext.draw(image, in: imageRectForBounds(bounds), from: image.extent)
 	}
 
 
