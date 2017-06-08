@@ -22,9 +22,9 @@ class EditorViewController: UIViewController {
 
 	let modeControl: UISegmentedControl = {
 		let segmentedControl = UISegmentedControl(items: [
-			image("pixelate")!,
-			image("blur")!,
-			image("black-bar")!
+			image("Pixelate")!,
+			image("Blur")!,
+			image("BlackBar")!
 		])
 		return segmentedControl
 	}()

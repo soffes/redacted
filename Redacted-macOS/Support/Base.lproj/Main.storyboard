@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="12062"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.1" requiredIntegratedClassName="NSTouchBar"/>
@@ -264,18 +264,18 @@ CA
                                     <size key="minSize" width="136" height="25"/>
                                     <size key="maxSize" width="136" height="28"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="FtH-vU-pEZ">
-                                        <rect key="frame" x="0.0" y="14" width="136" height="25"/>
+                                        <rect key="frame" x="0.0" y="14" width="136" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="rWV-CV-kvs">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment image="Pixelate" width="44" selected="YES">
+                                                <segment width="44" selected="YES">
                                                     <nil key="label"/>
                                                 </segment>
-                                                <segment image="Blur" width="44" tag="1">
+                                                <segment width="44" tag="1">
                                                     <nil key="label"/>
                                                 </segment>
-                                                <segment image="BlackBar" width="44" tag="2">
+                                                <segment width="44" tag="2">
                                                     <nil key="label"/>
                                                 </segment>
                                             </segments>
@@ -533,11 +533,8 @@ by Nothing Magical in California.</string>
     </scenes>
     <resources>
         <image name="AppIcon" width="128" height="128"/>
-        <image name="BlackBar" width="16" height="16"/>
-        <image name="Blur" width="16" height="16"/>
         <image name="Clear" width="16" height="16"/>
         <image name="NSShareTemplate" width="11" height="16"/>
-        <image name="Pixelate" width="16" height="16"/>
         <image name="TouchBar-BlackBars" width="18" height="18"/>
         <image name="TouchBar-Blur" width="18" height="18"/>
         <image name="TouchBar-Clear" width="18" height="18"/>
