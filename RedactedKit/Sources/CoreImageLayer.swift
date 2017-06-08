@@ -33,12 +33,8 @@ class CoreImageLayer: CALayer {
 				kCIContextWorkingColorSpace: NSNull()
 			] as [String : Any]
 
-			#if os(iOS)
-				let ciContext = CIContext(options: options)
-			#else
-				let ciContext = CIContext(cgContext: context, options: options)
-			#endif
 
+			let ciContext = CIContext(cgContext: context, options: options)
 			ciContext.draw(image, in: imageRectForBounds(bounds), from: image.extent)
 		}
 	}

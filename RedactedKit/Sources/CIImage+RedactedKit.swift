@@ -24,23 +24,19 @@ extension CIImage {
 
 		let extent = self.extent
 
-		#if os(iOS)
-			let ciContext = CIContext(options: nil)
-		#else
-			let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-			let cgContext = CGContext(
-				data: nil,
-				width: Int(extent.width),
-				height: Int(extent.height),
-				bitsPerComponent: 8,
-				bytesPerRow: 0,
-				space: CGColorSpaceCreateDeviceRGB(),
-				bitmapInfo: bitmapInfo.rawValue,
-				releaseCallback: nil,
-				releaseInfo: nil
-			)!
-			let ciContext = CIContext(cgContext: cgContext, options: options)
-		#endif
+		let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+		let cgContext = CGContext(
+			data: nil,
+			width: Int(extent.width),
+			height: Int(extent.height),
+			bitsPerComponent: 8,
+			bytesPerRow: 0,
+			space: CGColorSpaceCreateDeviceRGB(),
+			bitmapInfo: bitmapInfo.rawValue,
+			releaseCallback: nil,
+			releaseInfo: nil
+		)!
+		let ciContext = CIContext(cgContext: cgContext, options: options)
 
 		let cgImage = ciContext.createCGImage(self, from: extent)!
 

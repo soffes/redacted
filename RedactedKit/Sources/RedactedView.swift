@@ -9,16 +9,6 @@
 import X
 import QuartzCore
 
-// TODO: Remove
-#if os(iOS)
-	import CoreImage
-	import UIKit.UIGestureRecognizer
-	public typealias GestureRecognizerState = UIGestureRecognizerState
-#else
-	import AppKit.NSGestureRecognizer
-	public typealias GestureRecognizerState = NSGestureRecognizerState
-#endif
-
 public final class RedactedView: View {
 
 	// MARK: - Constants

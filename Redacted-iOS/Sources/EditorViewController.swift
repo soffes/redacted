@@ -26,6 +26,7 @@ class EditorViewController: UIViewController {
 			image("Blur")!,
 			image("BlackBar")!
 		])
+		segmentedControl.selectedSegmentIndex = 0
 		return segmentedControl
 	}()
 
@@ -35,7 +36,6 @@ class EditorViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		title = "Redacted"
 		toolbarItems = [
 			UIBarButtonItem(customView: modeControl),
 			UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
@@ -44,18 +44,29 @@ class EditorViewController: UIViewController {
 
 		view.addSubview(redactedView)
 
-//		let views = [ "redactedView": redactedView ]
-//		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|[redactedView]|", options: nil, metrics: nil, views: views))
-//		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[redactedView]|", options: nil, metrics: nil, views: views))
+		NSLayoutConstraint.activate([
+			redactedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			redactedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			redactedView.topAnchor.constraint(equalTo: view.topAnchor),
+			redactedView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		])
+
+		redactedView.originalImage = #imageLiteral(resourceName: "ScreenShot")
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		navigationController?.setNavigationBarHidden(true, animated: animated)
 		navigationController?.setToolbarHidden(false, animated: animated)
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
+		navigationController?.setNavigationBarHidden(false, animated: animated)
 		navigationController?.setToolbarHidden(true, animated: animated)
+	}
+
+	override var prefersStatusBarHidden: Bool {
+		return true
 	}
 }
