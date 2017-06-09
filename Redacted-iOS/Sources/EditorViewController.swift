@@ -136,7 +136,7 @@ class EditorViewController: UIViewController {
 		}
 	}
 
-	@objc private func clear() {
+	func clear() {
 		image = nil
 	}
 
@@ -145,7 +145,7 @@ class EditorViewController: UIViewController {
 		redactedView.mode = mode
 	}
 
-	@objc private func choosePhoto() {
+	func choosePhoto() {
 		ensurePhotosAuthorization { [weak self] in
 			let viewController = UIImagePickerController()
 			viewController.sourceType = .savedPhotosAlbum
@@ -156,7 +156,7 @@ class EditorViewController: UIViewController {
 		}
 	}
 
-	@objc private func chooseLastPhoto() {
+	func chooseLastPhoto() {
 		ensurePhotosAuthorization { [weak self] in
 			let manager = PHImageManager.default()
 			let options = PHFetchOptions()
@@ -184,7 +184,7 @@ class EditorViewController: UIViewController {
 		}
 	}
 
-	@objc private func takePhoto() {
+	func takePhoto() {
 		ensureCameraAuthorization { [weak self] in
 			self?.ensurePhotosAuthorization {
 				let viewController = UIImagePickerController()
