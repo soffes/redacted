@@ -32,6 +32,23 @@ class EditorViewController: UIViewController {
 		return view
 	}()
 
+	var image: UIImage? {
+		didSet {
+			redactedView.originalImage = image
+			emptyView.isHidden = image != nil
+
+			if image == nil {
+				return
+			}
+
+//			showTutorial()
+		}
+	}
+
+	var renderedImage: UIImage? {
+		return redactedView.renderedImage()
+	}
+
 
 	// MARK: - UIViewController
 
@@ -42,6 +59,10 @@ class EditorViewController: UIViewController {
 		view.addSubview(redactedView)
 		view.addSubview(emptyView)
 		view.addSubview(toolbarView)
+
+		toolbarView.modeControl.addTarget(self, action: #selector(modeDidChange), for: .primaryActionTriggered)
+		toolbarView.clearButton.addTarget(self, action: #selector(clear), for: .primaryActionTriggered)
+		toolbarView.shareButton.addTarget(self, action: #selector(share), for: .primaryActionTriggered)
 
 		NSLayoutConstraint.activate([
 			redactedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -58,7 +79,7 @@ class EditorViewController: UIViewController {
 		])
 
 		// TODO: Remove
-//		redactedView.originalImage = #imageLiteral(resourceName: "ScreenShot")
+		image = #imageLiteral(resourceName: "ScreenShot")
 
 		let pan = UIPanGestureRecognizer(target: self, action: #selector(panned))
 		view.addGestureRecognizer(pan)
@@ -84,31 +105,40 @@ class EditorViewController: UIViewController {
 
 	// MARK: - Actions
 
-	//	func shareImage(fromView sender: NSView) {
-	//		if let image = renderedImage {
-	//			let sharingServicePicker = NSSharingServicePicker(items: [image])
-	//			sharingServicePicker.delegate = self
-	//			sharingServicePicker.show(relativeTo: CGRect.zero, of: sender, preferredEdge: .minY)
-	//		}
-	//	}
+	@objc private func share(_ sender: UIView) {
+		guard let image = renderedImage else { return }
 
-	func panned(sender: UIPanGestureRecognizer) {
-		redactedView.drag(point: sender.location(in: view), state: sender.state)
-
-		//		if sender.state == .ended && redactedView.redactions.count > 0 {
-		//			hideTutorial()
-		//		}
+//		let sharingServicePicker = NSSharingServicePicker(items: [image])
+//		sharingServicePicker.delegate = self
+//		sharingServicePicker.show(relativeTo: CGRect.zero, of: sender, preferredEdge: .minY)
 	}
 
-	func tapped(sender: UITapGestureRecognizer) {
+	@objc private func panned(sender: UIPanGestureRecognizer) {
+		redactedView.drag(point: sender.location(in: view), state: sender.state)
+
+//		if sender.state == .ended && redactedView.redactions.count > 0 {
+//			hideTutorial()
+//		}
+	}
+
+	@objc private func tapped(sender: UITapGestureRecognizer) {
 		if sender.state == .ended {
 			redactedView.tap(point: sender.location(in: view))
 		}
 	}
 
-	func twoFingerTapped(sender: UITapGestureRecognizer) {
+	@objc private func twoFingerTapped(sender: UITapGestureRecognizer) {
 		if sender.state == .ended {
 			redactedView.tap(point: sender.location(in: view), exclusive: false)
 		}
+	}
+
+	@objc private func clear() {
+		image = nil
+	}
+
+	@objc private func modeDidChange() {
+		guard let mode = RedactionType(rawValue: toolbarView.modeControl.selectedIndex) else { return }
+		redactedView.mode = mode
 	}
 }

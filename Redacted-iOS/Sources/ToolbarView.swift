@@ -24,7 +24,7 @@ final class ToolbarView: UIView {
 		return view
 	}()
 
-	let modeControl: UIControl = SegmentedControl()
+	let modeControl = SegmentedControl()
 
 	let clearButton: UIButton = ToolbarButton(image: #imageLiteral(resourceName: "Clear"))
 
