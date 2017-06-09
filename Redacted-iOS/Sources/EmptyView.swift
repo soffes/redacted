@@ -23,7 +23,7 @@ final class EmptyView: UIStackView {
 			titleEdgeInsets = UIEdgeInsets(top: 0, left: padding * 2, bottom: 0, right: 0)
 
 			titleLabel?.font = .systemFont(ofSize: 17, weight:  UIFontWeightMedium)
-			setTitleColor(UIColor(white: 1, alpha: 0.7), for: .normal)
+			setTitleColor(UIColor(white: 1, alpha: 0.6), for: .normal)
 			setTitleColor(UIColor(white: 1, alpha: 0.5), for: .highlighted)
 
 			adjustsImageWhenHighlighted = false
@@ -49,7 +49,7 @@ final class EmptyView: UIStackView {
 		}
 
 		private func updateColors() {
-			let color = isHighlighted ? UIColor(white: 1, alpha: 0.5) : UIColor(white: 1, alpha: 0.7)
+			let color = isHighlighted ? UIColor(white: 1, alpha: 0.5) : UIColor(white: 1, alpha: 0.6)
 			imageView?.tintColor = color
 		}
 	}

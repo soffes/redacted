@@ -342,7 +342,7 @@ CA
                                                 <segment image="TouchBar-Blur" width="72" tag="1">
                                                     <nil key="label"/>
                                                 </segment>
-                                                <segment image="TouchBar-BlackBars" width="72">
+                                                <segment image="TouchBar-BlackBar" width="72">
                                                     <nil key="label"/>
                                                 </segment>
                                             </segments>
@@ -533,9 +533,9 @@ by Nothing Magical in California.</string>
     </scenes>
     <resources>
         <image name="AppIcon" width="128" height="128"/>
-        <image name="Clear" width="16" height="16"/>
+        <image name="Clear" width="18" height="18"/>
         <image name="NSShareTemplate" width="11" height="16"/>
-        <image name="TouchBar-BlackBars" width="18" height="18"/>
+        <image name="TouchBar-BlackBar" width="18" height="18"/>
         <image name="TouchBar-Blur" width="18" height="18"/>
         <image name="TouchBar-Clear" width="18" height="18"/>
         <image name="TouchBar-Pixelate" width="18" height="18"/>

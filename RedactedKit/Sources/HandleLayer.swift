@@ -33,8 +33,8 @@ final class HandleLayer: CAGradientLayer {
 
 	private func initialize() {
 		colors = [
-			Color(red: 0.855, green: 0.855, blue: 0.855, alpha: 1).cgColor,
-			Color(red: 0.992, green: 0.992, blue: 0.992, alpha: 1).cgColor
+			Color(white: 0.855, alpha: 1).cgColor,
+			Color(white: 0.992, alpha: 1).cgColor
 		]
 
 		shadowPath = CGPath(rect: CGRect(x: 0, y: 0, width: 6, height: 6), transform: nil)
