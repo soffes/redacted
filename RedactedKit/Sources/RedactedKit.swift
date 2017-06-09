@@ -19,7 +19,3 @@ public func string(_ key: String) -> String {
 	}
 	return key
 }
-
-public func image(_ name: String) -> Image? {
-	return Image(named: name, in: bundle())
-}

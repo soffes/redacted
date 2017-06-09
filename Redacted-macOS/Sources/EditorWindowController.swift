@@ -109,11 +109,8 @@ final class EditorWindowController: NSWindowController {
 		modeItem.label = string("MODE")
 		modeItem.paletteLabel = modeItem.label
 
-		modeControl.setImage(image("Pixelate")!, forSegment: 0)
 		modeControl.setToolTip(toolTip: string("PIXELATE"), forSegment: 0)
-		modeControl.setImage(image("Blur")!, forSegment: 1)
 		modeControl.setToolTip(toolTip: string("BLUR"), forSegment: 1)
-		modeControl.setImage(image("BlackBar")!, forSegment: 2)
 		modeControl.setToolTip(toolTip: string("BLACK_BAR"), forSegment: 2)
 
 		clearItem.label = string("CLEAR")

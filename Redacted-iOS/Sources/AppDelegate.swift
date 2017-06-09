@@ -8,14 +8,13 @@
 
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder {
+@UIApplicationMain final class AppDelegate: UIResponder {
 
 	// MARK: - Properties
 	
 	lazy var window: UIWindow? = {
 		let window = UIWindow(frame: UIScreen.main.bounds)
-		window.rootViewController = UINavigationController(rootViewController: EditorViewController())
+		window.rootViewController = EditorViewController()
 		return window
 	}()
 }
