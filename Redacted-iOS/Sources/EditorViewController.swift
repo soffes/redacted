@@ -9,6 +9,8 @@
 import UIKit
 import RedactedKit
 import X
+import Photos
+import MobileCoreServices
 
 class EditorViewController: UIViewController {
 
@@ -57,12 +59,15 @@ class EditorViewController: UIViewController {
 
 		redactedView.backgroundColor = UIColor(white: 43 / 255, alpha: 1)
 		view.addSubview(redactedView)
+
+		emptyView.choosePhotoButton.addTarget(self, action: #selector(choosePhoto), for: .primaryActionTriggered)
+		emptyView.lastPhotoButton.addTarget(self, action: #selector(chooseLastPhoto), for: .primaryActionTriggered)
 		view.addSubview(emptyView)
-		view.addSubview(toolbarView)
 
 		toolbarView.modeControl.addTarget(self, action: #selector(modeDidChange), for: .primaryActionTriggered)
 		toolbarView.clearButton.addTarget(self, action: #selector(clear), for: .primaryActionTriggered)
 		toolbarView.shareButton.addTarget(self, action: #selector(share), for: .primaryActionTriggered)
+		view.addSubview(toolbarView)
 
 		NSLayoutConstraint.activate([
 			redactedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -77,9 +82,6 @@ class EditorViewController: UIViewController {
 			toolbarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			toolbarView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		])
-
-		// TODO: Remove
-		image = #imageLiteral(resourceName: "ScreenShot")
 
 		let pan = UIPanGestureRecognizer(target: self, action: #selector(panned))
 		view.addGestureRecognizer(pan)
@@ -140,5 +142,87 @@ class EditorViewController: UIViewController {
 	@objc private func modeDidChange() {
 		guard let mode = RedactionType(rawValue: toolbarView.modeControl.selectedIndex) else { return }
 		redactedView.mode = mode
+	}
+
+	@objc private func choosePhoto() {
+		ensurePhotosAuthorization { [weak self] in
+			let viewController = UIImagePickerController()
+			viewController.sourceType = .savedPhotosAlbum
+			viewController.modalPresentationStyle = .formSheet
+			viewController.mediaTypes = [kUTTypeImage as String]
+			viewController.delegate = self
+			self?.present(viewController, animated: true, completion: nil)
+		}
+	}
+
+	@objc private func chooseLastPhoto() {
+		ensurePhotosAuthorization { [weak self] in
+			let manager = PHImageManager.default()
+			let options = PHFetchOptions()
+			options.fetchLimit = 1
+			options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+
+			let result = PHAsset.fetchAssets(with: .image, options: options)
+
+			guard let last = result.lastObject else {
+				self?.choosePhoto()
+				return
+			}
+
+			let size = CGSize(width: last.pixelWidth, height: last.pixelHeight)
+			manager.requestImage(for: last, targetSize: size, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
+				guard let image = image else {
+					self?.choosePhoto()
+					return
+				}
+
+				DispatchQueue.main.async {
+					self?.image = image
+				}
+			})
+		}
+	}
+
+
+	// MARK: - Private
+
+	// TODO: Localize
+	private func ensurePhotosAuthorization(_ completion: @escaping () -> Void) {
+		switch PHPhotoLibrary.authorizationStatus() {
+		case .notDetermined:
+			PHPhotoLibrary.requestAuthorization { [weak self] _ in
+				DispatchQueue.main.async {
+					self?.ensurePhotosAuthorization(completion)
+				}
+			}
+
+		case .restricted:
+			let alert = UIAlertController(title: "Restricted", message: "This application is not authorized to access photo data.", preferredStyle: .alert)
+			alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+			present(alert, animated: true, completion: nil)
+
+		case .denied:
+			let alert = UIAlertController(title: "Access Denied", message: "Please allow access to photos.", preferredStyle: .alert)
+			alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { _ in
+				guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+				UIApplication.shared.openURL(url)
+			})
+			alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+			present(alert, animated: true, completion: nil)
+
+		case .authorized:
+			completion()
+		}
+	}
+}
+
+
+
+extension EditorViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+		picker.dismiss(animated: true, completion: nil)
+
+		guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+		self.image = image
 	}
 }
