@@ -6,8 +6,8 @@
   Copyright © 2017 Nothing Magical Inc. All rights reserved.
 */
 
-"CHOOSE_A_PHOTO" = "Choose a Photo";
+"CHOOSE_PHOTO" = "Choose Photo";
 
 "LAST_PHOTO_TAKEN" = "Last Photo Taken";
 
-"TAKE_A_PHOTO" = "Take a Photo";
+"TAKE_PHOTO" = "Take Photo";

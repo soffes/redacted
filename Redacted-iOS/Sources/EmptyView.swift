@@ -60,21 +60,21 @@ final class EmptyView: UIStackView {
 	let choosePhotoButton: UIButton = {
 		let view = Button(type: .custom)
 		view.setImage(#imageLiteral(resourceName: "Photo"), for: .normal)
-		view.setTitle("Choose Photo", for: .normal)
+		view.setTitle(NSLocalizedString("CHOOSE_PHOTO", comment: ""), for: .normal)
 		return view
 	}()
 
 	let lastPhotoButton: UIButton = {
 		let view = Button(type: .custom)
 		view.setImage(#imageLiteral(resourceName: "Library"), for: .normal)
-		view.setTitle("Last Photo Taken", for: .normal)
+		view.setTitle(NSLocalizedString("LAST_PHOTO_TAKEN", comment: ""), for: .normal)
 		return view
 	}()
 
 	let takePhotoButton: UIButton = {
 		let view = Button(type: .custom)
 		view.setImage(#imageLiteral(resourceName: "Camera"), for: .normal)
-		view.setTitle("Take a Photo", for: .normal)
+		view.setTitle(NSLocalizedString("TAKE_PHOTO", comment: ""), for: .normal)
 		return view
 	}()
 
