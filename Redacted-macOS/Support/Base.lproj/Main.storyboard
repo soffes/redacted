@@ -255,7 +255,7 @@ CA
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                         <value key="minSize" type="size" width="234" height="200"/>
                         <toolbar key="toolbar" implicitIdentifier="F4E5C2DE-5F69-4075-ACF7-6A1D214536CD" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="tJy-B4-k21">
                             <allowedToolbarItems>
@@ -269,13 +269,13 @@ CA
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="rWV-CV-kvs">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment width="44" selected="YES">
+                                                <segment image="Pixelate" width="44" selected="YES">
                                                     <nil key="label"/>
                                                 </segment>
-                                                <segment width="44" tag="1">
+                                                <segment image="Blur" width="44" tag="1">
                                                     <nil key="label"/>
                                                 </segment>
-                                                <segment width="44" tag="2">
+                                                <segment image="BlackBar" width="44" tag="2">
                                                     <nil key="label"/>
                                                 </segment>
                                             </segments>
@@ -533,8 +533,11 @@ by Nothing Magical in California.</string>
     </scenes>
     <resources>
         <image name="AppIcon" width="128" height="128"/>
+        <image name="BlackBar" width="18" height="18"/>
+        <image name="Blur" width="18" height="18"/>
         <image name="Clear" width="18" height="18"/>
         <image name="NSShareTemplate" width="11" height="16"/>
+        <image name="Pixelate" width="18" height="18"/>
         <image name="TouchBar-BlackBar" width="18" height="18"/>
         <image name="TouchBar-Blur" width="18" height="18"/>
         <image name="TouchBar-Clear" width="18" height="18"/>
