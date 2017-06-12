@@ -1,0 +1,100 @@
+/*
+ Main.strings
+ Redacted
+
+ Created by Rafael Conde on 6/12/17.
+ Copyright © 2017 Nothing Magical Inc. All rights reserved.
+ */
+
+/* About Redacted */
+"5kV-Vb-QxS.title" = "Sobre Redacted";
+
+/* Hide Redacted */
+"Olw-nP-bQN.title" = "Esconder Redacted";
+
+/* Quit Redacted */
+"4sb-4s-VLi.title" = "Fechar Redacted";
+
+/* Redacted Help */
+"FKE-Sm-Kum.title" = "Ajuda Redacted";
+
+
+/* -- Default menu items -- */
+
+/* Customize Toolbar… */
+"1UK-8n-QPP.title" = "Customizar a barra de ferramentas…";
+
+/* Edit */
+"5QF-Oa-p0T.title" = "Editar";
+
+/* Redo */
+"6dh-zS-Vam.title" = "Refazer";
+
+/* Help */
+"F2S-fz-NVQ.title" = "Ajuda";
+
+/* View */
+"H8h-7b-M4v.title" = "Visualização";
+
+/* View */
+"HyV-fh-RgO.title" = "Visualização";
+
+/* Open… */
+"IAo-SY-fd9.title" = "Abrir…";
+
+/* Show All */
+"Kd2-mp-pUS.title" = "Mostrar Todos";
+
+/* Bring All to Front */
+"LE2-aR-0XJ.title" = "Trazer todos para a frente";
+
+/* Services */
+"NMo-om-nkz.title" = "Serviços";
+
+/* Minimize */
+"OY7-WF-poV.title" = "Minimizar";
+
+/* Zoom */
+"R4o-n2-Eq4.title" = "Zoom";
+
+/* Window */
+"Td7-aD-5lo.title" = "Janela";
+
+/* Hide Others */
+"Vdr-fp-XzO.title" = "Esconder Outros";
+
+/* Edit */
+"W48-6f-4Dl.title" = "Editar";
+
+/* Window */
+"aUF-d1-5bR.title" = "Janela";
+
+/* File */
+"bib-Uj-vzu.title" = "Ficheiro";
+
+/* File */
+"dMs-cI-mzQ.title" = "Ficheiro";
+
+/* Undo */
+"dRJ-4n-Yzg.title" = "Desfazer";
+
+/* Services */
+"hz9-B4-Xy5.title" = "Serviços";
+
+/* Enter Full Screen */
+"lOm-0W-U7v.title" = "Entrar em Full Screen";
+
+/* Open Recent */
+"oas-Oc-fiZ.title" = "Abrir Recente";
+
+/* Show Toolbar */
+"snW-S8-Cw5.title" = "Mostrar barra de ferramentas";
+
+/* Open Recent */
+"tXI-mr-wws.title" = "Abrir Recente";
+
+/* Clear Menu */
+"vNY-rz-j42.title" = "Limpar Menu";
+
+/* Help */
+"wpr-3q-Mcd.title" = "Ajuda";

@@ -1,0 +1,39 @@
+/*
+  Localizable.strings
+  Redacted
+
+  Created by Rafael Conde on 6/12/17.
+  Copyright © 2017 Nothing Magical Inc. All rights reserved.
+*/
+
+/* Modes */
+"MODE" = "Modo";
+"PIXELATE" = "Pixalizar";
+"BLUR" = "Desfocar";
+"BLACK_BAR" = "Barras Pretas";
+
+/* Actions */
+"SHARE" = "Partilhar";
+"CLEAR" = "Limpar";
+"CLEAR_IMAGE" = "Limpar Imagem";
+"SAVE" = "Gravar";
+"EXPORT" = "Exportar…";
+
+/* Edit menu */
+"COPY_IMAGE" = "Copiar Imagem";
+"PASTE_IMAGE" = "Colar Image";
+"SELECT_ALL_REDACTIONS" = "Selecionar Todas as Edições";
+
+/* Undo actions */
+"INSERT_REDACTION" = "Inserir Censura";
+"INSERT_REDACTIONS" = "Inserir Censuras";
+"DELETE_REDACTION" = "Apagar Censura";
+"DELETE_REDACTIONS" = "Apagar Censuras";
+
+/* About */
+"VERSION_FORMAT" = "Versão %@";
+"CREDITS" = "Desenhado e Desenvolvido por Nothing Magical na California.";
+
+/* Tutorial */
+"DRAG_TO_GET_STARTED" = "Arrasta uma imagem para aqui";
+"CLICK_AND_DRAG" = "Clica e arrasta para começares a censurar";

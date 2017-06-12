@@ -1,0 +1,10 @@
+/*
+  InfoPlist.strings
+  Redacted
+
+  Created by Sam Soffes on 6/12/17.
+  Copyright © 2017 Nothing Magical Inc. All rights reserved.
+*/
+
+"NSCameraUsageDescription" = "Redacted uses your camera to import photos.";
+"NSPhotoLibraryUsageDescription" = "Redacted uses your photo library to import photos.";
