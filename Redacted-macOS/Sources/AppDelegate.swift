@@ -36,13 +36,13 @@ var mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 	@IBOutlet var blackBarMenuItem: NSMenuItem!
 	@IBOutlet var clearMenuItem: NSMenuItem!
 
-	var uniqueIdentifier: String {
+	fileprivate var uniqueIdentifier: String {
 		let key = "Identifier"
 		if let identifier = UserDefaults.standard.string(forKey: key) {
 			return identifier
 		}
 
-		let identifier = NSUUID().uuidString
+		let identifier = UUID().uuidString
 		UserDefaults.standard.set(identifier, forKey: key)
 		return identifier
 	}

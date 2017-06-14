@@ -44,14 +44,26 @@ extension EditorViewController {
 	func pastePhoto() {
 		let data = UIPasteboard.general.data(forPasteboardType: "public.image")
 		image = data.flatMap(UIImage.init)
+
+		mixpanel.track(event: "Import image", parameters: [
+			"source": "Paste"
+		])
 	}
 
 	func share(_ sender: UIView) {
 		guard let image = renderedImage else { return }
 
 		let viewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-		viewController.completionWithItemsHandler = { type, completed, _, _ in
-			// TODO: Report to Mixpanel
+		viewController.completionWithItemsHandler = { [weak self] type, completed, _, _ in
+			guard completed,
+				let title = type?.rawValue,
+				let count = self?.redactedView.redactions.count
+			else { return }
+
+			mixpanel.track(event: "Share image", parameters: [
+				"service": title,
+				"redactions_count": count
+			])
 		}
 
 		if let presentationController = viewController.popoverPresentationController {
@@ -63,10 +75,20 @@ extension EditorViewController {
 
 	func copyImage() {
 		UIPasteboard.general.image = renderedImage
+
+		mixpanel.track(event: "Share image", parameters: [
+			"service": "Copy",
+			"redactions_count": redactedView.redactions.count
+		])
 	}
 
 	func saveImage() {
 		PhotosController.savePhoto(context: self, photoProvider: { [weak self] in return self?.renderedImage} )
+
+		mixpanel.track(event: "Share image", parameters: [
+			"service": "Save",
+			"redactions_count": redactedView.redactions.count
+		])
 	}
 
 	func panned(sender: UIPanGestureRecognizer) {
@@ -102,6 +124,10 @@ extension EditorViewController {
 		haptics.prepare()
 		PhotosController.choosePhoto(context: self) { [weak self] image in
 			self?.image = image
+
+			mixpanel.track(event: "Import image", parameters: [
+				"source": "Library"
+			])
 		}
 	}
 
@@ -109,6 +135,10 @@ extension EditorViewController {
 		haptics.prepare()
 		PhotosController.getLastPhoto(context: self) { [weak self] image in
 			self?.image = image
+
+			mixpanel.track(event: "Import image", parameters: [
+				"source": "Last Photo Taken"
+			])
 		}
 	}
 
@@ -116,6 +146,10 @@ extension EditorViewController {
 		haptics.prepare()
 		PhotosController.takePhoto(context: self) { [weak self] image in
 			self?.image = image
+
+			mixpanel.track(event: "Import image", parameters: [
+				"source": "Camera"
+			])
 		}
 	}
 }

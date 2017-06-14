@@ -7,12 +7,31 @@
 //
 
 import UIKit
+import Mixpanel
+
+var mixpanel = Mixpanel(token: "58ae93d9875496de97dbdc4cd7f0d927")
 
 @UIApplicationMain final class AppDelegate: UIResponder {
 
 	// MARK: - Properties
 	
 	var window: UIWindow? = UIWindow()
+
+	fileprivate var uniqueIdentifier: String {
+		if let identifier = UIDevice.current.identifierForVendor?.uuidString {
+			return identifier
+		}
+
+		let key = "Identifier"
+		if let identifier = UserDefaults.standard.string(forKey: key) {
+			return identifier
+		}
+
+		let identifier = UUID().uuidString
+		UserDefaults.standard.set(identifier, forKey: key)
+		return identifier
+	}
+
 
 	fileprivate let viewController = EditorViewController()
 
@@ -24,6 +43,12 @@ import UIKit
 
 extension AppDelegate: UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+		#if DEBUG
+			mixpanel.enabled = false
+		#endif
+
+		mixpanel.identify(identifier: uniqueIdentifier)
+		mixpanel.track(event: "Launch")
 
 		application.shortcutItems = [
 			UIApplicationShortcutItem(type: choosePhotoType, title: localizedString("CHOOSE_PHOTO"), iconName: "Photo"),
