@@ -9,6 +9,10 @@
 import X
 import QuartzCore
 
+#if !os(OSX)
+	import UIKit
+#endif
+
 public final class RedactedView: View {
 
 	// MARK: - Constants
@@ -90,6 +94,13 @@ public final class RedactedView: View {
 		updateLayerScale()
 	}
 
+	#if !os(OSX)
+		public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+			super.traitCollectionDidChange(previousTraitCollection)
+			updateLayerScale()
+		}
+	#endif
+
 
 	// MARK: - Manipulation
 
@@ -152,16 +163,14 @@ public final class RedactedView: View {
 	}
 
 	private func updateLayerScale() {
-		let layer: CALayer
 		#if os(OSX)
-			layer = self.layer!
+			let screen: Screen? = window?.screen
+			let scale = screen?.scale ?? 1.0
+			layer?.contentsScale = scale
+			redactedLayer.contentsScale = scale
 		#else
-			layer = self.layer
+			layer.contentsScale = traitCollection.displayScale
+			redactedLayer.contentsScale = traitCollection.displayScale
 		#endif
-
-		let screen: Screen? = window?.screen
-		let scale = screen?.scale ?? 1.0
-		layer.contentsScale = scale
-		redactedLayer.contentsScale = scale
 	}
 }
