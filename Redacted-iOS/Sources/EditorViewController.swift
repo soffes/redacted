@@ -55,8 +55,10 @@ class EditorViewController: UIViewController {
 				UIKeyCommand(input: "1", modifierFlags: .command, action: #selector(usePixelate), discoverabilityTitle: string("PIXELATE")),
 				UIKeyCommand(input: "2", modifierFlags: .command, action: #selector(useBlur), discoverabilityTitle: string("BLUR")),
 				UIKeyCommand(input: "3", modifierFlags: .command, action: #selector(useBlackBar), discoverabilityTitle: string("BLACK_BAR")),
+				UIKeyCommand(input: "\u{8}", modifierFlags: [], action: #selector(deleteRedaction), discoverabilityTitle: string("DELETE_REDACTION")),
+				UIKeyCommand(input: "a", modifierFlags: .command, action: #selector(selectAllRedactions), discoverabilityTitle: string("SELECT_ALL_REDACTIONS")),
 				UIKeyCommand(input: "\u{8}", modifierFlags: .command, action: #selector(clear), discoverabilityTitle: string("CLEAR_IMAGE")),
-				UIKeyCommand(input: "s", modifierFlags: .command, action: #selector(share), discoverabilityTitle: string("SHARE")),
+				UIKeyCommand(input: "e", modifierFlags: .command, action: #selector(share), discoverabilityTitle: string("SHARE")),
 			]
 		} else {
 			commands += [
@@ -141,6 +143,14 @@ class EditorViewController: UIViewController {
 	@objc private func useBlackBar() {
 		toolbarView.modeControl.selectedIndex = 2
 		modeDidChange()
+	}
+
+	@objc private func deleteRedaction() {
+		redactedView.deleteRedaction()
+	}
+
+	@objc private func selectAllRedactions() {
+		redactedView.selectAllRedactions()
 	}
 
 	@objc private func share(_ sender: UIView) {
