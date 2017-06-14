@@ -42,8 +42,14 @@ final class SegmentedControl: UIControl {
 	override var isEnabled: Bool {
 		didSet {
 			buttons.forEach { $0.isEnabled = isEnabled }
+
+			if isEnabled {
+				haptics.prepare()
+			}
 		}
 	}
+
+	private let haptics = UISelectionFeedbackGenerator()
 	
 
 	// MARK: - Initializers
@@ -58,7 +64,7 @@ final class SegmentedControl: UIControl {
 
 		for (i, button) in buttons.enumerated() {
 			button.tag = i
-			button.addTarget(self, action: #selector(selectItem), for: .touchUpInside)
+			button.addTarget(self, action: #selector(selectItem), for: .touchDown)
 
 			stackView.addArrangedSubview(button)
 
@@ -97,5 +103,6 @@ final class SegmentedControl: UIControl {
 		
 		sendActions(for: .valueChanged)
 		sendActions(for: .primaryActionTriggered)
+		haptics.selectionChanged()
 	}
 }

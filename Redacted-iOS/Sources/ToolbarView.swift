@@ -41,12 +41,17 @@ final class ToolbarView: UIView {
 			shareButton.isEnabled = isEnabled
 		}
 	}
+
+	private let haptics = UIImpactFeedbackGenerator(style: .medium)
 	
 
 	// MARK: - Initializers
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+
+		clearButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred), for: .primaryActionTriggered)
+		shareButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred), for: .primaryActionTriggered)
 
 		stackView.addArrangedSubview(modeControl)
 		stackView.addArrangedSubview(UIView())

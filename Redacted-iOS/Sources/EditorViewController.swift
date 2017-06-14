@@ -46,6 +46,8 @@ class EditorViewController: UIViewController {
 
 	private let _undoManager = UndoManager()
 
+	private let haptics = UISelectionFeedbackGenerator()
+
 
 	// MARK: - UIResponder
 
@@ -239,53 +241,65 @@ class EditorViewController: UIViewController {
 	}
 
 	func choosePhoto() {
-		AuthorizationsController.ensurePhotosAuthorization(context: self) { [weak self] in
-			let viewController = UIImagePickerController()
-			viewController.sourceType = .savedPhotosAlbum
-			viewController.modalPresentationStyle = .formSheet
-			viewController.mediaTypes = [kUTTypeImage as String]
-			viewController.delegate = self
-			self?.present(viewController, animated: true, completion: nil)
-		}
-	}
-
-	func chooseLastPhoto() {
-		AuthorizationsController.ensurePhotosAuthorization(context: self) { [weak self] in
-			let manager = PHImageManager.default()
-			let options = PHFetchOptions()
-			options.fetchLimit = 1
-			options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-
-			let result = PHAsset.fetchAssets(with: .image, options: options)
-
-			guard let last = result.firstObject else {
-				self?.choosePhoto()
-				return
-			}
-
-			let size = CGSize(width: last.pixelWidth, height: last.pixelHeight)
-			manager.requestImage(for: last, targetSize: size, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
-				guard let image = image else {
-					self?.choosePhoto()
-					return
-				}
-
-				DispatchQueue.main.async {
-					self?.image = image
-				}
-			})
-		}
-	}
-
-	func takePhoto() {
-		AuthorizationsController.ensureCameraAuthorization(context: self) { [weak self] in
-			AuthorizationsController.ensurePhotosAuthorization(context: self) {
+		DispatchQueue.main.async {
+			AuthorizationsController.ensurePhotosAuthorization(context: self) { [weak self] in
+				self?.haptics.prepare()
+				
 				let viewController = UIImagePickerController()
-				viewController.sourceType = .camera
+				viewController.sourceType = .savedPhotosAlbum
 				viewController.modalPresentationStyle = .formSheet
 				viewController.mediaTypes = [kUTTypeImage as String]
 				viewController.delegate = self
 				self?.present(viewController, animated: true, completion: nil)
+			}
+		}
+	}
+
+	func chooseLastPhoto() {
+		DispatchQueue.main.async {
+			AuthorizationsController.ensurePhotosAuthorization(context: self) { [weak self] in
+				self?.haptics.prepare()
+
+				let manager = PHImageManager.default()
+				let options = PHFetchOptions()
+				options.fetchLimit = 1
+				options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+
+				let result = PHAsset.fetchAssets(with: .image, options: options)
+
+				guard let last = result.firstObject else {
+					self?.choosePhoto()
+					return
+				}
+
+				let size = CGSize(width: last.pixelWidth, height: last.pixelHeight)
+				manager.requestImage(for: last, targetSize: size, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
+					guard let image = image else {
+						self?.choosePhoto()
+						return
+					}
+
+					DispatchQueue.main.async {
+						self?.image = image
+					}
+				})
+			}
+		}
+	}
+
+	func takePhoto() {
+		DispatchQueue.main.async {
+			AuthorizationsController.ensureCameraAuthorization(context: self) { [weak self] in
+				AuthorizationsController.ensurePhotosAuthorization(context: self) {
+					self?.haptics.prepare()
+
+					let viewController = UIImagePickerController()
+					viewController.sourceType = .camera
+					viewController.modalPresentationStyle = .formSheet
+					viewController.mediaTypes = [kUTTypeImage as String]
+					viewController.delegate = self
+					self?.present(viewController, animated: true, completion: nil)
+				}
 			}
 		}
 	}
@@ -299,6 +313,10 @@ class EditorViewController: UIViewController {
 		let hasImage = image != nil
 		emptyView.isHidden = hasImage
 		toolbarView.isEnabled = hasImage
+
+		if hasImage {
+			haptics.selectionChanged()
+		}
 
 //		if !hasImage {
 //			showTutorial()
