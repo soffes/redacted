@@ -73,6 +73,7 @@
 		21CC0D991D89002400B3F5DF /* RedactedKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CC0D461D88FFAA00B3F5DF /* RedactedKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21CC0D9A1D89002500B3F5DF /* RedactedKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CC0D461D88FFAA00B3F5DF /* RedactedKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21E547D01EF1AA2D009FA237 /* AuthorizationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547CF1EF1AA2D009FA237 /* AuthorizationsController.swift */; };
+		21E547D21EF1AC0D009FA237 /* UIAlertAction+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +183,7 @@
 		21CC0D801D88FFB000B3F5DF /* Mixpanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mixpanel.framework; sourceTree = "<group>"; };
 		21CC0D821D88FFB000B3F5DF /* X.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = X.framework; sourceTree = "<group>"; };
 		21E547CF1EF1AA2D009FA237 /* AuthorizationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationsController.swift; sourceTree = "<group>"; };
+		21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Redacted.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 				216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */,
 				216DA4891EEA715200E39CAE /* LocalizedString.swift */,
 				21E547CF1EF1AA2D009FA237 /* AuthorizationsController.swift */,
+				21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				216DA47C1EEA54D400E39CAE /* ToolbarView.swift in Sources */,
 				216DA4841EEA5A5600E39CAE /* SegmentedControl.swift in Sources */,
 				216DA4771EEA49F200E39CAE /* EmptyView.swift in Sources */,
+				21E547D21EF1AC0D009FA237 /* UIAlertAction+Redacted.swift in Sources */,
 				216DA48A1EEA715200E39CAE /* LocalizedString.swift in Sources */,
 				216DA4861EEA5E5900E39CAE /* ToolbarButton.swift in Sources */,
 				21E547D01EF1AA2D009FA237 /* AuthorizationsController.swift in Sources */,

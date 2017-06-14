@@ -23,17 +23,14 @@ struct AuthorizationsController {
 			}
 
 		case .restricted:
-			let alert = UIAlertController(title: "Restricted", message: "You don‘t have permission to allow Redacted to use your photos. This is probably due to parental controls.", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+			let alert = UIAlertController(title: localizedString("RESTRICTED_PHOTOS_TITLE"), message: localizedString("RESTRICTED_PHOTOS_MESSAGE"), preferredStyle: .alert)
+			alert.addAction(.ok)
 			context?.present(alert, animated: true, completion: nil)
 
 		case .denied:
-			let alert = UIAlertController(title: "Access Denied", message: "Please allow access to photos.", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { _ in
-				guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
-				UIApplication.shared.openURL(url)
-			})
-			alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+			let alert = UIAlertController(title: localizedString("ACCESS_DENIED_PHOTOS_TITLE"), message: localizedString("ACCESS_DENIED_PHOTOS_MESSAGE"), preferredStyle: .alert)
+			alert.addAction(.openSettings)
+			alert.addAction(.cancel)
 			context?.present(alert, animated: true, completion: nil)
 
 		case .authorized:
@@ -51,17 +48,14 @@ struct AuthorizationsController {
 			}
 
 		case .restricted:
-			let alert = UIAlertController(title: "Restricted", message: "You don‘t have permission to allow Redacted to use your camera. This is probably due to parental controls.", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+			let alert = UIAlertController(title: localizedString("RESTRICTED_CAMERA_TITLE"), message: localizedString("RESTRICTED_CAMERA_MESSAGE"), preferredStyle: .alert)
+			alert.addAction(.ok)
 			context?.present(alert, animated: true, completion: nil)
 
 		case .denied:
-			let alert = UIAlertController(title: "Access Denied", message: "Please allow camera access.", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { _ in
-				guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
-				UIApplication.shared.openURL(url)
-			})
-			alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+			let alert = UIAlertController(title: localizedString("ACCESS_DENIED_CAMERA_TITLE"), message: localizedString("ACCESS_DENIED_CAMERA_MESSAGE"), preferredStyle: .alert)
+			alert.addAction(.openSettings)
+			alert.addAction(.cancel)
 			context?.present(alert, animated: true, completion: nil)
 
 		case .authorized:
