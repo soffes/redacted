@@ -149,7 +149,7 @@ class EditorViewController: UIViewController {
 	}
 
 	func choosePhoto() {
-		ensurePhotosAuthorization { [weak self] in
+		AuthorizationsController.ensurePhotosAuthorization(context: self) { [weak self] in
 			let viewController = UIImagePickerController()
 			viewController.sourceType = .savedPhotosAlbum
 			viewController.modalPresentationStyle = .formSheet
@@ -160,7 +160,7 @@ class EditorViewController: UIViewController {
 	}
 
 	func chooseLastPhoto() {
-		ensurePhotosAuthorization { [weak self] in
+		AuthorizationsController.ensurePhotosAuthorization(context: self) { [weak self] in
 			let manager = PHImageManager.default()
 			let options = PHFetchOptions()
 			options.fetchLimit = 1
@@ -188,8 +188,8 @@ class EditorViewController: UIViewController {
 	}
 
 	func takePhoto() {
-		ensureCameraAuthorization { [weak self] in
-			self?.ensurePhotosAuthorization {
+		AuthorizationsController.ensureCameraAuthorization(context: self) { [weak self] in
+			AuthorizationsController.ensurePhotosAuthorization(context: self) {
 				let viewController = UIImagePickerController()
 				viewController.sourceType = .camera
 				viewController.modalPresentationStyle = .formSheet
@@ -213,64 +213,6 @@ class EditorViewController: UIViewController {
 //		if !hasImage {
 //			showTutorial()
 //		}
-	}
-
-
-	// TODO: Localize
-	private func ensurePhotosAuthorization(_ completion: @escaping () -> Void) {
-		switch PHPhotoLibrary.authorizationStatus() {
-		case .notDetermined:
-			PHPhotoLibrary.requestAuthorization { [weak self] _ in
-				DispatchQueue.main.async {
-					self?.ensurePhotosAuthorization(completion)
-				}
-			}
-
-		case .restricted:
-			let alert = UIAlertController(title: "Restricted", message: "You don‘t have permission to allow Redacted to use your photos. This is probably due to parental controls.", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-			present(alert, animated: true, completion: nil)
-
-		case .denied:
-			let alert = UIAlertController(title: "Access Denied", message: "Please allow access to photos.", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { _ in
-				guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
-				UIApplication.shared.openURL(url)
-			})
-			alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-			present(alert, animated: true, completion: nil)
-
-		case .authorized:
-			completion()
-		}
-	}
-
-	private func ensureCameraAuthorization(_ completion: @escaping () -> Void) {
-		switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) {
-		case .notDetermined:
-			AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { [weak self] _ in
-				DispatchQueue.main.async {
-					self?.ensureCameraAuthorization(completion)
-				}
-			}
-
-		case .restricted:
-			let alert = UIAlertController(title: "Restricted", message: "You don‘t have permission to allow Redacted to use your camera. This is probably due to parental controls.", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-			present(alert, animated: true, completion: nil)
-
-		case .denied:
-			let alert = UIAlertController(title: "Access Denied", message: "Please allow camera access.", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { _ in
-				guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
-				UIApplication.shared.openURL(url)
-			})
-			alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-			present(alert, animated: true, completion: nil)
-
-		case .authorized:
-			completion()
-		}
 	}
 }
 
