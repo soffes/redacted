@@ -72,19 +72,25 @@ class EditorViewController: UIViewController {
 			]
 
 			if _undoManager.canUndo {
-				commands.append(UIKeyCommand(input: "z", modifierFlags: .command, action: #selector(undoEdit), discoverabilityTitle: "Undo"))
+				let title = String(format: localizedString("UNDO_FORMAT"), _undoManager.undoActionName)
+				commands.append(UIKeyCommand(input: "z", modifierFlags: .command, action: #selector(undoEdit), discoverabilityTitle: title))
 			}
 
 			if _undoManager.canRedo {
-				commands.append(UIKeyCommand(input: "z", modifierFlags: [.command, .shift], action: #selector(redoEdit), discoverabilityTitle: "Redo"))
+				let title = String(format: localizedString("REDO_FORMAT"), _undoManager.redoActionName)
+				commands.append(UIKeyCommand(input: "z", modifierFlags: [.command, .shift], action: #selector(redoEdit), discoverabilityTitle: title))
 			}
 
 		} else {
 			commands += [
 				UIKeyCommand(input: "o", modifierFlags: .command, action: #selector(choosePhoto), discoverabilityTitle: localizedString("CHOOSE_PHOTO")),
 				UIKeyCommand(input: "o", modifierFlags: [.command, .shift], action: #selector(chooseLastPhoto), discoverabilityTitle: localizedString("CHOOSE_LAST_PHOTO")),
-				UIKeyCommand(input: "o", modifierFlags: [.command, .alternate], action: #selector(takePhoto), discoverabilityTitle: localizedString("TAKE_PHOTO"))
+				UIKeyCommand(input: "o", modifierFlags: [.command, .alternate], action: #selector(takePhoto), discoverabilityTitle: localizedString("TAKE_PHOTO")),
 			]
+
+			if UIPasteboard.general.hasImage {
+				commands.append(UIKeyCommand(input: "v", modifierFlags: .command, action: #selector(pastePhoto), discoverabilityTitle: localizedString("PASTE_PHOTO")))
+			}
 		}
 
 		return commands
@@ -103,6 +109,7 @@ class EditorViewController: UIViewController {
 		emptyView.choosePhotoButton.addTarget(self, action: #selector(choosePhoto), for: .primaryActionTriggered)
 		emptyView.lastPhotoButton.addTarget(self, action: #selector(chooseLastPhoto), for: .primaryActionTriggered)
 		emptyView.takePhotoButton.addTarget(self, action: #selector(takePhoto), for: .primaryActionTriggered)
+		emptyView.pastePhotoButton.addTarget(self, action: #selector(pastePhoto), for: .primaryActionTriggered)
 		view.addSubview(emptyView)
 
 		toolbarView.modeControl.addTarget(self, action: #selector(modeDidChange), for: .primaryActionTriggered)
@@ -179,6 +186,11 @@ class EditorViewController: UIViewController {
 
 	@objc private func redoEdit() {
 		_undoManager.redo()
+	}
+
+	@objc private func pastePhoto() {
+		let data = UIPasteboard.general.data(forPasteboardType: "public.image")
+		image = data.flatMap(UIImage.init)
 	}
 
 	@objc private func share(_ sender: UIView) {

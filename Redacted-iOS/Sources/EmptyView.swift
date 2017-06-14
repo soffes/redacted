@@ -78,6 +78,14 @@ final class EmptyView: UIStackView {
 		return view
 	}()
 
+	let pastePhotoButton: UIButton = {
+		let view = Button(type: .custom)
+		view.setImage(#imageLiteral(resourceName: "Paste"), for: .normal)
+		view.setTitle(localizedString("PASTE_PHOTO"), for: .normal)
+		view.isHidden = true
+		return view
+	}()
+
 
 	// MARK: - Initializers
 
@@ -91,9 +99,21 @@ final class EmptyView: UIStackView {
 		addArrangedSubview(choosePhotoButton)
 		addArrangedSubview(lastPhotoButton)
 		addArrangedSubview(takePhotoButton)
+		addArrangedSubview(pastePhotoButton)
+
+		NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange), name: .UIPasteboardChanged, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange), name: .UIApplicationWillEnterForeground, object: nil)
+		pasteboardDidChange()
 	}
 	
 	required init(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+
+
+	// MARK: - Private
+
+	@objc private func pasteboardDidChange() {
+		pastePhotoButton.isHidden = !UIPasteboard.general.hasImage
 	}
 }

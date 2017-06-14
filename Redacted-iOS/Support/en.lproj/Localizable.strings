@@ -25,3 +25,8 @@
 "OPEN_SETTINGS_BUTTON" = "Open Settings";
 "CANCEL" = "Cancel";
 "OK" = "OK";
+
+"UNDO_FORMAT" = "Undo %@";
+"REDO_FORMAT" = "Redo %@";
+
+"PASTE_PHOTO" = "Paste Photo";
