@@ -61,12 +61,20 @@ extension EditorViewController {
 		present(viewController, animated: true)
 	}
 
+	func copyImage() {
+		UIPasteboard.general.image = renderedImage
+	}
+
+	func saveImage() {
+		PhotosController.savePhoto(context: self, photoProvider: { [weak self] in return self?.renderedImage} )
+	}
+
 	func panned(sender: UIPanGestureRecognizer) {
 		redactedView.drag(point: sender.location(in: view), state: sender.state)
 
-		//		if sender.state == .ended && redactedView.redactions.count > 0 {
-		//			hideTutorial()
-		//		}
+//		if sender.state == .ended && redactedView.redactions.count > 0 {
+//			hideTutorial()
+//		}
 	}
 
 	func tapped(sender: UITapGestureRecognizer) {

@@ -128,9 +128,23 @@ struct PhotosController {
 				viewController.modalPresentationStyle = .formSheet
 				viewController.mediaTypes = [kUTTypeImage as String]
 				viewController.delegate = imagePickerDelegate
-				imagePickerDelegate.completion = completion
+				imagePickerDelegate.completion = { image in
+					self.savePhoto(context: context, photoProvider: {
+						return image
+					})
+					completion(image)
+				}
 				context.present(viewController, animated: true, completion: nil)
 			}
+		}
+	}
+
+	static func savePhoto(context: UIViewController, photoProvider: @escaping () -> UIImage?) {
+		ensurePhotosAuthorization(context: context) {
+			PHPhotoLibrary.shared().performChanges({
+				guard let image = photoProvider() else { return }
+				PHAssetChangeRequest.creationRequestForAsset(from: image)
+			}, completionHandler: nil)
 		}
 	}
 }

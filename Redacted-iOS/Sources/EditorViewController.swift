@@ -69,6 +69,8 @@ class EditorViewController: UIViewController {
 				UIKeyCommand(input: "a", modifierFlags: .command, action: #selector(selectAllRedactions), discoverabilityTitle: string("SELECT_ALL_REDACTIONS")),
 				UIKeyCommand(input: "\u{8}", modifierFlags: .command, action: #selector(clear), discoverabilityTitle: string("CLEAR_IMAGE")),
 				UIKeyCommand(input: "e", modifierFlags: .command, action: #selector(share), discoverabilityTitle: string("SHARE")),
+				UIKeyCommand(input: "c", modifierFlags: .command, action: #selector(copyImage), discoverabilityTitle: string("COPY_IMAGE")),
+				UIKeyCommand(input: "s", modifierFlags: .command, action: #selector(saveImage), discoverabilityTitle: string("SAVE")),
 			]
 
 			if _undoManager.canUndo {
