@@ -331,8 +331,8 @@ CA
                         <touchBarItems>
                             <touchBarItem id="0cd-l7-K24">
                                 <viewController key="viewController" id="Qrs-Iv-nNd">
-                                    <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="449-Zy-rgN">
-                                        <rect key="frame" x="0.0" y="0.0" width="224" height="30"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="449-Zy-rgN">
+                                        <rect key="frame" x="4" y="-2" width="224" height="30"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="D8r-l0-Tja">
                                             <font key="font" metaFont="system"/>
                                             <segments>

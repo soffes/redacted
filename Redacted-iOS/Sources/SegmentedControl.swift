@@ -39,6 +39,13 @@ final class SegmentedControl: UIControl {
 
 	private var selectedButton: UIButton
 
+	override var isEnabled: Bool {
+		didSet {
+			buttons.forEach { $0.isEnabled = isEnabled }
+		}
+	}
+	
+
 	// MARK: - Initializers
 
 	override init(frame: CGRect) {

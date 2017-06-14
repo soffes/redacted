@@ -36,14 +36,7 @@ class EditorViewController: UIViewController {
 
 	var image: UIImage? {
 		didSet {
-			redactedView.originalImage = image
-			emptyView.isHidden = image != nil
-
-			if image == nil {
-				return
-			}
-
-//			showTutorial()
+			imageDidChange()
 		}
 	}
 
@@ -99,6 +92,8 @@ class EditorViewController: UIViewController {
 //		if !UserDefaults.standard.bool(forKey: "CreatedRedaction") {
 //			setupTutorial()
 //		}
+
+		imageDidChange()
 	}
 
 	override var prefersStatusBarHidden: Bool {
@@ -109,11 +104,19 @@ class EditorViewController: UIViewController {
 	// MARK: - Actions
 
 	@objc private func share(_ sender: UIView) {
+		// TODO: Add SVProgressHUD
 		guard let image = renderedImage else { return }
 
-//		let sharingServicePicker = NSSharingServicePicker(items: [image])
-//		sharingServicePicker.delegate = self
-//		sharingServicePicker.show(relativeTo: CGRect.zero, of: sender, preferredEdge: .minY)
+		let viewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+		viewController.completionWithItemsHandler = { type, completed, _, _ in
+			// TODO: Report to Mixpanel
+		}
+
+		if let presentationController = viewController.popoverPresentationController {
+			presentationController.sourceView = sender
+		}
+
+		present(viewController, animated: true)
 	}
 
 	@objc private func panned(sender: UIPanGestureRecognizer) {
@@ -199,6 +202,19 @@ class EditorViewController: UIViewController {
 
 
 	// MARK: - Private
+
+	private func imageDidChange() {
+		redactedView.originalImage = image
+
+		let hasImage = image != nil
+		emptyView.isHidden = hasImage
+		toolbarView.isEnabled = hasImage
+
+//		if !hasImage {
+//			showTutorial()
+//		}
+	}
+
 
 	// TODO: Localize
 	private func ensurePhotosAuthorization(_ completion: @escaping () -> Void) {

@@ -33,6 +33,14 @@ final class ToolbarView: UIView {
 		view.imageEdgeInsets = UIEdgeInsets(top: -1, left: 0, bottom: 0, right: 0)
 		return view
 	}()
+
+	var isEnabled = true {
+		didSet {
+			modeControl.isEnabled = isEnabled
+			clearButton.isEnabled = isEnabled
+			shareButton.isEnabled = isEnabled
+		}
+	}
 	
 
 	// MARK: - Initializers
