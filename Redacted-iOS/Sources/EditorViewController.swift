@@ -44,8 +44,18 @@ class EditorViewController: UIViewController {
 		return redactedView.renderedImage()
 	}
 
+	private let _undoManager = UndoManager()
+
 
 	// MARK: - UIResponder
+
+	override var canBecomeFirstResponder: Bool {
+		return true
+	}
+
+	override var undoManager: UndoManager? {
+		return _undoManager
+	}
 
 	override var keyCommands: [UIKeyCommand]? {
 		var commands = super.keyCommands ?? []
@@ -60,6 +70,15 @@ class EditorViewController: UIViewController {
 				UIKeyCommand(input: "\u{8}", modifierFlags: .command, action: #selector(clear), discoverabilityTitle: string("CLEAR_IMAGE")),
 				UIKeyCommand(input: "e", modifierFlags: .command, action: #selector(share), discoverabilityTitle: string("SHARE")),
 			]
+
+			if _undoManager.canUndo {
+				commands.append(UIKeyCommand(input: "z", modifierFlags: .command, action: #selector(undoEdit), discoverabilityTitle: "Undo"))
+			}
+
+			if _undoManager.canRedo {
+				commands.append(UIKeyCommand(input: "z", modifierFlags: [.command, .shift], action: #selector(redoEdit), discoverabilityTitle: "Redo"))
+			}
+
 		} else {
 			commands += [
 				UIKeyCommand(input: "o", modifierFlags: .command, action: #selector(choosePhoto), discoverabilityTitle: localizedString("CHOOSE_PHOTO")),
@@ -78,6 +97,7 @@ class EditorViewController: UIViewController {
 		super.viewDidLoad()
 
 		redactedView.backgroundColor = UIColor(white: 43 / 255, alpha: 1)
+		redactedView.undoManager = _undoManager
 		view.addSubview(redactedView)
 
 		emptyView.choosePhotoButton.addTarget(self, action: #selector(choosePhoto), for: .primaryActionTriggered)
@@ -151,6 +171,14 @@ class EditorViewController: UIViewController {
 
 	@objc private func selectAllRedactions() {
 		redactedView.selectAllRedactions()
+	}
+
+	@objc private func undoEdit() {
+		_undoManager.undo()
+	}
+
+	@objc private func redoEdit() {
+		_undoManager.redo()
 	}
 
 	@objc private func share(_ sender: UIView) {
