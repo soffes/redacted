@@ -3,4 +3,4 @@ github "soffes/X"
 github "soffes/Mixpanel"
 
 # iOS
-github "soffes/GradientView"
+github "SVProgressHUD/SVProgressHUD"

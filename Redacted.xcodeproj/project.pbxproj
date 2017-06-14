@@ -67,14 +67,15 @@
 		21CC0D5E1D88FFAA00B3F5DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D301D88FFAA00B3F5DF /* Images.xcassets */; };
 		21CC0D901D88FFB000B3F5DF /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC0D801D88FFB000B3F5DF /* Mixpanel.framework */; };
 		21CC0D921D88FFB000B3F5DF /* X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC0D821D88FFB000B3F5DF /* X.framework */; };
-		21CC0D941D88FFCE00B3F5DF /* GradientView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC0D791D88FFB000B3F5DF /* GradientView.framework */; };
 		21CC0D951D88FFCE00B3F5DF /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC0D7B1D88FFB000B3F5DF /* Mixpanel.framework */; };
 		21CC0D961D88FFCE00B3F5DF /* X.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC0D7D1D88FFB000B3F5DF /* X.framework */; };
 		21CC0D991D89002400B3F5DF /* RedactedKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CC0D461D88FFAA00B3F5DF /* RedactedKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21CC0D9A1D89002500B3F5DF /* RedactedKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CC0D461D88FFAA00B3F5DF /* RedactedKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		21E547D01EF1AA2D009FA237 /* AuthorizationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547CF1EF1AA2D009FA237 /* AuthorizationsController.swift */; };
+		21E547D01EF1AA2D009FA237 /* PhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547CF1EF1AA2D009FA237 /* PhotosController.swift */; };
 		21E547D21EF1AC0D009FA237 /* UIAlertAction+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */; };
 		21E547D41EF1B682009FA237 /* UIPasteboard+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D31EF1B682009FA237 /* UIPasteboard+Redacted.swift */; };
+		21E547D61EF1CC6B009FA237 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E547D51EF1CC6B009FA237 /* SVProgressHUD.framework */; };
+		21E547D81EF1CEE1009FA237 /* EditorViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,14 +179,15 @@
 		21CC0D441D88FFAA00B3F5DF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		21CC0D451D88FFAA00B3F5DF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21CC0D461D88FFAA00B3F5DF /* RedactedKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedactedKit.h; sourceTree = "<group>"; };
-		21CC0D791D88FFB000B3F5DF /* GradientView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GradientView.framework; sourceTree = "<group>"; };
 		21CC0D7B1D88FFB000B3F5DF /* Mixpanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mixpanel.framework; sourceTree = "<group>"; };
 		21CC0D7D1D88FFB000B3F5DF /* X.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = X.framework; sourceTree = "<group>"; };
 		21CC0D801D88FFB000B3F5DF /* Mixpanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mixpanel.framework; sourceTree = "<group>"; };
 		21CC0D821D88FFB000B3F5DF /* X.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = X.framework; sourceTree = "<group>"; };
-		21E547CF1EF1AA2D009FA237 /* AuthorizationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationsController.swift; sourceTree = "<group>"; };
+		21E547CF1EF1AA2D009FA237 /* PhotosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosController.swift; sourceTree = "<group>"; };
 		21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Redacted.swift"; sourceTree = "<group>"; };
 		21E547D31EF1B682009FA237 /* UIPasteboard+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPasteboard+Redacted.swift"; sourceTree = "<group>"; };
+		21E547D51EF1CC6B009FA237 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
+		21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EditorViewController+Actions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,7 +221,7 @@
 			files = (
 				212456C11AD92CC70038D30D /* RedactedKit.framework in Frameworks */,
 				21CC0D951D88FFCE00B3F5DF /* Mixpanel.framework in Frameworks */,
-				21CC0D941D88FFCE00B3F5DF /* GradientView.framework in Frameworks */,
+				21E547D61EF1CC6B009FA237 /* SVProgressHUD.framework in Frameworks */,
 				21CC0D961D88FFCE00B3F5DF /* X.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,13 +266,14 @@
 			children = (
 				21CC0D151D88FFAA00B3F5DF /* AppDelegate.swift */,
 				21CC0D161D88FFAA00B3F5DF /* EditorViewController.swift */,
+				21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */,
 				216DA4761EEA49F200E39CAE /* EmptyView.swift */,
 				216DA47B1EEA54D400E39CAE /* ToolbarView.swift */,
 				216DA4831EEA5A5600E39CAE /* SegmentedControl.swift */,
 				216DA4851EEA5E5900E39CAE /* ToolbarButton.swift */,
 				216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */,
 				216DA4891EEA715200E39CAE /* LocalizedString.swift */,
-				21E547CF1EF1AA2D009FA237 /* AuthorizationsController.swift */,
+				21E547CF1EF1AA2D009FA237 /* PhotosController.swift */,
 				21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */,
 				21E547D31EF1B682009FA237 /* UIPasteboard+Redacted.swift */,
 			);
@@ -379,7 +382,7 @@
 		21CC0D721D88FFB000B3F5DF /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				21CC0D791D88FFB000B3F5DF /* GradientView.framework */,
+				21E547D51EF1CC6B009FA237 /* SVProgressHUD.framework */,
 				21CC0D7B1D88FFB000B3F5DF /* Mixpanel.framework */,
 				21CC0D7D1D88FFB000B3F5DF /* X.framework */,
 			);
@@ -660,7 +663,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/X.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/GradientView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Mixpanel.framework",
 			);
 			name = "Embed Carthage Frameworks";
@@ -740,10 +743,11 @@
 				216DA47C1EEA54D400E39CAE /* ToolbarView.swift in Sources */,
 				216DA4841EEA5A5600E39CAE /* SegmentedControl.swift in Sources */,
 				216DA4771EEA49F200E39CAE /* EmptyView.swift in Sources */,
+				21E547D81EF1CEE1009FA237 /* EditorViewController+Actions.swift in Sources */,
 				21E547D21EF1AC0D009FA237 /* UIAlertAction+Redacted.swift in Sources */,
 				216DA48A1EEA715200E39CAE /* LocalizedString.swift in Sources */,
 				216DA4861EEA5E5900E39CAE /* ToolbarButton.swift in Sources */,
-				21E547D01EF1AA2D009FA237 /* AuthorizationsController.swift in Sources */,
+				21E547D01EF1AA2D009FA237 /* PhotosController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

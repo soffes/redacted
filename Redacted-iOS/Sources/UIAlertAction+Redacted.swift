@@ -15,6 +15,6 @@ extension UIAlertAction {
 
 	static let openSettings = UIAlertAction(title: localizedString("OPEN_SETTINGS"), style: .default) { _ in
 		guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
-		UIApplication.shared.openURL(url)
+		UIApplication.shared.open(url)
 	}
 }

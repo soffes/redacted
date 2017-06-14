@@ -9,20 +9,19 @@
 import UIKit
 import RedactedKit
 import X
-import Photos
-import MobileCoreServices
+import SVProgressHUD
 
 class EditorViewController: UIViewController {
 
 	// MARK: - Properties
 
-	private let redactedView: RedactedView = {
+	let redactedView: RedactedView = {
 		let view = RedactedView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
 	}()
 
-	private let toolbarView: ToolbarView = {
+	let toolbarView: ToolbarView = {
 		let view = ToolbarView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
@@ -44,9 +43,9 @@ class EditorViewController: UIViewController {
 		return redactedView.renderedImage()
 	}
 
-	private let _undoManager = UndoManager()
+	let _undoManager = UndoManager()
 
-	private let haptics = UISelectionFeedbackGenerator()
+	let haptics = UISelectionFeedbackGenerator()
 
 
 	// MARK: - UIResponder
@@ -157,154 +156,6 @@ class EditorViewController: UIViewController {
 	}
 
 
-	// MARK: - Actions
-
-	@objc private func usePixelate() {
-		toolbarView.modeControl.selectedIndex = 0
-		modeDidChange()
-	}
-
-	@objc private func useBlur() {
-		toolbarView.modeControl.selectedIndex = 1
-		modeDidChange()
-	}
-
-	@objc private func useBlackBar() {
-		toolbarView.modeControl.selectedIndex = 2
-		modeDidChange()
-	}
-
-	@objc private func deleteRedaction() {
-		redactedView.deleteRedaction()
-	}
-
-	@objc private func selectAllRedactions() {
-		redactedView.selectAllRedactions()
-	}
-
-	@objc private func undoEdit() {
-		_undoManager.undo()
-	}
-
-	@objc private func redoEdit() {
-		_undoManager.redo()
-	}
-
-	@objc private func pastePhoto() {
-		let data = UIPasteboard.general.data(forPasteboardType: "public.image")
-		image = data.flatMap(UIImage.init)
-	}
-
-	@objc private func share(_ sender: UIView) {
-		// TODO: Add SVProgressHUD
-		guard let image = renderedImage else { return }
-
-		let viewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-		viewController.completionWithItemsHandler = { type, completed, _, _ in
-			// TODO: Report to Mixpanel
-		}
-
-		if let presentationController = viewController.popoverPresentationController {
-			presentationController.sourceView = sender
-		}
-
-		present(viewController, animated: true)
-	}
-
-	@objc private func panned(sender: UIPanGestureRecognizer) {
-		redactedView.drag(point: sender.location(in: view), state: sender.state)
-
-//		if sender.state == .ended && redactedView.redactions.count > 0 {
-//			hideTutorial()
-//		}
-	}
-
-	@objc private func tapped(sender: UITapGestureRecognizer) {
-		if sender.state == .ended {
-			redactedView.tap(point: sender.location(in: view))
-		}
-	}
-
-	@objc private func twoFingerTapped(sender: UITapGestureRecognizer) {
-		if sender.state == .ended {
-			redactedView.tap(point: sender.location(in: view), exclusive: false)
-		}
-	}
-
-	func clear() {
-		image = nil
-	}
-
-	@objc private func modeDidChange() {
-		guard let mode = RedactionType(rawValue: toolbarView.modeControl.selectedIndex) else { return }
-		redactedView.mode = mode
-	}
-
-	func choosePhoto() {
-		DispatchQueue.main.async {
-			AuthorizationsController.ensurePhotosAuthorization(context: self) { [weak self] in
-				self?.haptics.prepare()
-				
-				let viewController = UIImagePickerController()
-				viewController.sourceType = .savedPhotosAlbum
-				viewController.modalPresentationStyle = .formSheet
-				viewController.mediaTypes = [kUTTypeImage as String]
-				viewController.delegate = self
-				self?.present(viewController, animated: true, completion: nil)
-			}
-		}
-	}
-
-	func chooseLastPhoto() {
-		DispatchQueue.main.async {
-			AuthorizationsController.ensurePhotosAuthorization(context: self) { [weak self] in
-				self?.haptics.prepare()
-
-				let manager = PHImageManager.default()
-				let options = PHFetchOptions()
-				options.fetchLimit = 1
-				options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-
-				let result = PHAsset.fetchAssets(with: .image, options: options)
-
-				guard let last = result.firstObject else {
-					self?.choosePhoto()
-					return
-				}
-
-				let size = CGSize(width: last.pixelWidth, height: last.pixelHeight)
-				manager.requestImage(for: last, targetSize: size, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
-					guard let image = image else {
-						self?.choosePhoto()
-						return
-					}
-
-					DispatchQueue.main.async {
-						self?.image = image
-					}
-				})
-			}
-		}
-	}
-
-	func takePhoto() {
-		DispatchQueue.main.async {
-			AuthorizationsController.ensureCameraAuthorization(context: self) { [weak self] in
-				AuthorizationsController.ensurePhotosAuthorization(context: self) {
-					self?.haptics.prepare()
-
-					let viewController = UIImagePickerController()
-					viewController.sourceType = .camera
-					viewController.modalPresentationStyle = .formSheet
-					viewController.mediaTypes = [kUTTypeImage as String]
-					viewController.delegate = self
-					self?.present(viewController, animated: true, completion: nil)
-				}
-			}
-		}
-	}
-
-
 	// MARK: - Private
 
 	private func imageDidChange() {
@@ -321,16 +172,5 @@ class EditorViewController: UIViewController {
 //		if !hasImage {
 //			showTutorial()
 //		}
-	}
-}
-
-
-
-extension EditorViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-		picker.dismiss(animated: true, completion: nil)
-
-		guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-		self.image = image
 	}
 }
