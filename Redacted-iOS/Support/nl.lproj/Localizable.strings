@@ -7,7 +7,5 @@
 */
 
 "CHOOSE_PHOTO" = "Kies een foto";
-
-"LAST_PHOTO_TAKEN" = "Laatst gemaakte foto";
-
+"CHOOSE_LAST_PHOTO" = "Laatst gemaakte foto";
 "TAKE_PHOTO" = "Maak een foto";

@@ -45,6 +45,31 @@ class EditorViewController: UIViewController {
 	}
 
 
+	// MARK: - UIResponder
+
+	override var keyCommands: [UIKeyCommand]? {
+		var commands = super.keyCommands ?? []
+
+		if image != nil {
+			commands += [
+				UIKeyCommand(input: "1", modifierFlags: .command, action: #selector(usePixelate), discoverabilityTitle: string("PIXELATE")),
+				UIKeyCommand(input: "2", modifierFlags: .command, action: #selector(useBlur), discoverabilityTitle: string("BLUR")),
+				UIKeyCommand(input: "3", modifierFlags: .command, action: #selector(useBlackBar), discoverabilityTitle: string("BLACK_BAR")),
+				UIKeyCommand(input: "\u{8}", modifierFlags: .command, action: #selector(clear), discoverabilityTitle: string("CLEAR_IMAGE")),
+				UIKeyCommand(input: "s", modifierFlags: .command, action: #selector(share), discoverabilityTitle: string("SHARE")),
+			]
+		} else {
+			commands += [
+				UIKeyCommand(input: "o", modifierFlags: .command, action: #selector(choosePhoto), discoverabilityTitle: localizedString("CHOOSE_PHOTO")),
+				UIKeyCommand(input: "o", modifierFlags: [.command, .shift], action: #selector(chooseLastPhoto), discoverabilityTitle: localizedString("CHOOSE_LAST_PHOTO")),
+				UIKeyCommand(input: "o", modifierFlags: [.command, .alternate], action: #selector(takePhoto), discoverabilityTitle: localizedString("TAKE_PHOTO"))
+			]
+		}
+
+		return commands
+	}
+
+
 	// MARK: - UIViewController
 
 	override func viewDidLoad() {
@@ -102,6 +127,21 @@ class EditorViewController: UIViewController {
 
 
 	// MARK: - Actions
+
+	@objc private func usePixelate() {
+		toolbarView.modeControl.selectedIndex = 0
+		modeDidChange()
+	}
+
+	@objc private func useBlur() {
+		toolbarView.modeControl.selectedIndex = 1
+		modeDidChange()
+	}
+
+	@objc private func useBlackBar() {
+		toolbarView.modeControl.selectedIndex = 2
+		modeDidChange()
+	}
 
 	@objc private func share(_ sender: UIView) {
 		// TODO: Add SVProgressHUD

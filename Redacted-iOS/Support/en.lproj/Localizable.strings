@@ -7,7 +7,7 @@
 */
 
 "CHOOSE_PHOTO" = "Choose Photo";
-"LAST_PHOTO_TAKEN" = "Last Photo Taken";
+"CHOOSE_LAST_PHOTO" = "Last Photo Taken";
 "TAKE_PHOTO" = "Take Photo";
 
 "RESTRICTED_PHOTOS_TITLE" = "Restricted";

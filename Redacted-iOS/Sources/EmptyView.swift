@@ -67,7 +67,7 @@ final class EmptyView: UIStackView {
 	let lastPhotoButton: UIButton = {
 		let view = Button(type: .custom)
 		view.setImage(#imageLiteral(resourceName: "Library"), for: .normal)
-		view.setTitle(localizedString("LAST_PHOTO_TAKEN"), for: .normal)
+		view.setTitle(localizedString("CHOOSE_LAST_PHOTO"), for: .normal)
 		return view
 	}()
 

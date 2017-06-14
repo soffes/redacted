@@ -7,7 +7,5 @@
 */
 
 "CHOOSE_PHOTO" = "Escolhe foto";
-
-"LAST_PHOTO_TAKEN" = "Última foto tirada";
-
+"CHOOSE_LAST_PHOTO" = "Última foto tirada";
 "TAKE_PHOTO" = "Tira uma foto";
