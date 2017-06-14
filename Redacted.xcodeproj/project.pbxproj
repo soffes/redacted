@@ -75,6 +75,8 @@
 		21E547D81EF1CEE1009FA237 /* EditorViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */; };
 		21E547DA1EF1D853009FA237 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D91EF1D853009FA237 /* ToolTipView.swift */; };
 		21E547DC1EF1D8F8009FA237 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547DB1EF1D8F8009FA237 /* Label.swift */; };
+		21E547DD1EF1E752009FA237 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D421D88FFAA00B3F5DF /* Localizable.strings */; };
+		21E547DE1EF1E75D009FA237 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 216DA4781EEA4F6200E39CAE /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -582,6 +584,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E547DD1EF1E752009FA237 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +593,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21B0248A1D8900CA00A0B226 /* LaunchScreen.xib in Resources */,
+				21E547DE1EF1E75D009FA237 /* Localizable.strings in Resources */,
 				21C8CF281EEEF15700261547 /* InfoPlist.strings in Resources */,
 				21B024891D8900C100A0B226 /* Images.xcassets in Resources */,
 			);

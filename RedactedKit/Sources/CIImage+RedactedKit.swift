@@ -16,13 +16,19 @@ import X
 
 extension CIImage {
 	public var renderedImage: Image {
+		var image = self
+
+		#if os(iOS)
+			image = image.applying(CGAffineTransform(scaleX: 1, y: -1).concatenating(CGAffineTransform(translationX: 0, y: image.extent.height)))
+		#endif
+
 		let colorSpace = CGColorSpaceCreateDeviceRGB()
 		let options = [
 			kCIContextWorkingColorSpace: colorSpace,
 			kCIContextOutputColorSpace: colorSpace,
 		]
 
-		let extent = self.extent
+		let extent = image.extent
 
 		let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
 		let cgContext = CGContext(
@@ -38,7 +44,7 @@ extension CIImage {
 		)!
 		let ciContext = CIContext(cgContext: cgContext, options: options)
 
-		let cgImage = ciContext.createCGImage(self, from: extent)!
+		let cgImage = ciContext.createCGImage(image, from: extent)!
 
 		#if os(iOS)
 			return Image(cgImage: cgImage)
