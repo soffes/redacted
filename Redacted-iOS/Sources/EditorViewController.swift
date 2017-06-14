@@ -204,11 +204,11 @@ class EditorViewController: UIViewController {
 			let manager = PHImageManager.default()
 			let options = PHFetchOptions()
 			options.fetchLimit = 1
-			options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+			options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
 			let result = PHAsset.fetchAssets(with: .image, options: options)
 
-			guard let last = result.lastObject else {
+			guard let last = result.firstObject else {
 				self?.choosePhoto()
 				return
 			}
