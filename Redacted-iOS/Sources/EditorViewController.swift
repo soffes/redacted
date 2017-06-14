@@ -46,6 +46,23 @@ class EditorViewController: UIViewController {
 
 	let haptics = UISelectionFeedbackGenerator()
 
+	private let toolTipView: ToolTipView = {
+		let view = ToolTipView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.textLabel.text = localizedString("TAP_AND_DRAG")
+		return view
+	}()
+
+	private var toolTipBottomConstraint: NSLayoutConstraint? {
+		willSet {
+			toolTipBottomConstraint?.isActive = false
+		}
+
+		didSet {
+			toolTipBottomConstraint?.isActive = true
+		}
+	}
+
 
 	// MARK: - UIResponder
 
@@ -144,12 +161,6 @@ class EditorViewController: UIViewController {
 		twoFingerTap.numberOfTouchesRequired = 2
 		view.addGestureRecognizer(twoFingerTap)
 
-//		placeholderLabel.stringValue = string("DRAG_TO_GET_STARTED")
-//
-//		if !UserDefaults.standard.bool(forKey: "CreatedRedaction") {
-//			setupTutorial()
-//		}
-
 		imageDidChange()
 	}
 
@@ -169,10 +180,54 @@ class EditorViewController: UIViewController {
 
 		if hasImage {
 			haptics.selectionChanged()
+
+			if !UserDefaults.standard.bool(forKey: "CreatedRedaction") {
+				showTutorial()
+			}
+		} else {
+			hideTutorial()
+		}
+	}
+
+	private func setupTutorial() {
+		if toolTipView.superview != nil {
+			return
 		}
 
-//		if !hasImage {
-//			showTutorial()
-//		}
+		view.addSubview(toolTipView)
+
+		let bottomConstraint = toolTipView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor, constant: 64)
+		bottomConstraint.priority = UILayoutPriorityDefaultLow
+
+		NSLayoutConstraint.activate([
+			toolTipView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			bottomConstraint
+		])
+
+		view.layoutIfNeeded()
+	}
+
+	private func showTutorial() {
+		setupTutorial()
+
+		toolTipBottomConstraint = toolTipView.bottomAnchor.constraint(equalTo: toolbarView.topAnchor, constant: -16)
+
+		UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.2, options: [], animations: { [weak self] in
+			self?.view.layoutIfNeeded()
+		}, completion: nil)
+	}
+
+	func hideTutorial() {
+		if toolTipView.superview == nil {
+			return
+		}
+
+		toolTipBottomConstraint = nil
+
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.2, options: [], animations: { [weak self] in
+			self?.view.layoutIfNeeded()
+		}, completion: { [weak self] _ in
+			self?.toolTipView.removeFromSuperview()
+		})
 	}
 }

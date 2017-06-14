@@ -30,3 +30,5 @@
 "REDO_FORMAT" = "Redo %@";
 
 "PASTE_PHOTO" = "Paste Photo";
+
+"TAP_AND_DRAG" = "Tap and drag to start redacting";

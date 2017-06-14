@@ -94,9 +94,10 @@ extension EditorViewController {
 	func panned(sender: UIPanGestureRecognizer) {
 		redactedView.drag(point: sender.location(in: view), state: sender.state)
 
-//		if sender.state == .ended && redactedView.redactions.count > 0 {
-//			hideTutorial()
-//		}
+		if sender.state == .ended && redactedView.redactions.count > 0 {
+			hideTutorial()
+			UserDefaults.standard.set(true, forKey: "CreatedRedaction")
+		}
 	}
 
 	func tapped(sender: UITapGestureRecognizer) {
