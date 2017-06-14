@@ -113,10 +113,7 @@ class EditorViewController: UIViewController {
 		emptyView.takePhotoButton.addTarget(self, action: #selector(takePhoto), for: .primaryActionTriggered)
 		emptyView.pastePhotoButton.addTarget(self, action: #selector(pastePhoto), for: .primaryActionTriggered)
 
-		let emptyContainer = UIView()
-		emptyContainer.translatesAutoresizingMaskIntoConstraints = false
-		emptyContainer.addSubview(emptyView)
-		view.addSubview(emptyContainer)
+		view.addSubview(emptyView)
 
 		toolbarView.modeControl.addTarget(self, action: #selector(modeDidChange), for: .primaryActionTriggered)
 		toolbarView.clearButton.addTarget(self, action: #selector(clear), for: .primaryActionTriggered)
@@ -127,15 +124,10 @@ class EditorViewController: UIViewController {
 			redactedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			redactedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			redactedView.topAnchor.constraint(equalTo: view.topAnchor),
-			redactedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			redactedView.bottomAnchor.constraint(equalTo: toolbarView.topAnchor),
 
-			emptyContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			emptyContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			emptyContainer.topAnchor.constraint(equalTo: view.topAnchor),
-			emptyContainer.bottomAnchor.constraint(equalTo: toolbarView.topAnchor),
-
-			emptyView.centerXAnchor.constraint(equalTo: emptyContainer.centerXAnchor),
-			emptyView.centerYAnchor.constraint(equalTo: emptyContainer.centerYAnchor),
+			emptyView.centerXAnchor.constraint(equalTo: redactedView.centerXAnchor),
+			emptyView.centerYAnchor.constraint(equalTo: redactedView.centerYAnchor),
 
 			toolbarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			toolbarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
