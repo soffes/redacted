@@ -9,7 +9,6 @@
 import UIKit
 import RedactedKit
 import X
-import SVProgressHUD
 
 class EditorViewController: UIViewController {
 

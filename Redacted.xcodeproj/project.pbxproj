@@ -74,7 +74,6 @@
 		21E547D01EF1AA2D009FA237 /* PhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547CF1EF1AA2D009FA237 /* PhotosController.swift */; };
 		21E547D21EF1AC0D009FA237 /* UIAlertAction+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */; };
 		21E547D41EF1B682009FA237 /* UIPasteboard+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D31EF1B682009FA237 /* UIPasteboard+Redacted.swift */; };
-		21E547D61EF1CC6B009FA237 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E547D51EF1CC6B009FA237 /* SVProgressHUD.framework */; };
 		21E547D81EF1CEE1009FA237 /* EditorViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */; };
 /* End PBXBuildFile section */
 
@@ -186,7 +185,6 @@
 		21E547CF1EF1AA2D009FA237 /* PhotosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosController.swift; sourceTree = "<group>"; };
 		21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Redacted.swift"; sourceTree = "<group>"; };
 		21E547D31EF1B682009FA237 /* UIPasteboard+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPasteboard+Redacted.swift"; sourceTree = "<group>"; };
-		21E547D51EF1CC6B009FA237 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
 		21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EditorViewController+Actions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,7 +219,6 @@
 			files = (
 				212456C11AD92CC70038D30D /* RedactedKit.framework in Frameworks */,
 				21CC0D951D88FFCE00B3F5DF /* Mixpanel.framework in Frameworks */,
-				21E547D61EF1CC6B009FA237 /* SVProgressHUD.framework in Frameworks */,
 				21CC0D961D88FFCE00B3F5DF /* X.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,7 +379,6 @@
 		21CC0D721D88FFB000B3F5DF /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				21E547D51EF1CC6B009FA237 /* SVProgressHUD.framework */,
 				21CC0D7B1D88FFB000B3F5DF /* Mixpanel.framework */,
 				21CC0D7D1D88FFB000B3F5DF /* X.framework */,
 			);
@@ -663,7 +659,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/X.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Mixpanel.framework",
 			);
 			name = "Embed Carthage Frameworks";

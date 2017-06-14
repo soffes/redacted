@@ -47,7 +47,6 @@ extension EditorViewController {
 	}
 
 	func share(_ sender: UIView) {
-		// TODO: Add SVProgressHUD
 		guard let image = renderedImage else { return }
 
 		let viewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
