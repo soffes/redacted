@@ -332,7 +332,8 @@ CA
                             <touchBarItem id="0cd-l7-K24">
                                 <viewController key="viewController" id="Qrs-Iv-nNd">
                                     <segmentedControl key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="449-Zy-rgN">
-                                        <rect key="frame" x="4" y="-2" width="224" height="30"/>
+                                        <rect key="frame" x="4" y="-2" width="224" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="D8r-l0-Tja">
                                             <font key="font" metaFont="system"/>
                                             <segments>
@@ -357,8 +358,9 @@ CA
                             <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="WBv-Ia-nnQ"/>
                             <touchBarItem id="evP-Gg-dpJ">
                                 <viewController key="viewController" id="Wbe-9Y-sQ7">
-                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ffI-G0-jzc">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <button key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ffI-G0-jzc">
+                                        <rect key="frame" x="0.0" y="0.0" width="84" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="TouchBar-Clear" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZKd-IH-YLH">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>

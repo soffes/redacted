@@ -19,6 +19,7 @@
 		216DA4861EEA5E5900E39CAE /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4851EEA5E5900E39CAE /* ToolbarButton.swift */; };
 		216DA4881EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */; };
 		216DA48A1EEA715200E39CAE /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4891EEA715200E39CAE /* LocalizedString.swift */; };
+		219512291EF23B53000A3D12 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D421D88FFAA00B3F5DF /* Localizable.strings */; };
 		21B0246E1D89008700A0B226 /* BoundingBoxLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D351D88FFAA00B3F5DF /* BoundingBoxLayer.swift */; };
 		21B0246F1D89008700A0B226 /* ChainFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D361D88FFAA00B3F5DF /* ChainFilter.swift */; };
 		21B024701D89008700A0B226 /* CIImage+RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D371D88FFAA00B3F5DF /* CIImage+RedactedKit.swift */; };
@@ -139,6 +140,10 @@
 		216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplicationShortcutItem+Redacted.swift"; sourceTree = "<group>"; };
 		216DA4891EEA715200E39CAE /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		2192BAC41AD0E6C500AC87E2 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		219512251EF23B35000A3D12 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		219512261EF23B35000A3D12 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		219512271EF23B45000A3D12 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		219512281EF23B53000A3D12 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		21C8CF231EEEF13E00261547 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		21C8CF241EEEF14300261547 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		21C8CF251EEEF14B00261547 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -547,6 +552,7 @@
 				fr,
 				nl,
 				pt,
+				"zh-Hans",
 			);
 			mainGroup = 210EF32E1AC0A35C00ED8E97;
 			productRefGroup = 210EF3381AC0A35C00ED8E97 /* Products */;
@@ -567,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21CC0D5E1D88FFAA00B3F5DF /* Images.xcassets in Resources */,
+				219512291EF23B53000A3D12 /* Localizable.strings in Resources */,
 				21CC0D5B1D88FFAA00B3F5DF /* Main.storyboard in Resources */,
 				21CC0D5D1D88FFAA00B3F5DF /* Main.strings in Resources */,
 			);
@@ -776,6 +783,7 @@
 				216DA4791EEA4F6200E39CAE /* en */,
 				21C8CF231EEEF13E00261547 /* nl */,
 				21C8CF241EEEF14300261547 /* pt */,
+				219512261EF23B35000A3D12 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -784,6 +792,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				21C8CF271EEEF15700261547 /* en */,
+				219512251EF23B35000A3D12 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -811,6 +820,7 @@
 				21CC0D2F1D88FFAA00B3F5DF /* fr */,
 				216997FA1DCA479700E65D34 /* nl */,
 				21021EA31EEEF113008FE1CA /* pt */,
+				219512271EF23B45000A3D12 /* zh-Hans */,
 			);
 			name = Main.strings;
 			sourceTree = "<group>";
@@ -822,6 +832,7 @@
 				21CC0D441D88FFAA00B3F5DF /* fr */,
 				216997FB1DCA47A000E65D34 /* nl */,
 				21C8CF251EEEF14B00261547 /* pt */,
+				219512281EF23B53000A3D12 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
