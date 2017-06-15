@@ -1,0 +1,10 @@
+/*
+  InfoPlist.strings
+  Redacted
+
+  Created by Chriztian Steinmeier on 6/13/17.
+  Copyright © 2017 Nothing Magical Inc. All rights reserved.
+*/
+
+"NSCameraUsageDescription" = "Redacted bruger dit kamera til at importere fotos.";
+"NSPhotoLibraryUsageDescription" = "Redacted bruger dit fotobibliotek til at importere fotos.";

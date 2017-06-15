@@ -14,15 +14,15 @@
 
 /* Actions */
 "SHARE" = "Partager";
-"CLEAR" = "Éffacer";
-"CLEAR_IMAGE" = "Éffacer l'image";
+"CLEAR" = "Effacer";
+"CLEAR_IMAGE" = "Effacer l'image";
 "SAVE" = "Enregistrer";
 "EXPORT" = "Exporter…";
 
 /* Edit menu */
 "COPY_IMAGE" = "Copier l'image";
 "PASTE_IMAGE" = "Coller l'image";
-"SELECT_ALL_REDACTIONS" = "Sélectioner toutes les rédactions";
+"SELECT_ALL_REDACTIONS" = "Sélectionner toutes les rédactions";
 
 /* Undo actions */
 "INSERT_REDACTION" = "Insérer une rédaction";
@@ -36,4 +36,4 @@
 
 /* Tutorial */
 "DRAG_TO_GET_STARTED" = "Glissez une image ici";
-"CLICK_AND_DRAG" = "Cliquez et glissez pour créer une rédaction";
+"CLICK_AND_DRAG" = "Cliquez et glissez pour commencer";

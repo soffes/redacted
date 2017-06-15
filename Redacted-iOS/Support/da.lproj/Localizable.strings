@@ -1,0 +1,34 @@
+/*
+  Localizable.strings
+  Redacted
+
+  Created by Chriztian Steinmeier on 6/13/17.
+  Copyright © 2017 Nothing Magical Inc. All rights reserved.
+*/
+
+"CHOOSE_PHOTO" = "Vælg foto";
+"CHOOSE_LAST_PHOTO" = "Seneste foto";
+"TAKE_PHOTO" = "Tag foto";
+
+"RESTRICTED_PHOTOS_TITLE" = "Uautoriseret";
+"RESTRICTED_PHOTOS_MESSAGE" = "Du har ikke rettigheder til at tillade Redacted adgang til dine fotos. Det kan være på grund af indstillingerne for forældrekontrol.";
+
+"ACCESS_DENIED_PHOTOS_TITLE" = "Adgang nægtet";
+"ACCESS_DENIED_PHOTOS_MESSAGE" = "Tillad venligst adgang til Fotos.";
+
+"RESTRICTED_CAMERA_TITLE" = "Uautoriseret";
+"RESTRICTED_CAMERA_MESSAGE" = "Du har ikke rettigheder til at tillade Redacted adgang til dit kamera. Det kan være på grund af indstillingerne for forældrekontrol.";
+
+"ACCESS_DENIED_CAMERA_TITLE" = "Adgang nægtet";
+"ACCESS_DENIED_CAMERA_MESSAGE" = "Tillad venligst adgang til Kamera.";
+
+"OPEN_SETTINGS_BUTTON" = "Åbn indstillinger";
+"CANCEL" = "Annuller";
+"OK" = "OK";
+
+"UNDO_FORMAT" = "Fortryd %@";
+"REDO_FORMAT" = "Gentag %@";
+
+"PASTE_PHOTO" = "Indsæt foto";
+
+"TAP_AND_DRAG" = "Tap for at starte redigering";

@@ -1,0 +1,39 @@
+/*
+  Localizable.strings
+  Redacted
+
+  Created by Fernando Paredes on 6/14/17.
+  Copyright © 2017 Nothing Magical Inc. All rights reserved.
+*/
+
+/* Modes */
+"MODE" = "Modo";
+"PIXELATE" = "Pixelado";
+"BLUR" = "Difuminar";
+"BLACK_BAR" = "Barra Negra";
+
+/* Actions */
+"SHARE" = "Compartir";
+"CLEAR" = "Limpiar";
+"CLEAR_IMAGE" = "Limpiar Imagen";
+"SAVE" = "Guardar";
+"EXPORT" = "Exportar como…";
+
+/* Edit menu */
+"COPY_IMAGE" = "Copiar Imagen";
+"PASTE_IMAGE" = "Pegar Imagen";
+"SELECT_ALL_REDACTIONS" = "Seleccionar Todas las Censuras";
+
+/* Undo actions */
+"INSERT_REDACTION" = "Insertar Censura";
+"INSERT_REDACTIONS" = "Insertar Censuras";
+"DELETE_REDACTION" = "Eliminar Censura";
+"DELETE_REDACTIONS" = "Eliminar Censuras";
+
+/* About */
+"VERSION_FORMAT" = "Versión %@";
+"CREDITS" = "Diseñado y desarrollado por Nothing Magical en California.";
+
+/* Tutorial */
+"DRAG_TO_GET_STARTED" = "Arrastra un imagen aquí";
+"CLICK_AND_DRAG" = "Haz clic y arrastra para empezar a censurar";

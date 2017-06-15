@@ -1,0 +1,39 @@
+/*
+  Localizable.strings
+  Redacted
+
+  Created by Chriztian Steinmeier on 6/13/17.
+  Copyright © 2017 Nothing Magical Inc. All rights reserved.
+*/
+
+/* Modes */
+"MODE" = "Mode";
+"PIXELATE" = "Pixelering";
+"BLUR" = "Sløring";
+"BLACK_BAR" = "Sorte streger";
+
+/* Actions */
+"SHARE" = "Del";
+"CLEAR" = "Slet";
+"CLEAR_IMAGE" = "Slet billede";
+"SAVE" = "Gem";
+"EXPORT" = "Eksporter…";
+
+/* Edit menu */
+"COPY_IMAGE" = "Kopier billede";
+"PASTE_IMAGE" = "Indsæt billede";
+"SELECT_ALL_REDACTIONS" = "Vælg alle ændringer";
+
+/* Undo actions */
+"INSERT_REDACTION" = "Tilføj ændring";
+"INSERT_REDACTIONS" = "Tilføj ændringer";
+"DELETE_REDACTION" = "Slet ændring";
+"DELETE_REDACTIONS" = "Slet ændringer";
+
+/* About */
+"VERSION_FORMAT" = "Version %@";
+"CREDITS" = "Designet & udviklet Af Nothing Magical i Californien.";
+
+/* Tutorial */
+"DRAG_TO_GET_STARTED" = "Træk et billede herind";
+"CLICK_AND_DRAG" = "Klik og tilføj ændringer";
