@@ -76,19 +76,18 @@ public final class RedactionsController {
 	// MARK: - Rendering
 
 	public func process() -> CIImage? {
-		if let ciImage = ciImage {
-			var outputImage = ciImage
+		guard let ciImage = ciImage else { return nil }
 
-			if redactions.count > 0 {
-				let chain = ChainFilter()
-				chain.inputImage = ciImage
-				chain.inputFilters = redactions.map({ $0.filter(ciImage, preprocessor: preprocess) })
-				outputImage = chain.outputImage!
-			}
-			
-			return outputImage.cropping(to: ciImage.extent)
+		var outputImage = ciImage
+
+		if redactions.count > 0 {
+			let chain = ChainFilter()
+			chain.inputImage = ciImage
+			chain.inputFilters = redactions.map({ $0.filter(ciImage, preprocessor: preprocess) })
+			outputImage = chain.outputImage!
 		}
-		return nil
+		
+		return outputImage.cropping(to: ciImage.extent)
 	}
 
 

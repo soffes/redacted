@@ -51,18 +51,26 @@ open class CoreImageView: GLKView {
 	// MARK: - View
 
 	open override func draw(_ rect: CGRect) {
-		guard window != nil, let image = image else { return }
+		guard window != nil && self.bounds.width > 0 && self.bounds.height > 0,
+			let image = image
+		else { return }
 
+		// Calculate coordinates
 		var bounds = self.bounds
 		bounds.size.width *= contentScaleFactor
 		bounds.size.height *= contentScaleFactor
 
 		let rect = imageRect(for: bounds)
 
-		ciContext.draw(image, in: bounds, from: rect)
+		// Flip image
+		let flipped = image.applying(CGAffineTransform(scaleX: 1, y: -1).concatenating(CGAffineTransform(translationX: 0, y: image.extent.height)))
+
+		// Draw
+		ciContext.draw(flipped, in: rect, from: flipped.extent)
 	}
 
 	open override func layoutSubviews() {
+		super.layoutSubviews()
 		triggerDraw()
 	}
 
