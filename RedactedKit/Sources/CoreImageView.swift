@@ -51,9 +51,16 @@ open class CoreImageView: GLKView {
 	// MARK: - View
 
 	open override func draw(_ rect: CGRect) {
-		guard window != nil && self.bounds.width > 0 && self.bounds.height > 0,
-			let image = image
-		else { return }
+		if window == nil || isHidden || self.bounds.width < 1 || self.bounds.height < 1 {
+			return
+		}
+
+		// Clear
+		EAGLContext.setCurrent(context)
+		glClearColor(0, 0, 0, 0)
+		glClear(UInt32(GL_COLOR_BUFFER_BIT))
+
+		guard let image = image else { return }
 
 		// Calculate coordinates
 		var bounds = self.bounds
