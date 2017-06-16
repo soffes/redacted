@@ -122,7 +122,7 @@ class EditorViewController: UIViewController {
 		super.viewDidLoad()
 
 		redactedView.backgroundColor = UIColor(white: 43 / 255, alpha: 1)
-		redactedView.undoManager = _undoManager
+		redactedView.customUndoManager = _undoManager
 		view.addSubview(redactedView)
 
 		emptyView.choosePhotoButton.addTarget(self, action: #selector(choosePhoto), for: .primaryActionTriggered)
