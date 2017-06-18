@@ -11,6 +11,10 @@
 		210EF3761AC0A39900ED8E97 /* RedactedKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		212456C11AD92CC70038D30D /* RedactedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212456AA1AD92CC70038D30D /* RedactedKit.framework */; };
 		212456C21AD92CC70038D30D /* RedactedKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 212456AA1AD92CC70038D30D /* RedactedKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		21405D491EF6F4AC00772BAF /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21405D481EF6F4AC00772BAF /* PhotosUI.framework */; };
+		21405D4B1EF6F4AC00772BAF /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21405D4A1EF6F4AC00772BAF /* Photos.framework */; };
+		21405D4E1EF6F4AC00772BAF /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21405D4D1EF6F4AC00772BAF /* PhotoEditingViewController.swift */; };
+		21405D551EF6F4AC00772BAF /* Redacted-iOS-Photo.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 21405D471EF6F4AC00772BAF /* Redacted-iOS-Photo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		216DA4771EEA49F200E39CAE /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4761EEA49F200E39CAE /* EmptyView.swift */; };
 		216DA47C1EEA54D400E39CAE /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA47B1EEA54D400E39CAE /* ToolbarView.swift */; };
 		216DA47F1EEA583500E39CAE /* RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA47D1EEA569500E39CAE /* RedactedKit.swift */; };
@@ -95,6 +99,13 @@
 			remoteGlobalIDString = 212456A91AD92CC70038D30D;
 			remoteInfo = "RedactedKit-iOS";
 		};
+		21405D531EF6F4AC00772BAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 210EF32F1AC0A35C00ED8E97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21405D461EF6F4AC00772BAF;
+			remoteInfo = "Redacted-iOS-Photo";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -122,6 +133,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21405D591EF6F4AC00772BAF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				21405D551EF6F4AC00772BAF /* Redacted-iOS-Photo.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +161,11 @@
 		212D946A1EF352C000DC6454 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		212D946B1EF352CC00DC6454 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		212D946C1EF352D000DC6454 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		21405D471EF6F4AC00772BAF /* Redacted-iOS-Photo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Redacted-iOS-Photo.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21405D481EF6F4AC00772BAF /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		21405D4A1EF6F4AC00772BAF /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		21405D4D1EF6F4AC00772BAF /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
+		21405D521EF6F4AC00772BAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		216997FA1DCA479700E65D34 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		216997FB1DCA47A000E65D34 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		216DA4761EEA49F200E39CAE /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -232,6 +259,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21405D441EF6F4AC00772BAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21405D491EF6F4AC00772BAF /* PhotosUI.framework in Frameworks */,
+				21405D4B1EF6F4AC00772BAF /* Photos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2192BAC11AD0E6C500AC87E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -248,9 +284,10 @@
 		210EF32E1AC0A35C00ED8E97 = {
 			isa = PBXGroup;
 			children = (
+				21CC0D331D88FFAA00B3F5DF /* RedactedKit */,
 				21CC0D1C1D88FFAA00B3F5DF /* Redacted-macOS */,
 				21CC0D131D88FFAA00B3F5DF /* Redacted-iOS */,
-				21CC0D331D88FFAA00B3F5DF /* RedactedKit */,
+				21405D4C1EF6F4AC00772BAF /* Redacted-iOS-Photo */,
 				21CC0D711D88FFB000B3F5DF /* Frameworks */,
 				210EF3381AC0A35C00ED8E97 /* Products */,
 			);
@@ -264,8 +301,18 @@
 				210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */,
 				2192BAC41AD0E6C500AC87E2 /* Redacted.app */,
 				212456AA1AD92CC70038D30D /* RedactedKit.framework */,
+				21405D471EF6F4AC00772BAF /* Redacted-iOS-Photo.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		21405D4C1EF6F4AC00772BAF /* Redacted-iOS-Photo */ = {
+			isa = PBXGroup;
+			children = (
+				21405D4D1EF6F4AC00772BAF /* PhotoEditingViewController.swift */,
+				21405D521EF6F4AC00772BAF /* Info.plist */,
+			);
+			path = "Redacted-iOS-Photo";
 			sourceTree = "<group>";
 		};
 		21CC0D131D88FFAA00B3F5DF /* Redacted-iOS */ = {
@@ -392,6 +439,8 @@
 			children = (
 				21CC0D721D88FFB000B3F5DF /* iOS */,
 				21CC0D7F1D88FFB000B3F5DF /* macOS */,
+				21405D481EF6F4AC00772BAF /* PhotosUI.framework */,
+				21405D4A1EF6F4AC00772BAF /* Photos.framework */,
 			);
 			name = Frameworks;
 			path = Carthage/Build;
@@ -496,6 +545,24 @@
 			productReference = 212456AA1AD92CC70038D30D /* RedactedKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		21405D461EF6F4AC00772BAF /* Redacted-iOS-Photo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21405D581EF6F4AC00772BAF /* Build configuration list for PBXNativeTarget "Redacted-iOS-Photo" */;
+			buildPhases = (
+				21405D431EF6F4AC00772BAF /* Sources */,
+				21405D441EF6F4AC00772BAF /* Frameworks */,
+				21405D451EF6F4AC00772BAF /* Resources */,
+				21405D5A1EF6F4B500772BAF /* Set Version */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Redacted-iOS-Photo";
+			productName = "Redacted-iOS-Photo";
+			productReference = 21405D471EF6F4AC00772BAF /* Redacted-iOS-Photo.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		2192BAC31AD0E6C500AC87E2 /* Redacted-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2192BAE01AD0E6C500AC87E2 /* Build configuration list for PBXNativeTarget "Redacted-iOS" */;
@@ -506,11 +573,13 @@
 				212456701AD924400038D30D /* Embed Frameworks */,
 				2189E4B51AF3DD5F00051BD6 /* Embed Carthage Frameworks */,
 				216677E41D8909D70031B903 /* Set Version */,
+				21405D591EF6F4AC00772BAF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				212456C01AD92CC70038D30D /* PBXTargetDependency */,
+				21405D541EF6F4AC00772BAF /* PBXTargetDependency */,
 			);
 			name = "Redacted-iOS";
 			productName = Redacted;
@@ -523,7 +592,7 @@
 		210EF32F1AC0A35C00ED8E97 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Nothing Magical Inc.";
 				TargetAttributes = {
@@ -544,6 +613,10 @@
 					212456A91AD92CC70038D30D = {
 						CreatedOnToolsVersion = 6.3;
 						LastSwiftMigration = 0800;
+					};
+					21405D461EF6F4AC00772BAF = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
 					};
 					2192BAC31AD0E6C500AC87E2 = {
 						CreatedOnToolsVersion = 6.3;
@@ -575,6 +648,7 @@
 				210EF35D1AC0A39900ED8E97 /* RedactedKit-macOS */,
 				2192BAC31AD0E6C500AC87E2 /* Redacted-iOS */,
 				212456A91AD92CC70038D30D /* RedactedKit-iOS */,
+				21405D461EF6F4AC00772BAF /* Redacted-iOS-Photo */,
 			);
 		};
 /* End PBXProject section */
@@ -607,6 +681,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21405D451EF6F4AC00772BAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2192BAC21AD0E6C500AC87E2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -621,6 +702,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		21405D5A1EF6F4B500772BAF /* Set Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/env ruby";
+			shellScript = "git = `sh /etc/profile; which git`.chomp\napp_build = `#{git} rev-list HEAD --count`.chomp.to_i\n`/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion #{app_build}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"`\nputs \"Updated #{ENV['TARGET_BUILD_DIR']}/#{ENV['INFOPLIST_PATH']}\"";
+		};
 		216677E21D89099D0031B903 /* Set Version */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -752,6 +847,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21405D431EF6F4AC00772BAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21405D4E1EF6F4AC00772BAF /* PhotoEditingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2192BAC01AD0E6C500AC87E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -785,6 +888,11 @@
 			isa = PBXTargetDependency;
 			target = 212456A91AD92CC70038D30D /* RedactedKit-iOS */;
 			targetProxy = 212456BF1AD92CC70038D30D /* PBXContainerItemProxy */;
+		};
+		21405D541EF6F4AC00772BAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21405D461EF6F4AC00772BAF /* Redacted-iOS-Photo */;
+			targetProxy = 21405D531EF6F4AC00772BAF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1125,6 +1233,47 @@
 			};
 			name = Release;
 		};
+		21405D561EF6F4AC00772BAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "Redacted-iOS-Photo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-ios.photo-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		21405D571EF6F4AC00772BAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = "Redacted-iOS-Photo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-ios.photo-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		2192BAE11AD0E6C500AC87E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1212,6 +1361,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		21405D581EF6F4AC00772BAF /* Build configuration list for PBXNativeTarget "Redacted-iOS-Photo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21405D561EF6F4AC00772BAF /* Debug */,
+				21405D571EF6F4AC00772BAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		2192BAE01AD0E6C500AC87E2 /* Build configuration list for PBXNativeTarget "Redacted-iOS" */ = {
 			isa = XCConfigurationList;
