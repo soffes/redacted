@@ -13,7 +13,7 @@ extension UIAlertAction {
 
 	static let cancel = UIAlertAction(title: localizedString("CANCEL"), style: .cancel)
 
-	static let openSettings = UIAlertAction(title: localizedString("OPEN_SETTINGS"), style: .default) { _ in
+	static let openSettings = UIAlertAction(title: localizedString("OPEN_SETTINGS_BUTTON"), style: .default) { _ in
 		guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
 		UIApplication.shared.open(url)
 	}
