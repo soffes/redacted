@@ -52,7 +52,7 @@ extension AppDelegate: UIApplicationDelegate {
 
 		application.shortcutItems = [
 			UIApplicationShortcutItem(type: choosePhotoType, title: localizedString("CHOOSE_PHOTO"), iconName: "Photo"),
-			UIApplicationShortcutItem(type: chooseLastPhotoType, title: localizedString("LAST_PHOTO_TAKEN"), iconName: "Library"),
+			UIApplicationShortcutItem(type: chooseLastPhotoType, title: localizedString("CHOOSE_LAST_PHOTO"), iconName: "Library"),
 			UIApplicationShortcutItem(type: takePhotoType, title: localizedString("TAKE_PHOTO"), iconName: "Camera")
 		]
 
