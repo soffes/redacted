@@ -14,25 +14,7 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qA0-Yv-1vO">
-                    <rect key="frame" x="0.0" y="436" width="480" height="44"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nbJ-Bg-0sR">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="I0L-BF-63B"/>
-                    </constraints>
-                    <blurEffect style="dark"/>
-                </visualEffectView>
-            </subviews>
             <color key="backgroundColor" red="0.16874262690544128" green="0.16873863339424133" blue="0.16874136030673981" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="qA0-Yv-1vO" secondAttribute="bottom" id="AVs-pt-Nfp"/>
-                <constraint firstAttribute="trailing" secondItem="qA0-Yv-1vO" secondAttribute="trailing" id="QkG-BP-NJf"/>
-                <constraint firstItem="qA0-Yv-1vO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bEU-PK-YhF"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="548" y="455"/>

@@ -15,6 +15,7 @@ final class ToolbarView: UIView {
 	private let stackView: UIStackView = {
 		let view = UIStackView()
 		view.translatesAutoresizingMaskIntoConstraints = false
+		view.spacing = 4
 		return view
 	}()
 

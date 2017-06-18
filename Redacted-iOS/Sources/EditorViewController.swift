@@ -26,6 +26,16 @@ class EditorViewController: UIViewController {
 		return view
 	}()
 
+	private var toolbarBottomConstraint: NSLayoutConstraint? {
+		willSet {
+			toolbarBottomConstraint?.isActive = false
+		}
+
+		didSet {
+			toolbarBottomConstraint?.isActive = true
+		}
+	}
+
 	private let emptyView: EmptyView = {
 		let view = EmptyView()
 		view.translatesAutoresizingMaskIntoConstraints = false
@@ -137,18 +147,21 @@ class EditorViewController: UIViewController {
 		toolbarView.shareButton.addTarget(self, action: #selector(share), for: .primaryActionTriggered)
 		view.addSubview(toolbarView)
 
+		let toolbarTopConstraint = toolbarView.topAnchor.constraint(equalTo: view.bottomAnchor)
+		toolbarTopConstraint.priority = UILayoutPriorityDefaultLow
+
 		NSLayoutConstraint.activate([
 			redactedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			redactedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			redactedView.topAnchor.constraint(equalTo: view.topAnchor),
 			redactedView.bottomAnchor.constraint(equalTo: toolbarView.topAnchor),
 
-			emptyView.centerXAnchor.constraint(equalTo: redactedView.centerXAnchor),
-			emptyView.centerYAnchor.constraint(equalTo: redactedView.centerYAnchor),
+			emptyView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			emptyView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
 			toolbarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			toolbarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			toolbarView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+			toolbarTopConstraint
 		])
 
 		let pan = UIPanGestureRecognizer(target: self, action: #selector(panned))
@@ -161,6 +174,7 @@ class EditorViewController: UIViewController {
 		twoFingerTap.numberOfTouchesRequired = 2
 		view.addGestureRecognizer(twoFingerTap)
 
+		view.layoutIfNeeded()
 		imageDidChange()
 	}
 
@@ -181,12 +195,19 @@ class EditorViewController: UIViewController {
 		if hasImage {
 			haptics.selectionChanged()
 
+			toolbarBottomConstraint = toolbarView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+
 			if !UserDefaults.standard.bool(forKey: "CreatedRedaction") {
 				showTutorial()
 			}
 		} else {
 			hideTutorial()
+			toolbarBottomConstraint = nil
 		}
+
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.2, options: [], animations: {
+			self.view.layoutIfNeeded()
+		}, completion: nil)
 	}
 
 	private func setupTutorial() {
