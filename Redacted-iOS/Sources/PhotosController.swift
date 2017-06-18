@@ -26,6 +26,7 @@ private final class ImagePickerDelegate: NSObject, UINavigationControllerDelegat
 
 	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 		completion = nil
+		picker.dismiss(animated: true, completion: nil)
 	}
 }
 
