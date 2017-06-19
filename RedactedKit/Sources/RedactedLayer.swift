@@ -275,7 +275,11 @@ final class RedactedLayer: CoreImageLayer {
 		return selectedUUIDs.contains(redaction.uuid)
 	}
 
-	private func select(_ redaction: Redaction) {
+	func select(_ redaction: Redaction, isExclusive: Bool = false) {
+		if isExclusive {
+			deselectAll()
+		}
+		
 		if isSelected(redaction) {
 			return
 		}

@@ -119,6 +119,10 @@ public final class RedactedView: View {
 
 	// MARK: - Selection
 
+	public func select(_ redaction: Redaction, isExclusive: Bool = false) {
+		redactedLayer.select(redaction, isExclusive: isExclusive)
+	}
+
 	public func selectAllRedactions() {
 		redactedLayer.selectAll()
 	}

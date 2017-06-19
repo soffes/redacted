@@ -116,7 +116,24 @@ extension EditorViewController {
 		let point = sender.location(in: redactedView)
 		guard let redaction = redactedView.redaction(at: point) else { return }
 
-		print("long press: \(redaction)")
+		let controller = UIMenuController.shared
+
+		if longPressedRedaction == redaction && controller.isMenuVisible {
+			return
+		}
+
+		longPressedRedaction = redaction
+
+		redactedView.select(redaction, isExclusive: true)
+
+		let rect = redactedView.rect(for: redaction)
+		controller.setTargetRect(rect, in: redactedView)
+
+		controller.menuItems = [
+			UIMenuItem(title: "Delete", action: #selector(deleteRedaction))
+		]
+
+		controller.isMenuVisible = true
 	}
 
 	func clear() {

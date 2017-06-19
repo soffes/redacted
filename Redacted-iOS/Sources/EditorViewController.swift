@@ -73,6 +73,8 @@ class EditorViewController: UIViewController {
 		}
 	}
 
+	var longPressedRedaction: Redaction?
+
 
 	// MARK: - UIResponder
 
