@@ -123,6 +123,22 @@ public final class RedactedView: View {
 		redactedLayer.selectAll()
 	}
 
+	public func redaction(at point: CGPoint) -> Redaction? {
+		for redaction in redactedLayer.redactions {
+			let rect = self.rect(for: redaction)
+
+			if rect.contains(point) {
+				return redaction
+			}
+		}
+
+		return nil
+	}
+
+	public func rect(for redaction: Redaction) -> CGRect {
+		return redactedLayer.rect(for: redaction)
+	}
+
 
 	// MARK: - Rendering
 

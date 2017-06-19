@@ -206,6 +206,10 @@ final class RedactedLayer: CoreImageLayer {
 		return selectedUUIDs.count
 	}
 
+	func rect(for redaction: Redaction) -> CGRect {
+		return redaction.rectForBounds(imageRect).flippedInRect(bounds)
+	}
+
 
 	// MARK: - Private
 
@@ -315,7 +319,7 @@ final class RedactedLayer: CoreImageLayer {
 
 		for redaction in selectedRedactions {
 			if let layer = boundingBoxes[redaction.uuid] {
-				layer.frame = redaction.rectForBounds(imageRect).flippedInRect(bounds).insetBy(dx: -2, dy: -2)
+				layer.frame = rect(for: redaction).insetBy(dx: -2, dy: -2)
 			}
 		}
 

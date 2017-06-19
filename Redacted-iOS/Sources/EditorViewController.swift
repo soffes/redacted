@@ -174,6 +174,11 @@ class EditorViewController: UIViewController {
 		twoFingerTap.numberOfTouchesRequired = 2
 		view.addGestureRecognizer(twoFingerTap)
 
+		let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+		longPress.minimumPressDuration = 0.4
+		view.addGestureRecognizer(longPress)
+		
+
 		view.layoutIfNeeded()
 		imageDidChange()
 	}

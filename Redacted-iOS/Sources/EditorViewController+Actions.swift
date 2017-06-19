@@ -91,7 +91,7 @@ extension EditorViewController {
 		])
 	}
 
-	func panned(sender: UIPanGestureRecognizer) {
+	func panned(_ sender: UIPanGestureRecognizer) {
 		redactedView.drag(point: sender.location(in: view), state: sender.state)
 
 		if sender.state == .ended && redactedView.redactions.count > 0 {
@@ -100,16 +100,23 @@ extension EditorViewController {
 		}
 	}
 
-	func tapped(sender: UITapGestureRecognizer) {
+	func tapped(_ sender: UITapGestureRecognizer) {
 		if sender.state == .ended {
 			redactedView.tap(point: sender.location(in: view))
 		}
 	}
 
-	func twoFingerTapped(sender: UITapGestureRecognizer) {
+	func twoFingerTapped(_ sender: UITapGestureRecognizer) {
 		if sender.state == .ended {
 			redactedView.tap(point: sender.location(in: view), exclusive: false)
 		}
+	}
+
+	func longPressed(_ sender: UILongPressGestureRecognizer) {
+		let point = sender.location(in: redactedView)
+		guard let redaction = redactedView.redaction(at: point) else { return }
+
+		print("long press: \(redaction)")
 	}
 
 	func clear() {
