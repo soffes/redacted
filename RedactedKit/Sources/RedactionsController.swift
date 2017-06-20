@@ -73,6 +73,11 @@ public final class RedactionsController {
 	}
 
 
+	// MARK: - Initializers
+
+	public init() {}
+
+
 	// MARK: - Rendering
 
 	public func process() -> CIImage? {

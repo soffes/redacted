@@ -9,6 +9,7 @@
 import UIKit
 import RedactedKit
 import X
+import AVFoundation
 
 class EditorViewController: UIViewController {
 
@@ -42,14 +43,19 @@ class EditorViewController: UIViewController {
 		return view
 	}()
 
-	var image: UIImage? {
+	var originalImage: UIImage? {
 		didSet {
 			imageDidChange()
 		}
 	}
 
+	private var image: UIImage?
+
 	var renderedImage: UIImage? {
-		return redactedView.renderedImage()
+		let controller = RedactionsController()
+		controller.image = originalImage
+		controller.redactions = redactedView.redactions
+		return controller.process()?.renderedImage
 	}
 
 	let _undoManager = UndoManager()
@@ -193,6 +199,19 @@ class EditorViewController: UIViewController {
 	// MARK: - Private
 
 	private func imageDidChange() {
+		let image: UIImage?
+
+		if let originalImage = originalImage {
+			let size = AVMakeRect(aspectRatio: originalImage.size, insideRect: view.bounds).size
+			UIGraphicsBeginImageContextWithOptions(size, false, 0)
+			originalImage.draw(in: CGRect(origin: .zero, size: size))
+			image = UIGraphicsGetImageFromCurrentImageContext()
+			UIGraphicsEndImageContext()
+		} else {
+			image = nil
+		}
+
+		self.image = image
 		redactedView.originalImage = image
 
 		let hasImage = image != nil

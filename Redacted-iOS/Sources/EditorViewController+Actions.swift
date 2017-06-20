@@ -43,7 +43,7 @@ extension EditorViewController {
 
 	func pastePhoto() {
 		let data = UIPasteboard.general.data(forPasteboardType: "public.image")
-		image = data.flatMap(UIImage.init)
+		originalImage = data.flatMap(UIImage.init)
 
 		mixpanel.track(event: "Import image", parameters: [
 			"source": "Paste"
@@ -51,9 +51,9 @@ extension EditorViewController {
 	}
 
 	func share(_ sender: UIView) {
-		guard let image = renderedImage else { return }
+		guard let renderedImage = renderedImage else { return }
 
-		let viewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+		let viewController = UIActivityViewController(activityItems: [renderedImage], applicationActivities: nil)
 		viewController.completionWithItemsHandler = { [weak self] type, completed, _, _ in
 			guard completed,
 				let title = type?.rawValue,
@@ -137,7 +137,7 @@ extension EditorViewController {
 	}
 
 	func clear() {
-		image = nil
+		originalImage = nil
 	}
 
 	func modeDidChange() {
@@ -148,7 +148,7 @@ extension EditorViewController {
 	func choosePhoto() {
 		haptics.prepare()
 		PhotosController.choosePhoto(context: self) { [weak self] image in
-			self?.image = image
+			self?.originalImage = image
 
 			mixpanel.track(event: "Import image", parameters: [
 				"source": "Library"
@@ -159,7 +159,7 @@ extension EditorViewController {
 	func chooseLastPhoto() {
 		haptics.prepare()
 		PhotosController.getLastPhoto(context: self) { [weak self] image in
-			self?.image = image
+			self?.originalImage = image
 
 			mixpanel.track(event: "Import image", parameters: [
 				"source": "Last Photo Taken"
@@ -170,7 +170,7 @@ extension EditorViewController {
 	func takePhoto() {
 		haptics.prepare()
 		PhotosController.takePhoto(context: self) { [weak self] image in
-			self?.image = image
+			self?.originalImage = image
 
 			mixpanel.track(event: "Import image", parameters: [
 				"source": "Camera"
