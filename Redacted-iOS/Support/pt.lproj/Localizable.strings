@@ -6,8 +6,30 @@
   Copyright © 2017 Nothing Magical Inc. All rights reserved.
 */
 
-"CHOOSE_PHOTO" = "Escolhe foto";
+"CHOOSE_PHOTO" = "Escolher Foto";
+"CHOOSE_LAST_PHOTO" = "Última Foto Tirada";
+"TAKE_PHOTO" = "Tirar Foto";
 
-"CHOOSE_LAST_PHOTO" = "Última foto tirada";
+"RESTRICTED_PHOTOS_TITLE" = "Restrito";
+"RESTRICTED_PHOTOS_MESSAGE" = "Não tem permissões que permitam o Redacted de usar as suas fotos. Provavelmente devido a controlo parental.";
 
-"TAKE_PHOTO" = "Tira uma foto";
+"ACCESS_DENIED_PHOTOS_TITLE" = "Acesso Recusado";
+"ACCESS_DENIED_PHOTOS_MESSAGE" = "Por favor permita o acesso às fotos.";
+
+"RESTRICTED_CAMERA_TITLE" = "Restrito";
+"RESTRICTED_CAMERA_MESSAGE" = "Não tem permissões que permitam o Redacted de usar a sua câmera. Provavelmente devido a controlo parental.";
+
+"ACCESS_DENIED_CAMERA_TITLE" = "Acesso Recusado";
+"ACCESS_DENIED_CAMERA_MESSAGE" = "Por favor permita o acesso à câmera.";
+
+"OPEN_SETTINGS_BUTTON" = "Abrir Preferências";
+"CANCEL" = "Cancelar";
+"OK" = "OK";
+
+"UNDO_FORMAT" = "Desfazer %@";
+"REDO_FORMAT" = "Refazer %@";
+
+"PASTE_PHOTO" = "Colar Foto";
+
+"TAP_AND_DRAG" = "Tap and drag to start redacting";
+"TAP_AND_DRAG" = "Toque e deslize para começar a censurar";
