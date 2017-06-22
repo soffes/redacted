@@ -8,6 +8,7 @@
 
 import UIKit
 import RedactedKit
+import SVProgressHUD
 
 extension EditorViewController {
 	func usePixelate() {
@@ -59,6 +60,14 @@ extension EditorViewController {
 				let title = type?.rawValue,
 				let count = self?.redactedView.redactions.count
 			else { return }
+
+			if title == "com.apple.UIKit.activity.CopyToPasteboard" {
+				SVProgressHUD.showSuccess(withStatus: "Copied!")
+				SVProgressHUD.dismiss(withDelay: 1)
+			} else if title == "com.apple.UIKit.activity.SaveToCameraRoll" {
+				SVProgressHUD.showSuccess(withStatus: "Saved!")
+				SVProgressHUD.dismiss(withDelay: 1)
+			}
 
 			mixpanel.track(event: "Share image", parameters: [
 				"service": title,
