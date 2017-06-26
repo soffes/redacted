@@ -46,12 +46,12 @@ struct PhotosController {
 			}
 
 		case .restricted:
-			let alert = UIAlertController(title: localizedString("RESTRICTED_PHOTOS_TITLE"), message: localizedString("RESTRICTED_PHOTOS_MESSAGE"), preferredStyle: .alert)
+			let alert = UIAlertController(title: LocalizedString.restrictedPhotosTitle.string, message: LocalizedString.restrictedPhotosMessage.string, preferredStyle: .alert)
 			alert.addAction(.ok)
 			context?.present(alert, animated: true, completion: nil)
 
 		case .denied:
-			let alert = UIAlertController(title: localizedString("ACCESS_DENIED_PHOTOS_TITLE"), message: localizedString("ACCESS_DENIED_PHOTOS_MESSAGE"), preferredStyle: .alert)
+			let alert = UIAlertController(title: LocalizedString.accessDeniedPhotosTitle.string, message: LocalizedString.accessDeniedPhotosMessage.string, preferredStyle: .alert)
 			alert.addAction(.openSettings)
 			alert.addAction(.cancel)
 			context?.present(alert, animated: true, completion: nil)
@@ -71,12 +71,12 @@ struct PhotosController {
 			}
 
 		case .restricted:
-			let alert = UIAlertController(title: localizedString("RESTRICTED_CAMERA_TITLE"), message: localizedString("RESTRICTED_CAMERA_MESSAGE"), preferredStyle: .alert)
+			let alert = UIAlertController(title: LocalizedString.restrictedCameraTitle.string, message: LocalizedString.restrictedCameraMessage.string, preferredStyle: .alert)
 			alert.addAction(.ok)
 			context?.present(alert, animated: true, completion: nil)
 
 		case .denied:
-			let alert = UIAlertController(title: localizedString("ACCESS_DENIED_CAMERA_TITLE"), message: localizedString("ACCESS_DENIED_CAMERA_MESSAGE"), preferredStyle: .alert)
+			let alert = UIAlertController(title: LocalizedString.accessDeniedCameraTitle.string, message: LocalizedString.accessDeniedCameraMessage.string, preferredStyle: .alert)
 			alert.addAction(.openSettings)
 			alert.addAction(.cancel)
 			context?.present(alert, animated: true, completion: nil)

@@ -9,11 +9,11 @@
 import UIKit
 
 extension UIAlertAction {
-	static let ok = UIAlertAction(title: localizedString("OK"), style: .cancel)
+	static let ok = UIAlertAction(title: LocalizedString.ok.string, style: .cancel)
 
-	static let cancel = UIAlertAction(title: localizedString("CANCEL"), style: .cancel)
+	static let cancel = UIAlertAction(title: LocalizedString.cancel.string, style: .cancel)
 
-	static let openSettings = UIAlertAction(title: localizedString("OPEN_SETTINGS_BUTTON"), style: .default) { _ in
+	static let openSettings = UIAlertAction(title: LocalizedString.openSettingsButton.string, style: .default) { _ in
 		guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
 		UIApplication.shared.open(url)
 	}

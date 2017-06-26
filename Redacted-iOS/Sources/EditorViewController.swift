@@ -65,7 +65,7 @@ class EditorViewController: UIViewController {
 	private let toolTipView: ToolTipView = {
 		let view = ToolTipView()
 		view.translatesAutoresizingMaskIntoConstraints = false
-		view.textLabel.text = localizedString("TAP_AND_DRAG")
+		view.textLabel.text = LocalizedString.tapAndDrag.string
 		return view
 	}()
 
@@ -109,24 +109,24 @@ class EditorViewController: UIViewController {
 			]
 
 			if _undoManager.canUndo {
-				let title = String(format: localizedString("UNDO_FORMAT"), _undoManager.undoActionName)
+				let title = String(format: LocalizedString.undoFormat.string, _undoManager.undoActionName)
 				commands.append(UIKeyCommand(input: "z", modifierFlags: .command, action: #selector(undoEdit), discoverabilityTitle: title))
 			}
 
 			if _undoManager.canRedo {
-				let title = String(format: localizedString("REDO_FORMAT"), _undoManager.redoActionName)
+				let title = String(format: LocalizedString.redoFormat.string, _undoManager.redoActionName)
 				commands.append(UIKeyCommand(input: "z", modifierFlags: [.command, .shift], action: #selector(redoEdit), discoverabilityTitle: title))
 			}
 
 		} else {
 			commands += [
-				UIKeyCommand(input: "o", modifierFlags: .command, action: #selector(choosePhoto), discoverabilityTitle: localizedString("CHOOSE_PHOTO")),
-				UIKeyCommand(input: "o", modifierFlags: [.command, .shift], action: #selector(chooseLastPhoto), discoverabilityTitle: localizedString("CHOOSE_LAST_PHOTO")),
-				UIKeyCommand(input: "o", modifierFlags: [.command, .alternate], action: #selector(takePhoto), discoverabilityTitle: localizedString("TAKE_PHOTO")),
+				UIKeyCommand(input: "o", modifierFlags: .command, action: #selector(choosePhoto), discoverabilityTitle: LocalizedString.choosePhoto.string),
+				UIKeyCommand(input: "o", modifierFlags: [.command, .shift], action: #selector(chooseLastPhoto), discoverabilityTitle: LocalizedString.chooseLastPhoto.string),
+				UIKeyCommand(input: "o", modifierFlags: [.command, .alternate], action: #selector(takePhoto), discoverabilityTitle: LocalizedString.takePhoto.string),
 			]
 
 			if UIPasteboard.general.hasImage {
-				commands.append(UIKeyCommand(input: "v", modifierFlags: .command, action: #selector(pastePhoto), discoverabilityTitle: localizedString("PASTE_PHOTO")))
+				commands.append(UIKeyCommand(input: "v", modifierFlags: .command, action: #selector(pastePhoto), discoverabilityTitle: LocalizedString.pastePhoto.string))
 			}
 		}
 

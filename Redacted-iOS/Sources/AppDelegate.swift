@@ -51,9 +51,9 @@ extension AppDelegate: UIApplicationDelegate {
 		mixpanel.track(event: "Launch")
 
 		application.shortcutItems = [
-			UIApplicationShortcutItem(type: choosePhotoType, title: localizedString("CHOOSE_PHOTO"), iconName: "Photo"),
-			UIApplicationShortcutItem(type: chooseLastPhotoType, title: localizedString("CHOOSE_LAST_PHOTO"), iconName: "Library"),
-			UIApplicationShortcutItem(type: takePhotoType, title: localizedString("TAKE_PHOTO"), iconName: "Camera")
+			UIApplicationShortcutItem(type: choosePhotoType, title: LocalizedString.choosePhoto.string, iconName: "Photo"),
+			UIApplicationShortcutItem(type: chooseLastPhotoType, title: LocalizedString.chooseLastPhoto.string, iconName: "Library"),
+			UIApplicationShortcutItem(type: takePhotoType, title: LocalizedString.takePhoto.string, iconName: "Camera")
 		]
 
 		window?.rootViewController = viewController

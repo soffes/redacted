@@ -50,6 +50,38 @@ namespace :strings do
     puts
     puts '✅  Success!'
   end
+
+  desc 'Generate Swift interface'
+  task :generate do
+    output = <<~SWIFT
+      // Automatically generated. Do not modify.
+
+      import Foundation
+
+      enum LocalizedString: String {
+
+    SWIFT
+
+    raw = File.read('Redacted-iOS/Support/en.lproj/Localizable.strings')
+    keys = raw.scan(/^"([A-Z_]+)" = "/).collect(&:first).sort
+
+    keys.each do |key|
+      camel = key.split('_').collect(&:capitalize).join.tap { |e| e[0] = e[0].downcase }
+      output << %(    case #{camel} = "#{key}"\n)
+    end
+
+    output << <<~SWIFT
+
+          var string: String {
+              return NSLocalizedString(rawValue, comment: "")
+          }
+      }
+    SWIFT
+
+    File.open('Redacted-iOS/Sources/LocalizedString.swift', 'w') do |f|
+      f.write(output)
+    end
+  end
 end
 
 private

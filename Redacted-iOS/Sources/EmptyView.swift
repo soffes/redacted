@@ -60,28 +60,28 @@ final class EmptyView: UIStackView {
 	let choosePhotoButton: UIButton = {
 		let view = Button(type: .custom)
 		view.setImage(#imageLiteral(resourceName: "Photo"), for: .normal)
-		view.setTitle(localizedString("CHOOSE_PHOTO"), for: .normal)
+		view.setTitle(LocalizedString.choosePhoto.string, for: .normal)
 		return view
 	}()
 
 	let lastPhotoButton: UIButton = {
 		let view = Button(type: .custom)
 		view.setImage(#imageLiteral(resourceName: "Library"), for: .normal)
-		view.setTitle(localizedString("CHOOSE_LAST_PHOTO"), for: .normal)
+		view.setTitle(LocalizedString.chooseLastPhoto.string, for: .normal)
 		return view
 	}()
 
 	let takePhotoButton: UIButton = {
 		let view = Button(type: .custom)
 		view.setImage(#imageLiteral(resourceName: "Camera"), for: .normal)
-		view.setTitle(localizedString("TAKE_PHOTO"), for: .normal)
+		view.setTitle(LocalizedString.takePhoto.string, for: .normal)
 		return view
 	}()
 
 	let pastePhotoButton: UIButton = {
 		let view = Button(type: .custom)
 		view.setImage(#imageLiteral(resourceName: "Paste"), for: .normal)
-		view.setTitle(localizedString("PASTE_PHOTO"), for: .normal)
+		view.setTitle(LocalizedString.pastePhoto.string, for: .normal)
 		view.isHidden = true
 		return view
 	}()
