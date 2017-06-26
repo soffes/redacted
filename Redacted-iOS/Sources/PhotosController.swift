@@ -126,7 +126,7 @@ struct PhotosController {
 			self.ensurePhotosAuthorization(context: context) {
 				let viewController = UIImagePickerController()
 				viewController.sourceType = .camera
-				viewController.modalPresentationStyle = .formSheet
+				viewController.modalPresentationStyle = .fullScreen
 				viewController.mediaTypes = [kUTTypeImage as String]
 				viewController.delegate = imagePickerDelegate
 				imagePickerDelegate.completion = { image in
