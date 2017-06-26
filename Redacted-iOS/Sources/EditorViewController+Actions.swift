@@ -55,17 +55,23 @@ extension EditorViewController {
 		guard let renderedImage = renderedImage else { return }
 
 		let viewController = UIActivityViewController(activityItems: [renderedImage], applicationActivities: nil)
-		viewController.completionWithItemsHandler = { [weak self] type, completed, _, _ in
+		viewController.completionWithItemsHandler = { [weak self] type, completed, _, error in
+			if error != nil {
+				SVProgressHUD.showError(withStatus: nil)
+				SVProgressHUD.dismiss(withDelay: 1)
+				return
+			}
+
 			guard completed,
 				let title = type?.rawValue,
 				let count = self?.redactedView.redactions.count
 			else { return }
 
 			if title == "com.apple.UIKit.activity.CopyToPasteboard" {
-				SVProgressHUD.showSuccess(withStatus: "Copied!")
+				SVProgressHUD.showSuccess(withStatus: nil)
 				SVProgressHUD.dismiss(withDelay: 1)
 			} else if title == "com.apple.UIKit.activity.SaveToCameraRoll" {
-				SVProgressHUD.showSuccess(withStatus: "Saved!")
+				SVProgressHUD.showSuccess(withStatus: nil)
 				SVProgressHUD.dismiss(withDelay: 1)
 			}
 
