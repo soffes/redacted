@@ -45,11 +45,32 @@ class EditorViewController: UIViewController {
 
 	var originalImage: UIImage? {
 		didSet {
-			imageDidChange()
+			guard let originalImage = originalImage else {
+				image = nil
+				return
+			}
+
+			let bounds = view.bounds
+
+			DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+				let size = AVMakeRect(aspectRatio: originalImage.size, insideRect: bounds).size
+				UIGraphicsBeginImageContextWithOptions(size, false, 0)
+				originalImage.draw(in: CGRect(origin: .zero, size: size))
+				let image = UIGraphicsGetImageFromCurrentImageContext()
+				UIGraphicsEndImageContext()
+
+				DispatchQueue.main.async {
+					self?.image = image
+				}
+			}
 		}
 	}
 
-	private var image: UIImage?
+	private var image: UIImage? {
+		didSet {
+			imageDidChange()
+		}
+	}
 
 	var renderedImage: UIImage? {
 		let controller = RedactionsController()
@@ -199,19 +220,6 @@ class EditorViewController: UIViewController {
 	// MARK: - Private
 
 	private func imageDidChange() {
-		let image: UIImage?
-
-		if let originalImage = originalImage {
-			let size = AVMakeRect(aspectRatio: originalImage.size, insideRect: view.bounds).size
-			UIGraphicsBeginImageContextWithOptions(size, false, 0)
-			originalImage.draw(in: CGRect(origin: .zero, size: size))
-			image = UIGraphicsGetImageFromCurrentImageContext()
-			UIGraphicsEndImageContext()
-		} else {
-			image = nil
-		}
-
-		self.image = image
 		redactedView.originalImage = image
 
 		let hasImage = image != nil
