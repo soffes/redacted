@@ -145,7 +145,7 @@ extension EditorViewController {
 		controller.setTargetRect(rect, in: redactedView)
 
 		controller.menuItems = [
-			UIMenuItem(title: "Delete", action: #selector(deleteRedaction))
+			UIMenuItem(title: string("DELETE_REDACTION"), action: #selector(deleteRedaction))
 		]
 
 		controller.isMenuVisible = true
