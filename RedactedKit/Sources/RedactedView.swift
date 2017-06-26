@@ -128,7 +128,7 @@ public final class RedactedView: View {
 	}
 
 	public func redaction(at point: CGPoint) -> Redaction? {
-		for redaction in redactedLayer.redactions {
+		for redaction in redactedLayer.redactions.reversed() {
 			let rect = self.rect(for: redaction)
 
 			if rect.contains(point) {
