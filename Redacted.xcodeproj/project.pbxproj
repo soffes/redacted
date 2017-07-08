@@ -14,6 +14,22 @@
 		21382EED1F1172FD00603048 /* CoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21382EEC1F1172FD00603048 /* CoreImageView.swift */; };
 		21382EEE1F1172FD00603048 /* CoreImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21382EEC1F1172FD00603048 /* CoreImageView.swift */; };
 		21382EEF1F117A5800603048 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B874B81EFB4DA2004DC73D /* SVProgressHUD.framework */; };
+		21382F191F117DF100603048 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21382F181F117DF100603048 /* PhotosUI.framework */; };
+		21382F1B1F117DF100603048 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21382F1A1F117DF100603048 /* Photos.framework */; };
+		21382F251F117DF100603048 /* RedcatedPhoto.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 21382F171F117DF100603048 /* RedcatedPhoto.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		21382F301F117E0A00603048 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21382F2B1F117E0A00603048 /* PhotoEditingViewController.swift */; };
+		21382F371F117E3F00603048 /* RedactedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212456AA1AD92CC70038D30D /* RedactedKit.framework */; };
+		21382F3B1F117E9600603048 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA47B1EEA54D400E39CAE /* ToolbarView.swift */; };
+		21382F3C1F117E9600603048 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4831EEA5A5600E39CAE /* SegmentedControl.swift */; };
+		21382F3D1F117E9600603048 /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4851EEA5E5900E39CAE /* ToolbarButton.swift */; };
+		21382F3E1F117E9600603048 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4891EEA715200E39CAE /* LocalizedString.swift */; };
+		21382F421F117E9600603048 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D91EF1D853009FA237 /* ToolTipView.swift */; };
+		21382F431F117E9600603048 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547DB1EF1D8F8009FA237 /* Label.swift */; };
+		21382F451F117FCB00603048 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21382F441F117FCB00603048 /* Secrets.swift */; };
+		21382F461F117FFB00603048 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21382F441F117FCB00603048 /* Secrets.swift */; };
+		21382F471F11805400603048 /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC0D7B1D88FFB000B3F5DF /* Mixpanel.framework */; };
+		21382F4B1F1181D200603048 /* Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21382F4A1F1181D200603048 /* Mixpanel.swift */; };
+		21382F4C1F1181D200603048 /* Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21382F4A1F1181D200603048 /* Mixpanel.swift */; };
 		216DA4771EEA49F200E39CAE /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4761EEA49F200E39CAE /* EmptyView.swift */; };
 		216DA47C1EEA54D400E39CAE /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA47B1EEA54D400E39CAE /* ToolbarView.swift */; };
 		216DA47F1EEA583500E39CAE /* RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA47D1EEA569500E39CAE /* RedactedKit.swift */; };
@@ -94,6 +110,20 @@
 			remoteGlobalIDString = 212456A91AD92CC70038D30D;
 			remoteInfo = "RedactedKit-iOS";
 		};
+		21382F231F117DF100603048 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 210EF32F1AC0A35C00ED8E97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21382F161F117DF100603048;
+			remoteInfo = "RedactedPhoto-iOS";
+		};
+		21382F351F117E3B00603048 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 210EF32F1AC0A35C00ED8E97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 212456A91AD92CC70038D30D;
+			remoteInfo = "RedactedKit-iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -121,6 +151,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21382F291F117DF100603048 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				21382F251F117DF100603048 /* RedcatedPhoto.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +180,13 @@
 		212D946B1EF352CC00DC6454 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		212D946C1EF352D000DC6454 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		21382EEC1F1172FD00603048 /* CoreImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreImageView.swift; sourceTree = "<group>"; };
+		21382F171F117DF100603048 /* RedcatedPhoto.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RedcatedPhoto.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		21382F181F117DF100603048 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		21382F1A1F117DF100603048 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		21382F2B1F117E0A00603048 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
+		21382F2F1F117E0A00603048 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21382F441F117FCB00603048 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		21382F4A1F1181D200603048 /* Mixpanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mixpanel.swift; sourceTree = "<group>"; };
 		216997FA1DCA479700E65D34 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		216997FB1DCA47A000E65D34 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		216DA4761EEA49F200E39CAE /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -232,6 +280,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21382F141F117DF100603048 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21382F471F11805400603048 /* Mixpanel.framework in Frameworks */,
+				21382F371F117E3F00603048 /* RedactedKit.framework in Frameworks */,
+				21382F191F117DF100603048 /* PhotosUI.framework in Frameworks */,
+				21382F1B1F117DF100603048 /* Photos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2192BAC11AD0E6C500AC87E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,6 +311,7 @@
 				21CC0D1C1D88FFAA00B3F5DF /* Redacted-macOS */,
 				21CC0D131D88FFAA00B3F5DF /* Redacted-iOS */,
 				21CC0D331D88FFAA00B3F5DF /* RedactedKit */,
+				21382F1C1F117DF100603048 /* RedactedPhoto-iOS */,
 				21CC0D711D88FFB000B3F5DF /* Frameworks */,
 				210EF3381AC0A35C00ED8E97 /* Products */,
 			);
@@ -265,8 +325,64 @@
 				210EF35E1AC0A39900ED8E97 /* RedactedKit.framework */,
 				2192BAC41AD0E6C500AC87E2 /* Redacted.app */,
 				212456AA1AD92CC70038D30D /* RedactedKit.framework */,
+				21382F171F117DF100603048 /* RedcatedPhoto.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		21382F1C1F117DF100603048 /* RedactedPhoto-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				21382F2A1F117E0A00603048 /* Sources */,
+				21382F2C1F117E0A00603048 /* Support */,
+			);
+			path = "RedactedPhoto-iOS";
+			sourceTree = "<group>";
+		};
+		21382F2A1F117E0A00603048 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				21382F2B1F117E0A00603048 /* PhotoEditingViewController.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		21382F2C1F117E0A00603048 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				21382F2F1F117E0A00603048 /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		21382F481F11816E00603048 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				21382F441F117FCB00603048 /* Secrets.swift */,
+				21382F4A1F1181D200603048 /* Mixpanel.swift */,
+				216DA47B1EEA54D400E39CAE /* ToolbarView.swift */,
+				216DA4831EEA5A5600E39CAE /* SegmentedControl.swift */,
+				216DA4851EEA5E5900E39CAE /* ToolbarButton.swift */,
+				216DA4891EEA715200E39CAE /* LocalizedString.swift */,
+				21E547D91EF1D853009FA237 /* ToolTipView.swift */,
+				21E547DB1EF1D8F8009FA237 /* Label.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		21382F491F11817400603048 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				21CC0D151D88FFAA00B3F5DF /* AppDelegate.swift */,
+				21CC0D161D88FFAA00B3F5DF /* EditorViewController.swift */,
+				21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */,
+				216DA4761EEA49F200E39CAE /* EmptyView.swift */,
+				21E547CF1EF1AA2D009FA237 /* PhotosController.swift */,
+				21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */,
+				21E547D31EF1B682009FA237 /* UIPasteboard+Redacted.swift */,
+				216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */,
+			);
+			name = Application;
 			sourceTree = "<group>";
 		};
 		21CC0D131D88FFAA00B3F5DF /* Redacted-iOS */ = {
@@ -281,20 +397,8 @@
 		21CC0D141D88FFAA00B3F5DF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				21CC0D151D88FFAA00B3F5DF /* AppDelegate.swift */,
-				21CC0D161D88FFAA00B3F5DF /* EditorViewController.swift */,
-				21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */,
-				216DA4761EEA49F200E39CAE /* EmptyView.swift */,
-				216DA47B1EEA54D400E39CAE /* ToolbarView.swift */,
-				216DA4831EEA5A5600E39CAE /* SegmentedControl.swift */,
-				216DA4851EEA5E5900E39CAE /* ToolbarButton.swift */,
-				216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */,
-				216DA4891EEA715200E39CAE /* LocalizedString.swift */,
-				21E547CF1EF1AA2D009FA237 /* PhotosController.swift */,
-				21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */,
-				21E547D31EF1B682009FA237 /* UIPasteboard+Redacted.swift */,
-				21E547D91EF1D853009FA237 /* ToolTipView.swift */,
-				21E547DB1EF1D8F8009FA237 /* Label.swift */,
+				21382F491F11817400603048 /* Application */,
+				21382F481F11816E00603048 /* Shared */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -403,6 +507,8 @@
 				21B874B81EFB4DA2004DC73D /* SVProgressHUD.framework */,
 				21CC0D7B1D88FFB000B3F5DF /* Mixpanel.framework */,
 				21CC0D7D1D88FFB000B3F5DF /* X.framework */,
+				21382F181F117DF100603048 /* PhotosUI.framework */,
+				21382F1A1F117DF100603048 /* Photos.framework */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -497,6 +603,24 @@
 			productReference = 212456AA1AD92CC70038D30D /* RedactedKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		21382F161F117DF100603048 /* RedactedPhoto-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21382F281F117DF100603048 /* Build configuration list for PBXNativeTarget "RedactedPhoto-iOS" */;
+			buildPhases = (
+				21382F131F117DF100603048 /* Sources */,
+				21382F141F117DF100603048 /* Frameworks */,
+				21382F151F117DF100603048 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				21382F361F117E3B00603048 /* PBXTargetDependency */,
+			);
+			name = "RedactedPhoto-iOS";
+			productName = "RedactedPhoto-iOS";
+			productReference = 21382F171F117DF100603048 /* RedcatedPhoto.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		2192BAC31AD0E6C500AC87E2 /* Redacted-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2192BAE01AD0E6C500AC87E2 /* Build configuration list for PBXNativeTarget "Redacted-iOS" */;
@@ -507,11 +631,13 @@
 				212456701AD924400038D30D /* Embed Frameworks */,
 				2189E4B51AF3DD5F00051BD6 /* Embed Carthage Frameworks */,
 				216677E41D8909D70031B903 /* Set Version */,
+				21382F291F117DF100603048 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				212456C01AD92CC70038D30D /* PBXTargetDependency */,
+				21382F241F117DF100603048 /* PBXTargetDependency */,
 			);
 			name = "Redacted-iOS";
 			productName = Redacted;
@@ -524,7 +650,7 @@
 		210EF32F1AC0A35C00ED8E97 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Nothing Magical Inc.";
 				TargetAttributes = {
@@ -545,6 +671,11 @@
 					212456A91AD92CC70038D30D = {
 						CreatedOnToolsVersion = 6.3;
 						LastSwiftMigration = 0800;
+					};
+					21382F161F117DF100603048 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = UP9C8XM22A;
+						ProvisioningStyle = Automatic;
 					};
 					2192BAC31AD0E6C500AC87E2 = {
 						CreatedOnToolsVersion = 6.3;
@@ -576,6 +707,7 @@
 				210EF35D1AC0A39900ED8E97 /* RedactedKit-macOS */,
 				2192BAC31AD0E6C500AC87E2 /* Redacted-iOS */,
 				212456A91AD92CC70038D30D /* RedactedKit-iOS */,
+				21382F161F117DF100603048 /* RedactedPhoto-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -605,6 +737,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				21E547DD1EF1E752009FA237 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21382F151F117DF100603048 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,16 +891,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21382F131F117DF100603048 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21382F3B1F117E9600603048 /* ToolbarView.swift in Sources */,
+				21382F301F117E0A00603048 /* PhotoEditingViewController.swift in Sources */,
+				21382F4C1F1181D200603048 /* Mixpanel.swift in Sources */,
+				21382F431F117E9600603048 /* Label.swift in Sources */,
+				21382F421F117E9600603048 /* ToolTipView.swift in Sources */,
+				21382F3C1F117E9600603048 /* SegmentedControl.swift in Sources */,
+				21382F461F117FFB00603048 /* Secrets.swift in Sources */,
+				21382F3D1F117E9600603048 /* ToolbarButton.swift in Sources */,
+				21382F3E1F117E9600603048 /* LocalizedString.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2192BAC01AD0E6C500AC87E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				216DA4881EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift in Sources */,
+				21382F451F117FCB00603048 /* Secrets.swift in Sources */,
 				21B0248B1D8900CD00A0B226 /* AppDelegate.swift in Sources */,
 				21B0248C1D8900CD00A0B226 /* EditorViewController.swift in Sources */,
 				21E547D41EF1B682009FA237 /* UIPasteboard+Redacted.swift in Sources */,
 				216DA47C1EEA54D400E39CAE /* ToolbarView.swift in Sources */,
 				216DA4841EEA5A5600E39CAE /* SegmentedControl.swift in Sources */,
+				21382F4B1F1181D200603048 /* Mixpanel.swift in Sources */,
 				21E547DA1EF1D853009FA237 /* ToolTipView.swift in Sources */,
 				216DA4771EEA49F200E39CAE /* EmptyView.swift in Sources */,
 				21E547D81EF1CEE1009FA237 /* EditorViewController+Actions.swift in Sources */,
@@ -785,6 +942,16 @@
 			isa = PBXTargetDependency;
 			target = 212456A91AD92CC70038D30D /* RedactedKit-iOS */;
 			targetProxy = 212456BF1AD92CC70038D30D /* PBXContainerItemProxy */;
+		};
+		21382F241F117DF100603048 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21382F161F117DF100603048 /* RedactedPhoto-iOS */;
+			targetProxy = 21382F231F117DF100603048 /* PBXContainerItemProxy */;
+		};
+		21382F361F117E3B00603048 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 212456A91AD92CC70038D30D /* RedactedKit-iOS */;
+			targetProxy = 21382F351F117E3B00603048 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1128,6 +1295,57 @@
 			};
 			name = Release;
 		};
+		21382F261F117DF100603048 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = UP9C8XM22A;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "RedactedPhoto-iOS/Support/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-ios.photo-extension";
+				PRODUCT_NAME = RedcatedPhoto;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		21382F271F117DF100603048 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = UP9C8XM22A;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "RedactedPhoto-iOS/Support/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-ios.photo-extension";
+				PRODUCT_NAME = RedcatedPhoto;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		2192BAE11AD0E6C500AC87E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1215,6 +1433,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		21382F281F117DF100603048 /* Build configuration list for PBXNativeTarget "RedactedPhoto-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21382F261F117DF100603048 /* Debug */,
+				21382F271F117DF100603048 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		2192BAE01AD0E6C500AC87E2 /* Build configuration list for PBXNativeTarget "Redacted-iOS" */ = {
 			isa = XCConfigurationList;
