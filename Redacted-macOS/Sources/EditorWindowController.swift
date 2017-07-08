@@ -87,7 +87,7 @@ final class EditorWindowController: NSWindowController {
 		window?.delegate = self
 
 		editorViewController = contentViewController as? EditorViewController
-		editorViewController.redactedView.undoManager = window?.undoManager
+		editorViewController.redactedView.customUndoManager = window?.undoManager
 
 		if let view = editorViewController.view as? ImageDragDestinationView {
 			view.delegate = self

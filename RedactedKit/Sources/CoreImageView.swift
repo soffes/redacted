@@ -6,79 +6,138 @@
 //  Copyright © 2017 Nothing Magical Inc. All rights reserved.
 //
 
-import UIKit
-import CoreImage
-import GLKit
+#if os(OSX)
+	import AppKit
+	import QuartzCore
 
-public class CoreImageView: GLKView {
+	public class CoreImageView: NSView {
 
-	// MARK: - Properties
+		// MARK: - Properties
 
-	var ciImage: CIImage? {
-		didSet {
-			setNeedsDisplay()
-		}
-	}
-
-	private let ciContext: CIContext
-
-
-	// MARK: - Initializers
-
-	public convenience init() {
-		self.init(frame: .zero, context: EAGLContext(api: .openGLES2)!)
-	}
-
-	public override init(frame: CGRect, context: EAGLContext) {
-		ciContext = CIContext(eaglContext: context, options: [
-			kCIContextWorkingColorSpace: NSNull()
-		])
-
-		super.init(frame: frame, context: context)
-	}
-	
-	public required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
-
-	// MARK: - View
-
-	public override func draw(_ rect: CGRect) {
-		guard var image = ciImage else {
-			// TODO: Clear
-			deleteDrawable()
-			return
+		var ciImage: CIImage? {
+			didSet {
+				setNeedsDisplay(bounds)
+			}
 		}
 
-		image = image.applying(CGAffineTransform(scaleX: 1, y: -1))
-		image = image.applying(CGAffineTransform(translationX: 0, y: image.extent.height))
 
-		bindDrawable()
-		ciContext.draw(image, in: pixelImageRectForBounds(bounds), from: image.extent)
-	}
+		// MARK: - Initializers
 
-
-	// MARK: - Configuration
-
-	func imageRectForBounds(_ bounds: CGRect) -> CGRect {
-		var rect = bounds
-
-		if let ciImage = ciImage {
-			rect = rect.aspectFit(ciImage.extent.size)
+		public override init(frame: NSRect) {
+			super.init(frame: frame)
+			wantsLayer = true
+		}
+		
+		required public init?(coder: NSCoder) {
+			super.init(coder: coder)
+			wantsLayer = true
 		}
 
-		return rect
+
+		// MARK: - View
+
+		public override func draw(_ rect: CGRect) {
+			guard let context = NSGraphicsContext.current()?.cgContext,
+				let image = ciImage
+			else { return }
+
+			let options = [
+				kCIContextUseSoftwareRenderer: false,
+				kCIContextWorkingColorSpace: NSNull()
+			] as [String : Any]
+
+			let ciContext = CIContext(cgContext: context, options: options)
+			ciContext.draw(image, in: imageRectForBounds(bounds), from: image.extent)
+		}
+
+
+		// MARK: - Configuration
+
+		func imageRectForBounds(_ bounds: CGRect) -> CGRect {
+			var rect = bounds
+
+			if let ciImage = ciImage {
+				rect = rect.aspectFit(ciImage.extent.size)
+			}
+			
+			return rect
+		}
 	}
+#else
+	import UIKit
+	import CoreImage
+	import GLKit
 
-	private func pixelImageRectForBounds(_ bounds: CGRect) -> CGRect {
-		var rect = imageRectForBounds(bounds)
+	public class CoreImageView: GLKView {
 
-		rect.origin.x *= contentScaleFactor
-		rect.origin.y *= contentScaleFactor
-		rect.size.width *= contentScaleFactor
-		rect.size.height *= contentScaleFactor
+		// MARK: - Properties
 
-		return rect
+		var ciImage: CIImage? {
+			didSet {
+				setNeedsDisplay()
+			}
+		}
+
+		private let ciContext: CIContext
+
+
+		// MARK: - Initializers
+
+		public convenience init() {
+			self.init(frame: .zero, context: EAGLContext(api: .openGLES2)!)
+		}
+
+		public override init(frame: CGRect, context: EAGLContext) {
+			ciContext = CIContext(eaglContext: context, options: [
+				kCIContextWorkingColorSpace: NSNull()
+			])
+
+			super.init(frame: frame, context: context)
+		}
+		
+		public required init?(coder aDecoder: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
+
+
+		// MARK: - View
+
+		public override func draw(_ rect: CGRect) {
+			guard var image = ciImage else {
+				// TODO: Clear
+				deleteDrawable()
+				return
+			}
+
+			image = image.applying(CGAffineTransform(scaleX: 1, y: -1))
+			image = image.applying(CGAffineTransform(translationX: 0, y: image.extent.height))
+
+			bindDrawable()
+			ciContext.draw(image, in: pixelImageRectForBounds(bounds), from: image.extent)
+		}
+
+
+		// MARK: - Configuration
+
+		func imageRectForBounds(_ bounds: CGRect) -> CGRect {
+			var rect = bounds
+
+			if let ciImage = ciImage {
+				rect = rect.aspectFit(ciImage.extent.size)
+			}
+
+			return rect
+		}
+
+		private func pixelImageRectForBounds(_ bounds: CGRect) -> CGRect {
+			var rect = imageRectForBounds(bounds)
+
+			rect.origin.x *= contentScaleFactor
+			rect.origin.y *= contentScaleFactor
+			rect.size.width *= contentScaleFactor
+			rect.size.height *= contentScaleFactor
+
+			return rect
+		}
 	}
-}
+#endif
