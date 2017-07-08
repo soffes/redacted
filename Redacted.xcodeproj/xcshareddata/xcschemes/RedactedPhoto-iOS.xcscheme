@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "21382F161F117DF100603048"
-               BuildableName = "RedactedPhoto-iOS.appex"
+               BuildableName = "RedcatedPhoto.appex"
                BlueprintName = "RedactedPhoto-iOS"
                ReferencedContainer = "container:Redacted.xcodeproj">
             </BuildableReference>
@@ -48,7 +48,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21382F161F117DF100603048"
-            BuildableName = "RedactedPhoto-iOS.appex"
+            BuildableName = "RedcatedPhoto.appex"
             BlueprintName = "RedactedPhoto-iOS"
             ReferencedContainer = "container:Redacted.xcodeproj">
          </BuildableReference>
