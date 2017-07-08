@@ -10,7 +10,7 @@ import Foundation
 import X
 
 func bundle() -> Bundle? {
-	return Bundle(for: RedactedLayer.self)
+	return Bundle(for: RedactedView.self)
 }
 
 public func string(_ key: String) -> String {

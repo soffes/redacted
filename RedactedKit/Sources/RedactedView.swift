@@ -13,7 +13,7 @@ import QuartzCore
 	import UIKit
 #endif
 
-public final class RedactedView: View {
+public final class RedactedView: CoreImageView {
 
 	// MARK: - Constants
 
@@ -25,110 +25,206 @@ public final class RedactedView: View {
 		return "RedactedView.selectionDidChangeNotificationName"
 	}
 
+	// MARK: - Types
+
+	enum DraggingMode {
+		case creating(uuid: String, startPoint: CGPoint)
+		case moving(uuid: String, rect: CGRect, startPoint: CGPoint)
+	}
+
 
 	// MARK: - Properties
 
-	private let redactedLayer = RedactedLayer()
-
 	public var originalImage: Image? {
 		get {
-			return redactedLayer.originalImage
+			return redactionsController.image
 		}
 
 		set {
-			redactedLayer.originalImage = newValue
+			redactionsController.image = newValue
+
+			deselectAll()
+			redactions.removeAll()
+
+			// TODO: Allow for undoing images
+			undoManager?.removeAllActions()
 		}
 	}
 
-	public var mode: RedactionType {
-		get {
-			return redactedLayer.mode
-		}
-
-		set {
-			redactedLayer.mode = newValue
+	public var mode: RedactionType = .pixelate {
+		didSet {
+			NotificationCenter.default.post(name: Notification.Name(rawValue: RedactedView.modeDidChangeNotificationName), object: self)
 		}
 	}
 
-	public override var undoManager: UndoManager? {
-		get {
-			return redactedLayer.undoManager
-		}
-
-		set {
-			redactedLayer.undoManager = newValue
-		}
-	}
+	var redactionsController = RedactionsController()
 
 	public var redactions: [Redaction] {
-		return redactedLayer.redactions
-	}
-
-	public var selectionCount: UInt {
-		return UInt(redactedLayer.redactions.count)
-	}
-
-
-	// MARK: - Initializers
-
-	public override init(frame: CGRect) {
-		super.init(frame: frame)
-		initialize()
-	}
-
-	public required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-		initialize()
-	}
-
-
-	// MARK: - View
-
-	public override func layoutSubviews() {
-		super.layoutSubviews()
-		layoutLayers()
-	}
-
-	public override func didMoveToWindow() {
-		super.didMoveToWindow()
-		updateLayerScale()
-	}
-
-	#if !os(OSX)
-		public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-			super.traitCollectionDidChange(previousTraitCollection)
-			updateLayerScale()
+		get {
+			return redactionsController.redactions
 		}
-	#endif
+
+		set {
+			redactionsController.redactions = newValue
+			updateRedactions()
+		}
+	}
+
+	private var selectedUUIDs = Set<String>() {
+		didSet {
+			updateSelections()
+		}
+	}
+
+	public var selectedRedactions: [Redaction] {
+		var selected = [Redaction]()
+		let allUUIDs = redactions.map({ $0.uuid })
+		for UUID in selectedUUIDs {
+			if let index = allUUIDs.index(of: UUID) {
+				selected.append(redactions[index])
+			}
+		}
+		return selected
+	}
+
+	private var draggingMode: DraggingMode?
+	private var boundingBoxes = [String: CALayer]()
+
+	public var customUndoManager: UndoManager?
+
+	public override var undoManager: UndoManager? {
+		return customUndoManager
+	}
+
+
+	// MARK: - CALayer
+
+	public override var frame: CGRect {
+		didSet {
+			if oldValue.size != frame.size {
+				updateRedactions()
+			}
+		}
+	}
 
 
 	// MARK: - Manipulation
 
 	public func deleteRedaction() {
-		redactedLayer.delete()
+		removeRedactions(selectedRedactions)
 	}
 
 	public func tap(point: CGPoint, exclusive: Bool = true) {
-		redactedLayer.tap(point: point, exclusive: exclusive)
+		if ciImage == nil {
+			return
+		}
+
+		let point = converPointToUnits(point)
+
+		if let redaction = hitTestRedaction(point) {
+			if isSelected(redaction) {
+				deselect(redaction)
+			} else {
+				if exclusive {
+					deselectAll()
+				}
+				select(redaction)
+			}
+			return
+		}
+
+		deselectAll()
 	}
 
 	public func drag(point: CGPoint, state: GestureRecognizerState) {
-		redactedLayer.drag(point: point, state: state)
+		if ciImage == nil {
+			return
+		}
+
+		let point = converPointToUnits(point)
+
+		// Begin
+		if state == .began {
+			deselectAll()
+
+			// Start moving
+			if let redaction = hitTestRedaction(point) {
+				draggingMode = .moving(uuid: redaction.uuid, rect: redaction.rect, startPoint: point)
+				select(redaction)
+			}
+
+				// Start creating
+			else {
+				let redaction = Redaction(type: mode, rect: CGRect(origin: point, size: CGSize.zero))
+				draggingMode = .creating(uuid: redaction.uuid, startPoint: redaction.rect.origin)
+				redactions.append(redaction)
+				select(redaction)
+			}
+		}
+
+		// Continue
+		if let draggingMode = draggingMode {
+			switch draggingMode {
+			case let .creating(uuid, startPoint):
+				// Find the currently dragging redaction
+				if let index = redactions.map({ $0.uuid }).index(of: uuid) {
+					var redaction = redactions[index]
+
+					redaction.rect = CGRect(
+						x: min(point.x, startPoint.x),
+						y: min(point.y, startPoint.y),
+						width: max(point.x, startPoint.x) - min(point.x, startPoint.x),
+						height: max(point.y, startPoint.y) - min(point.y, startPoint.y)
+					)
+
+					redactions[index] = redaction
+
+					// Finished dragging
+					if state == .ended {
+						redactions.remove(at: index)
+						insertRedactions([redaction])
+					}
+				}
+
+			case let .moving(UUID, rect, startPoint):
+				// Find the currently dragging redaction
+				if let index = redactions.map({ $0.uuid }).index(of: UUID) {
+					var redaction = redactions[index]
+					var rect = rect
+					rect.origin.x += point.x - startPoint.x
+					rect.origin.y += point.y - startPoint.y
+					redaction.rect = rect
+
+					redactions[index] = redaction
+				}
+			}
+		}
+
+		// End
+		if state == .ended {
+			draggingMode = nil
+		}
 	}
 
 
 	// MARK: - Selection
 
-	public func select(_ redaction: Redaction, isExclusive: Bool = false) {
-		redactedLayer.select(redaction, isExclusive: isExclusive)
+	public func selectAllRedactions() {
+		for redaction in redactions {
+			select(redaction)
+		}
 	}
 
-	public func selectAllRedactions() {
-		redactedLayer.selectAll()
+	public var selectionCount: Int {
+		return selectedUUIDs.count
+	}
+
+	public func rect(for redaction: Redaction) -> CGRect {
+		return redaction.rectForBounds(imageRectForBounds(bounds)).flippedInRect(bounds)
 	}
 
 	public func redaction(at point: CGPoint) -> Redaction? {
-		for redaction in redactedLayer.redactions.reversed() {
+		for redaction in redactions.reversed() {
 			let rect = self.rect(for: redaction)
 
 			if rect.contains(point) {
@@ -138,59 +234,293 @@ public final class RedactedView: View {
 
 		return nil
 	}
-
-	public func rect(for redaction: Redaction) -> CGRect {
-		return redactedLayer.rect(for: redaction)
-	}
-
-
-	// MARK: - Rendering
-
-	public func renderedImage() -> Image? {
-		return redactedLayer.redactionsController.process()?.renderedImage
-	}
-
+	
 
 	// MARK: - Private
 
-	private func initialize() {
-		wantsLayer = true
-
-		let layer: CALayer
-		#if os(OSX)
-			layer = self.layer!
-		#else
-			layer = self.layer
-		#endif
-
-		layer.backgroundColor = Color(red: 0.863, green: 0.863, blue: 0.863, alpha: 1).cgColor
-		layer.addSublayer(redactedLayer)
-		layoutLayers()
+	private func converPointToUnits(_ point: CGPoint) -> CGPoint {
+		let rect = imageRectForBounds(bounds)
+		var point = point.flippedInRect(bounds)
+		point.x = (point.x - rect.origin.x) / rect.size.width
+		point.y = (point.y - rect.origin.y) / rect.size.height
+		return point
 	}
 
-	private func layoutLayers() {
-		let layer: CALayer
-		#if os(OSX)
-			layer = self.layer!
-		#else
-			layer = self.layer
-		#endif
+	private func hitTestRedaction(_ point: CGPoint) -> Redaction? {
+		for redaction in redactions.reversed() {
+			if redaction.rect.contains(point) {
+				return redaction
+			}
+		}
+		return nil
+	}
+
+	private func updateRedactions() {
+		ciImage = redactionsController.process()
+		updateSelections()
+	}
+
+	@objc private func insertRedactionDictionaries(_ dictionaries: [[String: Any]]) {
+		let array = dictionaries.map({ Redaction(dictionary: $0) }).filter({ $0 != nil }).map({ $0! })
+		insertRedactions(array)
+	}
+
+	@objc private func removeRedactionDictionaries(_ dictionaries: [[String: Any]]) {
+		let array = dictionaries.map({ Redaction(dictionary: $0) }).filter({ $0 != nil }).map({ $0! })
+		removeRedactions(array)
+	}
+
+	private func insertRedactions(_ redactions: [Redaction]) {
+		self.redactions += redactions
+
+		if !(undoManager?.isUndoing ?? false) {
+			let s = redactions.count == 1 ? "" : "S"
+			undoManager?.setActionName(string("INSERT_REDACTION\(s)"))
+		}
+		undoManager?.registerUndo(withTarget: self, selector: #selector(removeRedactionDictionaries), object: redactions.map({ $0.dictionaryRepresentation }))
+	}
+
+	private func removeRedactions(_ redactions: [Redaction]) {
+		for UUID in redactions.map({ $0.uuid }) {
+			if let index = self.redactions.map({ $0.uuid }).index(of: UUID) {
+				let redaction = self.redactions[index]
+				deselect(redaction)
+				self.redactions.remove(at: index)
+			}
+		}
+
+		if !(undoManager?.isUndoing ?? false) {
+			let s = redactions.count == 1 ? "" : "S"
+			undoManager?.setActionName(string("DELETE_REDACTION\(s)"))
+		}
+		undoManager?.registerUndo(withTarget: self, selector: #selector(insertRedactionDictionaries), object: redactions.map({ $0.dictionaryRepresentation }))
+	}
+
+	private func isSelected(_ redaction: Redaction) -> Bool {
+		return selectedUUIDs.contains(redaction.uuid)
+	}
+
+	public func select(_ redaction: Redaction, isExclusive: Bool = false) {
+		if isExclusive {
+			deselectAll()
+		}
+
+		if isSelected(redaction) {
+			return
+		}
+
+		selectedUUIDs.insert(redaction.uuid)
 
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
-		redactedLayer.frame = layer.bounds
+
+		let layer = BoundingBoxLayer()
+		boundingBoxes[redaction.uuid] = layer
+		self.layer.addSublayer(layer)
+
+		updateSelections()
+
 		CATransaction.commit()
 	}
 
-	private func updateLayerScale() {
-		#if os(OSX)
-			let screen: Screen? = window?.screen
-			let scale = screen?.scale ?? 1.0
-			layer?.contentsScale = scale
-			redactedLayer.contentsScale = scale
-		#else
-			layer.contentsScale = traitCollection.displayScale
-			redactedLayer.contentsScale = traitCollection.displayScale
-		#endif
+	private func deselect(_ redaction: Redaction) {
+		CATransaction.begin()
+		CATransaction.setDisableActions(true)
+
+		if let layer = boundingBoxes[redaction.uuid] {
+			layer.removeFromSuperlayer()
+		}
+		boundingBoxes.removeValue(forKey: redaction.uuid)
+		selectedUUIDs.remove(redaction.uuid)
+
+		CATransaction.commit()
 	}
+
+	private func deselectAll() {
+		for redaction in selectedRedactions {
+			deselect(redaction)
+		}
+	}
+
+	private func updateSelections() {
+		CATransaction.begin()
+		CATransaction.setDisableActions(true)
+
+		for redaction in selectedRedactions {
+			if let layer = boundingBoxes[redaction.uuid] {
+				layer.frame = rect(for: redaction).insetBy(dx: -2, dy: -2)
+			}
+		}
+
+		CATransaction.commit()
+
+		NotificationCenter.default.post(name: Notification.Name(rawValue: RedactedView.selectionDidChangeNotificationName), object: self)
+	}
+
+//	// MARK: - Properties
+//
+//
+//	public var originalImage: Image? {
+//		get {
+//			return redactedLayer.originalImage
+//		}
+//
+//		set {
+//			redactedLayer.originalImage = newValue
+//		}
+//	}
+//
+//	public var mode: RedactionType {
+//		get {
+//			return redactedLayer.mode
+//		}
+//
+//		set {
+//			redactedLayer.mode = newValue
+//		}
+//	}
+//
+//	public override var undoManager: UndoManager? {
+//		get {
+//			return redactedLayer.undoManager
+//		}
+//
+//		set {
+//			redactedLayer.undoManager = newValue
+//		}
+//	}
+//
+//	public var redactions: [Redaction] {
+//		return redactedLayer.redactions
+//	}
+//
+//	public var selectionCount: UInt {
+//		return UInt(redactedLayer.redactions.count)
+//	}
+//
+//
+//	// MARK: - Initializers
+//
+//	public override init(frame: CGRect) {
+//		super.init(frame: frame)
+//		initialize()
+//	}
+//
+//	public required init?(coder aDecoder: NSCoder) {
+//		super.init(coder: aDecoder)
+//		initialize()
+//	}
+//
+//
+//	// MARK: - View
+//
+//	public override func layoutSubviews() {
+//		super.layoutSubviews()
+//		layoutLayers()
+//	}
+//
+//	public override func didMoveToWindow() {
+//		super.didMoveToWindow()
+//		updateLayerScale()
+//	}
+//
+//	#if !os(OSX)
+//		public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//			super.traitCollectionDidChange(previousTraitCollection)
+//			updateLayerScale()
+//		}
+//	#endif
+//
+//
+//	// MARK: - Manipulation
+//
+//	public func deleteRedaction() {
+//		redactedLayer.delete()
+//	}
+//
+//	public func tap(point: CGPoint, exclusive: Bool = true) {
+//		redactedLayer.tap(point: point, exclusive: exclusive)
+//	}
+//
+//	public func drag(point: CGPoint, state: GestureRecognizerState) {
+//		redactedLayer.drag(point: point, state: state)
+//	}
+//
+//
+//	// MARK: - Selection
+//
+//	public func select(_ redaction: Redaction, isExclusive: Bool = false) {
+//		redactedLayer.select(redaction, isExclusive: isExclusive)
+//	}
+//
+//	public func selectAllRedactions() {
+//		redactedLayer.selectAll()
+//	}
+//
+//	public func redaction(at point: CGPoint) -> Redaction? {
+//		for redaction in redactedLayer.redactions.reversed() {
+//			let rect = self.rect(for: redaction)
+//
+//			if rect.contains(point) {
+//				return redaction
+//			}
+//		}
+//
+//		return nil
+//	}
+//
+//	public func rect(for redaction: Redaction) -> CGRect {
+//		return redactedLayer.rect(for: redaction)
+//	}
+//
+//
+//	// MARK: - Rendering
+//
+//	public func renderedImage() -> Image? {
+//		return redactedLayer.redactionsController.process()?.renderedImage
+//	}
+//
+//
+//	// MARK: - Private
+//
+//	private func initialize() {
+//		wantsLayer = true
+//
+//		let layer: CALayer
+//		#if os(OSX)
+//			layer = self.layer!
+//		#else
+//			layer = self.layer
+//		#endif
+//
+//		layer.backgroundColor = Color(red: 0.863, green: 0.863, blue: 0.863, alpha: 1).cgColor
+//		layer.addSublayer(redactedLayer)
+//		layoutLayers()
+//	}
+//
+//	private func layoutLayers() {
+//		let layer: CALayer
+//		#if os(OSX)
+//			layer = self.layer!
+//		#else
+//			layer = self.layer
+//		#endif
+//
+//		CATransaction.begin()
+//		CATransaction.setDisableActions(true)
+//		redactedLayer.frame = layer.bounds
+//		CATransaction.commit()
+//	}
+//
+//	private func updateLayerScale() {
+//		#if os(OSX)
+//			let screen: Screen? = window?.screen
+//			let scale = screen?.scale ?? 1.0
+//			layer?.contentsScale = scale
+//			redactedLayer.contentsScale = scale
+//		#else
+//			layer.contentsScale = traitCollection.displayScale
+//			redactedLayer.contentsScale = traitCollection.displayScale
+//		#endif
+//	}
 }
