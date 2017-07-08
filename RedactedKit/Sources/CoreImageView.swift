@@ -103,16 +103,13 @@
 		// MARK: - View
 
 		public override func draw(_ rect: CGRect) {
-			guard var image = ciImage else {
-				// TODO: Clear
-				deleteDrawable()
-				return
-			}
+			glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
+
+			guard var image = ciImage else { return }
 
 			image = image.applying(CGAffineTransform(scaleX: 1, y: -1))
 			image = image.applying(CGAffineTransform(translationX: 0, y: image.extent.height))
 
-			bindDrawable()
 			ciContext.draw(image, in: pixelImageRectForBounds(bounds), from: image.extent)
 		}
 
