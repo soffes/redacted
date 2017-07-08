@@ -88,14 +88,16 @@ extension EditorViewController {
 		])
 	}
 
-	func saveImage() {
-		PhotosController.savePhoto(context: self, photoProvider: { [weak self] in return self?.renderedImage} )
+	#if !REDACTED_APP_EXTENSION
+		func saveImage() {
+			PhotosController.savePhoto(context: self, photoProvider: { [weak self] in return self?.renderedImage} )
 
-		mixpanel.track(event: "Share image", parameters: [
-			"service": "Save",
-			"redactions_count": redactedView.redactions.count
-		])
-	}
+			mixpanel.track(event: "Share image", parameters: [
+				"service": "Save",
+				"redactions_count": redactedView.redactions.count
+			])
+		}
+	#endif
 
 	func panned(_ sender: UIPanGestureRecognizer) {
 		redactedView.drag(point: sender.location(in: view), state: sender.state)

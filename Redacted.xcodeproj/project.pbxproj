@@ -37,7 +37,14 @@
 		216DA4881EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */; };
 		216DA48A1EEA715200E39CAE /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4891EEA715200E39CAE /* LocalizedString.swift */; };
 		21928D0C1F11867C00E65C3C /* OpenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21928D0B1F11867C00E65C3C /* OpenViewController.swift */; };
+		21928D0D1F118A9600E65C3C /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D161D88FFAA00B3F5DF /* EditorViewController.swift */; };
+		21928D0E1F118A9600E65C3C /* EditorViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */; };
+		21928D0F1F118AA400E65C3C /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D91EF1D853009FA237 /* ToolTipView.swift */; };
+		21928D101F118AA400E65C3C /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547DB1EF1D8F8009FA237 /* Label.swift */; };
+		21928D121F118D2A00E65C3C /* RedactionSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21928D111F118D2A00E65C3C /* RedactionSerialization.swift */; };
+		21928D141F1190E200E65C3C /* RedactionSerialization+Adjustments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21928D131F1190E200E65C3C /* RedactionSerialization+Adjustments.swift */; };
 		219512291EF23B53000A3D12 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D421D88FFAA00B3F5DF /* Localizable.strings */; };
+		21A4C4051F1192F800A805D4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D1A1D88FFAA00B3F5DF /* Images.xcassets */; };
 		21B0246E1D89008700A0B226 /* BoundingBoxLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D351D88FFAA00B3F5DF /* BoundingBoxLayer.swift */; };
 		21B0246F1D89008700A0B226 /* ChainFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D361D88FFAA00B3F5DF /* ChainFilter.swift */; };
 		21B024701D89008700A0B226 /* CIImage+RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D371D88FFAA00B3F5DF /* CIImage+RedactedKit.swift */; };
@@ -197,6 +204,8 @@
 		216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplicationShortcutItem+Redacted.swift"; sourceTree = "<group>"; };
 		216DA4891EEA715200E39CAE /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		21928D0B1F11867C00E65C3C /* OpenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenViewController.swift; sourceTree = "<group>"; };
+		21928D111F118D2A00E65C3C /* RedactionSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedactionSerialization.swift; sourceTree = "<group>"; };
+		21928D131F1190E200E65C3C /* RedactionSerialization+Adjustments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RedactionSerialization+Adjustments.swift"; sourceTree = "<group>"; };
 		2192BAC41AD0E6C500AC87E2 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		219512251EF23B35000A3D12 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		219512261EF23B35000A3D12 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -358,12 +367,16 @@
 		21382F481F11816E00603048 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				21CC0D161D88FFAA00B3F5DF /* EditorViewController.swift */,
+				21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */,
 				21382F441F117FCB00603048 /* Secrets.swift */,
 				21382F4A1F1181D200603048 /* Mixpanel.swift */,
 				216DA47B1EEA54D400E39CAE /* ToolbarView.swift */,
 				216DA4831EEA5A5600E39CAE /* SegmentedControl.swift */,
 				216DA4851EEA5E5900E39CAE /* ToolbarButton.swift */,
 				216DA4891EEA715200E39CAE /* LocalizedString.swift */,
+				21E547D91EF1D853009FA237 /* ToolTipView.swift */,
+				21E547DB1EF1D8F8009FA237 /* Label.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -373,15 +386,11 @@
 			children = (
 				21CC0D151D88FFAA00B3F5DF /* AppDelegate.swift */,
 				21928D0B1F11867C00E65C3C /* OpenViewController.swift */,
-				21CC0D161D88FFAA00B3F5DF /* EditorViewController.swift */,
-				21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */,
 				216DA4761EEA49F200E39CAE /* EmptyView.swift */,
 				21E547CF1EF1AA2D009FA237 /* PhotosController.swift */,
 				21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */,
 				21E547D31EF1B682009FA237 /* UIPasteboard+Redacted.swift */,
 				216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */,
-				21E547D91EF1D853009FA237 /* ToolTipView.swift */,
-				21E547DB1EF1D8F8009FA237 /* Label.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -478,6 +487,8 @@
 				21CC0D3E1D88FFAA00B3F5DF /* RedactedView.swift */,
 				21CC0D3F1D88FFAA00B3F5DF /* Redaction.swift */,
 				21CC0D401D88FFAA00B3F5DF /* RedactionsController.swift */,
+				21928D111F118D2A00E65C3C /* RedactionSerialization.swift */,
+				21928D131F1190E200E65C3C /* RedactionSerialization+Adjustments.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -745,6 +756,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21A4C4051F1192F800A805D4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,6 +892,7 @@
 			files = (
 				216DA4801EEA583600E39CAE /* RedactedKit.swift in Sources */,
 				21B0246E1D89008700A0B226 /* BoundingBoxLayer.swift in Sources */,
+				21928D121F118D2A00E65C3C /* RedactionSerialization.swift in Sources */,
 				21B024781D89008700A0B226 /* Redaction.swift in Sources */,
 				21B024721D89008700A0B226 /* CoreGraphics+RedactedKit.swift in Sources */,
 				21382EEE1F1172FD00603048 /* CoreImageView.swift in Sources */,
@@ -888,6 +901,7 @@
 				21B0246F1D89008700A0B226 /* ChainFilter.swift in Sources */,
 				21B024791D89008700A0B226 /* RedactionsController.swift in Sources */,
 				21B024701D89008700A0B226 /* CIImage+RedactedKit.swift in Sources */,
+				21928D141F1190E200E65C3C /* RedactionSerialization+Adjustments.swift in Sources */,
 				21B024741D89008700A0B226 /* HandleLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -898,7 +912,11 @@
 			files = (
 				21382F3B1F117E9600603048 /* ToolbarView.swift in Sources */,
 				21382F301F117E0A00603048 /* PhotoEditingViewController.swift in Sources */,
+				21928D0F1F118AA400E65C3C /* ToolTipView.swift in Sources */,
 				21382F4C1F1181D200603048 /* Mixpanel.swift in Sources */,
+				21928D101F118AA400E65C3C /* Label.swift in Sources */,
+				21928D0D1F118A9600E65C3C /* EditorViewController.swift in Sources */,
+				21928D0E1F118A9600E65C3C /* EditorViewController+Actions.swift in Sources */,
 				21382F3C1F117E9600603048 /* SegmentedControl.swift in Sources */,
 				21382F461F117FFB00603048 /* Secrets.swift in Sources */,
 				21382F3D1F117E9600603048 /* ToolbarButton.swift in Sources */,
@@ -1311,6 +1329,7 @@
 				INFOPLIST_FILE = "RedactedPhoto-iOS/Support/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DREDACTED_APP_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-ios.photo-extension";
 				PRODUCT_NAME = RedcatedPhoto;
 				SDKROOT = iphoneos;
@@ -1337,6 +1356,7 @@
 				INFOPLIST_FILE = "RedactedPhoto-iOS/Support/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DREDACTED_APP_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-ios.photo-extension";
 				PRODUCT_NAME = RedcatedPhoto;
 				SDKROOT = iphoneos;

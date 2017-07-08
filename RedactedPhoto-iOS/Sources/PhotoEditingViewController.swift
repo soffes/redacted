@@ -10,8 +10,9 @@ import UIKit
 import Photos
 import PhotosUI
 import Mixpanel
+import RedactedKit
 
-class PhotoEditingViewController: UIViewController, PHContentEditingController {
+class PhotoEditingViewController: EditorViewController, PHContentEditingController {
 
 	// MARK: - Properties
 
@@ -21,9 +22,13 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
     // MARK: - PHContentEditingController
     
     func canHandle(_ adjustmentData: PHAdjustmentData) -> Bool {
-        // Inspect the adjustmentData to determine whether your extension can work with past edits.
-        // (Typically, you use its formatIdentifier and formatVersion properties to do this.)
-        return false
+		do {
+			let redactions = try RedactionSerialization.redactions(from: adjustmentData)
+			return !redactions.isEmpty
+		} catch {
+			print("Failed to check adjustment data: \(error)")
+			return false
+		}
     }
     
     func startContentEditing(with contentEditingInput: PHContentEditingInput, placeholderImage: UIImage) {
@@ -33,33 +38,73 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController {
         // If you returned true from canHandleAdjustmentData:, contentEditingInput has the original image and adjustment data.
         // If you returned false, the contentEditingInput has past edits "baked in".
         input = contentEditingInput
+
+		originalImage = placeholderImage
+
+//		DispatchQueue.global().async { [weak self] in
+//			guard let url = self?.input?.fullSizeImageURL,
+//				let data = try? Data(contentsOf: url),
+//				let image = UIImage(data: data)
+//			else {
+//				print("Failed to load full size image")
+//				return
+//			}
+//			self?.originalImage = image
+//		}
+
+		do {
+			if let adjustmentData = contentEditingInput.adjustmentData {
+				let redactions = try RedactionSerialization.redactions(from: adjustmentData)
+				redactedView.redactions = redactions
+			}
+		} catch {
+			print("Failed to deserialize redaction adjustment data: \(error)")
+		}
     }
     
     func finishContentEditing(completionHandler: @escaping ((PHContentEditingOutput?) -> Void)) {
-		mixpanel.track(event: "Photo Extension Save")
-        // Update UI to reflect that editing has finished and output is being rendered.
+        // TODO: Update UI to reflect that editing has finished and output is being rendered.
         
         // Render and provide output on a background queue.
-        DispatchQueue.global().async {
+        DispatchQueue.global().async { [weak self] in
+			// Get image data
+			guard let input = self?.input,
+				let imageData = self?.renderedImage.flatMap({ UIImageJPEGRepresentation($0, 1) })
+			else {
+				completionHandler(nil)
+				return
+			}
+
             // Create editing output from the editing input.
-            let output = PHContentEditingOutput(contentEditingInput: self.input!)
-            
-            // Provide new adjustments and render output to given location.
-            // output.adjustmentData = <#new adjustment data#>
-            // let renderedJPEGData = <#output JPEG#>
-            // renderedJPEGData.writeToURL(output.renderedContentURL, atomically: true)
-            
-            // Call completion handler to commit edit to Photos.
+            let output = PHContentEditingOutput(contentEditingInput: input)
+
+			if let redactions = self?.redactedView.redactions, !redactions.isEmpty {
+				// Add adjustment data
+				do {
+					output.adjustmentData = try RedactionSerialization.adjustmentData(for: redactions)
+				} catch {
+					print("Failed to serialize redaction adjustment data: \(error)")
+				}
+			}
+
+			// Write image data
+			do {
+				try imageData.write(to: output.renderedContentURL, options: [])
+			} catch {
+				print("Failed to write image: \(error)")
+				completionHandler(nil)
+				return
+			}
+
+			mixpanel.track(event: "Photo Extension Save")
+
+            // Commit edit to Photos
             completionHandler(output)
-            
-            // Clean up temporary files, etc.
         }
     }
     
     var shouldShowCancelConfirmation: Bool {
-        // Determines whether a confirmation to discard changes should be shown to the user on cancel.
-        // (Typically, this should be "true" if there are any unsaved changes.)
-        return false
+        return !redactedView.redactions.isEmpty
     }
     
     func cancelContentEditing() {

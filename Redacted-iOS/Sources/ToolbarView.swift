@@ -51,8 +51,10 @@ final class ToolbarView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
-		clearButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred), for: .primaryActionTriggered)
-		shareButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred), for: .primaryActionTriggered)
+		#if !REDACTED_APP_EXTENSION
+			clearButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred), for: .primaryActionTriggered)
+			shareButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred), for: .primaryActionTriggered)
+		#endif
 
 		stackView.addArrangedSubview(modeControl)
 		stackView.addArrangedSubview(UIView())
@@ -61,7 +63,7 @@ final class ToolbarView: UIView {
 		visualEffectView.contentView.addSubview(stackView)
 		addSubview(visualEffectView)
 
-		NSLayoutConstraint.activate([
+		var constraints = [
 			visualEffectView.leadingAnchor.constraint(equalTo: leadingAnchor),
 			visualEffectView.trailingAnchor.constraint(equalTo: trailingAnchor),
 			visualEffectView.topAnchor.constraint(equalTo: topAnchor),
@@ -73,15 +75,20 @@ final class ToolbarView: UIView {
 			stackView.bottomAnchor.constraint(equalTo: visualEffectView.bottomAnchor),
 
 			modeControl.heightAnchor.constraint(equalTo: stackView.heightAnchor),
-
-			clearButton.widthAnchor.constraint(equalToConstant: 40),
-			clearButton.heightAnchor.constraint(equalTo: stackView.heightAnchor),
-
-			shareButton.widthAnchor.constraint(equalToConstant: 40),
-			shareButton.heightAnchor.constraint(equalTo: stackView.heightAnchor),
-
 			heightAnchor.constraint(equalToConstant: 44)
-		])
+		]
+
+		#if !REDACTED_APP_EXTENSION
+			constraints += [
+				clearButton.widthAnchor.constraint(equalToConstant: 40),
+				clearButton.heightAnchor.constraint(equalTo: stackView.heightAnchor),
+
+				shareButton.widthAnchor.constraint(equalToConstant: 40),
+				shareButton.heightAnchor.constraint(equalTo: stackView.heightAnchor)
+			]
+		#endif
+
+		NSLayoutConstraint.activate(constraints)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
