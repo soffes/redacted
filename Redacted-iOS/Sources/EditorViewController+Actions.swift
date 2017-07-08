@@ -41,16 +41,7 @@ extension EditorViewController {
 	func redoEdit() {
 		_undoManager.redo()
 	}
-
-	func pastePhoto() {
-		let data = UIPasteboard.general.data(forPasteboardType: "public.image")
-		originalImage = data.flatMap(UIImage.init)
-
-		mixpanel.track(event: "Import image", parameters: [
-			"source": "Paste"
-		])
-	}
-
+	
 	func share(_ sender: UIView) {
 		guard let renderedImage = renderedImage else { return }
 
@@ -158,38 +149,5 @@ extension EditorViewController {
 	func modeDidChange() {
 		guard let mode = RedactionType(rawValue: toolbarView.modeControl.selectedIndex) else { return }
 		redactedView.mode = mode
-	}
-
-	func choosePhoto() {
-		haptics.prepare()
-		PhotosController.choosePhoto(context: self) { [weak self] image in
-			self?.originalImage = image
-
-			mixpanel.track(event: "Import image", parameters: [
-				"source": "Library"
-			])
-		}
-	}
-
-	func chooseLastPhoto() {
-		haptics.prepare()
-		PhotosController.getLastPhoto(context: self) { [weak self] image in
-			self?.originalImage = image
-
-			mixpanel.track(event: "Import image", parameters: [
-				"source": "Last Photo Taken"
-			])
-		}
-	}
-
-	func takePhoto() {
-		haptics.prepare()
-		PhotosController.takePhoto(context: self) { [weak self] image in
-			self?.originalImage = image
-
-			mixpanel.track(event: "Import image", parameters: [
-				"source": "Camera"
-			])
-		}
 	}
 }

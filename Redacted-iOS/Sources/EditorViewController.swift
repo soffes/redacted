@@ -11,9 +11,15 @@ import RedactedKit
 import X
 import AVFoundation
 
+protocol EditorViewControllerDelegate: class {
+	func editorViewController(_ viewController: EditorViewController, didChangeImage image: UIImage?)
+}
+
 class EditorViewController: UIViewController {
 
 	// MARK: - Properties
+
+	weak var delegate: EditorViewControllerDelegate?
 
 	let redactedView: RedactedView = {
 		let view = RedactedView()
@@ -36,12 +42,6 @@ class EditorViewController: UIViewController {
 			toolbarBottomConstraint?.isActive = true
 		}
 	}
-
-	private let emptyView: EmptyView = {
-		let view = EmptyView()
-		view.translatesAutoresizingMaskIntoConstraints = false
-		return view
-	}()
 
 	var originalImage: UIImage? {
 		didSet {
@@ -129,25 +129,14 @@ class EditorViewController: UIViewController {
 				UIKeyCommand(input: "s", modifierFlags: .command, action: #selector(saveImage), discoverabilityTitle: string("SAVE")),
 			]
 
-			if _undoManager.canUndo {
+			if undoManager?.canUndo == true {
 				let title = String(format: LocalizedString.undoFormat.string, _undoManager.undoActionName)
 				commands.append(UIKeyCommand(input: "z", modifierFlags: .command, action: #selector(undoEdit), discoverabilityTitle: title))
 			}
 
-			if _undoManager.canRedo {
+			if undoManager?.canRedo == true {
 				let title = String(format: LocalizedString.redoFormat.string, _undoManager.redoActionName)
 				commands.append(UIKeyCommand(input: "z", modifierFlags: [.command, .shift], action: #selector(redoEdit), discoverabilityTitle: title))
-			}
-
-		} else {
-			commands += [
-				UIKeyCommand(input: "o", modifierFlags: .command, action: #selector(choosePhoto), discoverabilityTitle: LocalizedString.choosePhoto.string),
-				UIKeyCommand(input: "o", modifierFlags: [.command, .shift], action: #selector(chooseLastPhoto), discoverabilityTitle: LocalizedString.chooseLastPhoto.string),
-				UIKeyCommand(input: "o", modifierFlags: [.command, .alternate], action: #selector(takePhoto), discoverabilityTitle: LocalizedString.takePhoto.string),
-			]
-
-			if UIPasteboard.general.hasImage {
-				commands.append(UIKeyCommand(input: "v", modifierFlags: .command, action: #selector(pastePhoto), discoverabilityTitle: LocalizedString.pastePhoto.string))
 			}
 		}
 
@@ -164,13 +153,6 @@ class EditorViewController: UIViewController {
 		redactedView.customUndoManager = _undoManager
 		view.addSubview(redactedView)
 
-		emptyView.choosePhotoButton.addTarget(self, action: #selector(choosePhoto), for: .primaryActionTriggered)
-		emptyView.lastPhotoButton.addTarget(self, action: #selector(chooseLastPhoto), for: .primaryActionTriggered)
-		emptyView.takePhotoButton.addTarget(self, action: #selector(takePhoto), for: .primaryActionTriggered)
-		emptyView.pastePhotoButton.addTarget(self, action: #selector(pastePhoto), for: .primaryActionTriggered)
-
-		view.addSubview(emptyView)
-
 		toolbarView.modeControl.addTarget(self, action: #selector(modeDidChange), for: .primaryActionTriggered)
 		toolbarView.clearButton.addTarget(self, action: #selector(clear), for: .primaryActionTriggered)
 		toolbarView.shareButton.addTarget(self, action: #selector(share), for: .primaryActionTriggered)
@@ -184,9 +166,6 @@ class EditorViewController: UIViewController {
 			redactedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			redactedView.topAnchor.constraint(equalTo: view.topAnchor),
 			redactedView.bottomAnchor.constraint(equalTo: toolbarView.topAnchor),
-
-			emptyView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			emptyView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
 			toolbarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			toolbarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -223,7 +202,7 @@ class EditorViewController: UIViewController {
 		redactedView.originalImage = image
 
 		let hasImage = image != nil
-		emptyView.isHidden = hasImage
+		delegate?.editorViewController(self, didChangeImage: image)
 		toolbarView.isEnabled = hasImage
 
 		if hasImage {

@@ -114,6 +114,6 @@ final class EmptyView: UIStackView {
 	// MARK: - Private
 
 	@objc private func pasteboardDidChange() {
-		pastePhotoButton.isHidden = !UIPasteboard.general.hasImage
+		pastePhotoButton.isEnabled = UIPasteboard.general.hasImage
 	}
 }

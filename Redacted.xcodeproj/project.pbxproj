@@ -23,8 +23,6 @@
 		21382F3C1F117E9600603048 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4831EEA5A5600E39CAE /* SegmentedControl.swift */; };
 		21382F3D1F117E9600603048 /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4851EEA5E5900E39CAE /* ToolbarButton.swift */; };
 		21382F3E1F117E9600603048 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4891EEA715200E39CAE /* LocalizedString.swift */; };
-		21382F421F117E9600603048 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547D91EF1D853009FA237 /* ToolTipView.swift */; };
-		21382F431F117E9600603048 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547DB1EF1D8F8009FA237 /* Label.swift */; };
 		21382F451F117FCB00603048 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21382F441F117FCB00603048 /* Secrets.swift */; };
 		21382F461F117FFB00603048 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21382F441F117FCB00603048 /* Secrets.swift */; };
 		21382F471F11805400603048 /* Mixpanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC0D7B1D88FFB000B3F5DF /* Mixpanel.framework */; };
@@ -38,6 +36,7 @@
 		216DA4861EEA5E5900E39CAE /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4851EEA5E5900E39CAE /* ToolbarButton.swift */; };
 		216DA4881EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */; };
 		216DA48A1EEA715200E39CAE /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DA4891EEA715200E39CAE /* LocalizedString.swift */; };
+		21928D0C1F11867C00E65C3C /* OpenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21928D0B1F11867C00E65C3C /* OpenViewController.swift */; };
 		219512291EF23B53000A3D12 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D421D88FFAA00B3F5DF /* Localizable.strings */; };
 		21B0246E1D89008700A0B226 /* BoundingBoxLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D351D88FFAA00B3F5DF /* BoundingBoxLayer.swift */; };
 		21B0246F1D89008700A0B226 /* ChainFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D361D88FFAA00B3F5DF /* ChainFilter.swift */; };
@@ -197,6 +196,7 @@
 		216DA4851EEA5E5900E39CAE /* ToolbarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarButton.swift; sourceTree = "<group>"; };
 		216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplicationShortcutItem+Redacted.swift"; sourceTree = "<group>"; };
 		216DA4891EEA715200E39CAE /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		21928D0B1F11867C00E65C3C /* OpenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenViewController.swift; sourceTree = "<group>"; };
 		2192BAC41AD0E6C500AC87E2 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		219512251EF23B35000A3D12 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		219512261EF23B35000A3D12 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -364,8 +364,6 @@
 				216DA4831EEA5A5600E39CAE /* SegmentedControl.swift */,
 				216DA4851EEA5E5900E39CAE /* ToolbarButton.swift */,
 				216DA4891EEA715200E39CAE /* LocalizedString.swift */,
-				21E547D91EF1D853009FA237 /* ToolTipView.swift */,
-				21E547DB1EF1D8F8009FA237 /* Label.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -374,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				21CC0D151D88FFAA00B3F5DF /* AppDelegate.swift */,
+				21928D0B1F11867C00E65C3C /* OpenViewController.swift */,
 				21CC0D161D88FFAA00B3F5DF /* EditorViewController.swift */,
 				21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */,
 				216DA4761EEA49F200E39CAE /* EmptyView.swift */,
@@ -381,6 +380,8 @@
 				21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */,
 				21E547D31EF1B682009FA237 /* UIPasteboard+Redacted.swift */,
 				216DA4871EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift */,
+				21E547D91EF1D853009FA237 /* ToolTipView.swift */,
+				21E547DB1EF1D8F8009FA237 /* Label.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -898,8 +899,6 @@
 				21382F3B1F117E9600603048 /* ToolbarView.swift in Sources */,
 				21382F301F117E0A00603048 /* PhotoEditingViewController.swift in Sources */,
 				21382F4C1F1181D200603048 /* Mixpanel.swift in Sources */,
-				21382F431F117E9600603048 /* Label.swift in Sources */,
-				21382F421F117E9600603048 /* ToolTipView.swift in Sources */,
 				21382F3C1F117E9600603048 /* SegmentedControl.swift in Sources */,
 				21382F461F117FFB00603048 /* Secrets.swift in Sources */,
 				21382F3D1F117E9600603048 /* ToolbarButton.swift in Sources */,
@@ -922,6 +921,7 @@
 				21E547DA1EF1D853009FA237 /* ToolTipView.swift in Sources */,
 				216DA4771EEA49F200E39CAE /* EmptyView.swift in Sources */,
 				21E547D81EF1CEE1009FA237 /* EditorViewController+Actions.swift in Sources */,
+				21928D0C1F11867C00E65C3C /* OpenViewController.swift in Sources */,
 				21E547D21EF1AC0D009FA237 /* UIAlertAction+Redacted.swift in Sources */,
 				216DA48A1EEA715200E39CAE /* LocalizedString.swift in Sources */,
 				216DA4861EEA5E5900E39CAE /* ToolbarButton.swift in Sources */,
@@ -1441,6 +1441,7 @@
 				21382F271F117DF100603048 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2192BAE01AD0E6C500AC87E2 /* Build configuration list for PBXNativeTarget "Redacted-iOS" */ = {
 			isa = XCConfigurationList;

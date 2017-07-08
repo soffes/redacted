@@ -15,7 +15,7 @@ import Mixpanel
 	
 	var window: UIWindow? = UIWindow()
 
-	fileprivate let viewController = EditorViewController()
+	fileprivate let viewController = OpenViewController()
 
 	fileprivate let choosePhotoType = "com.nothingmagical.redacted-ios.shortcut.choose-photo"
 	fileprivate let chooseLastPhotoType = "com.nothingmagical.redacted-ios.shortcut.choose-last-photo"
