@@ -82,7 +82,7 @@ final class EmptyView: UIStackView {
 		let view = Button(type: .custom)
 		view.setImage(#imageLiteral(resourceName: "Paste"), for: .normal)
 		view.setTitle(LocalizedString.pastePhoto.string, for: .normal)
-		view.isHidden = true
+		view.setTitleColor(UIColor(white: 1, alpha: 0.5), for: .disabled)
 		return view
 	}()
 
