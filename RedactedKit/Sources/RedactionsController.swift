@@ -28,7 +28,35 @@ public final class RedactionsController {
 				#else
 					var img = CIImage(cgImage: image.cgImage!)
 					img = img.applying(CGAffineTransform(scaleX: 1, y: -1).concatenating(CGAffineTransform(translationX: 0, y: img.extent.height)))
-					img = img.applyingOrientation(Int32(image.imageOrientation.rawValue))
+
+					switch image.imageOrientation {
+					case .up:
+						break
+
+					case .down:
+						img = img.applying(CGAffineTransform(rotationAngle: .pi))
+
+					case .left:
+						img = img.applying(CGAffineTransform(rotationAngle: .pi / -2))
+
+					case .right:
+						img = img.applying(CGAffineTransform(rotationAngle: .pi / 2))
+
+					case .upMirrored:
+						img = img.applying(CGAffineTransform(scaleX: -1, y: 1).concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
+
+					case .downMirrored:
+						img = img.applying(CGAffineTransform(rotationAngle: .pi))
+						img = img.applying(CGAffineTransform(scaleX: -1, y: 1).concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
+
+					case .leftMirrored:
+						img = img.applying(CGAffineTransform(rotationAngle: .pi / -2))
+						img = img.applying(CGAffineTransform(scaleX: -1, y: 1).concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
+
+					case .rightMirrored:
+						img = img.applying(CGAffineTransform(rotationAngle: .pi / 2))
+						img = img.applying(CGAffineTransform(scaleX: -1, y: 1).concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
+					}
 
 					ciImage = img
 				#endif
