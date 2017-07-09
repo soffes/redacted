@@ -97,7 +97,7 @@ extension EditorViewController {
 
 	#if !REDACTED_APP_EXTENSION
 		func saveImage() {
-			PhotosController.savePhoto(context: self, photoProvider: { [weak self] in return self?.renderedImage} )
+			PhotosController.savePhoto(context: self, photoProvider: { [weak self] in return self?.renderedImage })
 
 			mixpanel.track(event: "Share image", parameters: [
 				"service": "Save",
