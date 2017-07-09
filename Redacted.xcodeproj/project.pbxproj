@@ -72,6 +72,7 @@
 		21B0248E1D8901C400A0B226 /* X.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC0D821D88FFB000B3F5DF /* X.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		21B997D11F127EE70049BF84 /* OpenViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B997D01F127EE70049BF84 /* OpenViewController+Actions.swift */; };
 		21B997D51F128B170049BF84 /* ImageActivityItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B997D41F128B170049BF84 /* ImageActivityItemProvider.swift */; };
+		21B997D61F128DA00049BF84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 216DA4781EEA4F6200E39CAE /* Localizable.strings */; };
 		21C8CF281EEEF15700261547 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21C8CF261EEEF15700261547 /* InfoPlist.strings */; };
 		21CC0D501D88FFAA00B3F5DF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D1E1D88FFAA00B3F5DF /* AboutViewController.swift */; };
 		21CC0D511D88FFAA00B3F5DF /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D1F1D88FFAA00B3F5DF /* AboutWindowController.swift */; };
@@ -771,6 +772,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21A4C4051F1192F800A805D4 /* Images.xcassets in Resources */,
+				21B997D61F128DA00049BF84 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
