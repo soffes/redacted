@@ -243,7 +243,7 @@ class EditorViewController: UIViewController {
 
 			toolbarBottomConstraint = toolbarView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 
-			if !UserDefaults.standard.bool(forKey: "CreatedRedaction") {
+			if !Preferences.shared.completedTutorial {
 				showTutorial()
 			}
 		} else {

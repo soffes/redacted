@@ -111,7 +111,7 @@ extension EditorViewController {
 
 		if sender.state == .ended && redactedView.redactions.count > 0 {
 			hideTutorial()
-			UserDefaults.standard.set(true, forKey: "CreatedRedaction")
+			Preferences.shared.completedTutorial = true
 		}
 	}
 
