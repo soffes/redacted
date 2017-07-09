@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>0</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
@@ -29,10 +29,10 @@
 				<string>Image</string>
 			</array>
 		</dict>
-		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).PhotoEditingViewController</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.photo-editing</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>$(PRODUCT_MODULE_NAME).PhotoEditingViewController</string>
 	</dict>
 </dict>
 </plist>
