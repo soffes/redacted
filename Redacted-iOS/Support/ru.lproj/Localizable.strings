@@ -1,0 +1,34 @@
+/*
+  Localizable.strings
+  Redacted
+
+  Created by Sam Soffes on 6/8/17.
+  Copyright © 2017 Nothing Magical Inc. All rights reserved.
+*/
+
+"CHOOSE_PHOTO" = "Выбрать фото";
+"CHOOSE_LAST_PHOTO" = "Последнее сделанное фото";
+"TAKE_PHOTO" = "Снять фото";
+
+"RESTRICTED_PHOTOS_TITLE" = "Доступ запрещён";
+"RESTRICTED_PHOTOS_MESSAGE" = "У вас недостаточно полномочий чтобы дать доступ Redacted к вашим фотографиям. Вероятно, это связано с настройками Родительского Контроля.";
+
+"ACCESS_DENIED_PHOTOS_TITLE" = "Доступ запрещён";
+"ACCESS_DENIED_PHOTOS_MESSAGE" = "Разрешите доступ к фотографиям.";
+
+"RESTRICTED_CAMERA_TITLE" = "Доступ запрещён";
+"RESTRICTED_CAMERA_MESSAGE" = "У вас недостаточно полномочий чтобы дать доступ Redacted к камере. Вероятно, это связано с настройками Родительского Контроля.";
+
+"ACCESS_DENIED_CAMERA_TITLE" = "Доступ запрещён";
+"ACCESS_DENIED_CAMERA_MESSAGE" = "Разрешите доступ к камере.";
+
+"OPEN_SETTINGS_BUTTON" = "Открыть настройки";
+"CANCEL" = "Отмена";
+"OK" = "OK";
+
+"UNDO_FORMAT" = "Отменить %@";
+"REDO_FORMAT" = "Повторить %@";
+
+"PASTE_PHOTO" = "Вставить фото";
+
+"TAP_AND_DRAG" = "Тапните и тяните чтобы начать редактировать";
