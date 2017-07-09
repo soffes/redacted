@@ -51,15 +51,16 @@ final class ToolbarView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
+		stackView.addArrangedSubview(modeControl)
+		stackView.addArrangedSubview(UIView())
+
 		#if !REDACTED_APP_EXTENSION
 			clearButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred), for: .primaryActionTriggered)
 			shareButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred), for: .primaryActionTriggered)
+			stackView.addArrangedSubview(clearButton)
+			stackView.addArrangedSubview(shareButton)
 		#endif
 
-		stackView.addArrangedSubview(modeControl)
-		stackView.addArrangedSubview(UIView())
-		stackView.addArrangedSubview(clearButton)
-		stackView.addArrangedSubview(shareButton)
 		visualEffectView.contentView.addSubview(stackView)
 		addSubview(visualEffectView)
 
