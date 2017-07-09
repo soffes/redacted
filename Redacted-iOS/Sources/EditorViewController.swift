@@ -95,7 +95,7 @@ class EditorViewController: UIViewController {
 	}
 
 	var renderedImage: UIImage? {
-		let controller = Redactiox`nsController()
+		let controller = RedactionsController()
 		controller.image = originalImage
 		controller.redactions = redactedView.redactions
 		return controller.process()?.renderedImage
