@@ -47,9 +47,11 @@ extension EditorViewController {
 
 	#if !REDACTED_APP_EXTENSION
 		func share() {
-			guard let renderedImage = renderedImage else { return }
+			guard let originalImage = originalImage else { return }
 
-			let viewController = UIActivityViewController(activityItems: [renderedImage], applicationActivities: nil)
+			let item = ImageActivityItemProvider(originalImage: originalImage, redactions: redactedView.redactions)
+
+			let viewController = UIActivityViewController(activityItems: [item], applicationActivities: nil)
 			viewController.completionWithItemsHandler = { [weak self] type, completed, _, error in
 				if error != nil {
 					SVProgressHUD.showError(withStatus: nil)
