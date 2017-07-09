@@ -12,53 +12,16 @@ import PhotosUI
 import Mixpanel
 import RedactedKit
 
-class PhotoEditingViewController: EditorViewController {
-
-	// MARK: - Properties
-
-    fileprivate var input: PHContentEditingInput?
-
-	fileprivate var queuedRedactions = [Redaction]()
-
-
-	// MARK: - EditorViewController
-
-	override func imageDidChange() {
-		super.imageDidChange()
-
-		redactedView.redactions = queuedRedactions
-		queuedRedactions.removeAll()
-	}
-}
-
-
-extension PhotoEditingViewController: PHContentEditingController {
+class PhotoEditingViewController: EditorViewController, PHContentEditingController {
 
     func canHandle(_ adjustmentData: PHAdjustmentData) -> Bool {
-		do {
-			_ = try RedactionSerialization.redactions(from: adjustmentData)
-			return true
-		} catch {
-			print("Failed to check adjustment data: \(error)")
-			return false
-		}
+		return RedactionSerialization.canHandle(adjustmentData)
     }
     
     func startContentEditing(with contentEditingInput: PHContentEditingInput, placeholderImage: UIImage) {
 		mixpanel.track(event: "Photo Extension Launch")
 
 		input = contentEditingInput
-
-		do {
-			if let adjustmentData = contentEditingInput.adjustmentData {
-				let redactions = try RedactionSerialization.redactions(from: adjustmentData)
-				queuedRedactions = redactions
-			}
-		} catch {
-			print("Failed to deserialize redaction adjustment data: \(error)")
-		}
-
-		originalImage = contentEditingInput.displaySizeImage
     }
     
     func finishContentEditing(completionHandler: @escaping ((PHContentEditingOutput?) -> Void)) {

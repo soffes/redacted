@@ -110,8 +110,8 @@ final class OpenViewController: UIViewController {
 
 	func chooseLastPhoto() {
 		haptics.prepare()
-		PhotosController.getLastPhoto(context: self) { [weak self] image in
-			self?.editorViewController.originalImage = image
+		PhotosController.getLastPhoto(context: self) { [weak self] input in
+			self?.editorViewController.input = input
 
 			mixpanel.track(event: "Import image", parameters: [
 				"source": "Last Photo Taken"

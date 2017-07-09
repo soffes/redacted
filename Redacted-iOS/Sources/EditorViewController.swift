@@ -10,6 +10,7 @@ import UIKit
 import RedactedKit
 import X
 import AVFoundation
+import Photos
 
 protocol EditorViewControllerDelegate: class {
 	func editorViewController(_ viewController: EditorViewController, didChangeImage image: UIImage?)
@@ -42,6 +43,27 @@ class EditorViewController: UIViewController {
 			toolbarBottomConstraint?.isActive = true
 		}
 	}
+
+	var input: PHContentEditingInput? {
+		didSet {
+			if let input = input {
+				do {
+					if let adjustmentData = input.adjustmentData {
+						let redactions = try RedactionSerialization.redactions(from: adjustmentData)
+						queuedRedactions = redactions
+					}
+				} catch {
+					print("Failed to deserialize redaction adjustment data: \(error)")
+				}
+
+				originalImage = input.displaySizeImage
+			} else {
+				originalImage = nil
+			}
+		}
+	}
+
+	private var queuedRedactions = [Redaction]()
 
 	var originalImage: UIImage? {
 		didSet {
@@ -159,8 +181,12 @@ class EditorViewController: UIViewController {
 		view.addSubview(redactedView)
 
 		toolbarView.modeControl.addTarget(self, action: #selector(modeDidChange), for: .primaryActionTriggered)
-		toolbarView.clearButton.addTarget(self, action: #selector(clear), for: .primaryActionTriggered)
-		toolbarView.shareButton.addTarget(self, action: #selector(share), for: .primaryActionTriggered)
+
+		#if !REDACTED_APP_EXTENSION
+			toolbarView.clearButton.addTarget(self, action: #selector(clear), for: .primaryActionTriggered)
+			toolbarView.shareButton.addTarget(self, action: #selector(share), for: .primaryActionTriggered)
+		#endif
+
 		view.addSubview(toolbarView)
 
 		let toolbarTopConstraint = toolbarView.topAnchor.constraint(equalTo: view.bottomAnchor)
@@ -205,6 +231,8 @@ class EditorViewController: UIViewController {
 	/// You should not call this directly
 	func imageDidChange() {
 		redactedView.originalImage = image
+		redactedView.redactions = queuedRedactions
+		queuedRedactions.removeAll()
 
 		let hasImage = image != nil
 		delegate?.editorViewController(self, didChangeImage: image)

@@ -8,7 +8,10 @@
 
 import UIKit
 import RedactedKit
-import SVProgressHUD
+
+#if !REDACTED_APP_EXTENSION
+	import SVProgressHUD
+#endif
 
 extension EditorViewController {
 	func usePixelate() {
@@ -41,43 +44,45 @@ extension EditorViewController {
 	func redoEdit() {
 		_undoManager.redo()
 	}
-	
-	func share(_ sender: UIView) {
-		guard let renderedImage = renderedImage else { return }
 
-		let viewController = UIActivityViewController(activityItems: [renderedImage], applicationActivities: nil)
-		viewController.completionWithItemsHandler = { [weak self] type, completed, _, error in
-			if error != nil {
-				SVProgressHUD.showError(withStatus: nil)
-				SVProgressHUD.dismiss(withDelay: 1)
-				return
+	#if !REDACTED_APP_EXTENSION
+		func share(_ sender: UIView) {
+			guard let renderedImage = renderedImage else { return }
+
+			let viewController = UIActivityViewController(activityItems: [renderedImage], applicationActivities: nil)
+			viewController.completionWithItemsHandler = { [weak self] type, completed, _, error in
+				if error != nil {
+					SVProgressHUD.showError(withStatus: nil)
+					SVProgressHUD.dismiss(withDelay: 1)
+					return
+				}
+
+				guard completed,
+					let title = type?.rawValue,
+					let count = self?.redactedView.redactions.count
+				else { return }
+
+				if title == "com.apple.UIKit.activity.CopyToPasteboard" {
+					SVProgressHUD.showSuccess(withStatus: nil)
+					SVProgressHUD.dismiss(withDelay: 1)
+				} else if title == "com.apple.UIKit.activity.SaveToCameraRoll" {
+					SVProgressHUD.showSuccess(withStatus: nil)
+					SVProgressHUD.dismiss(withDelay: 1)
+				}
+
+				mixpanel.track(event: "Share image", parameters: [
+					"service": title,
+					"redactions_count": count
+				])
 			}
 
-			guard completed,
-				let title = type?.rawValue,
-				let count = self?.redactedView.redactions.count
-			else { return }
-
-			if title == "com.apple.UIKit.activity.CopyToPasteboard" {
-				SVProgressHUD.showSuccess(withStatus: nil)
-				SVProgressHUD.dismiss(withDelay: 1)
-			} else if title == "com.apple.UIKit.activity.SaveToCameraRoll" {
-				SVProgressHUD.showSuccess(withStatus: nil)
-				SVProgressHUD.dismiss(withDelay: 1)
+			if let presentationController = viewController.popoverPresentationController {
+				presentationController.sourceView = sender
 			}
 
-			mixpanel.track(event: "Share image", parameters: [
-				"service": title,
-				"redactions_count": count
-			])
+			present(viewController, animated: true)
 		}
-
-		if let presentationController = viewController.popoverPresentationController {
-			presentationController.sourceView = sender
-		}
-
-		present(viewController, animated: true)
-	}
+	#endif
 
 	func copyImage() {
 		UIPasteboard.general.image = renderedImage

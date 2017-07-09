@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import AVFoundation
 import MobileCoreServices
+import RedactedKit
 
 private final class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -32,9 +33,17 @@ private final class ImagePickerDelegate: NSObject, UINavigationControllerDelegat
 
 struct PhotosController {
 
+	// MARK: - Properties
+
 	private static let imagePickerDelegate = ImagePickerDelegate()
 
+
+	// MARK: - Initializers
+
 	private init() {}
+
+
+	// MARK: - Authorization
 
 	static func ensurePhotosAuthorization(context: UIViewController?, _ completion: @escaping () -> Void) {
 		switch PHPhotoLibrary.authorizationStatus() {
@@ -86,6 +95,9 @@ struct PhotosController {
 		}
 	}
 
+
+	// MARK: - Reading Photos
+
 	static func choosePhoto(context: UIViewController, completion: @escaping (UIImage) -> Void) {
 		ensurePhotosAuthorization(context: context) {
 			let viewController = UIImagePickerController()
@@ -98,26 +110,36 @@ struct PhotosController {
 		}
 	}
 
-	static func getLastPhoto(context: UIViewController, completion: @escaping (UIImage) -> Void) {
+	static func getLastPhoto(context: UIViewController, completion: @escaping (PHContentEditingInput?) -> Void) {
 		ensurePhotosAuthorization(context: context) {
 
-			let manager = PHImageManager.default()
-			let options = PHFetchOptions()
-			options.fetchLimit = 1
-			options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+			let fetchOptions = PHFetchOptions()
+			fetchOptions.fetchLimit = 1
+			fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
-			let result = PHAsset.fetchAssets(with: .image, options: options)
+			let result = PHAsset.fetchAssets(with: .image, options: fetchOptions)
 
-			guard let last = result.firstObject else { return }
+			guard let asset = result.firstObject else { return }
 
-			let size = CGSize(width: last.pixelWidth, height: last.pixelHeight)
-			manager.requestImage(for: last, targetSize: size, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
-				guard let image = image else { return }
-
-				DispatchQueue.main.async {
-					completion(image)
+			let inputOptions = PHContentEditingInputRequestOptions()
+			inputOptions.canHandleAdjustmentData = { adjustmentData in
+				do {
+					_ = try RedactionSerialization.redactions(from: adjustmentData)
+					return true
+				} catch {
+					print("Failed to check adjustment data: \(error)")
+					return false
 				}
-			})
+			}
+
+			inputOptions.isNetworkAccessAllowed = true
+			inputOptions.progressHandler = { progress, _ in
+				print("Download progress: \(progress)")
+			}
+			
+			asset.requestContentEditingInput(with: inputOptions) { input, _ in
+				completion(input)
+			}
 		}
 	}
 
@@ -139,6 +161,9 @@ struct PhotosController {
 			}
 		}
 	}
+
+
+	// MARK: - Writing Photos
 
 	static func savePhoto(context: UIViewController, photoProvider: @escaping () -> UIImage?) {
 		ensurePhotosAuthorization(context: context) {
