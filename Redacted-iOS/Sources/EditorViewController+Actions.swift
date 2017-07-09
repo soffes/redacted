@@ -121,6 +121,10 @@ extension EditorViewController {
 	}
 
 	func longPressed(_ sender: UILongPressGestureRecognizer) {
+		if sender.state != .began {
+			return
+		}
+		
 		let point = sender.location(in: redactedView)
 		guard let redaction = redactedView.redaction(at: point) else { return }
 

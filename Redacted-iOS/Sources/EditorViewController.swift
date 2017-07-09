@@ -188,9 +188,8 @@ class EditorViewController: UIViewController {
 		view.addGestureRecognizer(twoFingerTap)
 
 		let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
-		longPress.minimumPressDuration = 0.4
+		longPress.minimumPressDuration = 0.3
 		view.addGestureRecognizer(longPress)
-		
 
 		view.layoutIfNeeded()
 		imageDidChange()
@@ -203,7 +202,8 @@ class EditorViewController: UIViewController {
 
 	// MARK: - Private
 
-	private func imageDidChange() {
+	/// You should not call this directly
+	func imageDidChange() {
 		redactedView.originalImage = image
 
 		let hasImage = image != nil
