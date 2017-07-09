@@ -30,6 +30,13 @@ final class OpenViewController: UIViewController {
 		return editorViewController.originalImage != nil
 	}
 
+	fileprivate let activityIndicator: UIActivityIndicatorView = {
+		let view = UIActivityIndicatorView(activityIndicatorStyle: .white)
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.hidesWhenStopped = true
+		return view
+	}()
+
 
 	// MARK: - UIResponder
 
@@ -74,6 +81,8 @@ final class OpenViewController: UIViewController {
 		editorViewController.view.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(editorViewController.view)
 
+		view.addSubview(activityIndicator)
+
 		emptyView.choosePhotoButton.addTarget(self, action: #selector(choosePhoto), for: .primaryActionTriggered)
 		emptyView.lastPhotoButton.addTarget(self, action: #selector(chooseLastPhoto), for: .primaryActionTriggered)
 		emptyView.takePhotoButton.addTarget(self, action: #selector(takePhoto), for: .primaryActionTriggered)
@@ -85,6 +94,9 @@ final class OpenViewController: UIViewController {
 			editorViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			editorViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
 			editorViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+			activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
 			emptyView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			emptyView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
@@ -130,14 +142,6 @@ final class OpenViewController: UIViewController {
 		}
 	}
 
-	private func load(_ asset: PHAsset) {
-		PhotosController.load(asset, progressHandler: { progress in
-			print(String(format: "Progress: %0.2f", progress))
-		}, completion: { [weak self] input in
-			self?.editorViewController.input = input
-		})
-	}
-
 	func takePhoto() {
 		haptics.prepare()
 		PhotosController.takePhoto(context: self) { [weak self] image in
@@ -157,11 +161,24 @@ final class OpenViewController: UIViewController {
 			"source": "Paste"
 		])
 	}
+
+
+	// MARK: - Private
+
+	private func load(_ asset: PHAsset) {
+		emptyView.isHidden = true
+		activityIndicator.startAnimating()
+
+		PhotosController.load(asset) { [weak self] input in
+			self?.editorViewController.input = input
+		}
+	}
 }
 
 
 extension OpenViewController: EditorViewControllerDelegate {
 	func editorViewController(_ viewController: EditorViewController, didChangeImage image: UIImage?) {
+		activityIndicator.stopAnimating()
 		emptyView.isHidden = image != nil
 	}
 }

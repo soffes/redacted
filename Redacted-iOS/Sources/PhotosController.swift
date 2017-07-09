@@ -12,6 +12,17 @@ import AVFoundation
 import MobileCoreServices
 import RedactedKit
 
+private final class ImagePickerController: UIImagePickerController {
+	override var prefersStatusBarHidden: Bool {
+		return true
+	}
+
+	override var childViewControllerForStatusBarHidden: UIViewController? {
+		return nil
+	}
+}
+
+
 private final class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
 	var pickCompletion: ((PHAsset?) -> Void)?
@@ -117,17 +128,13 @@ struct PhotosController {
 
 	// MARK: - Reading Photos
 
-
-	static func load(_ asset: PHAsset, progressHandler: @escaping (Double) -> Void, completion: @escaping (PHContentEditingInput?) -> Void) {
+	static func load(_ asset: PHAsset, completion: @escaping (PHContentEditingInput?) -> Void) {
 		let inputOptions = PHContentEditingInputRequestOptions()
 		inputOptions.canHandleAdjustmentData = { adjustmentData in
 			return RedactionSerialization.canHandle(adjustmentData)
 		}
 
 		inputOptions.isNetworkAccessAllowed = true
-		inputOptions.progressHandler = { progress, _ in
-			progressHandler(progress)
-		}
 
 		asset.requestContentEditingInput(with: inputOptions) { input, _ in
 			completion(input)
@@ -136,7 +143,7 @@ struct PhotosController {
 
 	static func choosePhoto(context: UIViewController, completion: @escaping (PHAsset?) -> Void) {
 		ensurePhotosAuthorization(context: context) {
-			let viewController = UIImagePickerController()
+			let viewController = ImagePickerController()
 			viewController.sourceType = .savedPhotosAlbum
 			viewController.modalPresentationStyle = .formSheet
 			viewController.mediaTypes = [kUTTypeImage as String]
@@ -156,7 +163,7 @@ struct PhotosController {
 	static func takePhoto(context: UIViewController, completion: @escaping (UIImage?) -> Void) {
 		ensureCameraAuthorization(context: context) {
 			self.ensurePhotosAuthorization(context: context) {
-				let viewController = UIImagePickerController()
+				let viewController = ImagePickerController()
 				viewController.sourceType = .camera
 				viewController.modalPresentationStyle = .fullScreen
 				viewController.mediaTypes = [kUTTypeImage as String]
