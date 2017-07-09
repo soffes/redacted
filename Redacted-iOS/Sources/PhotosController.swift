@@ -14,19 +14,31 @@ import RedactedKit
 
 private final class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-	var completion: ((PHAsset?) -> Void)?
+	var pickCompletion: ((PHAsset?) -> Void)?
+	var cameraCompletion: ((UIImage?) -> Void)?
 
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-		if let completion = completion, let url = info[UIImagePickerControllerReferenceURL] as? URL, let asset = PHAsset.fetchAssets(withALAssetURLs: [url], options: PhotosController.fetchOptions).firstObject {
+		if let completion = pickCompletion {
+			let url = info[UIImagePickerControllerReferenceURL] as? URL
+			let asset = url.flatMap { PHAsset.fetchAssets(withALAssetURLs: [$0], options: PhotosController.fetchOptions).firstObject }
 			completion(asset)
 		}
 
-		self.completion = nil
-		picker.dismiss(animated: true, completion: nil)
+		if let completion = cameraCompletion {
+			let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+			completion(image)
+		}
+
+		dismiss(picker)
 	}
 
 	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-		completion = nil
+		dismiss(picker)
+	}
+
+	private func dismiss(_ picker: UIImagePickerController) {
+		pickCompletion = nil
+		cameraCompletion = nil
 		picker.dismiss(animated: true, completion: nil)
 	}
 }
@@ -129,7 +141,7 @@ struct PhotosController {
 			viewController.modalPresentationStyle = .formSheet
 			viewController.mediaTypes = [kUTTypeImage as String]
 			viewController.delegate = imagePickerDelegate
-			imagePickerDelegate.completion = completion
+			imagePickerDelegate.pickCompletion = completion
 			context.present(viewController, animated: true, completion: nil)
 		}
 	}
@@ -141,23 +153,28 @@ struct PhotosController {
 		}
 	}
 
-	static func takePhoto(context: UIViewController, completion: @escaping (UIImage) -> Void) {
-//		ensureCameraAuthorization(context: context) {
-//			self.ensurePhotosAuthorization(context: context) {
-//				let viewController = UIImagePickerController()
-//				viewController.sourceType = .camera
-//				viewController.modalPresentationStyle = .fullScreen
-//				viewController.mediaTypes = [kUTTypeImage as String]
-//				viewController.delegate = imagePickerDelegate
-//				imagePickerDelegate.completion = { image in
-//					self.savePhoto(context: context, photoProvider: {
-//						return image
-//					})
-//					completion(image)
-//				}
-//				context.present(viewController, animated: true, completion: nil)
-//			}
-//		}
+	static func takePhoto(context: UIViewController, completion: @escaping (UIImage?) -> Void) {
+		ensureCameraAuthorization(context: context) {
+			self.ensurePhotosAuthorization(context: context) {
+				let viewController = UIImagePickerController()
+				viewController.sourceType = .camera
+				viewController.modalPresentationStyle = .fullScreen
+				viewController.mediaTypes = [kUTTypeImage as String]
+				viewController.delegate = imagePickerDelegate
+				imagePickerDelegate.cameraCompletion = { image in
+					guard let image = image else {
+						completion(nil)
+						return
+					}
+					
+					self.savePhoto(context: context, photoProvider: {
+						return image
+					})
+					completion(image)
+				}
+				context.present(viewController, animated: true, completion: nil)
+			}
+		}
 	}
 
 
