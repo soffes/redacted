@@ -46,7 +46,7 @@ extension EditorViewController {
 	}
 
 	#if !REDACTED_APP_EXTENSION
-		func share(_ sender: UIView) {
+		func share() {
 			guard let renderedImage = renderedImage else { return }
 
 			let viewController = UIActivityViewController(activityItems: [renderedImage], applicationActivities: nil)
@@ -77,7 +77,7 @@ extension EditorViewController {
 			}
 
 			if let presentationController = viewController.popoverPresentationController {
-				presentationController.sourceView = sender
+				presentationController.sourceView = toolbarView.shareButton
 			}
 
 			present(viewController, animated: true)

@@ -24,7 +24,7 @@ final class OpenViewController: UIViewController {
 
 	let haptics = UISelectionFeedbackGenerator()
 
-	private let editorViewController = EditorViewController()
+	let editorViewController = EditorViewController()
 
 	private var hasImage: Bool {
 		return editorViewController.originalImage != nil
@@ -54,6 +54,10 @@ final class OpenViewController: UIViewController {
 			if UIPasteboard.general.hasImage {
 				commands.append(UIKeyCommand(input: "v", modifierFlags: .command, action: #selector(pastePhoto), discoverabilityTitle: LocalizedString.pastePhoto.string))
 			}
+		}
+
+		if let additionalCommands = editorViewController.keyCommands {
+			commands += additionalCommands
 		}
 
 		return commands
@@ -93,10 +97,6 @@ final class OpenViewController: UIViewController {
 
 
 	// MARK: - Actions
-
-	func clear() {
-		editorViewController.clear()
-	}
 
 	func choosePhoto() {
 		haptics.prepare()

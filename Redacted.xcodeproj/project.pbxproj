@@ -70,6 +70,7 @@
 		21B0248C1D8900CD00A0B226 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D161D88FFAA00B3F5DF /* EditorViewController.swift */; };
 		21B0248D1D8901C400A0B226 /* Mixpanel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC0D801D88FFB000B3F5DF /* Mixpanel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		21B0248E1D8901C400A0B226 /* X.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC0D821D88FFB000B3F5DF /* X.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		21B997D11F127EE70049BF84 /* OpenViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B997D01F127EE70049BF84 /* OpenViewController+Actions.swift */; };
 		21C8CF281EEEF15700261547 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21C8CF261EEEF15700261547 /* InfoPlist.strings */; };
 		21CC0D501D88FFAA00B3F5DF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D1E1D88FFAA00B3F5DF /* AboutViewController.swift */; };
 		21CC0D511D88FFAA00B3F5DF /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D1F1D88FFAA00B3F5DF /* AboutWindowController.swift */; };
@@ -216,6 +217,7 @@
 		21B997CD1F1275120049BF84 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		21B997CE1F1275120049BF84 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		21B997CF1F1275190049BF84 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		21B997D01F127EE70049BF84 /* OpenViewController+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OpenViewController+Actions.swift"; sourceTree = "<group>"; };
 		21C03A141EF9510100BDCF0E /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		21C8CF231EEEF13E00261547 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		21C8CF241EEEF14300261547 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 			children = (
 				21CC0D151D88FFAA00B3F5DF /* AppDelegate.swift */,
 				21928D0B1F11867C00E65C3C /* OpenViewController.swift */,
+				21B997D01F127EE70049BF84 /* OpenViewController+Actions.swift */,
 				216DA4761EEA49F200E39CAE /* EmptyView.swift */,
 				21E547CF1EF1AA2D009FA237 /* PhotosController.swift */,
 				21E547D11EF1AC0D009FA237 /* UIAlertAction+Redacted.swift */,
@@ -936,6 +939,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21B997D11F127EE70049BF84 /* OpenViewController+Actions.swift in Sources */,
 				216DA4881EEA709200E39CAE /* UIApplicationShortcutItem+Redacted.swift in Sources */,
 				21382F451F117FCB00603048 /* Secrets.swift in Sources */,
 				21B0248B1D8900CD00A0B226 /* AppDelegate.swift in Sources */,
