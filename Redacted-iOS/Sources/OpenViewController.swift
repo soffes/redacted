@@ -10,6 +10,7 @@ import UIKit
 import RedactedKit
 import X
 import AVFoundation
+import Photos
 
 final class OpenViewController: UIViewController {
 
@@ -99,8 +100,13 @@ final class OpenViewController: UIViewController {
 
 	func choosePhoto() {
 		haptics.prepare()
-		PhotosController.choosePhoto(context: self) { [weak self] image in
-			self?.editorViewController.originalImage = image
+		PhotosController.choosePhoto(context: self) { [weak self] asset in
+			guard let asset = asset else {
+				print("Failed to choose photo.")
+				return
+			}
+
+			self?.load(asset)
 
 			mixpanel.track(event: "Import image", parameters: [
 				"source": "Library"
@@ -110,13 +116,26 @@ final class OpenViewController: UIViewController {
 
 	func chooseLastPhoto() {
 		haptics.prepare()
-		PhotosController.getLastPhoto(context: self) { [weak self] input in
-			self?.editorViewController.input = input
+		PhotosController.getLastPhoto(context: self) { [weak self] asset in
+			guard let asset = asset else {
+				print("Failed to get last photo.")
+				return
+			}
+
+			self?.load(asset)
 
 			mixpanel.track(event: "Import image", parameters: [
 				"source": "Last Photo Taken"
 			])
 		}
+	}
+
+	private func load(_ asset: PHAsset) {
+		PhotosController.load(asset, progressHandler: { progress in
+			print(String(format: "Progress: %0.2f", progress))
+		}, completion: { [weak self] input in
+			self?.editorViewController.input = input
+		})
 	}
 
 	func takePhoto() {

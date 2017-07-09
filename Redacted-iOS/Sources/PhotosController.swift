@@ -14,14 +14,14 @@ import RedactedKit
 
 private final class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-	var completion: ((UIImage) -> Void)?
+	var completion: ((PHAsset?) -> Void)?
 
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-		if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-			completion?(image)
+		if let completion = completion, let url = info[UIImagePickerControllerReferenceURL] as? URL, let asset = PHAsset.fetchAssets(withALAssetURLs: [url], options: PhotosController.fetchOptions).firstObject {
+			completion(asset)
 		}
 
-		completion = nil
+		self.completion = nil
 		picker.dismiss(animated: true, completion: nil)
 	}
 
@@ -36,6 +36,13 @@ struct PhotosController {
 	// MARK: - Properties
 
 	private static let imagePickerDelegate = ImagePickerDelegate()
+
+	fileprivate static let fetchOptions: PHFetchOptions = {
+		let options = PHFetchOptions()
+		options.fetchLimit = 1
+		options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+		return options
+	}()
 
 
 	// MARK: - Initializers
@@ -98,7 +105,24 @@ struct PhotosController {
 
 	// MARK: - Reading Photos
 
-	static func choosePhoto(context: UIViewController, completion: @escaping (UIImage) -> Void) {
+
+	static func load(_ asset: PHAsset, progressHandler: @escaping (Double) -> Void, completion: @escaping (PHContentEditingInput?) -> Void) {
+		let inputOptions = PHContentEditingInputRequestOptions()
+		inputOptions.canHandleAdjustmentData = { adjustmentData in
+			return RedactionSerialization.canHandle(adjustmentData)
+		}
+
+		inputOptions.isNetworkAccessAllowed = true
+		inputOptions.progressHandler = { progress, _ in
+			progressHandler(progress)
+		}
+
+		asset.requestContentEditingInput(with: inputOptions) { input, _ in
+			completion(input)
+		}
+	}
+
+	static func choosePhoto(context: UIViewController, completion: @escaping (PHAsset?) -> Void) {
 		ensurePhotosAuthorization(context: context) {
 			let viewController = UIImagePickerController()
 			viewController.sourceType = .savedPhotosAlbum
@@ -110,56 +134,30 @@ struct PhotosController {
 		}
 	}
 
-	static func getLastPhoto(context: UIViewController, completion: @escaping (PHContentEditingInput?) -> Void) {
+	static func getLastPhoto(context: UIViewController, completion: @escaping (PHAsset?) -> Void) {
 		ensurePhotosAuthorization(context: context) {
-
-			let fetchOptions = PHFetchOptions()
-			fetchOptions.fetchLimit = 1
-			fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-
 			let result = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-
-			guard let asset = result.firstObject else { return }
-
-			let inputOptions = PHContentEditingInputRequestOptions()
-			inputOptions.canHandleAdjustmentData = { adjustmentData in
-				do {
-					_ = try RedactionSerialization.redactions(from: adjustmentData)
-					return true
-				} catch {
-					print("Failed to check adjustment data: \(error)")
-					return false
-				}
-			}
-
-			inputOptions.isNetworkAccessAllowed = true
-			inputOptions.progressHandler = { progress, _ in
-				print("Download progress: \(progress)")
-			}
-			
-			asset.requestContentEditingInput(with: inputOptions) { input, _ in
-				completion(input)
-			}
+			completion(result.firstObject)
 		}
 	}
 
 	static func takePhoto(context: UIViewController, completion: @escaping (UIImage) -> Void) {
-		ensureCameraAuthorization(context: context) {
-			self.ensurePhotosAuthorization(context: context) {
-				let viewController = UIImagePickerController()
-				viewController.sourceType = .camera
-				viewController.modalPresentationStyle = .fullScreen
-				viewController.mediaTypes = [kUTTypeImage as String]
-				viewController.delegate = imagePickerDelegate
-				imagePickerDelegate.completion = { image in
-					self.savePhoto(context: context, photoProvider: {
-						return image
-					})
-					completion(image)
-				}
-				context.present(viewController, animated: true, completion: nil)
-			}
-		}
+//		ensureCameraAuthorization(context: context) {
+//			self.ensurePhotosAuthorization(context: context) {
+//				let viewController = UIImagePickerController()
+//				viewController.sourceType = .camera
+//				viewController.modalPresentationStyle = .fullScreen
+//				viewController.mediaTypes = [kUTTypeImage as String]
+//				viewController.delegate = imagePickerDelegate
+//				imagePickerDelegate.completion = { image in
+//					self.savePhoto(context: context, photoProvider: {
+//						return image
+//					})
+//					completion(image)
+//				}
+//				context.present(viewController, animated: true, completion: nil)
+//			}
+//		}
 	}
 
 
