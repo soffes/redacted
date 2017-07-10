@@ -74,12 +74,12 @@ public struct Redaction: Hashable, Equatable {
 
 	public static func preprocess(_ image: CIImage, type: RedactionType) -> CIImage {
 		let extent = image.extent
-		let edge = max(extent.size.width, extent.size.height)
+		let edge = min(extent.size.width, extent.size.height)
 
 		switch type {
 		case .pixelate:
 			return CIFilter(name: "CIPixellate", withInputParameters: [
-				"inputScale": edge * 0.01,
+				"inputScale": edge * 0.03,
 				"inputCenter": CIVector(cgPoint: extent.center),
 				"inputImage": image
 			])!.outputImage!.cropping(to: image.extent)
@@ -97,7 +97,7 @@ public struct Redaction: Hashable, Equatable {
 			])
 
 			return CIFilter(name: "CIGaussianBlur", withInputParameters: [
-				"inputRadius": edge * 0.01,
+				"inputRadius": edge * 0.03,
 				"inputImage": clamp!.outputImage!
 			])!.outputImage!.cropping(to: image.extent)
 
