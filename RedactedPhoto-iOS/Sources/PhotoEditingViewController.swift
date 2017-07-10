@@ -14,6 +14,15 @@ import RedactedKit
 
 class PhotoEditingViewController: EditorViewController, PHContentEditingController {
 
+	// MARK: - UIViewController
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		becomeFirstResponder()
+	}
+
+	// MARK: - PHContentEditingController
+
     func canHandle(_ adjustmentData: PHAdjustmentData) -> Bool {
 		return RedactionSerialization.canHandle(adjustmentData)
     }
