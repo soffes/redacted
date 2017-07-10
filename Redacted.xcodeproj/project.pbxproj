@@ -74,8 +74,7 @@
 		21B997D61F128DA00049BF84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 216DA4781EEA4F6200E39CAE /* Localizable.strings */; };
 		21B997D81F128E240049BF84 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B997D71F128E240049BF84 /* Preferences.swift */; };
 		21B997DA1F1290450049BF84 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B997D71F128E240049BF84 /* Preferences.swift */; };
-		21B997E01F12B1A60049BF84 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21B997DF1F12B1A60049BF84 /* Shared.xcassets */; };
-		21B997E11F12B1A60049BF84 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21B997DF1F12B1A60049BF84 /* Shared.xcassets */; };
+		21B997E41F13CE330049BF84 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D1A1D88FFAA00B3F5DF /* Images.xcassets */; };
 		21C8CF281EEEF15700261547 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21C8CF261EEEF15700261547 /* InfoPlist.strings */; };
 		21CC0D501D88FFAA00B3F5DF /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D1E1D88FFAA00B3F5DF /* AboutViewController.swift */; };
 		21CC0D511D88FFAA00B3F5DF /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D1F1D88FFAA00B3F5DF /* AboutWindowController.swift */; };
@@ -227,7 +226,6 @@
 		21B997D71F128E240049BF84 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		21B997DC1F1291FA0049BF84 /* RedcatedPhoto.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = RedcatedPhoto.entitlements; sourceTree = "<group>"; };
 		21B997DD1F1292530049BF84 /* Redacted.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Redacted.entitlements; sourceTree = "<group>"; };
-		21B997DF1F12B1A60049BF84 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
 		21C03A141EF9510100BDCF0E /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		21C8CF231EEEF13E00261547 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		21C8CF241EEEF14300261547 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -335,9 +333,9 @@
 		210EF32E1AC0A35C00ED8E97 = {
 			isa = PBXGroup;
 			children = (
+				21CC0D331D88FFAA00B3F5DF /* RedactedKit */,
 				21CC0D1C1D88FFAA00B3F5DF /* Redacted-macOS */,
 				21CC0D131D88FFAA00B3F5DF /* Redacted-iOS */,
-				21CC0D331D88FFAA00B3F5DF /* RedactedKit */,
 				21382F1C1F117DF100603048 /* RedactedPhoto-iOS */,
 				21CC0D711D88FFB000B3F5DF /* Frameworks */,
 				210EF3381AC0A35C00ED8E97 /* Products */,
@@ -440,7 +438,6 @@
 			children = (
 				21CC0D181D88FFAA00B3F5DF /* LaunchScreen.xib */,
 				21CC0D1A1D88FFAA00B3F5DF /* Images.xcassets */,
-				21B997DF1F12B1A60049BF84 /* Shared.xcassets */,
 				21CC0D1B1D88FFAA00B3F5DF /* Info.plist */,
 				216DA4781EEA4F6200E39CAE /* Localizable.strings */,
 				21C8CF261EEEF15700261547 /* InfoPlist.strings */,
@@ -794,7 +791,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21B997D61F128DA00049BF84 /* Localizable.strings in Resources */,
-				21B997E11F12B1A60049BF84 /* Shared.xcassets in Resources */,
+				21B997E41F13CE330049BF84 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,7 +800,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				21B0248A1D8900CA00A0B226 /* LaunchScreen.xib in Resources */,
-				21B997E01F12B1A60049BF84 /* Shared.xcassets in Resources */,
 				21E547DE1EF1E75D009FA237 /* Localizable.strings in Resources */,
 				21C8CF281EEEF15700261547 /* InfoPlist.strings in Resources */,
 				21B024891D8900C100A0B226 /* Images.xcassets in Resources */,
