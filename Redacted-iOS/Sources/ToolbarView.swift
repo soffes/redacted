@@ -64,6 +64,14 @@ final class ToolbarView: UIView {
 		visualEffectView.contentView.addSubview(stackView)
 		addSubview(visualEffectView)
 
+		let stackBottom: NSLayoutAnchor<NSLayoutYAxisAnchor>
+
+		if #available(iOS 11.0, *) {
+			stackBottom = visualEffectView.safeAreaLayoutGuide.bottomAnchor
+		} else {
+			stackBottom = visualEffectView.bottomAnchor
+		}
+
 		var constraints = [
 			visualEffectView.leadingAnchor.constraint(equalTo: leadingAnchor),
 			visualEffectView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -73,10 +81,10 @@ final class ToolbarView: UIView {
 			stackView.leadingAnchor.constraint(equalTo: visualEffectView.leadingAnchor, constant: 4),
 			stackView.trailingAnchor.constraint(equalTo: visualEffectView.trailingAnchor, constant: -4),
 			stackView.topAnchor.constraint(equalTo: visualEffectView.topAnchor),
-			stackView.bottomAnchor.constraint(equalTo: visualEffectView.bottomAnchor),
+			stackView.bottomAnchor.constraint(equalTo: stackBottom),
 
 			modeControl.heightAnchor.constraint(equalTo: stackView.heightAnchor),
-			heightAnchor.constraint(equalToConstant: 44)
+			stackView.heightAnchor.constraint(equalToConstant: 44)
 		]
 
 		#if !REDACTED_APP_EXTENSION
