@@ -176,7 +176,9 @@ class EditorViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		redactedView.backgroundColor = UIColor(white: 43 / 255, alpha: 1)
+		view.backgroundColor = UIColor(white: 43 / 255, alpha: 1)
+
+		redactedView.backgroundColor = view.backgroundColor
 		redactedView.customUndoManager = _undoManager
 		view.addSubview(redactedView)
 
@@ -187,20 +189,29 @@ class EditorViewController: UIViewController {
 			toolbarView.shareButton.addTarget(self, action: #selector(share), for: .primaryActionTriggered)
 		#endif
 
-		view.addSubview(toolbarView)
+		let spacerView = UIView()
+		spacerView.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(spacerView)
+		spacerView.addSubview(toolbarView)
 
-		let toolbarTopConstraint = toolbarView.topAnchor.constraint(equalTo: view.bottomAnchor)
+		let toolbarTopConstraint = toolbarView.topAnchor.constraint(equalTo: spacerView.bottomAnchor)
 		toolbarTopConstraint.priority = UILayoutPriority.defaultLow
 
 		NSLayoutConstraint.activate([
 			redactedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			redactedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			redactedView.topAnchor.constraint(equalTo: view.topAnchor),
-			redactedView.bottomAnchor.constraint(equalTo: toolbarView.topAnchor),
+			redactedView.bottomAnchor.constraint(equalTo: spacerView.topAnchor),
+
+			spacerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			spacerView.heightAnchor.constraint(equalTo: toolbarView.heightAnchor),
 
 			toolbarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			toolbarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			toolbarTopConstraint
+			toolbarTopConstraint,
+
+			toolbarView.leadingAnchor.constraint(equalTo: spacerView.leadingAnchor),
+			toolbarView.trailingAnchor.constraint(equalTo: spacerView.trailingAnchor),
 		])
 
 		let pan = UIPanGestureRecognizer(target: self, action: #selector(panned))

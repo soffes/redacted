@@ -166,8 +166,10 @@ final class OpenViewController: UIViewController {
 	// MARK: - Private
 
 	private func load(_ asset: PHAsset) {
-		emptyView.isHidden = true
-		activityIndicator.startAnimating()
+		UIView.animate(withDuration: 0.2) { [weak self] in
+			self?.emptyView.alpha = 0
+			self?.activityIndicator.startAnimating()
+		}
 
 		PhotosController.load(asset) { [weak self] input in
 			self?.editorViewController.input = input
@@ -178,7 +180,9 @@ final class OpenViewController: UIViewController {
 
 extension OpenViewController: EditorViewControllerDelegate {
 	func editorViewController(_ viewController: EditorViewController, didChangeImage image: UIImage?) {
-		activityIndicator.stopAnimating()
-		emptyView.isHidden = image != nil
+		UIView.animate(withDuration: 0.2) { [weak self] in
+			self?.emptyView.alpha = image == nil ? 1 : 0
+			self?.activityIndicator.stopAnimating()
+		}
 	}
 }
