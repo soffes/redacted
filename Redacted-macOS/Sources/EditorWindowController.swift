@@ -128,7 +128,7 @@ final class EditorWindowController: NSWindowController {
 
 	// MARK: - Actions
 
-	func openDocument(_ sender: Any?) {
+	@objc func openDocument(_ sender: Any?) {
 		let openPanel = NSOpenPanel()
 		openPanel.allowsMultipleSelection = false
 		openPanel.canChooseDirectories = false
@@ -143,7 +143,7 @@ final class EditorWindowController: NSWindowController {
 		}
 	}
 
-	func save(_ sender: Any?) {
+	@objc func save(_ sender: Any?) {
 		if let URL = imageURL, let image = editorViewController.renderedImage {
 			save(image: image, toURL: URL)
 		} else {
@@ -151,7 +151,7 @@ final class EditorWindowController: NSWindowController {
 		}
 	}
 
-	func export(_ sender: Any?) {
+	@objc func export(_ sender: Any?) {
 		if let window = window, let image = editorViewController.renderedImage {
 			let savePanel = NSSavePanel()
 			savePanel.allowedFileTypes = ["png"]
@@ -165,7 +165,7 @@ final class EditorWindowController: NSWindowController {
 		}
 	}
 
-	func copy(_ sender: Any?) {
+	@objc func copy(_ sender: Any?) {
 		if let image = editorViewController.renderedImage {
 			let pasteboard = NSPasteboard.general()
 			pasteboard.clearContents()
@@ -178,7 +178,7 @@ final class EditorWindowController: NSWindowController {
 		}
 	}
 
-	func paste(_ sender: Any?) {
+	@objc func paste(_ sender: Any?) {
 		if let data = NSPasteboard.general().data(forType: String(kUTTypeTIFF)) {
 			editorViewController.image = NSImage(data: data)
 
@@ -188,11 +188,11 @@ final class EditorWindowController: NSWindowController {
 		}
 	}
 
-	func delete(_ sender: Any?) {
+	@objc func delete(_ sender: Any?) {
 		editorViewController.redactedView.deleteRedaction()
 	}
 
-	override func selectAll(_ sender: Any?) {
+	@objc override func selectAll(_ sender: Any?) {
 		editorViewController.redactedView.selectAllRedactions()
 	}
 

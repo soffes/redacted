@@ -19,7 +19,7 @@ extension CIImage {
 		var image = self
 
 		#if os(iOS)
-			image = image.applying(CGAffineTransform(scaleX: 1, y: -1).concatenating(CGAffineTransform(translationX: 0, y: image.extent.height)))
+			image = image.transformed(by: CGAffineTransform(scaleX: 1, y: -1).concatenating(CGAffineTransform(translationX: 0, y: image.extent.height)))
 		#endif
 
 		let colorSpace = CGColorSpaceCreateDeviceRGB()

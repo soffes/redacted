@@ -68,7 +68,7 @@ public struct Redaction: Hashable, Equatable {
 		let processed = preprocessor(image, type)
 
 		return CIFilter(name: "CISourceOverCompositing", withInputParameters: [
-			"inputImage": processed.cropping(to: scaledRect)
+			"inputImage": processed.cropped(to: scaledRect)
 		])!
 	}
 
@@ -82,7 +82,7 @@ public struct Redaction: Hashable, Equatable {
 				"inputScale": edge * 0.03,
 				"inputCenter": CIVector(cgPoint: extent.center),
 				"inputImage": image
-			])!.outputImage!.cropping(to: image.extent)
+			])!.outputImage!.cropped(to: image.extent)
 
 		case .blur:
 			#if os(iOS)
@@ -99,12 +99,12 @@ public struct Redaction: Hashable, Equatable {
 			return CIFilter(name: "CIGaussianBlur", withInputParameters: [
 				"inputRadius": edge * 0.03,
 				"inputImage": clamp!.outputImage!
-			])!.outputImage!.cropping(to: image.extent)
+			])!.outputImage!.cropped(to: image.extent)
 
 		case .blackBar:
 			return CIFilter(name: "CIConstantColorGenerator", withInputParameters: [
 				"inputColor": CIColor(red: 0, green: 0, blue: 0, alpha: 1)
-			])!.outputImage!.cropping(to: image.extent)
+			])!.outputImage!.cropped(to: image.extent)
 		}
 	}
 }

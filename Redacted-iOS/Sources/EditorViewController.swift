@@ -190,7 +190,7 @@ class EditorViewController: UIViewController {
 		view.addSubview(toolbarView)
 
 		let toolbarTopConstraint = toolbarView.topAnchor.constraint(equalTo: view.bottomAnchor)
-		toolbarTopConstraint.priority = UILayoutPriorityDefaultLow
+		toolbarTopConstraint.priority = UILayoutPriority.defaultLow
 
 		NSLayoutConstraint.activate([
 			redactedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -264,7 +264,7 @@ class EditorViewController: UIViewController {
 		view.addSubview(toolTipView)
 
 		let bottomConstraint = toolTipView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor, constant: 64)
-		bottomConstraint.priority = UILayoutPriorityDefaultLow
+		bottomConstraint.priority = UILayoutPriority.defaultLow
 
 		NSLayoutConstraint.activate([
 			toolTipView.centerXAnchor.constraint(equalTo: view.centerXAnchor),

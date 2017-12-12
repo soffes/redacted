@@ -20,7 +20,7 @@ final class ToolTipView: UIView {
 		label.textColor = toolTipTextColor
 		label.contentInsets = EdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
 		label.textAlignment = .center
-		label.font = .systemFont(ofSize: 16, weight: UIFontWeightMedium)
+		label.font = .systemFont(ofSize: 16, weight: UIFont.Weight.medium)
 
 
 		label.shadowColor = UIColor(white: 1, alpha: 0.25)

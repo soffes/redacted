@@ -14,39 +14,39 @@ import RedactedKit
 #endif
 
 extension EditorViewController {
-	func usePixelate() {
+	@objc func usePixelate() {
 		toolbarView.modeControl.selectedIndex = 0
 		modeDidChange()
 	}
 
-	func useBlur() {
+	@objc func useBlur() {
 		toolbarView.modeControl.selectedIndex = 1
 		modeDidChange()
 	}
 
-	func useBlackBar() {
+	@objc func useBlackBar() {
 		toolbarView.modeControl.selectedIndex = 2
 		modeDidChange()
 	}
 
-	func deleteRedaction() {
+	@objc func deleteRedaction() {
 		redactedView.deleteRedaction()
 	}
 
-	func selectAllRedactions() {
+	@objc func selectAllRedactions() {
 		redactedView.selectAllRedactions()
 	}
 
-	func undoEdit() {
+	@objc func undoEdit() {
 		_undoManager.undo()
 	}
 
-	func redoEdit() {
+	@objc func redoEdit() {
 		_undoManager.redo()
 	}
 
 	#if !REDACTED_APP_EXTENSION
-		func share() {
+		@objc func share() {
 			guard let originalImage = originalImage else { return }
 
 			let item = ImageActivityItemProvider(originalImage: originalImage, redactions: redactedView.redactions)
@@ -86,7 +86,7 @@ extension EditorViewController {
 		}
 	#endif
 
-	func copyImage() {
+	@objc func copyImage() {
 		UIPasteboard.general.image = renderedImage
 
 		mixpanel.track(event: "Share image", parameters: [
@@ -96,7 +96,7 @@ extension EditorViewController {
 	}
 
 	#if !REDACTED_APP_EXTENSION
-		func saveImage() {
+		@objc func saveImage() {
 			PhotosController.savePhoto(context: self, photoProvider: { [weak self] in return self?.renderedImage })
 
 			mixpanel.track(event: "Share image", parameters: [
@@ -106,7 +106,7 @@ extension EditorViewController {
 		}
 	#endif
 
-	func panned(_ sender: UIPanGestureRecognizer) {
+	@objc func panned(_ sender: UIPanGestureRecognizer) {
 		redactedView.drag(point: sender.location(in: view), state: sender.state)
 
 		if sender.state == .ended && redactedView.redactions.count > 0 {
@@ -115,19 +115,19 @@ extension EditorViewController {
 		}
 	}
 
-	func tapped(_ sender: UITapGestureRecognizer) {
+	@objc func tapped(_ sender: UITapGestureRecognizer) {
 		if sender.state == .ended {
 			redactedView.tap(point: sender.location(in: view))
 		}
 	}
 
-	func twoFingerTapped(_ sender: UITapGestureRecognizer) {
+	@objc func twoFingerTapped(_ sender: UITapGestureRecognizer) {
 		if sender.state == .ended {
 			redactedView.tap(point: sender.location(in: view), exclusive: false)
 		}
 	}
 
-	func longPressed(_ sender: UILongPressGestureRecognizer) {
+	@objc func longPressed(_ sender: UILongPressGestureRecognizer) {
 		if sender.state != .began {
 			return
 		}
@@ -155,11 +155,11 @@ extension EditorViewController {
 		controller.isMenuVisible = true
 	}
 
-	func clear() {
+	@objc func clear() {
 		originalImage = nil
 	}
 
-	func modeDidChange() {
+	@objc func modeDidChange() {
 		guard let mode = RedactionType(rawValue: toolbarView.modeControl.selectedIndex) else { return }
 		redactedView.mode = mode
 	}

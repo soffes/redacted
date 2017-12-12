@@ -77,7 +77,7 @@ final class EditorViewController: NSViewController {
 
 	// MARK: - Actions
 
-	func shareImage(fromView sender: NSView) {
+	@objc func shareImage(fromView sender: NSView) {
 		if let image = renderedImage {
 			let sharingServicePicker = NSSharingServicePicker(items: [image])
 			sharingServicePicker.delegate = self
@@ -85,7 +85,7 @@ final class EditorViewController: NSViewController {
 		}
 	}
 
-	func panned(sender: NSPanGestureRecognizer) {
+	@objc func panned(sender: NSPanGestureRecognizer) {
 		redactedView.drag(point: sender.location(in: view), state: sender.state)
 
 		if sender.state == .ended && redactedView.redactions.count > 0 {
@@ -93,13 +93,13 @@ final class EditorViewController: NSViewController {
 		}
 	}
 
-	func clicked(sender: NSClickGestureRecognizer) {
+	@objc func clicked(sender: NSClickGestureRecognizer) {
 		if sender.state == .ended {
 			redactedView.tap(point: sender.location(in: view))
 		}
 	}
 
-	func shiftClicked(sender: NSClickGestureRecognizer) {
+	@objc func shiftClicked(sender: NSClickGestureRecognizer) {
 		if sender.state == .ended {
 			redactedView.tap(point: sender.location(in: view), exclusive: false)
 		}

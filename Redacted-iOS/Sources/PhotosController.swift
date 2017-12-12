@@ -101,9 +101,9 @@ struct PhotosController {
 	}
 
 	static func ensureCameraAuthorization(context: UIViewController?, _ completion: @escaping () -> Void) {
-		switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) {
+		switch AVCaptureDevice.authorizationStatus(for: .video) {
 		case .notDetermined:
-			AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { _ in
+			AVCaptureDevice.requestAccess(for: .video) { _ in
 				DispatchQueue.main.async {
 					self.ensureCameraAuthorization(context: context, completion)
 				}

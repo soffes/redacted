@@ -114,14 +114,14 @@
 				pixelBounds.size.width *= contentScaleFactor
 				pixelBounds.size.height *= contentScaleFactor
 
-				let colorImage = CIImage(color: backgroundColor).cropping(to: pixelBounds)
+				let colorImage = CIImage(color: backgroundColor).cropped(to: pixelBounds)
 				ciContext.draw(colorImage, in: pixelBounds, from: colorImage.extent)
 			}
 
 			guard var image = ciImage else { return }
 
-			image = image.applying(CGAffineTransform(scaleX: 1, y: -1))
-			image = image.applying(CGAffineTransform(translationX: 0, y: image.extent.height))
+			image = image.transformed(by: CGAffineTransform(scaleX: 1, y: -1))
+			image = image.transformed(by: CGAffineTransform(translationX: 0, y: image.extent.height))
 
 			ciContext.draw(image, in: pixelImageRectForBounds(bounds), from: image.extent)
 		}

@@ -22,7 +22,7 @@ final class EmptyView: UIStackView {
 			imageEdgeInsets = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: 0)
 			titleEdgeInsets = UIEdgeInsets(top: 0, left: padding * 2, bottom: 0, right: 0)
 
-			titleLabel?.font = .systemFont(ofSize: 17, weight:  UIFontWeightMedium)
+			titleLabel?.font = .systemFont(ofSize: 17, weight:  .medium)
 			setTitleColor(UIColor(white: 1, alpha: 0.8), for: .normal)
 			setTitleColor(UIColor(white: 1, alpha: 0.7), for: .highlighted)
 

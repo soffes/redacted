@@ -110,7 +110,7 @@ final class OpenViewController: UIViewController {
 
 	// MARK: - Actions
 
-	func choosePhoto() {
+	@objc func choosePhoto() {
 		haptics.prepare()
 		PhotosController.choosePhoto(context: self) { [weak self] asset in
 			guard let asset = asset else {
@@ -126,7 +126,7 @@ final class OpenViewController: UIViewController {
 		}
 	}
 
-	func chooseLastPhoto() {
+	@objc func chooseLastPhoto() {
 		haptics.prepare()
 		PhotosController.getLastPhoto(context: self) { [weak self] asset in
 			guard let asset = asset else {
@@ -142,7 +142,7 @@ final class OpenViewController: UIViewController {
 		}
 	}
 
-	func takePhoto() {
+	@objc func takePhoto() {
 		haptics.prepare()
 		PhotosController.takePhoto(context: self) { [weak self] image in
 			self?.editorViewController.originalImage = image
@@ -153,7 +153,7 @@ final class OpenViewController: UIViewController {
 		}
 	}
 
-	func pastePhoto() {
+	@objc func pastePhoto() {
 		let data = UIPasteboard.general.data(forPasteboardType: "public.image")
 		editorViewController.originalImage = data.flatMap(UIImage.init)
 
