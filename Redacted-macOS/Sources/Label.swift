@@ -12,7 +12,7 @@ final class LabelCell: NSTextFieldCell {
 
 	// MARK: - Properties
 
-	var contentInsets: EdgeInsets = .zero
+	var contentInsets: NSEdgeInsets = .zero
 
 		{
 		didSet {
@@ -36,7 +36,7 @@ final class Label: NSTextField {
 
 	// MARK: - Properties
 
-	var contentInsets: EdgeInsets {
+	var contentInsets: NSEdgeInsets {
 		set {
 			labelCell?.contentInsets = newValue
 		}
@@ -72,8 +72,12 @@ final class Label: NSTextField {
 
 	// MARK: - NSControl
 
-	override class func cellClass() -> AnyClass? {
-		return LabelCell.self
+	override class var cellClass: AnyClass? {
+		get {
+			return LabelCell.self
+		}
+
+		set {}
 	}
 
 

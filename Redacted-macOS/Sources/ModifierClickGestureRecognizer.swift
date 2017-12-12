@@ -9,7 +9,7 @@
 import AppKit
 
 final class ModifierClickGestureRecognizer: NSClickGestureRecognizer {
-	var modifier: NSEventModifierFlags?
+	var modifier: NSEvent.ModifierFlags?
 
 	override func mouseDown(with event: NSEvent) {
 		if let modifier = modifier {

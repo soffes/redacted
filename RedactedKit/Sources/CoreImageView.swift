@@ -37,7 +37,7 @@
 		// MARK: - View
 
 		public override func draw(_ rect: CGRect) {
-			guard let context = NSGraphicsContext.current()?.cgContext,
+			guard let context = NSGraphicsContext.current?.cgContext,
 				let image = ciImage
 			else { return }
 

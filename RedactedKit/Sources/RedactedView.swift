@@ -136,7 +136,7 @@ public final class RedactedView: CoreImageView {
 		deselectAll()
 	}
 
-	public func drag(point: CGPoint, state: GestureRecognizerState) {
+	public func drag(point: CGPoint, state: GestureRecognizer.State) {
 		if ciImage == nil {
 			return
 		}

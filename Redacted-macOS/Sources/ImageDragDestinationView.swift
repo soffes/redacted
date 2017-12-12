@@ -69,7 +69,7 @@ final class ImageDragDestinationView: NSView {
 
 	private func initialize() {
 		wantsLayer = true
-		register(forDraggedTypes: [String(kUTTypeTIFF), NSFilenamesPboardType])
+		registerForDraggedTypes([.tiff, .filenames])
 	}
 
 	private func layoutLayers() {
@@ -92,17 +92,17 @@ extension ImageDragDestinationView {
 		}
 
 		let pasteboard = sender.draggingPasteboard()
-		let workspace = NSWorkspace.shared()
+		let workspace = NSWorkspace.shared
 		var accept = false
 
 		if let types = pasteboard.types {
 			// TIFF data
-			if let data = pasteboard.data(forType: String(kUTTypeTIFF)), types.contains(NSTIFFPboardType), NSImage(data: data) != nil {
+			if types.contains(.tiff), let data = pasteboard.data(forType: .tiff), NSImage(data: data) != nil {
 				accept = true
 			}
 
 			// File path
-			if let paths = pasteboard.propertyList(forType: NSFilenamesPboardType) as? [String], let path = paths.first, !accept && types.contains(NSFilenamesPboardType) {
+			if types.contains(.filenames), let paths = pasteboard.propertyList(forType: .filenames) as? [String], let path = paths.first, !accept {
 				if let utiType = try? workspace.type(ofFile: path), workspace.type(utiType, conformsToType: String(kUTTypeImage)) {
 					accept = true
 				}
@@ -127,13 +127,13 @@ extension ImageDragDestinationView {
 			let pasteboard = sender.draggingPasteboard()
 
 			// TIFF data
-			if let data = pasteboard.data(forType: String(kUTTypeTIFF)), let image = NSImage(data: data) {
+			if let data = pasteboard.data(forType: .tiff), let image = NSImage(data: data) {
 				delegate.imageDragDestinationView(self, didAcceptImage: image)
 				return true
 			}
 
 			// File path
-			if let paths = pasteboard.propertyList(forType: NSFilenamesPboardType) as? [String], let path = paths.first {
+			if let paths = pasteboard.propertyList(forType: .filenames) as? [String], let path = paths.first {
 				let url = URL(fileURLWithPath: path)
 				delegate.imageDragDestinationView(self, didAcceptURL: url)
 				return true

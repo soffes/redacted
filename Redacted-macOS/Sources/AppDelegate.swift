@@ -51,14 +51,14 @@ var mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 	// MARK: - Actions
 
 	@IBAction func showHelp(_ sender: Any?) {
-		NSWorkspace.shared().open(URL(string: "http://useredacted.com/help")!)
+		NSWorkspace.shared.open(URL(string: "http://useredacted.com/help")!)
 	}
 
 
 	// MARK: - Private
 
 	fileprivate var windowController: EditorWindowController? {
-		return NSApplication.shared().windows.first?.windowController as? EditorWindowController
+		return NSApplication.shared.windows.first?.windowController as? EditorWindowController
 	}
 
 	@objc fileprivate func modeDidChange(notification: NSNotification?) {
@@ -69,9 +69,9 @@ var mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 
 	fileprivate func updateMode(view: RedactedView) {
 		let mode = view.mode
-		pixelateMenuItem.state = mode == .pixelate ? NSOnState : NSOffState
-		blurMenuItem.state = mode == .blur ? NSOnState : NSOffState
-		blackBarMenuItem.state = mode == .blackBar ? NSOnState : NSOffState
+		pixelateMenuItem.state = mode == .pixelate ? .on : .off
+		blurMenuItem.state = mode == .blur ? .on : .off
+		blackBarMenuItem.state = mode == .blackBar ? .on : .off
 	}
 
 	@objc fileprivate func selectionDidChange(notification: NSNotification?) {

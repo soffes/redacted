@@ -135,7 +135,7 @@ final class EditorWindowController: NSWindowController {
 		openPanel.canCreateDirectories = false
 		openPanel.canChooseFiles = true
 		openPanel.beginSheetModal(for: window!) { [weak self] result in
-			if let url = openPanel.url, result == NSFileHandlingPanelOKButton {
+			if let url = openPanel.url, result.rawValue == NSFileHandlingPanelOKButton {
 				DispatchQueue.main.async {
 					self?.open(url: url, source: "Open")
 				}
@@ -156,7 +156,7 @@ final class EditorWindowController: NSWindowController {
 			let savePanel = NSSavePanel()
 			savePanel.allowedFileTypes = ["png"]
 			savePanel.beginSheetModal(for: window) { [weak self] in
-				if $0 == NSFileHandlingPanelOKButton {
+				if $0.rawValue == NSFileHandlingPanelOKButton {
 					if let url = savePanel.url {
 						self?.save(image: image, toURL: url)
 					}
@@ -167,7 +167,7 @@ final class EditorWindowController: NSWindowController {
 
 	@objc func copy(_ sender: Any?) {
 		if let image = editorViewController.renderedImage {
-			let pasteboard = NSPasteboard.general()
+			let pasteboard = NSPasteboard.general
 			pasteboard.clearContents()
 			pasteboard.writeObjects([image])
 
@@ -179,7 +179,7 @@ final class EditorWindowController: NSWindowController {
 	}
 
 	@objc func paste(_ sender: Any?) {
-		if let data = NSPasteboard.general().data(forType: String(kUTTypeTIFF)) {
+		if let data = NSPasteboard.general.data(forType: .tiff) {
 			editorViewController.image = NSImage(data: data)
 
 			mixpanel.track(event: "Import image", parameters: [
@@ -226,7 +226,7 @@ final class EditorWindowController: NSWindowController {
 	@discardableResult func open(url: URL?, source: String) -> Bool {
 		if let url = url, let image = NSImage(contentsOf: url) {
 			imageURL = url
-			NSDocumentController.shared().noteNewRecentDocumentURL(url)
+			NSDocumentController.shared.noteNewRecentDocumentURL(url)
 			editorViewController.image = image
 
 			mixpanel.track(event: "Import image", parameters: [
@@ -242,14 +242,14 @@ final class EditorWindowController: NSWindowController {
 	// MARK: - Private
 
 	@objc private func imageDidChange(notification: NSNotification?) {
-		NSRunningApplication.current().activate(options: .activateIgnoringOtherApps)
+		NSRunningApplication.current.activate(options: .activateIgnoringOtherApps)
 		validateToolbar()
 	}
 
 	@discardableResult private func save(image: Image, toURL url: URL) -> Bool {
 		if let cgImage = image.cgImage {
 			let rep = NSBitmapImageRep(cgImage: cgImage)
-			if let data = rep.representation(using: .PNG, properties: [:]) {
+			if let data = rep.representation(using: .png, properties: [:]) {
 				try? data.write(to: url)
 				return true
 			}
@@ -261,7 +261,7 @@ final class EditorWindowController: NSWindowController {
 
 extension EditorWindowController: NSWindowDelegate {
 	func windowWillClose(_ notification: Notification) {
-		NSApplication.shared().terminate(window)
+		NSApplication.shared.terminate(window)
 	}
 
 	func windowWillReturnUndoManager(_ window: NSWindow) -> UndoManager? {
@@ -279,7 +279,7 @@ extension EditorWindowController {
 	}
 
 	override func validateToolbarItem(_ theItem: NSToolbarItem) -> Bool {
-		if ["mode", "clear", "share"].contains(theItem.itemIdentifier) {
+		if ["mode", "clear", "share"].contains(theItem.itemIdentifier.rawValue) {
 			return editorViewController.image != nil
 		}
 		return true

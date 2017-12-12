@@ -104,6 +104,7 @@
 		21E547DC1EF1D8F8009FA237 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547DB1EF1D8F8009FA237 /* Label.swift */; };
 		21E547DD1EF1E752009FA237 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D421D88FFAA00B3F5DF /* Localizable.strings */; };
 		21E547DE1EF1E75D009FA237 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 216DA4781EEA4F6200E39CAE /* Localizable.strings */; };
+		21E6A1B41FDFA6EA00AC2E8C /* PasteboardType+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6A1B31FDFA6EA00AC2E8C /* PasteboardType+Redacted.swift */; };
 		21F152261F12750000DB02F8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D451D88FFAA00B3F5DF /* Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -276,6 +277,7 @@
 		21E547D71EF1CEE1009FA237 /* EditorViewController+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EditorViewController+Actions.swift"; sourceTree = "<group>"; };
 		21E547D91EF1D853009FA237 /* ToolTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		21E547DB1EF1D8F8009FA237 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		21E6A1B31FDFA6EA00AC2E8C /* PasteboardType+Redacted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PasteboardType+Redacted.swift"; sourceTree = "<group>"; };
 		21F152241F1274E700DB02F8 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		21F152251F12750000DB02F8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -468,6 +470,7 @@
 				21CC0D251D88FFAA00B3F5DF /* ModifierClickGestureRecognizer.swift */,
 				21CC0D261D88FFAA00B3F5DF /* NSBezierPath+Redacted.swift */,
 				21CC0D271D88FFAA00B3F5DF /* NSSegmentedControl+Redacted.swift */,
+				21E6A1B31FDFA6EA00AC2E8C /* PasteboardType+Redacted.swift */,
 				21CC0D281D88FFAA00B3F5DF /* ToolTipView.swift */,
 			);
 			path = Sources;
@@ -914,6 +917,7 @@
 				21CC0D511D88FFAA00B3F5DF /* AboutWindowController.swift in Sources */,
 				21CC0D561D88FFAA00B3F5DF /* Label.swift in Sources */,
 				21CC0D521D88FFAA00B3F5DF /* AppDelegate.swift in Sources */,
+				21E6A1B41FDFA6EA00AC2E8C /* PasteboardType+Redacted.swift in Sources */,
 				21CC0D551D88FFAA00B3F5DF /* ImageDragDestinationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
