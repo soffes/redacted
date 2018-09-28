@@ -67,7 +67,7 @@ public struct Redaction: Hashable, Equatable {
 		let scaledRect = rectForBounds(extent).flippedInRect(extent)
 		let processed = preprocessor(image, type)
 
-		return CIFilter(name: "CISourceOverCompositing", withInputParameters: [
+		return CIFilter(name: "CISourceOverCompositing", parameters: [
 			"inputImage": processed.cropped(to: scaledRect)
 		])!
 	}
@@ -78,7 +78,7 @@ public struct Redaction: Hashable, Equatable {
 
 		switch type {
 		case .pixelate:
-			return CIFilter(name: "CIPixellate", withInputParameters: [
+			return CIFilter(name: "CIPixellate", parameters: [
 				"inputScale": edge * 0.03,
 				"inputCenter": CIVector(cgPoint: extent.center),
 				"inputImage": image
@@ -91,18 +91,18 @@ public struct Redaction: Hashable, Equatable {
 				let transform = NSAffineTransform()
 			#endif
 
-			let clamp = CIFilter(name: "CIAffineClamp", withInputParameters: [
+			let clamp = CIFilter(name: "CIAffineClamp", parameters: [
 				"inputTransform": transform,
 				"inputImage": image
 			])
 
-			return CIFilter(name: "CIGaussianBlur", withInputParameters: [
+			return CIFilter(name: "CIGaussianBlur", parameters: [
 				"inputRadius": edge * 0.03,
 				"inputImage": clamp!.outputImage!
 			])!.outputImage!.cropped(to: image.extent)
 
 		case .blackBar:
-			return CIFilter(name: "CIConstantColorGenerator", withInputParameters: [
+			return CIFilter(name: "CIConstantColorGenerator", parameters: [
 				"inputColor": CIColor(red: 0, green: 0, blue: 0, alpha: 1)
 			])!.outputImage!.cropped(to: image.extent)
 		}

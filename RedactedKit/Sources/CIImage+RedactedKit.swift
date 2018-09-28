@@ -23,9 +23,9 @@ extension CIImage {
 		#endif
 
 		let colorSpace = CGColorSpaceCreateDeviceRGB()
-		let options = [
-			kCIContextWorkingColorSpace: colorSpace,
-			kCIContextOutputColorSpace: colorSpace,
+        let options: [CIContextOption: Any] = [
+			.workingColorSpace: colorSpace,
+			.outputColorSpace: colorSpace,
 		]
 
 		let extent = image.extent

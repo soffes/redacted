@@ -278,7 +278,8 @@ extension EditorWindowController {
 		}
 	}
 
-	override func validateToolbarItem(_ theItem: NSToolbarItem) -> Bool {
+    // TODO: Make sure this still works
+	func validateToolbarItem(_ theItem: NSToolbarItem) -> Bool {
 		if ["mode", "clear", "share"].contains(theItem.itemIdentifier.rawValue) {
 			return editorViewController.image != nil
 		}
@@ -289,7 +290,8 @@ extension EditorWindowController {
 
 // NSMenuItemValidation
 extension EditorWindowController {
-	override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    // TODO: Make sure this still works
+	func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
 		if menuItem.tag == MenuItem.open.rawValue || menuItem.tag == MenuItem.pasteImage.rawValue {
 			return true
 		}

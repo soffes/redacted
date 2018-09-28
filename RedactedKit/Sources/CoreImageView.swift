@@ -41,10 +41,10 @@
 				let image = ciImage
 			else { return }
 
-			let options = [
-				kCIContextUseSoftwareRenderer: false,
-				kCIContextWorkingColorSpace: NSNull()
-			] as [String : Any]
+            let options: [CIContextOption: Any] = [
+				.useSoftwareRenderer: false,
+				.workingColorSpace: NSNull()
+			]
 
 			let ciContext = CIContext(cgContext: context, options: options)
 			ciContext.draw(image, in: imageRectForBounds(bounds), from: image.extent)

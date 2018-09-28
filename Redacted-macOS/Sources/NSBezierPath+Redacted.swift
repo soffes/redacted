@@ -17,22 +17,22 @@ extension NSBezierPath {
 		for index in 0..<elementCount {
 			let pathType = element(at: index, associatedPoints: points)
 			switch pathType {
-			case .moveToBezierPathElement:
+			case .moveTo:
 				path.move(to: points[0])
 				closed = false
-			case .lineToBezierPathElement:
+			case .lineTo:
 				path.addLine(to: points[0])
 				closed = false
-			case .curveToBezierPathElement:
+			case .curveTo:
 				path.addCurve(to: points[2], control1: points[0], control2: points[1])
 				closed = false
-			case .closePathBezierPathElement:
+			case .closePath:
 				path.closeSubpath()
 				closed = true
-			}
+            }
 		}
 
-		points.deallocate(capacity: 3)
+		points.deallocate()
 
 		if !closed {
 			path.closeSubpath()

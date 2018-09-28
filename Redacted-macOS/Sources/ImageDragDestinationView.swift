@@ -91,7 +91,7 @@ extension ImageDragDestinationView {
 			return []
 		}
 
-		let pasteboard = sender.draggingPasteboard()
+		let pasteboard = sender.draggingPasteboard
 		let workspace = NSWorkspace.shared
 		var accept = false
 
@@ -124,7 +124,7 @@ extension ImageDragDestinationView {
 	override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
 		showingSelection = false
 		if let delegate = delegate {
-			let pasteboard = sender.draggingPasteboard()
+			let pasteboard = sender.draggingPasteboard
 
 			// TIFF data
 			if let data = pasteboard.data(forType: .tiff), let image = NSImage(data: data) {
