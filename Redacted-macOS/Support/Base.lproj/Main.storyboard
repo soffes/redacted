@@ -469,7 +469,7 @@ CA
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kWV-yQ-CgU">
                                 <rect key="frame" x="26" y="20" width="192" height="14"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="© 2015–2016 Nothing Magical, Inc." usesSingleLineMode="YES" id="aLd-r9-4xO">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="© 2015–2018 Nothing Magical, Inc." usesSingleLineMode="YES" id="aLd-r9-4xO">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
