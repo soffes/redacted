@@ -43,7 +43,6 @@
 		21928D101F118AA400E65C3C /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E547DB1EF1D8F8009FA237 /* Label.swift */; };
 		21928D121F118D2A00E65C3C /* RedactionSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21928D111F118D2A00E65C3C /* RedactionSerialization.swift */; };
 		21928D141F1190E200E65C3C /* RedactionSerialization+Adjustments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21928D131F1190E200E65C3C /* RedactionSerialization+Adjustments.swift */; };
-		219512291EF23B53000A3D12 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D421D88FFAA00B3F5DF /* Localizable.strings */; };
 		21B0246E1D89008700A0B226 /* BoundingBoxLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D351D88FFAA00B3F5DF /* BoundingBoxLayer.swift */; };
 		21B0246F1D89008700A0B226 /* ChainFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D361D88FFAA00B3F5DF /* ChainFilter.swift */; };
 		21B024701D89008700A0B226 /* CIImage+RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC0D371D88FFAA00B3F5DF /* CIImage+RedactedKit.swift */; };
@@ -105,7 +104,6 @@
 		21E547DD1EF1E752009FA237 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D421D88FFAA00B3F5DF /* Localizable.strings */; };
 		21E547DE1EF1E75D009FA237 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 216DA4781EEA4F6200E39CAE /* Localizable.strings */; };
 		21E6A1B41FDFA6EA00AC2E8C /* PasteboardType+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6A1B31FDFA6EA00AC2E8C /* PasteboardType+Redacted.swift */; };
-		21F152261F12750000DB02F8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21CC0D451D88FFAA00B3F5DF /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -769,9 +767,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21CC0D5E1D88FFAA00B3F5DF /* Images.xcassets in Resources */,
-				219512291EF23B53000A3D12 /* Localizable.strings in Resources */,
 				21CC0D5B1D88FFAA00B3F5DF /* Main.storyboard in Resources */,
-				21F152261F12750000DB02F8 /* Info.plist in Resources */,
 				21CC0D5D1D88FFAA00B3F5DF /* Main.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
