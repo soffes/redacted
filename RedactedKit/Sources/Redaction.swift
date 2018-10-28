@@ -1,5 +1,5 @@
-import Foundation
 import CoreGraphics
+import Foundation
 import X
 
 #if os(iOS)
@@ -77,11 +77,11 @@ public struct Redaction: Hashable, Equatable {
 			])!.outputImage!.cropped(to: image.extent)
 
 		case .blur:
-			#if os(iOS)
-				let transform = NSValue(cgAffineTransform: CGAffineTransform.identity)
-			#else
-				let transform = NSAffineTransform()
-			#endif
+#if os(iOS)
+            let transform = NSValue(cgAffineTransform: CGAffineTransform.identity)
+#else
+            let transform = NSAffineTransform()
+#endif
 
 			let clamp = CIFilter(name: "CIAffineClamp", parameters: [
 				"inputTransform": transform,
@@ -99,8 +99,11 @@ public struct Redaction: Hashable, Equatable {
 			])!.outputImage!.cropped(to: image.extent)
 		}
 	}
-}
 
+    public static func == (lhs: Redaction, rhs: Redaction) -> Bool {
+        return lhs.uuid == rhs.uuid
+    }
+}
 
 extension Redaction {
 	var dictionaryRepresentation: [String: Any] {
@@ -112,7 +115,9 @@ extension Redaction {
 	}
 
 	init?(dictionary: [String: Any]) {
-		if let uuid = dictionary["uuid"] as? String, let typeString = dictionary["type"] as? Int, let type = RedactionType(rawValue: typeString), let rectString = dictionary["rect"] as? String {
+		if let uuid = dictionary["uuid"] as? String, let typeString = dictionary["type"] as? Int,
+            let type = RedactionType(rawValue: typeString), let rectString = dictionary["rect"] as? String
+        {
 			self.uuid = uuid
 			self.type = type
 			rect = CGRect(string: rectString)
@@ -120,9 +125,4 @@ extension Redaction {
 		}
 		return nil
 	}
-}
-
-
-public func ==(lhs: Redaction, rhs: Redaction) -> Bool {
-	return lhs.hashValue == rhs.hashValue
 }

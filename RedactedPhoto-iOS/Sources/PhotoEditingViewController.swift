@@ -1,8 +1,8 @@
-import UIKit
+import Mixpanel
 import Photos
 import PhotosUI
-import Mixpanel
 import RedactedKit
+import UIKit
 
 class PhotoEditingViewController: EditorViewController, PHContentEditingController {
 
@@ -18,18 +18,18 @@ class PhotoEditingViewController: EditorViewController, PHContentEditingControll
     func canHandle(_ adjustmentData: PHAdjustmentData) -> Bool {
 		return RedactionSerialization.canHandle(adjustmentData)
     }
-    
+
     func startContentEditing(with contentEditingInput: PHContentEditingInput, placeholderImage: UIImage) {
 		mixpanel.track(event: "Photo Extension Launch")
 
 		input = contentEditingInput
     }
-    
+
     func finishContentEditing(completionHandler: @escaping ((PHContentEditingOutput?) -> Void)) {
         // TODO: Update UI to reflect that editing has finished and output is being rendered.
 
 		let redactions = redactedView.redactions
-        
+
         // Render and provide output on a background queue.
         DispatchQueue.global().async { [weak self] in
 			// let imageData = self?.renderedImage.flatMap({ UIImageJPEGRepresentation($0, 1) })
@@ -82,11 +82,11 @@ class PhotoEditingViewController: EditorViewController, PHContentEditingControll
             completionHandler(output)
         }
     }
-    
+
     var shouldShowCancelConfirmation: Bool {
         return !redactedView.redactions.isEmpty
     }
-    
+
     func cancelContentEditing() {
 		mixpanel.track(event: "Photo Extension Cancel")
 	}

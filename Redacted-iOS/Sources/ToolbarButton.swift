@@ -27,7 +27,6 @@ final class ToolbarButton: UIButton {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-
 	// MARK: - UIControl
 
 	override var isHighlighted: Bool {
@@ -41,7 +40,6 @@ final class ToolbarButton: UIButton {
 			updateImageView()
 		}
 	}
-
 
 	// MARK: - Private
 

@@ -19,7 +19,7 @@ final class ImageDragDestinationView: NSView {
 		return layer
 	}()
 
-	fileprivate var showingSelection: Bool = false {
+	private var showingSelection: Bool = false {
 		didSet {
 			if showingSelection {
 				// Move to front
@@ -34,7 +34,6 @@ final class ImageDragDestinationView: NSView {
 			}
 		}
 	}
-	
 
 	// MARK: - Initializers
 
@@ -48,14 +47,12 @@ final class ImageDragDestinationView: NSView {
 		initialize()
 	}
 
-
 	// MARK: - NSView
 
 	override func layout() {
 		super.layout()
 		layoutLayers()
 	}
-
 
 	// MARK: - Private
 
@@ -73,7 +70,6 @@ final class ImageDragDestinationView: NSView {
 		}
 	}
 }
-
 
 // NSDraggingDestination
 extension ImageDragDestinationView {
@@ -94,10 +90,11 @@ extension ImageDragDestinationView {
 			}
 
 			// File path
-			if types.contains(.filenames), let paths = pasteboard.propertyList(forType: .filenames) as? [String], let path = paths.first, !accept {
-				if let utiType = try? workspace.type(ofFile: path), workspace.type(utiType, conformsToType: String(kUTTypeImage)) {
-					accept = true
-				}
+			if types.contains(.filenames), let paths = pasteboard.propertyList(forType: .filenames) as? [String],
+                let path = paths.first, !accept, let utiType = try? workspace.type(ofFile: path),
+                workspace.type(utiType, conformsToType: String(kUTTypeImage))
+            {
+                accept = true
 			}
 		}
 

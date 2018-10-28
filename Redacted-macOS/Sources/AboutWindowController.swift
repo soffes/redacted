@@ -13,7 +13,6 @@ final class AboutWindowController: NSWindowController {
 		}
 	}
 
-
 	// MARK: - NSWindowController
 
 	override func showWindow(_ sender: Any?) {

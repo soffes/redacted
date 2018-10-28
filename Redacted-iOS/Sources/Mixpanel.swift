@@ -4,9 +4,9 @@ import UIKit
 let mixpanel: Mixpanel = {
 	var mp = Mixpanel(token: Secrets.mixpanelToken)
 
-	#if DEBUG
-		mp.enabled = false
-	#endif
+#if DEBUG
+    mp.enabled = false
+#endif
 
 	if let identifier = UIDevice.current.identifierForVendor?.uuidString {
 		mp.identify(identifier: identifier)

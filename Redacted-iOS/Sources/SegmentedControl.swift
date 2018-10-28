@@ -42,7 +42,6 @@ final class SegmentedControl: UIControl {
 	}
 
 	private let haptics = UISelectionFeedbackGenerator()
-	
 
 	// MARK: - Initializers
 
@@ -72,7 +71,7 @@ final class SegmentedControl: UIControl {
 			stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
 			stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
 			stackView.topAnchor.constraint(equalTo: topAnchor),
-			stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+			stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
 	}
 
@@ -80,19 +79,17 @@ final class SegmentedControl: UIControl {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-
 	// MARK: - UIView
 
 	override class var layerClass: AnyClass {
 		return CATransformLayer.self
 	}
 
-
 	// MARK: - Private
 
 	@objc private func selectItem(_ sender: UIButton) {
 		selectedIndex = sender.tag
-		
+
 		sendActions(for: .valueChanged)
 		sendActions(for: .primaryActionTriggered)
 		haptics.selectionChanged()

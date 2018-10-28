@@ -28,23 +28,21 @@ extension OpenViewController {
 		editorViewController.undoManager?.redo()
 	}
 
-	#if !REDACTED_APP_EXTENSION
-		func share() {
-			editorViewController.share()
-		}
-	#endif
-
 	func copyImage() {
 		editorViewController.copyImage()
 	}
 
-	#if !REDACTED_APP_EXTENSION
-		func saveImage() {
-			editorViewController.saveImage()
-		}
-	#endif
-
 	func clear() {
 		editorViewController.clear()
 	}
+
+#if !REDACTED_APP_EXTENSION
+    func share() {
+        editorViewController.share()
+    }
+
+    func saveImage() {
+        editorViewController.saveImage()
+    }
+#endif
 }

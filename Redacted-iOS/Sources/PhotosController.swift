@@ -1,8 +1,8 @@
-import UIKit
-import Photos
 import AVFoundation
 import MobileCoreServices
+import Photos
 import RedactedKit
+import UIKit
 
 private final class ImagePickerController: UIImagePickerController {
 	override var prefersStatusBarHidden: Bool {
@@ -14,16 +14,20 @@ private final class ImagePickerController: UIImagePickerController {
 	}
 }
 
-
 private final class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
 	var pickCompletion: ((PHAsset?) -> Void)?
 	var cameraCompletion: ((UIImage?) -> Void)?
 
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-		if let completion = pickCompletion {
+	func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any])
+    {
+        if let completion = pickCompletion {
             let url = info[.referenceURL] as? URL
-			let asset = url.flatMap { PHAsset.fetchAssets(withALAssetURLs: [$0], options: PhotosController.fetchOptions).firstObject }
+            let asset = url.flatMap {
+                return PHAsset.fetchAssets(withALAssetURLs: [$0], options: PhotosController.fetchOptions).firstObject
+            }
+
 			completion(asset)
 		}
 
@@ -170,7 +174,7 @@ struct PhotosController {
 						completion(nil)
 						return
 					}
-					
+
 					self.savePhoto(context: context) {
 						return image
 					}
@@ -182,13 +186,15 @@ struct PhotosController {
 		}
 	}
 
-
 	// MARK: - Writing Photos
 
 	static func savePhoto(context: UIViewController, photoProvider: @escaping () -> UIImage?) {
 		ensurePhotosAuthorization(context: context) {
 			PHPhotoLibrary.shared().performChanges({
-				guard let image = photoProvider() else { return }
+				guard let image = photoProvider() else {
+                    return
+                }
+
 				PHAssetChangeRequest.creationRequestForAsset(from: image)
 			}, completionHandler: nil)
 		}

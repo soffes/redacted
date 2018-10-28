@@ -12,7 +12,6 @@ final class LabelCell: NSTextFieldCell {
 		}
 	}
 
-
 	// MARK: - NSCell
 
 	override func drawingRect(forBounds theRect: NSRect) -> NSRect {
@@ -22,7 +21,6 @@ final class LabelCell: NSTextFieldCell {
 		return rect
 	}
 }
-
 
 final class Label: NSTextField {
 
@@ -38,7 +36,6 @@ final class Label: NSTextField {
 		}
 	}
 
-
 	// MARK: - Initializers
 
 	override init(frame frameRect: NSRect) {
@@ -51,7 +48,6 @@ final class Label: NSTextField {
 		initialize()
 	}
 
-
 	// MARK: - NSView
 
 	override var intrinsicContentSize: NSSize {
@@ -60,7 +56,6 @@ final class Label: NSTextField {
 		size.height += contentInsets.top + contentInsets.bottom
 		return size
 	}
-
 
 	// MARK: - NSControl
 
@@ -71,7 +66,6 @@ final class Label: NSTextField {
 
 		set {}
 	}
-
 
 	// MARK: - Private
 

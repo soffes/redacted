@@ -36,7 +36,6 @@ final class ToolbarView: UIView {
 	}
 
 	private let haptics = UIImpactFeedbackGenerator(style: .medium)
-	
 
 	// MARK: - Initializers
 
@@ -46,12 +45,14 @@ final class ToolbarView: UIView {
 		stackView.addArrangedSubview(modeControl)
 		stackView.addArrangedSubview(UIView())
 
-		#if !REDACTED_APP_EXTENSION
-			clearButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred), for: .primaryActionTriggered)
-			shareButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred), for: .primaryActionTriggered)
-			stackView.addArrangedSubview(clearButton)
-			stackView.addArrangedSubview(shareButton)
-		#endif
+#if !REDACTED_APP_EXTENSION
+        clearButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred),
+                              for: .primaryActionTriggered)
+        shareButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred),
+                              for: .primaryActionTriggered)
+        stackView.addArrangedSubview(clearButton)
+        stackView.addArrangedSubview(shareButton)
+#endif
 
 		visualEffectView.contentView.addSubview(stackView)
 		addSubview(visualEffectView)
@@ -79,23 +80,22 @@ final class ToolbarView: UIView {
 			stackView.heightAnchor.constraint(equalToConstant: 44)
 		]
 
-		#if !REDACTED_APP_EXTENSION
-			constraints += [
-				clearButton.widthAnchor.constraint(equalToConstant: 40),
-				clearButton.heightAnchor.constraint(equalTo: stackView.heightAnchor),
+#if !REDACTED_APP_EXTENSION
+        constraints += [
+            clearButton.widthAnchor.constraint(equalToConstant: 40),
+            clearButton.heightAnchor.constraint(equalTo: stackView.heightAnchor),
 
-				shareButton.widthAnchor.constraint(equalToConstant: 40),
-				shareButton.heightAnchor.constraint(equalTo: stackView.heightAnchor)
-			]
-		#endif
+            shareButton.widthAnchor.constraint(equalToConstant: 40),
+            shareButton.heightAnchor.constraint(equalTo: stackView.heightAnchor)
+        ]
+#endif
 
 		NSLayoutConstraint.activate(constraints)
 	}
-	
+
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-
 
 	// MARK: - UIView
 

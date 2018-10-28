@@ -1,24 +1,25 @@
 import X
 
 #if os(iOS)
-	import CoreImage
+import CoreImage
 #else
-	import QuartzCore
+import QuartzCore
 #endif
 
 extension CIImage {
 	public var renderedImage: Image {
 		var image = self
 
-		#if os(iOS)
-			image = image.transformed(by: CGAffineTransform(scaleX: 1, y: -1).concatenating(CGAffineTransform(translationX: 0, y: image.extent.height)))
-		#endif
+#if os(iOS)
+        image = image.transformed(by: CGAffineTransform(scaleX: 1, y: -1)
+            .concatenating(CGAffineTransform(translationX: 0, y: image.extent.height)))
+#endif
 
 		let colorSpace = CGColorSpaceCreateDeviceRGB()
         let options: [CIContextOption: Any] = [
 			.workingColorSpace: colorSpace,
-			.outputColorSpace: colorSpace,
-		]
+			.outputColorSpace: colorSpace
+        ]
 
 		let extent = image.extent
 
@@ -38,10 +39,10 @@ extension CIImage {
 
 		let cgImage = ciContext.createCGImage(image, from: extent)!
 
-		#if os(iOS)
-			return Image(cgImage: cgImage)
-		#else
-			return Image(cgImage: cgImage)!
-		#endif
+#if os(iOS)
+        return Image(cgImage: cgImage)
+#else
+        return Image(cgImage: cgImage)!
+#endif
 	}
 }

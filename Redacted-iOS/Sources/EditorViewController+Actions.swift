@@ -1,8 +1,8 @@
-import UIKit
 import RedactedKit
+import UIKit
 
 #if !REDACTED_APP_EXTENSION
-	import SVProgressHUD
+import SVProgressHUD
 #endif
 
 extension EditorViewController {
@@ -37,48 +37,48 @@ extension EditorViewController {
 		_undoManager.redo()
 	}
 
-	#if !REDACTED_APP_EXTENSION
-		@objc func share() {
-			guard let originalImage = originalImage else {
+#if !REDACTED_APP_EXTENSION
+    @objc func share() {
+        guard let originalImage = originalImage else {
+            return
+        }
+
+        let item = ImageActivityItemProvider(originalImage: originalImage, redactions: redactedView.redactions)
+
+        let viewController = UIActivityViewController(activityItems: [item], applicationActivities: nil)
+        viewController.completionWithItemsHandler = { [weak self] type, completed, _, error in
+            if error != nil {
+                SVProgressHUD.showError(withStatus: nil)
+                SVProgressHUD.dismiss(withDelay: 1)
                 return
             }
 
-			let item = ImageActivityItemProvider(originalImage: originalImage, redactions: redactedView.redactions)
+            guard completed,
+                let title = type?.rawValue,
+                let count = self?.redactedView.redactions.count
+            else { return }
 
-			let viewController = UIActivityViewController(activityItems: [item], applicationActivities: nil)
-			viewController.completionWithItemsHandler = { [weak self] type, completed, _, error in
-				if error != nil {
-					SVProgressHUD.showError(withStatus: nil)
-					SVProgressHUD.dismiss(withDelay: 1)
-					return
-				}
+            if title == "com.apple.UIKit.activity.CopyToPasteboard" {
+                SVProgressHUD.showSuccess(withStatus: nil)
+                SVProgressHUD.dismiss(withDelay: 1)
+            } else if title == "com.apple.UIKit.activity.SaveToCameraRoll" {
+                SVProgressHUD.showSuccess(withStatus: nil)
+                SVProgressHUD.dismiss(withDelay: 1)
+            }
 
-				guard completed,
-					let title = type?.rawValue,
-					let count = self?.redactedView.redactions.count
-				else { return }
+            mixpanel.track(event: "Share image", parameters: [
+                "service": title,
+                "redactions_count": count
+            ])
+        }
 
-				if title == "com.apple.UIKit.activity.CopyToPasteboard" {
-					SVProgressHUD.showSuccess(withStatus: nil)
-					SVProgressHUD.dismiss(withDelay: 1)
-				} else if title == "com.apple.UIKit.activity.SaveToCameraRoll" {
-					SVProgressHUD.showSuccess(withStatus: nil)
-					SVProgressHUD.dismiss(withDelay: 1)
-				}
+        if let presentationController = viewController.popoverPresentationController {
+            presentationController.sourceView = toolbarView.shareButton
+        }
 
-				mixpanel.track(event: "Share image", parameters: [
-					"service": title,
-					"redactions_count": count
-				])
-			}
-
-			if let presentationController = viewController.popoverPresentationController {
-				presentationController.sourceView = toolbarView.shareButton
-			}
-
-			present(viewController, animated: true)
-		}
-	#endif
+        present(viewController, animated: true)
+    }
+#endif
 
 	@objc func copyImage() {
 		UIPasteboard.general.image = renderedImage
@@ -89,16 +89,18 @@ extension EditorViewController {
 		])
 	}
 
-	#if !REDACTED_APP_EXTENSION
-		@objc func saveImage() {
-			PhotosController.savePhoto(context: self, photoProvider: { [weak self] in return self?.renderedImage })
+#if !REDACTED_APP_EXTENSION
+    @objc func saveImage() {
+        PhotosController.savePhoto(context: self) { [weak self] in
+            return self?.renderedImage
+        }
 
-			mixpanel.track(event: "Share image", parameters: [
-				"service": "Save",
-				"redactions_count": redactedView.redactions.count
-			])
-		}
-	#endif
+        mixpanel.track(event: "Share image", parameters: [
+            "service": "Save",
+            "redactions_count": redactedView.redactions.count
+        ])
+    }
+#endif
 
 	@objc func panned(_ sender: UIPanGestureRecognizer) {
 		redactedView.drag(point: sender.location(in: view), state: sender.state)
@@ -125,7 +127,7 @@ extension EditorViewController {
 		if sender.state != .began {
 			return
 		}
-		
+
 		let point = sender.location(in: redactedView)
 		guard let redaction = redactedView.redaction(at: point) else {
             return

@@ -1,14 +1,14 @@
-import UIKit
-import RedactedKit
-import X
 import AVFoundation
 import Photos
+import RedactedKit
+import UIKit
+import X
 
 final class OpenViewController: UIViewController {
 
 	// MARK: - Properties
 
-	fileprivate let emptyView: EmptyView = {
+	private let emptyView: EmptyView = {
 		let view = EmptyView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
@@ -22,13 +22,12 @@ final class OpenViewController: UIViewController {
 		return editorViewController.originalImage != nil
 	}
 
-	fileprivate let activityIndicator: UIActivityIndicatorView = {
+	private let activityIndicator: UIActivityIndicatorView = {
 		let view = UIActivityIndicatorView(style: .white)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.hidesWhenStopped = true
 		return view
 	}()
-
 
 	// MARK: - UIResponder
 
@@ -45,13 +44,17 @@ final class OpenViewController: UIViewController {
 
 		if !hasImage {
 			commands += [
-				UIKeyCommand(input: "o", modifierFlags: .command, action: #selector(choosePhoto), discoverabilityTitle: LocalizedString.choosePhoto.string),
-				UIKeyCommand(input: "o", modifierFlags: [.command, .shift], action: #selector(chooseLastPhoto), discoverabilityTitle: LocalizedString.chooseLastPhoto.string),
-				UIKeyCommand(input: "o", modifierFlags: [.command, .alternate], action: #selector(takePhoto), discoverabilityTitle: LocalizedString.takePhoto.string),
+				UIKeyCommand(input: "o", modifierFlags: .command, action: #selector(choosePhoto),
+                             discoverabilityTitle: LocalizedString.choosePhoto.string),
+				UIKeyCommand(input: "o", modifierFlags: [.command, .shift], action: #selector(chooseLastPhoto),
+                             discoverabilityTitle: LocalizedString.chooseLastPhoto.string),
+				UIKeyCommand(input: "o", modifierFlags: [.command, .alternate], action: #selector(takePhoto),
+                             discoverabilityTitle: LocalizedString.takePhoto.string)
 			]
 
 			if UIPasteboard.general.hasImage {
-				commands.append(UIKeyCommand(input: "v", modifierFlags: .command, action: #selector(pastePhoto), discoverabilityTitle: LocalizedString.pastePhoto.string))
+				commands.append(UIKeyCommand(input: "v", modifierFlags: .command, action: #selector(pastePhoto),
+                                             discoverabilityTitle: LocalizedString.pastePhoto.string))
 			}
 		}
 
@@ -61,7 +64,6 @@ final class OpenViewController: UIViewController {
 
 		return commands
 	}
-
 
 	// MARK: - UIViewController
 
@@ -98,7 +100,6 @@ final class OpenViewController: UIViewController {
 	override var prefersStatusBarHidden: Bool {
 		return true
 	}
-
 
 	// MARK: - Actions
 
@@ -154,7 +155,6 @@ final class OpenViewController: UIViewController {
 		])
 	}
 
-
 	// MARK: - Private
 
 	private func load(_ asset: PHAsset) {
@@ -168,7 +168,6 @@ final class OpenViewController: UIViewController {
 		}
 	}
 }
-
 
 extension OpenViewController: EditorViewControllerDelegate {
 	func editorViewController(_ viewController: EditorViewController, didChangeImage image: UIImage?) {

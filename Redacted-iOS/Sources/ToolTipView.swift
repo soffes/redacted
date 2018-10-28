@@ -1,5 +1,5 @@
-import UIKit
 import RedactedKit
+import UIKit
 import X
 
 final class ToolTipView: UIView {
@@ -13,7 +13,6 @@ final class ToolTipView: UIView {
 		label.contentInsets = EdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
 		label.textAlignment = .center
 		label.font = .systemFont(ofSize: 16, weight: UIFont.Weight.medium)
-
 
 		label.shadowColor = UIColor(white: 1, alpha: 0.25)
 		label.shadowOffset = CGSize(width: 0, height: 1)
@@ -33,7 +32,6 @@ final class ToolTipView: UIView {
 		return layer
 	}()
 
-
 	// MARK: - Initializers
 
 	override init(frame: CGRect) {
@@ -45,7 +43,6 @@ final class ToolTipView: UIView {
 		super.init(coder: coder)
 		initialize()
 	}
-
 
 	// MARK: - NSView
 
@@ -60,7 +57,6 @@ final class ToolTipView: UIView {
 
 		shadowLayer.shadowPath = UIBezierPath(roundedRect: rect, cornerRadius: 10).cgPath
 	}
-
 
 	// MARK: - Private
 

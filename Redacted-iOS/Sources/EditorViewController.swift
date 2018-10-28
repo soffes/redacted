@@ -1,8 +1,8 @@
-import UIKit
-import RedactedKit
-import X
 import AVFoundation
 import Photos
+import RedactedKit
+import UIKit
+import X
 
 protocol EditorViewControllerDelegate: class {
 	func editorViewController(_ viewController: EditorViewController, didChangeImage image: UIImage?)
@@ -116,7 +116,6 @@ class EditorViewController: UIViewController {
 
 	var longPressedRedaction: Redaction?
 
-
 	// MARK: - UIResponder
 
 	override var canBecomeFirstResponder: Bool {
@@ -132,36 +131,46 @@ class EditorViewController: UIViewController {
 
 		if image != nil {
 			commands += [
-				UIKeyCommand(input: "1", modifierFlags: .command, action: #selector(usePixelate), discoverabilityTitle: string("PIXELATE")),
-				UIKeyCommand(input: "2", modifierFlags: .command, action: #selector(useBlur), discoverabilityTitle: string("BLUR")),
-				UIKeyCommand(input: "3", modifierFlags: .command, action: #selector(useBlackBar), discoverabilityTitle: string("BLACK_BAR")),
-				UIKeyCommand(input: "\u{8}", modifierFlags: [], action: #selector(deleteRedaction), discoverabilityTitle: string("DELETE_REDACTION")),
-				UIKeyCommand(input: "a", modifierFlags: .command, action: #selector(selectAllRedactions), discoverabilityTitle: string("SELECT_ALL_REDACTIONS"))
+				UIKeyCommand(input: "1", modifierFlags: .command, action: #selector(usePixelate),
+                             discoverabilityTitle: string("PIXELATE")),
+				UIKeyCommand(input: "2", modifierFlags: .command, action: #selector(useBlur),
+                             discoverabilityTitle: string("BLUR")),
+				UIKeyCommand(input: "3", modifierFlags: .command, action: #selector(useBlackBar),
+                             discoverabilityTitle: string("BLACK_BAR")),
+				UIKeyCommand(input: "\u{8}", modifierFlags: [], action: #selector(deleteRedaction),
+                             discoverabilityTitle: string("DELETE_REDACTION")),
+				UIKeyCommand(input: "a", modifierFlags: .command, action: #selector(selectAllRedactions),
+                             discoverabilityTitle: string("SELECT_ALL_REDACTIONS"))
 			]
 
-			#if !REDACTED_APP_EXTENSION
-				commands += [
-					UIKeyCommand(input: "\u{8}", modifierFlags: .command, action: #selector(clear), discoverabilityTitle: string("CLEAR_IMAGE")),
-					UIKeyCommand(input: "e", modifierFlags: .command, action: #selector(share), discoverabilityTitle: string("SHARE")),
-					UIKeyCommand(input: "c", modifierFlags: .command, action: #selector(copyImage), discoverabilityTitle: string("COPY_IMAGE")),
-					UIKeyCommand(input: "s", modifierFlags: .command, action: #selector(saveImage), discoverabilityTitle: string("SAVE"))
-				]
-			#endif
+#if !REDACTED_APP_EXTENSION
+            commands += [
+                UIKeyCommand(input: "\u{8}", modifierFlags: .command, action: #selector(clear),
+                             discoverabilityTitle: string("CLEAR_IMAGE")),
+                UIKeyCommand(input: "e", modifierFlags: .command, action: #selector(share),
+                             discoverabilityTitle: string("SHARE")),
+                UIKeyCommand(input: "c", modifierFlags: .command, action: #selector(copyImage),
+                             discoverabilityTitle: string("COPY_IMAGE")),
+                UIKeyCommand(input: "s", modifierFlags: .command, action: #selector(saveImage),
+                             discoverabilityTitle: string("SAVE"))
+            ]
+#endif
 
 			if undoManager?.canUndo == true {
 				let title = String(format: LocalizedString.undoFormat.string, _undoManager.undoActionName)
-				commands.append(UIKeyCommand(input: "z", modifierFlags: .command, action: #selector(undoEdit), discoverabilityTitle: title))
+				commands.append(UIKeyCommand(input: "z", modifierFlags: .command, action: #selector(undoEdit),
+                                             discoverabilityTitle: title))
 			}
 
 			if undoManager?.canRedo == true {
 				let title = String(format: LocalizedString.redoFormat.string, _undoManager.redoActionName)
-				commands.append(UIKeyCommand(input: "z", modifierFlags: [.command, .shift], action: #selector(redoEdit), discoverabilityTitle: title))
+				commands.append(UIKeyCommand(input: "z", modifierFlags: [.command, .shift], action: #selector(redoEdit),
+                                             discoverabilityTitle: title))
 			}
 		}
 
 		return commands
 	}
-
 
 	// MARK: - UIViewController
 
@@ -176,10 +185,10 @@ class EditorViewController: UIViewController {
 
 		toolbarView.modeControl.addTarget(self, action: #selector(modeDidChange), for: .primaryActionTriggered)
 
-		#if !REDACTED_APP_EXTENSION
-			toolbarView.clearButton.addTarget(self, action: #selector(clear), for: .primaryActionTriggered)
-			toolbarView.shareButton.addTarget(self, action: #selector(share), for: .primaryActionTriggered)
-		#endif
+#if !REDACTED_APP_EXTENSION
+        toolbarView.clearButton.addTarget(self, action: #selector(clear), for: .primaryActionTriggered)
+        toolbarView.shareButton.addTarget(self, action: #selector(share), for: .primaryActionTriggered)
+#endif
 
 		let spacerView = UIView()
 		spacerView.translatesAutoresizingMaskIntoConstraints = false
@@ -203,7 +212,7 @@ class EditorViewController: UIViewController {
 			toolbarTopConstraint,
 
 			toolbarView.leadingAnchor.constraint(equalTo: spacerView.leadingAnchor),
-			toolbarView.trailingAnchor.constraint(equalTo: spacerView.trailingAnchor),
+			toolbarView.trailingAnchor.constraint(equalTo: spacerView.trailingAnchor)
 		])
 
 		let pan = UIPanGestureRecognizer(target: self, action: #selector(panned))
@@ -227,7 +236,6 @@ class EditorViewController: UIViewController {
 	override var prefersStatusBarHidden: Bool {
 		return true
 	}
-
 
 	// MARK: - Private
 
@@ -254,8 +262,10 @@ class EditorViewController: UIViewController {
 			toolbarBottomConstraint = nil
 		}
 
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.2, options: [], animations: {
-			self.view.layoutIfNeeded()
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.2,
+                       animations:
+        { [weak self] in
+            self?.view.layoutIfNeeded()
 		}, completion: nil)
 	}
 
@@ -282,7 +292,9 @@ class EditorViewController: UIViewController {
 
 		toolTipBottomConstraint = toolTipView.bottomAnchor.constraint(equalTo: toolbarView.topAnchor, constant: -16)
 
-		UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.2, options: [], animations: { [weak self] in
+		UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.2,
+                       animations:
+        { [weak self] in
 			self?.view.layoutIfNeeded()
 		}, completion: nil)
 	}
@@ -294,7 +306,9 @@ class EditorViewController: UIViewController {
 
 		toolTipBottomConstraint = nil
 
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.2, options: [], animations: { [weak self] in
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.2,
+                       animations:
+        { [weak self] in
 			self?.view.layoutIfNeeded()
 		}, completion: { [weak self] _ in
 			self?.toolTipView.removeFromSuperview()

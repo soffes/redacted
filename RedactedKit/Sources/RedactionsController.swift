@@ -1,9 +1,9 @@
 import X
 
 #if os(iOS)
-	import CoreImage
+import CoreImage
 #else
-	import QuartzCore
+import QuartzCore
 #endif
 
 public final class RedactionsController {
@@ -19,7 +19,8 @@ public final class RedactionsController {
 					ciImage = CIImage(cgImage: image.cgImage!)
 				#else
 					var img = CIImage(cgImage: image.cgImage!)
-					img = img.transformed(by: CGAffineTransform(scaleX: 1, y: -1).concatenating(CGAffineTransform(translationX: 0, y: img.extent.height)))
+					img = img.transformed(by: CGAffineTransform(scaleX: 1, y: -1)
+                        .concatenating(CGAffineTransform(translationX: 0, y: img.extent.height)))
 
 					switch image.imageOrientation {
 					case .up:
@@ -35,19 +36,23 @@ public final class RedactionsController {
 						img = img.transformed(by: CGAffineTransform(rotationAngle: .pi / 2))
 
 					case .upMirrored:
-						img = img.transformed(by: CGAffineTransform(scaleX: -1, y: 1).concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
+						img = img.transformed(by: CGAffineTransform(scaleX: -1, y: 1)
+                            .concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
 
 					case .downMirrored:
 						img = img.transformed(by: CGAffineTransform(rotationAngle: .pi))
-						img = img.transformed(by: CGAffineTransform(scaleX: -1, y: 1).concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
+						img = img.transformed(by: CGAffineTransform(scaleX: -1, y: 1)
+                            .concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
 
 					case .leftMirrored:
 						img = img.transformed(by: CGAffineTransform(rotationAngle: .pi / -2))
-						img = img.transformed(by: CGAffineTransform(scaleX: -1, y: 1).concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
+						img = img.transformed(by: CGAffineTransform(scaleX: -1, y: 1)
+                            .concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
 
 					case .rightMirrored:
 						img = img.transformed(by: CGAffineTransform(rotationAngle: .pi / 2))
-						img = img.transformed(by: CGAffineTransform(scaleX: -1, y: 1).concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
+						img = img.transformed(by: CGAffineTransform(scaleX: -1, y: 1)
+                            .concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
 					}
 
 					ciImage = img
@@ -64,11 +69,9 @@ public final class RedactionsController {
 		}
 	}
 
-
 	// MARK: - Initializers
 
 	public init() {}
-
 
 	// MARK: - Rendering
 
@@ -76,18 +79,17 @@ public final class RedactionsController {
 		if let ciImage = ciImage {
 			var outputImage = ciImage
 
-			if redactions.count > 0 {
+			if !redactions.isEmpty {
 				let chain = ChainFilter()
 				chain.inputImage = ciImage
-				chain.inputFilters = redactions.map({ $0.filter(ciImage, preprocessor: preprocess) })
+				chain.inputFilters = redactions.map { $0.filter(ciImage, preprocessor: preprocess) }
 				outputImage = chain.outputImage!
 			}
-			
+
 			return outputImage.cropped(to: ciImage.extent)
 		}
 		return nil
 	}
-
 
 	// MARK: - Private
 

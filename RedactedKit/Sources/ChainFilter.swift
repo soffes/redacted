@@ -1,7 +1,7 @@
 #if os(iOS)
-	import CoreImage
+import CoreImage
 #else
-	import QuartzCore
+import QuartzCore
 #endif
 
 final class ChainFilter: CIFilter {
@@ -13,10 +13,17 @@ final class ChainFilter: CIFilter {
 		if var image = inputImage, let filters = inputFilters {
 			for filter in filters {
 				filter.setValue(image, forKey: "inputBackgroundImage")
-				image = filter.value(forKey: "outputImage") as! CIImage
+
+                if let output = filter.outputImage {
+                    image = output
+                } else {
+                    assertionFailure("Failed to get output of filter: \(filter)")
+                }
 			}
+
 			return image
 		}
+
 		return nil
 	}
 }

@@ -1,20 +1,20 @@
-import X
 import QuartzCore
+import X
 
 #if !os(OSX)
-	import UIKit
+import UIKit
 #endif
 
 public final class RedactedView: CoreImageView {
 
 	// MARK: - Constants
 
-	public class var modeDidChangeNotificationName: String {
-		return "RedactedView.modeDidChangeNotificationName"
+	public class var modeDidChangeNotification: Notification.Name {
+        return Notification.Name(rawValue: "RedactedView.modeDidChangeNotification")
 	}
 
-	public class var selectionDidChangeNotificationName: String {
-		return "RedactedView.selectionDidChangeNotificationName"
+	public class var selectionDidChangeNotification: Notification.Name {
+        return Notification.Name(rawValue: "RedactedView.selectionDidChangeNotification")
 	}
 
 	// MARK: - Types
@@ -23,7 +23,6 @@ public final class RedactedView: CoreImageView {
 		case creating(uuid: String, startPoint: CGPoint)
 		case moving(uuid: String, rect: CGRect, startPoint: CGPoint)
 	}
-
 
 	// MARK: - Properties
 
@@ -45,7 +44,7 @@ public final class RedactedView: CoreImageView {
 
 	public var mode: RedactionType = .pixelate {
 		didSet {
-			NotificationCenter.default.post(name: Notification.Name(rawValue: RedactedView.modeDidChangeNotificationName), object: self)
+			NotificationCenter.default.post(name: RedactedView.modeDidChangeNotification, object: self)
 		}
 	}
 
@@ -70,7 +69,7 @@ public final class RedactedView: CoreImageView {
 
 	public var selectedRedactions: [Redaction] {
 		var selected = [Redaction]()
-		let allUUIDs = redactions.map({ $0.uuid })
+		let allUUIDs = redactions.map { $0.uuid }
 		for UUID in selectedUUIDs {
 			if let index = allUUIDs.index(of: UUID) {
 				selected.append(redactions[index])
@@ -88,7 +87,6 @@ public final class RedactedView: CoreImageView {
 		return customUndoManager
 	}
 
-
 	// MARK: - CALayer
 
 	public override var frame: CGRect {
@@ -98,7 +96,6 @@ public final class RedactedView: CoreImageView {
 			}
 		}
 	}
-
 
 	// MARK: - Manipulation
 
@@ -198,7 +195,6 @@ public final class RedactedView: CoreImageView {
 		}
 	}
 
-
 	// MARK: - Selection
 
 	public func selectAllRedactions() {
@@ -226,7 +222,6 @@ public final class RedactedView: CoreImageView {
 
 		return nil
 	}
-	
 
 	// MARK: - Private
 
@@ -253,12 +248,12 @@ public final class RedactedView: CoreImageView {
 	}
 
 	@objc private func insertRedactionDictionaries(_ dictionaries: [[String: Any]]) {
-		let array = dictionaries.map({ Redaction(dictionary: $0) }).filter({ $0 != nil }).map({ $0! })
+		let array = dictionaries.map { Redaction(dictionary: $0) }.filter { $0 != nil }.map { $0! }
 		insertRedactions(array)
 	}
 
 	@objc private func removeRedactionDictionaries(_ dictionaries: [[String: Any]]) {
-		let array = dictionaries.map({ Redaction(dictionary: $0) }).filter({ $0 != nil }).map({ $0! })
+		let array = dictionaries.map { Redaction(dictionary: $0) }.filter { $0 != nil }.map { $0! }
 		removeRedactions(array)
 	}
 
@@ -269,7 +264,9 @@ public final class RedactedView: CoreImageView {
 			let s = redactions.count == 1 ? "" : "S"
 			undoManager?.setActionName(string("INSERT_REDACTION\(s)"))
 		}
-		undoManager?.registerUndo(withTarget: self, selector: #selector(removeRedactionDictionaries), object: redactions.map({ $0.dictionaryRepresentation }))
+
+		undoManager?.registerUndo(withTarget: self, selector: #selector(removeRedactionDictionaries),
+                                  object: redactions.map { $0.dictionaryRepresentation })
 	}
 
 	private func removeRedactions(_ redactions: [Redaction]) {
@@ -285,7 +282,9 @@ public final class RedactedView: CoreImageView {
 			let s = redactions.count == 1 ? "" : "S"
 			undoManager?.setActionName(string("DELETE_REDACTION\(s)"))
 		}
-		undoManager?.registerUndo(withTarget: self, selector: #selector(insertRedactionDictionaries), object: redactions.map({ $0.dictionaryRepresentation }))
+
+		undoManager?.registerUndo(withTarget: self, selector: #selector(insertRedactionDictionaries),
+                                  object: redactions.map { $0.dictionaryRepresentation })
 	}
 
 	private func isSelected(_ redaction: Redaction) -> Bool {
@@ -309,11 +308,11 @@ public final class RedactedView: CoreImageView {
 		let layer = BoundingBoxLayer()
 		boundingBoxes[redaction.uuid] = layer
 
-		#if os(OSX)
-			self.layer?.addSublayer(layer)
-		#else
-			self.layer.addSublayer(layer)
-		#endif
+#if os(OSX)
+        self.layer?.addSublayer(layer)
+#else
+        self.layer.addSublayer(layer)
+#endif
 
 		updateSelections()
 
@@ -351,7 +350,7 @@ public final class RedactedView: CoreImageView {
 
 		CATransaction.commit()
 
-		NotificationCenter.default.post(name: Notification.Name(rawValue: RedactedView.selectionDidChangeNotificationName), object: self)
+		NotificationCenter.default.post(name: RedactedView.selectionDidChangeNotification, object: self)
 	}
 
 	// MARK: - Rendering

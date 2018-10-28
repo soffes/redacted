@@ -14,7 +14,6 @@ final class BoundingBoxLayer: CALayer {
 //	let bottomCenter = HandleLayer()
 //	let bottomRight = HandleLayer()
 
-
 	// MARK: - Initializers
 
 	override init() {
@@ -31,7 +30,6 @@ final class BoundingBoxLayer: CALayer {
 		super.init(layer: layer)
 		initialize()
 	}
-
 
 	// MARK: - CALayer
 
@@ -60,14 +58,13 @@ final class BoundingBoxLayer: CALayer {
 		CATransaction.commit()
 	}
 
-
 	// MARK: - Private
 
 	private func initialize() {
 		border.borderWidth = 2
 		border.borderColor = selectionColor.cgColor
 		addSublayer(border)
-		
+
 //		addSublayer(topLeft)
 //		addSublayer(topCenter)
 //		addSublayer(topRight)

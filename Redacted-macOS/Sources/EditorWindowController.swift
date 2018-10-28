@@ -6,7 +6,7 @@ final class EditorWindowController: NSWindowController {
 
 	// MARK: - Types
 
-	fileprivate enum MenuItem: Int {
+	private enum MenuItem: Int {
 		case open = 900
 		case deleteRedaction = 901
 		case pasteImage = 902
@@ -14,14 +14,14 @@ final class EditorWindowController: NSWindowController {
 
 	// MARK: - Properties
 
-	@IBOutlet var toolbar: NSToolbar!
-	@IBOutlet var modeItem: NSToolbarItem!
-	@IBOutlet var modeControl: NSSegmentedControl!
-	@IBOutlet var touchBarModeControl: NSSegmentedControl!
-	@IBOutlet var clearItem: NSToolbarItem!
-	@IBOutlet var shareItem: NSToolbarItem!
+	@IBOutlet private var toolbar: NSToolbar!
+	@IBOutlet private var modeItem: NSToolbarItem!
+	@IBOutlet private var modeControl: NSSegmentedControl!
+	@IBOutlet private var touchBarModeControl: NSSegmentedControl!
+	@IBOutlet private var clearItem: NSToolbarItem!
+	@IBOutlet private var shareItem: NSToolbarItem!
 
-	var editorViewController: EditorViewController!
+	var editorViewController: EditorViewController?
 	var modeIndex: Int = 0 {
 		didSet {
 			invalidateRestorableState()
@@ -30,14 +30,13 @@ final class EditorWindowController: NSWindowController {
 			touchBarModeControl.selectedSegment = modeIndex
 
 			if let mode = RedactionType(rawValue: modeIndex) {
-				editorViewController.redactedView.mode = mode
+				editorViewController?.redactedView.mode = mode
 			}
 		}
 	}
 
-	fileprivate var imageURL: URL? = nil
-	fileprivate let _undoManager = UndoManager()
-
+	private var imageURL: URL?
+	private let _undoManager = UndoManager()
 
 	// MARK: - Initializers
 
@@ -45,14 +44,12 @@ final class EditorWindowController: NSWindowController {
 		NotificationCenter.default.removeObserver(self)
 	}
 
-
 	// MARK: - NSResponder
 
 	override func encodeRestorableState(with coder: NSCoder) {
 		super.encodeRestorableState(with: coder)
 		coder.encode(modeControl.selectedSegment, forKey: "modeIndex")
 	}
-
 
 	override func restoreState(with coder: NSCoder) {
 		super.restoreState(with: coder)
@@ -69,7 +66,6 @@ final class EditorWindowController: NSWindowController {
 		return super.performKeyEquivalent(with: event)
 	}
 
-
 	// MARK: - NSWindowController
 
 	override func windowDidLoad() {
@@ -79,14 +75,15 @@ final class EditorWindowController: NSWindowController {
 		window?.delegate = self
 
 		editorViewController = contentViewController as? EditorViewController
-		editorViewController.redactedView.customUndoManager = window?.undoManager
+		editorViewController?.redactedView.customUndoManager = window?.undoManager
 
-		if let view = editorViewController.view as? ImageDragDestinationView {
+		if let view = editorViewController?.view as? ImageDragDestinationView {
 			view.delegate = self
 		}
 
 		// Notifications
-		NotificationCenter.default.addObserver(self, selector: #selector(imageDidChange), name: NSNotification.Name(rawValue: EditorViewController.imageDidChangeNotification), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(imageDidChange),
+                                               name: EditorViewController.imageDidChangeNotification, object: nil)
 	}
 
 	override func awakeFromNib() {
@@ -117,7 +114,6 @@ final class EditorWindowController: NSWindowController {
 		validateToolbar()
 	}
 
-
 	// MARK: - Actions
 
 	@objc func openDocument(_ sender: Any?) {
@@ -136,7 +132,7 @@ final class EditorWindowController: NSWindowController {
 	}
 
 	@objc func save(_ sender: Any?) {
-		if let URL = imageURL, let image = editorViewController.renderedImage {
+		if let URL = imageURL, let image = editorViewController?.renderedImage {
 			save(image: image, toURL: URL)
 		} else {
 			export(sender)
@@ -144,7 +140,7 @@ final class EditorWindowController: NSWindowController {
 	}
 
 	@objc func export(_ sender: Any?) {
-		if let window = window, let image = editorViewController.renderedImage {
+		if let window = window, let image = editorViewController?.renderedImage {
 			let savePanel = NSSavePanel()
 			savePanel.allowedFileTypes = ["png"]
 			savePanel.beginSheetModal(for: window) { [weak self] result in
@@ -158,21 +154,21 @@ final class EditorWindowController: NSWindowController {
 	}
 
 	@objc func copy(_ sender: Any?) {
-		if let image = editorViewController.renderedImage {
+		if let editor = editorViewController, let image = editor.renderedImage {
 			let pasteboard = NSPasteboard.general
 			pasteboard.clearContents()
 			pasteboard.writeObjects([image])
 
 			mixpanel.track(event: "Share image", parameters: [
 				"service": "Copy",
-				"redactions_count": editorViewController.redactedView.redactions.count
+				"redactions_count": editor.redactedView.redactions.count
 			])
 		}
 	}
 
 	@objc func paste(_ sender: Any?) {
 		if let data = NSPasteboard.general.data(forType: .tiff) {
-			editorViewController.image = NSImage(data: data)
+			editorViewController?.image = NSImage(data: data)
 
 			mixpanel.track(event: "Import image", parameters: [
 				"source": "Paste image"
@@ -181,37 +177,36 @@ final class EditorWindowController: NSWindowController {
 	}
 
 	@objc func delete(_ sender: Any?) {
-		editorViewController.redactedView.deleteRedaction()
+		editorViewController?.redactedView.deleteRedaction()
 	}
 
 	@objc override func selectAll(_ sender: Any?) {
-		editorViewController.redactedView.selectAllRedactions()
+		editorViewController?.redactedView.selectAllRedactions()
 	}
 
-	@IBAction func changeMode(_ sender: NSSegmentedControl) {
+	@IBAction private func changeMode(_ sender: NSSegmentedControl) {
 		modeIndex = sender.selectedSegment
 	}
 
-	@IBAction func clearImage(_ sender: Any?) {
-		editorViewController.image = nil
+	@IBAction private func clearImage(_ sender: Any?) {
+		editorViewController?.image = nil
 	}
 
-	@IBAction func shareImage(_ sender: Any?) {
-		editorViewController.shareImage(fromView: shareItem.view!)
+	@IBAction private func shareImage(_ sender: Any?) {
+		editorViewController?.shareImage(fromView: shareItem.view!)
 	}
 
-	@IBAction func usePixelate(_ sender: Any?) {
+	@IBAction private func usePixelate(_ sender: Any?) {
 		modeIndex = RedactionType.pixelate.rawValue
 	}
 
-	@IBAction func useBlur(_ sender: Any?) {
+	@IBAction private func useBlur(_ sender: Any?) {
 		modeIndex = RedactionType.blur.rawValue
 	}
 
-	@IBAction func useBlackBar(_ sender: Any?) {
+	@IBAction private func useBlackBar(_ sender: Any?) {
 		modeIndex = RedactionType.blackBar.rawValue
 	}
-
 
 	// MARK: - Public
 
@@ -219,7 +214,7 @@ final class EditorWindowController: NSWindowController {
 		if let url = url, let image = NSImage(contentsOf: url) {
 			imageURL = url
 			NSDocumentController.shared.noteNewRecentDocumentURL(url)
-			editorViewController.image = image
+			editorViewController?.image = image
 
 			mixpanel.track(event: "Import image", parameters: [
 				"source": source
@@ -229,7 +224,6 @@ final class EditorWindowController: NSWindowController {
 		}
 		return false
 	}
-
 
 	// MARK: - Private
 
@@ -250,7 +244,6 @@ final class EditorWindowController: NSWindowController {
 	}
 }
 
-
 extension EditorWindowController: NSWindowDelegate {
 	func windowWillClose(_ notification: Notification) {
 		NSApplication.shared.terminate(window)
@@ -261,10 +254,9 @@ extension EditorWindowController: NSWindowDelegate {
 	}
 }
 
-
 // NSToolbarValidation
 extension EditorWindowController {
-	fileprivate func validateToolbar() {
+	private func validateToolbar() {
 		for item in toolbar.items {
 			item.isEnabled = validateToolbarItem(item)
 		}
@@ -273,34 +265,36 @@ extension EditorWindowController {
     // TODO: Make sure this still works
 	func validateToolbarItem(_ theItem: NSToolbarItem) -> Bool {
 		if ["mode", "clear", "share"].contains(theItem.itemIdentifier.rawValue) {
-			return editorViewController.image != nil
+			return editorViewController?.image != nil
 		}
 		return true
 	}
 }
 
-
 // NSMenuItemValidation
 extension EditorWindowController {
     // TODO: Make sure this still works
 	func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let editor = editorViewController else {
+            return false
+        }
+
 		if menuItem.tag == MenuItem.open.rawValue || menuItem.tag == MenuItem.pasteImage.rawValue {
 			return true
 		}
 
 		if menuItem.tag == MenuItem.deleteRedaction.rawValue {
-			return editorViewController.redactedView.selectionCount > 0
+			return editor.redactedView.selectionCount > 0
 		}
 
-		return editorViewController.image != nil
+		return editor.image != nil
 	}
 }
-
 
 extension EditorWindowController: ImageDragDestinationViewDelegate {
 	func imageDragDestinationView(_ view: ImageDragDestinationView, didAcceptImage image: NSImage) {
 		imageURL = nil
-		editorViewController.image = image
+		editorViewController?.image = image
 
 		mixpanel.track(event: "Import image", parameters: [
 			"source": "Drag image"
@@ -312,16 +306,18 @@ extension EditorWindowController: ImageDragDestinationViewDelegate {
 	}
 }
 
-@available(OSX 10.12.2, *)
 extension EditorWindowController: NSSharingServicePickerTouchBarItemDelegate {
 	func items(for pickerTouchBarItem: NSSharingServicePickerTouchBarItem) -> [Any] {
-		guard let image = editorViewController.renderedImage else { return [] }
+		guard let image = editorViewController?.renderedImage else {
+            return []
+        }
+
 		return [image]
 	}
 }
 
 extension EditorWindowController: NSSharingServicePickerDelegate {
 	func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker, didChoose service: NSSharingService?) {
-		editorViewController.sharingServicePicker(sharingServicePicker, didChoose: service)
+		editorViewController?.sharingServicePicker(sharingServicePicker, didChoose: service)
 	}
 }

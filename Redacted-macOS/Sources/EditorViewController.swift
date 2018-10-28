@@ -5,15 +5,14 @@ final class EditorViewController: NSViewController {
 
 	// MARK: - Constants
 
-	class var imageDidChangeNotification: String {
-		return "EditorViewController.imageDidChangeNotification"
+	class var imageDidChangeNotification: Notification.Name {
+        return Notification.Name(rawValue: "EditorViewController.imageDidChangeNotification")
 	}
-
 
 	// MARK: - Properties
 
 	@IBOutlet var redactedView: RedactedView!
-	@IBOutlet var placeholderLabel: NSTextField!
+	@IBOutlet private var placeholderLabel: NSTextField!
 
 	let toolTipView: ToolTipView = {
 		let view = ToolTipView()
@@ -23,11 +22,12 @@ final class EditorViewController: NSViewController {
 	}()
 
 	private var toolTipBottomConstraint: NSLayoutConstraint?
-	
+
 	var image: NSImage? {
 		didSet {
 			redactedView.originalImage = image
-			NotificationCenter.default.post(name: NSNotification.Name(rawValue: type(of: self).imageDidChangeNotification), object: image)
+
+			NotificationCenter.default.post(name: type(of: self).imageDidChangeNotification, object: image)
 
 			placeholderLabel.isHidden = image != nil
 
@@ -42,7 +42,6 @@ final class EditorViewController: NSViewController {
 	var renderedImage: NSImage? {
 		return redactedView.renderedImage()
 	}
-
 
 	// MARK: - NSViewController
 
@@ -66,7 +65,6 @@ final class EditorViewController: NSViewController {
 		}
 	}
 
-
 	// MARK: - Actions
 
 	@objc func shareImage(fromView sender: NSView) {
@@ -80,7 +78,7 @@ final class EditorViewController: NSViewController {
 	@objc func panned(sender: NSPanGestureRecognizer) {
 		redactedView.drag(point: sender.location(in: view), state: sender.state)
 
-		if sender.state == .ended && redactedView.redactions.count > 0 {
+		if sender.state == .ended && !redactedView.redactions.isEmpty {
 			hideTutorial()
 		}
 	}
@@ -96,7 +94,6 @@ final class EditorViewController: NSViewController {
 			redactedView.tap(point: sender.location(in: view), exclusive: false)
 		}
 	}
-
 
 	// MARK: - Private
 
@@ -140,10 +137,11 @@ final class EditorViewController: NSViewController {
 	}
 }
 
-
 extension EditorViewController: NSSharingServicePickerDelegate {
 	func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker, didChoose service: NSSharingService?) {
-		guard let title = service?.title else { return }
+		guard let title = service?.title else {
+            return
+        }
 
 		mixpanel.track(event: "Share image", parameters: [
 			"service": title,

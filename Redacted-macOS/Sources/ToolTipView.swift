@@ -30,7 +30,6 @@ final class ToolTipView: NSView {
 		return layer
 	}()
 
-
 	// MARK: - Initializers
 
 	override init(frame frameRect: NSRect) {
@@ -42,7 +41,6 @@ final class ToolTipView: NSView {
 		super.init(coder: coder)
 		initialize()
 	}
-
 
 	// MARK: - NSView
 
@@ -58,7 +56,6 @@ final class ToolTipView: NSView {
 			shadowLayer.shadowPath = NSBezierPath(roundedRect: rect, xRadius: 10, yRadius: 10).cgPath
 		}
 	}
-
 
 	// MARK: - Private
 

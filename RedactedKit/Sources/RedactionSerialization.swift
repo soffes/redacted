@@ -15,7 +15,7 @@ public struct RedactionSerialization {
 		let json: [String: Any] = [
 			"Type": formatIdentifier,
 			"Version": formatVersion,
-			"Redactions": redactions.map({ $0.dictionaryRepresentation })
+			"Redactions": redactions.map { $0.dictionaryRepresentation }
 		]
 		return try JSONSerialization.data(withJSONObject: json, options: [])
 	}
