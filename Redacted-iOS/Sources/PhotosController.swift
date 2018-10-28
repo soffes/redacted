@@ -1,11 +1,3 @@
-//
-//  PhotosController.swift
-//  Redacted
-//
-//  Created by Sam Soffes on 6/14/17.
-//  Copyright © 2017 Nothing Magical Inc. All rights reserved.
-//
-
 import UIKit
 import Photos
 import AVFoundation

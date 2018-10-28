@@ -1,11 +1,3 @@
-//
-//  Colors.swift
-//  Redacted
-//
-//  Created by Sam Soffes on 4/18/15.
-//  Copyright (c) 2015 Nothing Magical Inc. All rights reserved.
-//
-
 import X
 
 public let blueColor = Color(red:0.298, green:0.757, blue:0.988, alpha: 1.0)

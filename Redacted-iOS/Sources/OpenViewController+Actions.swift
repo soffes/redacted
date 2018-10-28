@@ -1,11 +1,3 @@
-//
-//  OpenViewController+Actions.swift
-//  Redacted
-//
-//  Created by Sam Soffes on 7/9/17.
-//  Copyright © 2017 Nothing Magical Inc. All rights reserved.
-//
-
 /// Neccessary since this is the first responder and we want the contained view controller's actions to work
 extension OpenViewController {
 	func usePixelate() {

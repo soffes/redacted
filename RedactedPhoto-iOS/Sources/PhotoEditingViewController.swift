@@ -1,11 +1,3 @@
-//
-//  PhotoEditingViewController.swift
-//  RedactedPhoto-iOS
-//
-//  Created by Sam Soffes on 7/8/17.
-//  Copyright © 2017 Nothing Magical Inc. All rights reserved.
-//
-
 import UIKit
 import Photos
 import PhotosUI
