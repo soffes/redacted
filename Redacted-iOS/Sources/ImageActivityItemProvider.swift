@@ -1,5 +1,5 @@
-import UIKit
 import RedactedKit
+import UIKit
 
 final class ImageActivityItemProvider: UIActivityItemProvider {
 
@@ -8,7 +8,6 @@ final class ImageActivityItemProvider: UIActivityItemProvider {
 	private var originalImage: UIImage
 	private var redactions: [Redaction]
 
-
 	// MARK: - Initializers
 
 	init(originalImage: UIImage, redactions: [Redaction]) {
@@ -16,7 +15,6 @@ final class ImageActivityItemProvider: UIActivityItemProvider {
 		self.redactions = redactions
 		super.init(placeholderItem: UIImage())
 	}
-
 
 	// MARK: - UIActivityItemProvider
 

@@ -1,5 +1,5 @@
-import UIKit
 import Mixpanel
+import UIKit
 
 let mixpanel: Mixpanel = {
 	var mp = Mixpanel(token: Secrets.mixpanelToken)

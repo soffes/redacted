@@ -46,7 +46,6 @@ final class EmptyView: UIStackView {
 		}
 	}
 
-
 	// MARK: - Properties
 
 	let choosePhotoButton: UIButton = {
@@ -78,7 +77,6 @@ final class EmptyView: UIStackView {
 		return view
 	}()
 
-
 	// MARK: - Initializers
 
 	override init(frame: CGRect) {
@@ -93,15 +91,16 @@ final class EmptyView: UIStackView {
 		addArrangedSubview(takePhotoButton)
 		addArrangedSubview(pastePhotoButton)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange), name: UIPasteboard.changedNotification, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange),
+                                               name: UIPasteboard.changedNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange),
+                                               name: UIApplication.willEnterForegroundNotification, object: nil)
 		pasteboardDidChange()
 	}
-	
+
 	required init(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-
 
 	// MARK: - Private
 

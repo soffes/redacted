@@ -8,7 +8,6 @@ final class Preferences {
 		case completedTutorial
 	}
 
-
 	// MARK: - Properties
 
 	static let shared: Preferences = {
@@ -33,7 +32,6 @@ final class Preferences {
 			userDefaults.set(newValue, forKey: Key.completedTutorial.rawValue)
 		}
 	}
-
 
 	// MARK: - Initializers
 

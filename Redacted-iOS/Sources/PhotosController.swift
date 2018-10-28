@@ -52,18 +52,16 @@ struct PhotosController {
 
 	private static let imagePickerDelegate = ImagePickerDelegate()
 
-	fileprivate static let fetchOptions: PHFetchOptions = {
+	static let fetchOptions: PHFetchOptions = {
 		let options = PHFetchOptions()
 		options.fetchLimit = 1
 		options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 		return options
 	}()
 
-
 	// MARK: - Initializers
 
 	private init() {}
-
 
 	// MARK: - Authorization
 
@@ -77,12 +75,16 @@ struct PhotosController {
 			}
 
 		case .restricted:
-			let alert = UIAlertController(title: LocalizedString.restrictedPhotosTitle.string, message: LocalizedString.restrictedPhotosMessage.string, preferredStyle: .alert)
+			let alert = UIAlertController(title: LocalizedString.restrictedPhotosTitle.string,
+                                          message: LocalizedString.restrictedPhotosMessage.string,
+                                          preferredStyle: .alert)
 			alert.addAction(.ok)
 			context?.present(alert, animated: true, completion: nil)
 
 		case .denied:
-			let alert = UIAlertController(title: LocalizedString.accessDeniedPhotosTitle.string, message: LocalizedString.accessDeniedPhotosMessage.string, preferredStyle: .alert)
+			let alert = UIAlertController(title: LocalizedString.accessDeniedPhotosTitle.string,
+                                          message: LocalizedString.accessDeniedPhotosMessage.string,
+                                          preferredStyle: .alert)
 			alert.addAction(.openSettings)
 			alert.addAction(.cancel)
 			context?.present(alert, animated: true, completion: nil)
@@ -102,12 +104,16 @@ struct PhotosController {
 			}
 
 		case .restricted:
-			let alert = UIAlertController(title: LocalizedString.restrictedCameraTitle.string, message: LocalizedString.restrictedCameraMessage.string, preferredStyle: .alert)
+			let alert = UIAlertController(title: LocalizedString.restrictedCameraTitle.string,
+                                          message: LocalizedString.restrictedCameraMessage.string,
+                                          preferredStyle: .alert)
 			alert.addAction(.ok)
 			context?.present(alert, animated: true, completion: nil)
 
 		case .denied:
-			let alert = UIAlertController(title: LocalizedString.accessDeniedCameraTitle.string, message: LocalizedString.accessDeniedCameraMessage.string, preferredStyle: .alert)
+			let alert = UIAlertController(title: LocalizedString.accessDeniedCameraTitle.string,
+                                          message: LocalizedString.accessDeniedCameraMessage.string,
+                                          preferredStyle: .alert)
 			alert.addAction(.openSettings)
 			alert.addAction(.cancel)
 			context?.present(alert, animated: true, completion: nil)
@@ -116,7 +122,6 @@ struct PhotosController {
 			completion()
 		}
 	}
-
 
 	// MARK: - Reading Photos
 
@@ -166,9 +171,10 @@ struct PhotosController {
 						return
 					}
 					
-					self.savePhoto(context: context, photoProvider: {
+					self.savePhoto(context: context) {
 						return image
-					})
+					}
+
 					completion(image)
 				}
 				context.present(viewController, animated: true, completion: nil)

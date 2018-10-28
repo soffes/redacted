@@ -39,7 +39,9 @@ extension EditorViewController {
 
 	#if !REDACTED_APP_EXTENSION
 		@objc func share() {
-			guard let originalImage = originalImage else { return }
+			guard let originalImage = originalImage else {
+                return
+            }
 
 			let item = ImageActivityItemProvider(originalImage: originalImage, redactions: redactedView.redactions)
 
@@ -101,7 +103,7 @@ extension EditorViewController {
 	@objc func panned(_ sender: UIPanGestureRecognizer) {
 		redactedView.drag(point: sender.location(in: view), state: sender.state)
 
-		if sender.state == .ended && redactedView.redactions.count > 0 {
+		if sender.state == .ended && !redactedView.redactions.isEmpty {
 			hideTutorial()
 			Preferences.shared.completedTutorial = true
 		}
@@ -125,7 +127,9 @@ extension EditorViewController {
 		}
 		
 		let point = sender.location(in: redactedView)
-		guard let redaction = redactedView.redaction(at: point) else { return }
+		guard let redaction = redactedView.redaction(at: point) else {
+            return
+        }
 
 		let controller = UIMenuController.shared
 
@@ -152,7 +156,10 @@ extension EditorViewController {
 	}
 
 	@objc func modeDidChange() {
-		guard let mode = RedactionType(rawValue: toolbarView.modeControl.selectedIndex) else { return }
+		guard let mode = RedactionType(rawValue: toolbarView.modeControl.selectedIndex) else {
+            return
+        }
+
 		redactedView.mode = mode
 	}
 }
