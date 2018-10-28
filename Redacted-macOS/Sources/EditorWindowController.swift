@@ -135,7 +135,7 @@ final class EditorWindowController: NSWindowController {
 		openPanel.canCreateDirectories = false
 		openPanel.canChooseFiles = true
 		openPanel.beginSheetModal(for: window!) { [weak self] result in
-			if let url = openPanel.url, result.rawValue == NSFileHandlingPanelOKButton {
+            if let url = openPanel.url, result == .OK {
 				DispatchQueue.main.async {
 					self?.open(url: url, source: "Open")
 				}
@@ -155,8 +155,8 @@ final class EditorWindowController: NSWindowController {
 		if let window = window, let image = editorViewController.renderedImage {
 			let savePanel = NSSavePanel()
 			savePanel.allowedFileTypes = ["png"]
-			savePanel.beginSheetModal(for: window) { [weak self] in
-				if $0.rawValue == NSFileHandlingPanelOKButton {
+			savePanel.beginSheetModal(for: window) { [weak self] result in
+				if result == .OK {
 					if let url = savePanel.url {
 						self?.save(image: image, toURL: url)
 					}

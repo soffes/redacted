@@ -254,29 +254,21 @@ CA
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
                         <value key="minSize" type="size" width="234" height="200"/>
                         <toolbar key="toolbar" implicitIdentifier="F4E5C2DE-5F69-4075-ACF7-6A1D214536CD" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="tJy-B4-k21">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="B5DBD10B-8CAB-4E4A-8767-0DE5BA0302DA" explicitItemIdentifier="mode" label="Mode" paletteLabel="Mode" id="m3V-Mi-ixQ">
+                                <toolbarItem implicitItemIdentifier="B5DBD10B-8CAB-4E4A-8767-0DE5BA0302DA" explicitItemIdentifier="mode" label="Mode" paletteLabel="Mode" sizingBehavior="auto" id="m3V-Mi-ixQ">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="136" height="25"/>
-                                    <size key="maxSize" width="136" height="28"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="FtH-vU-pEZ">
-                                        <rect key="frame" x="0.0" y="14" width="136" height="28"/>
+                                        <rect key="frame" x="0.0" y="14" width="145" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="rWV-CV-kvs">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment image="Pixelate" width="44" selected="YES">
-                                                    <nil key="label"/>
-                                                </segment>
-                                                <segment image="Blur" width="44" tag="1">
-                                                    <nil key="label"/>
-                                                </segment>
-                                                <segment image="BlackBar" width="44" tag="2">
-                                                    <nil key="label"/>
-                                                </segment>
+                                                <segment image="Pixelate" width="46" selected="YES"/>
+                                                <segment image="Blur" width="46" tag="1"/>
+                                                <segment image="BlackBar" width="45" tag="2"/>
                                             </segments>
                                         </segmentedCell>
                                     </segmentedControl>
@@ -333,8 +325,8 @@ CA
                         <touchBarItems>
                             <touchBarItem id="0cd-l7-K24">
                                 <viewController key="viewController" id="Qrs-Iv-nNd">
-                                    <segmentedControl key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="449-Zy-rgN">
-                                        <rect key="frame" x="4" y="-2" width="224" height="33"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="449-Zy-rgN">
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="D8r-l0-Tja">
                                             <font key="font" metaFont="system"/>
@@ -355,13 +347,13 @@ CA
                                         </connections>
                                     </segmentedControl>
                                 </viewController>
-                                <size key="designTimeSize" width="224" height="30"/>
+                                <size key="designTimeSize" width="230" height="30"/>
                             </touchBarItem>
                             <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="WBv-Ia-nnQ"/>
                             <touchBarItem id="evP-Gg-dpJ">
                                 <viewController key="viewController" id="Wbe-9Y-sQ7">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ffI-G0-jzc">
-                                        <rect key="frame" x="0.0" y="0.0" width="84" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="TouchBar-Clear" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZKd-IH-YLH">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -433,7 +425,7 @@ CA
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80" y="533"/>
+            <point key="canvasLocation" x="80" y="587"/>
         </scene>
         <!--About-->
         <scene sceneID="8cY-ed-rhr">
