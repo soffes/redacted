@@ -17,7 +17,7 @@ private final class ImagePickerController: UIImagePickerController {
 		return true
 	}
 
-	override var childViewControllerForStatusBarHidden: UIViewController? {
+    override var childForStatusBarHidden: UIViewController? {
 		return nil
 	}
 }
@@ -28,15 +28,15 @@ private final class ImagePickerDelegate: NSObject, UINavigationControllerDelegat
 	var pickCompletion: ((PHAsset?) -> Void)?
 	var cameraCompletion: ((UIImage?) -> Void)?
 
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		if let completion = pickCompletion {
-			let url = info[UIImagePickerControllerReferenceURL] as? URL
+            let url = info[.referenceURL] as? URL
 			let asset = url.flatMap { PHAsset.fetchAssets(withALAssetURLs: [$0], options: PhotosController.fetchOptions).firstObject }
 			completion(asset)
 		}
 
 		if let completion = cameraCompletion {
-			let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+			let image = info[.originalImage] as? UIImage
 			completion(image)
 		}
 

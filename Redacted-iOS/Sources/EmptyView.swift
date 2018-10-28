@@ -101,8 +101,8 @@ final class EmptyView: UIStackView {
 		addArrangedSubview(takePhotoButton)
 		addArrangedSubview(pastePhotoButton)
 
-		NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange), name: .UIPasteboardChanged, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange), name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange), name: UIPasteboard.changedNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange), name: UIApplication.willEnterForegroundNotification, object: nil)
 		pasteboardDidChange()
 	}
 	

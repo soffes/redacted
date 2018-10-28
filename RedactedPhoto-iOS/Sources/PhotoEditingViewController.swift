@@ -58,7 +58,7 @@ class PhotoEditingViewController: EditorViewController, PHContentEditingControll
 			controller.redactions = redactions
 
 			guard let renderedImage = controller.process()?.renderedImage,
-				let imageData = UIImageJPEGRepresentation(renderedImage, 1)
+				let imageData = renderedImage.jpegData(compressionQuality: 1)
 			else {
 				print("Failed to render full size image")
 				completionHandler(nil)

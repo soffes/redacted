@@ -89,7 +89,7 @@
 
 		public override init(frame: CGRect, context: EAGLContext) {
 			ciContext = CIContext(eaglContext: context, options: [
-				kCIContextWorkingColorSpace: NSNull()
+                .workingColorSpace: NSNull()
 			])
 
 			super.init(frame: frame, context: context)

@@ -31,7 +31,7 @@ final class OpenViewController: UIViewController {
 	}
 
 	fileprivate let activityIndicator: UIActivityIndicatorView = {
-		let view = UIActivityIndicatorView(activityIndicatorStyle: .white)
+		let view = UIActivityIndicatorView(style: .white)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.hidesWhenStopped = true
 		return view
@@ -77,7 +77,7 @@ final class OpenViewController: UIViewController {
 		super.viewDidLoad()
 
 		editorViewController.delegate = self
-		addChildViewController(editorViewController)
+		addChild(editorViewController)
 		editorViewController.view.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(editorViewController.view)
 

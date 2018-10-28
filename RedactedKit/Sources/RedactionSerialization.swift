@@ -47,7 +47,7 @@ public struct RedactionSerialization {
 			throw DeserializationError.invalidContainer
 		}
 
-		return dictionaries.flatMap(Redaction.init)
+        return dictionaries.compactMap(Redaction.init)
 	}
 
 	private init() {}
