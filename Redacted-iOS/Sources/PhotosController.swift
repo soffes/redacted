@@ -23,11 +23,7 @@ private final class ImagePickerDelegate: NSObject, UINavigationControllerDelegat
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any])
     {
         if let completion = pickCompletion {
-            let url = info[.referenceURL] as? URL
-            let asset = url.flatMap {
-                return PHAsset.fetchAssets(withALAssetURLs: [$0], options: PhotosController.fetchOptions).firstObject
-            }
-
+            let asset = info[.phAsset] as? PHAsset
 			completion(asset)
 		}
 
