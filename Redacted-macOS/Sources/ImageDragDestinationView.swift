@@ -9,6 +9,7 @@ final class ImageDragDestinationView: NSView {
 
 	// MARK: - Properties
 
+    // swiftlint:disable:next private_outlet
 	@IBOutlet weak var delegate: ImageDragDestinationViewDelegate?
 
 	private let selectionLayer: CALayer = {

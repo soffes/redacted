@@ -71,7 +71,7 @@ public final class RedactedView: CoreImageView {
 		var selected = [Redaction]()
 		let allUUIDs = redactions.map { $0.uuid }
 		for UUID in selectedUUIDs {
-			if let index = allUUIDs.index(of: UUID) {
+			if let index = allUUIDs.firstIndex(of: UUID) {
 				selected.append(redactions[index])
 			}
 		}
@@ -156,7 +156,7 @@ public final class RedactedView: CoreImageView {
 			switch draggingMode {
 			case let .creating(uuid, startPoint):
 				// Find the currently dragging redaction
-				if let index = redactions.map({ $0.uuid }).index(of: uuid) {
+				if let index = redactions.map({ $0.uuid }).firstIndex(of: uuid) {
 					var redaction = redactions[index]
 
 					redaction.rect = CGRect(
@@ -177,7 +177,7 @@ public final class RedactedView: CoreImageView {
 
 			case let .moving(UUID, rect, startPoint):
 				// Find the currently dragging redaction
-				if let index = redactions.map({ $0.uuid }).index(of: UUID) {
+				if let index = redactions.map({ $0.uuid }).firstIndex(of: UUID) {
 					var redaction = redactions[index]
 					var rect = rect
 					rect.origin.x += point.x - startPoint.x
@@ -271,7 +271,7 @@ public final class RedactedView: CoreImageView {
 
 	private func removeRedactions(_ redactions: [Redaction]) {
 		for UUID in redactions.map({ $0.uuid }) {
-			if let index = self.redactions.map({ $0.uuid }).index(of: UUID) {
+			if let index = self.redactions.map({ $0.uuid }).firstIndex(of: UUID) {
 				let redaction = self.redactions[index]
 				deselect(redaction)
 				self.redactions.remove(at: index)

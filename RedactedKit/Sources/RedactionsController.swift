@@ -53,6 +53,9 @@ public final class RedactionsController {
 						img = img.transformed(by: CGAffineTransform(rotationAngle: .pi / 2))
 						img = img.transformed(by: CGAffineTransform(scaleX: -1, y: 1)
                             .concatenating(CGAffineTransform(translationX: img.extent.width, y: 0)))
+
+					@unknown default:
+						assertionFailure("Unknown image orientation")
 					}
 
 					ciImage = img

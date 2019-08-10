@@ -41,9 +41,9 @@ public struct Redaction: Hashable, Equatable {
 		self.rect = rect
 	}
 
-	public var hashValue: Int {
-		return uuid.hashValue
-	}
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(uuid)
+    }
 
 	public func rectForBounds(_ bounds: CGRect) -> CGRect {
 		return CGRect(

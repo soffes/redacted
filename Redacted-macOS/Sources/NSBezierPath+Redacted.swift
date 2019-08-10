@@ -21,6 +21,9 @@ extension NSBezierPath {
 			case .closePath:
 				path.closeSubpath()
 				closed = true
+			@unknown default:
+				assertionFailure("Unknown NSBezierCurve path type")
+				continue
             }
 		}
 

@@ -95,6 +95,9 @@ struct PhotosController {
 
 		case .authorized:
 			completion()
+
+		@unknown default:
+			assertionFailure("Unknown authorization status")
 		}
 	}
 
@@ -124,6 +127,9 @@ struct PhotosController {
 
 		case .authorized:
 			completion()
+
+		@unknown default:
+			assertionFailure("Unknown authorization status")
 		}
 	}
 

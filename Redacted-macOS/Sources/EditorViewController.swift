@@ -11,6 +11,7 @@ final class EditorViewController: NSViewController {
 
 	// MARK: - Properties
 
+    // swiftlint:disable:next private_outlet
 	@IBOutlet var redactedView: RedactedView!
 	@IBOutlet private var placeholderLabel: NSTextField!
 
