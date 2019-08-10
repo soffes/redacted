@@ -1,0 +1,100 @@
+/*
+ Main.strings
+ Redacted
+
+ Created by Sam Soffes on 4/14/15.
+ Copyright © 2015–2017 Nothing Magical Inc. All rights reserved.
+*/
+
+/* About Redacted */
+"5kV-Vb-QxS.title" = "Despre Redacted";
+
+/* Hide Redacted */
+"Olw-nP-bQN.title" = "Ascunde Redacted";
+
+/* Quit Redacted */
+"4sb-4s-VLi.title" = "Ieși din Redacted";
+
+/* Redacted Help */
+"FKE-Sm-Kum.title" = "Ajutor pentru Redacted";
+
+
+/* -- Default menu items -- */
+
+/* Customize Toolbar… */
+"1UK-8n-QPP.title" = "Personalizează toolbar…";
+
+/* Edit */
+"5QF-Oa-p0T.title" = "Editează";
+
+/* Redo */
+"6dh-zS-Vam.title" = "După";
+
+/* Help */
+"F2S-fz-NVQ.title" = "Ajutor";
+
+/* View */
+"H8h-7b-M4v.title" = "Vizualizează";
+
+/* View */
+"HyV-fh-RgO.title" = "Vizualizează";
+
+/* Open… */
+"IAo-SY-fd9.title" = "Deschide…";
+
+/* Show All */
+"Kd2-mp-pUS.title" = "Afisează tot";
+
+/* Bring All to Front */
+"LE2-aR-0XJ.title" = "Adu toate ferestrele în față";
+
+/* Services */
+"NMo-om-nkz.title" = "Servicii";
+
+/* Minimize */
+"OY7-WF-poV.title" = "Minimizare";
+
+/* Zoom */
+"R4o-n2-Eq4.title" = "Apropiere";
+
+/* Window */
+"Td7-aD-5lo.title" = "Fereastră";
+
+/* Hide Others */
+"Vdr-fp-XzO.title" = "Ascunde altele";
+
+/* Edit */
+"W48-6f-4Dl.title" = "Editează";
+
+/* Window */
+"aUF-d1-5bR.title" = "Fereastră";
+
+/* File */
+"bib-Uj-vzu.title" = "Fișier";
+
+/* File */
+"dMs-cI-mzQ.title" = "Fișier";
+
+/* Undo */
+"dRJ-4n-Yzg.title" = "Înapoi";
+
+/* Services */
+"hz9-B4-Xy5.title" = "Servicii";
+
+/* Enter Full Screen */
+"lOm-0W-U7v.title" = "Întră în Full Screen";
+
+/* Open Recent */
+"oas-Oc-fiZ.title" = "Deschide Recente";
+
+/* Show Toolbar */
+"snW-S8-Cw5.title" = "Afișează toolbar";
+
+/* Open Recent */
+"tXI-mr-wws.title" = "Deschide Recente";
+
+/* Clear Menu */
+"vNY-rz-j42.title" = "Ascunde Meniu";
+
+/* Help */
+"wpr-3q-Mcd.title" = "Ajutor";
