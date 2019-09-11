@@ -5,6 +5,6 @@ extension UIApplicationShortcutItem {
                      userInfo: [String: NSSecureCoding]? = nil)
     {
         self.init(type: type, localizedTitle: title, localizedSubtitle: subtitle,
-                  icon: iconName.flatMap(UIApplicationShortcutIcon.init), userInfo: userInfo)
+				  icon: iconName.flatMap { UIApplicationShortcutIcon(templateImageName: $0) }, userInfo: userInfo)
 	}
 }

@@ -46,10 +46,8 @@ final class ToolbarView: UIView {
 		stackView.addArrangedSubview(UIView())
 
 #if !REDACTED_APP_EXTENSION
-        clearButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred),
-                              for: .primaryActionTriggered)
-        shareButton.addTarget(haptics, action: #selector(UIImpactFeedbackGenerator.impactOccurred),
-                              for: .primaryActionTriggered)
+        clearButton.addTarget(self, action: #selector(impactOccurred), for: .primaryActionTriggered)
+        shareButton.addTarget(self, action: #selector(impactOccurred), for: .primaryActionTriggered)
         stackView.addArrangedSubview(clearButton)
         stackView.addArrangedSubview(shareButton)
 #endif
@@ -101,5 +99,11 @@ final class ToolbarView: UIView {
 
 	override class var layerClass: AnyClass {
 		return CATransformLayer.self
+	}
+
+	// MARK: - Actions
+
+	@objc private func impactOccurred() {
+		haptics.impactOccurred()
 	}
 }
