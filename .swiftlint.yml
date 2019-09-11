@@ -1,8 +1,8 @@
 included:
-  - Redacted-iOS/Sources
-  - Redacted-macOS/Sources
-  - RedactedKit/Sources
-  - RedactedPhoto-iOS/Sources
+  - Modules/Redacted-iOS/Sources
+  - Modules/Redacted-macOS/Sources
+  - Modules/RedactedKit/Sources
+  - Modules/RedactedPhoto-iOS/Sources
 whitelist_rules:
   - array_init
   # - attributes

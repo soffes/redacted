@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14215.3"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14550"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
@@ -326,7 +325,7 @@ CA
                             <touchBarItem id="0cd-l7-K24">
                                 <viewController key="viewController" id="Qrs-Iv-nNd">
                                     <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="449-Zy-rgN">
-                                        <rect key="frame" x="0.0" y="0.0" width="230" height="30"/>
+                                        <rect key="frame" x="0.0" y="-3" width="234" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="D8r-l0-Tja">
                                             <font key="font" metaFont="system"/>
@@ -353,7 +352,7 @@ CA
                             <touchBarItem id="evP-Gg-dpJ">
                                 <viewController key="viewController" id="Wbe-9Y-sQ7">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ffI-G0-jzc">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="TouchBar-Clear" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZKd-IH-YLH">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -399,7 +398,7 @@ CA
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IjT-Hi-4ZI">
-                                <rect key="frame" x="181" y="125" width="118" height="19"/>
+                                <rect key="frame" x="181" y="127" width="118" height="15"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" enabled="NO" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Drag an image here" usesSingleLineMode="YES" id="Pyi-gk-LN8">
                                     <font key="font" size="13" name="HelveticaNeue"/>
                                     <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -432,11 +431,11 @@ CA
             <objects>
                 <viewController title="About" showSeguePresentationStyle="single" id="4hD-bt-0Aa" customClass="AboutViewController" customModule="Redacted" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="cNm-8f-sdn">
-                        <rect key="frame" x="0.0" y="0.0" width="230" height="379"/>
+                        <rect key="frame" x="0.0" y="0.0" width="230" height="377"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RCM-ja-Hod">
-                                <rect key="frame" x="20" y="169" width="190" height="190"/>
+                                <rect key="frame" x="20" y="167" width="190" height="190"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="DMp-ix-eJn"/>
                                     <constraint firstAttribute="width" secondItem="RCM-ja-Hod" secondAttribute="height" multiplier="1:1" id="DVf-Nf-zk5"/>
@@ -444,7 +443,7 @@ CA
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="AppIcon" id="nrN-vz-Tik"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nqv-Bg-dma">
-                                <rect key="frame" x="48" y="127" width="134" height="34"/>
+                                <rect key="frame" x="48" y="126" width="134" height="33"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Redacted" id="4Yy-dA-lcB">
                                     <font key="font" metaFont="systemBold" size="28"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -452,7 +451,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ASa-J6-PLp">
-                                <rect key="frame" x="78" y="102" width="75" height="17"/>
+                                <rect key="frame" x="78" y="102" width="75" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="&lt;Version&gt;" id="MID-Hp-Kew">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>

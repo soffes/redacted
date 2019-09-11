@@ -23,7 +23,7 @@ namespace :strings do
 
     # Clean local strings
     puts 'ℹ️  Removing local strings…'
-    Dir['*/Sources/*.lproj'].each do |lproj|
+    Dir['Modules/*/Resources/*.lproj'].each do |lproj|
       next if File.basename(path) == 'Base.lproj'
       system "rm -rf '#{lproj}'"
     end
@@ -32,20 +32,20 @@ namespace :strings do
     shared = {
       'Shared.strings' => 'Localizable.strings'
     }
-    import_strings 'RedactedKit/Support', shared, languages
+    import_strings 'Modules/RedactedKit/Resources', shared, languages
 
     # Import iOS strings
     ios = {
       'iOS.strings' => 'Localizable.strings',
       'iOS InfoPlist.strings' => 'InfoPlist.strings',
     }
-    import_strings 'Redacted-iOS/Support', ios, languages
+    import_strings 'Modules/Redacted-iOS/Resources', ios, languages
 
     # Import macOS strings
     mac = {
       'macOS.strings' => 'Main.strings'
     }
-    import_strings 'Redacted-macOS/Support', mac, languages
+    import_strings 'Modules/Redacted-macOS/Resources', mac, languages
 
     puts
     puts '✅  Success!'
@@ -62,7 +62,7 @@ namespace :strings do
 
     SWIFT
 
-    raw = File.read('Redacted-iOS/Support/en.lproj/Localizable.strings')
+    raw = File.read('Modules/Redacted-iOS/Resources/en.lproj/Localizable.strings')
     keys = raw.scan(/^"([A-Z_]+)" = "/).collect(&:first).sort
 
     keys.each do |key|
@@ -78,7 +78,7 @@ namespace :strings do
       }
     SWIFT
 
-    File.open('Redacted-iOS/Sources/LocalizedString.swift', 'w') do |f|
+    File.open('Modules/Redacted-iOS/Sources/LocalizedString.swift', 'w') do |f|
       f.write(output)
     end
   end
