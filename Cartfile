@@ -1,6 +1,2 @@
-# Both
-github "soffes/X" "master"
-github "soffes/Mixpanel"
-
 # iOS
 github "SVProgressHUD/SVProgressHUD"
