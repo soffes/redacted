@@ -23,7 +23,6 @@
 		212038DD2328B5C900118100 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038772328B57C00118100 /* ToolTipView.swift */; };
 		212038DE2328B5CC00118100 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2120385A2328B57C00118100 /* Main.strings */; };
 		212038DF2328B5D600118100 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038572328B57C00118100 /* PhotoEditingViewController.swift */; };
-		212038E02328B5EC00118100 /* Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120383E2328B57C00118100 /* Mixpanel.swift */; };
 		212038E12328B5EC00118100 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120383F2328B57C00118100 /* Label.swift */; };
 		212038E22328B5EC00118100 /* PhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038402328B57C00118100 /* PhotosController.swift */; };
 		212038E32328B5EC00118100 /* UIApplicationShortcutItem+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038412328B57C00118100 /* UIApplicationShortcutItem+Redacted.swift */; };
@@ -36,7 +35,6 @@
 		212038EA2328B5EC00118100 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038482328B57C00118100 /* SegmentedControl.swift */; };
 		212038EB2328B5EC00118100 /* UIAlertAction+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038492328B57C00118100 /* UIAlertAction+Redacted.swift */; };
 		212038EC2328B5EC00118100 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120384A2328B57C00118100 /* LocalizedString.swift */; };
-		212038ED2328B5EC00118100 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120384B2328B57C00118100 /* Secrets.swift */; };
 		212038EE2328B5EC00118100 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120384C2328B57C00118100 /* EditorViewController.swift */; };
 		212038EF2328B5EC00118100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120384D2328B57C00118100 /* AppDelegate.swift */; };
 		212038F02328B5EC00118100 /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120384E2328B57C00118100 /* ToolbarButton.swift */; };
@@ -49,8 +47,6 @@
 		212038F72328B5FE00118100 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2120382F2328B57C00118100 /* Images.xcassets */; };
 		212038FA2328C14100118100 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120384C2328B57C00118100 /* EditorViewController.swift */; };
 		212038FB2328C14900118100 /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120384E2328B57C00118100 /* ToolbarButton.swift */; };
-		212038FC2328C16500118100 /* Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120383E2328B57C00118100 /* Mixpanel.swift */; };
-		212038FD2328C16B00118100 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120384B2328B57C00118100 /* Secrets.swift */; };
 		212038FE2328C17800118100 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038472328B57C00118100 /* ToolbarView.swift */; };
 		212038FF2328C17E00118100 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038482328B57C00118100 /* SegmentedControl.swift */; };
 		212039002328C18600118100 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038502328B57C00118100 /* ToolTipView.swift */; };
@@ -58,7 +54,6 @@
 		212039022328C19600118100 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120384A2328B57C00118100 /* LocalizedString.swift */; };
 		212039032328C1A300118100 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038462328B57C00118100 /* Preferences.swift */; };
 		212039042328C1BC00118100 /* EditorViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038442328B57C00118100 /* EditorViewController+Actions.swift */; };
-		212BA2C0233FB60B00335979 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 212BA2BF233FB60B00335979 /* Mixpanel */; };
 		212BA30B233FBBD400335979 /* X in Frameworks */ = {isa = PBXBuildFile; productRef = 212BA30A233FBBD400335979 /* X */; settings = {ATTRIBUTES = (Required, ); }; };
 		212BA31D233FC0C300335979 /* HandleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038882328B57C00118100 /* HandleLayer.swift */; };
 		212BA31E233FC0C300335979 /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038892328B57C00118100 /* Redaction.swift */; };
@@ -90,7 +85,6 @@
 		212BA358233FC3E100335979 /* RedactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038922328B57C00118100 /* RedactionsController.swift */; };
 		212BA359233FC3E100335979 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038932328B57C00118100 /* Colors.swift */; };
 		212BA35A233FC3E100335979 /* RedactionSerialization+Adjustments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038942328B57C00118100 /* RedactionSerialization+Adjustments.swift */; };
-		212BA360233FC3FC00335979 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 212BA35F233FC3FC00335979 /* Mixpanel */; };
 		212BA362233FC3FC00335979 /* X in Frameworks */ = {isa = PBXBuildFile; productRef = 212BA361233FC3FC00335979 /* X */; };
 		212BA363233FC3FC00335979 /* libRedactedKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 212BA347233FC3C800335979 /* libRedactedKit.a */; };
 		212BA364233FC40300335979 /* RedactedKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 212BA335233FC24C00335979 /* RedactedKitResources.bundle */; };
@@ -194,7 +188,6 @@
 		212038392328B57C00118100 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2120383B2328B57C00118100 /* Redacted.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Redacted.entitlements; sourceTree = "<group>"; };
 		2120383C2328B57C00118100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2120383E2328B57C00118100 /* Mixpanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mixpanel.swift; sourceTree = "<group>"; };
 		2120383F2328B57C00118100 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		212038402328B57C00118100 /* PhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosController.swift; sourceTree = "<group>"; };
 		212038412328B57C00118100 /* UIApplicationShortcutItem+Redacted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplicationShortcutItem+Redacted.swift"; sourceTree = "<group>"; };
@@ -207,7 +200,6 @@
 		212038482328B57C00118100 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		212038492328B57C00118100 /* UIAlertAction+Redacted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Redacted.swift"; sourceTree = "<group>"; };
 		2120384A2328B57C00118100 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
-		2120384B2328B57C00118100 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		2120384C2328B57C00118100 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		2120384D2328B57C00118100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2120384E2328B57C00118100 /* ToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButton.swift; sourceTree = "<group>"; };
@@ -270,6 +262,7 @@
 		212BA342233FC38100335979 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		212BA347233FC3C800335979 /* libRedactedKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRedactedKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		21382F171F117DF100603048 /* RedcatedPhoto.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RedcatedPhoto.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2156E4642564376B00131801 /* Redacted.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Redacted.entitlements; sourceTree = "<group>"; };
 		2192BAC41AD0E6C500AC87E2 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B874B81EFB4DA2004DC73D /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,7 +274,6 @@
 			files = (
 				212BA32A233FC0CD00335979 /* libRedactedKit.a in Frameworks */,
 				212BA30B233FBBD400335979 /* X in Frameworks */,
-				212BA2C0233FB60B00335979 /* Mixpanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +315,6 @@
 			files = (
 				212BA363233FC3FC00335979 /* libRedactedKit.a in Frameworks */,
 				212BA362233FC3FC00335979 /* X in Frameworks */,
-				212BA360233FC3FC00335979 /* Mixpanel in Frameworks */,
 				21382EEF1F117A5800603048 /* SVProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +325,7 @@
 		210EF32E1AC0A35C00ED8E97 = {
 			isa = PBXGroup;
 			children = (
+				2156E4642564376B00131801 /* Redacted.entitlements */,
 				212038202328B57C00118100 /* Modules */,
 				21CC0D711D88FFB000B3F5DF /* Frameworks */,
 				210EF3381AC0A35C00ED8E97 /* Products */,
@@ -399,7 +391,6 @@
 		2120383D2328B57C00118100 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				2120383E2328B57C00118100 /* Mixpanel.swift */,
 				2120383F2328B57C00118100 /* Label.swift */,
 				212038402328B57C00118100 /* PhotosController.swift */,
 				212038412328B57C00118100 /* UIApplicationShortcutItem+Redacted.swift */,
@@ -412,7 +403,6 @@
 				212038482328B57C00118100 /* SegmentedControl.swift */,
 				212038492328B57C00118100 /* UIAlertAction+Redacted.swift */,
 				2120384A2328B57C00118100 /* LocalizedString.swift */,
-				2120384B2328B57C00118100 /* Secrets.swift */,
 				2120384C2328B57C00118100 /* EditorViewController.swift */,
 				2120384D2328B57C00118100 /* AppDelegate.swift */,
 				2120384E2328B57C00118100 /* ToolbarButton.swift */,
@@ -592,7 +582,6 @@
 			);
 			name = "Redacted-macOS";
 			packageProductDependencies = (
-				212BA2BF233FB60B00335979 /* Mixpanel */,
 				212BA30A233FBBD400335979 /* X */,
 			);
 			productName = Redacted;
@@ -701,7 +690,6 @@
 			);
 			name = "Redacted-iOS";
 			packageProductDependencies = (
-				212BA35F233FC3FC00335979 /* Mixpanel */,
 				212BA361233FC3FC00335979 /* X */,
 			);
 			productName = Redacted;
@@ -715,7 +703,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1110;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Nothing Magical Inc.";
 				TargetAttributes = {
 					210EF3361AC0A35C00ED8E97 = {
@@ -779,7 +767,6 @@
 			);
 			mainGroup = 210EF32E1AC0A35C00ED8E97;
 			packageReferences = (
-				212BA2BE233FB60B00335979 /* XCRemoteSwiftPackageReference "Mixpanel" */,
 				212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */,
 			);
 			productRefGroup = 210EF3381AC0A35C00ED8E97 /* Products */;
@@ -1009,7 +996,6 @@
 			files = (
 				212039022328C19600118100 /* LocalizedString.swift in Sources */,
 				212038DF2328B5D600118100 /* PhotoEditingViewController.swift in Sources */,
-				212038FD2328C16B00118100 /* Secrets.swift in Sources */,
 				212039002328C18600118100 /* ToolTipView.swift in Sources */,
 				212038FF2328C17E00118100 /* SegmentedControl.swift in Sources */,
 				212038FE2328C17800118100 /* ToolbarView.swift in Sources */,
@@ -1018,7 +1004,6 @@
 				212039032328C1A300118100 /* Preferences.swift in Sources */,
 				212038FA2328C14100118100 /* EditorViewController.swift in Sources */,
 				212038FB2328C14900118100 /* ToolbarButton.swift in Sources */,
-				212038FC2328C16500118100 /* Mixpanel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1039,10 +1024,8 @@
 				212038EB2328B5EC00118100 /* UIAlertAction+Redacted.swift in Sources */,
 				212038EF2328B5EC00118100 /* AppDelegate.swift in Sources */,
 				212038E12328B5EC00118100 /* Label.swift in Sources */,
-				212038ED2328B5EC00118100 /* Secrets.swift in Sources */,
 				212038F22328B5EC00118100 /* ToolTipView.swift in Sources */,
 				212038E92328B5EC00118100 /* ToolbarView.swift in Sources */,
-				212038E02328B5EC00118100 /* Mixpanel.swift in Sources */,
 				212038E32328B5EC00118100 /* UIApplicationShortcutItem+Redacted.swift in Sources */,
 				212038EE2328B5EC00118100 /* EditorViewController.swift in Sources */,
 				212038E82328B5EC00118100 /* Preferences.swift in Sources */,
@@ -1199,6 +1182,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1224,7 +1208,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1259,6 +1243,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1279,7 +1264,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -1295,6 +1280,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Redacted.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = UP9C8XM22A;
@@ -1657,14 +1643,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		212BA2BE233FB60B00335979 /* XCRemoteSwiftPackageReference "Mixpanel" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/soffes/Mixpanel";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.3;
-			};
-		};
 		212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soffes/x";
@@ -1676,11 +1654,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		212BA2BF233FB60B00335979 /* Mixpanel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 212BA2BE233FB60B00335979 /* XCRemoteSwiftPackageReference "Mixpanel" */;
-			productName = Mixpanel;
-		};
 		212BA30A233FBBD400335979 /* X */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */;
@@ -1695,11 +1668,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */;
 			productName = X;
-		};
-		212BA35F233FC3FC00335979 /* Mixpanel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 212BA2BE233FB60B00335979 /* XCRemoteSwiftPackageReference "Mixpanel" */;
-			productName = Mixpanel;
 		};
 		212BA361233FC3FC00335979 /* X */ = {
 			isa = XCSwiftPackageProductDependency;

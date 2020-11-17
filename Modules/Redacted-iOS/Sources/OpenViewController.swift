@@ -112,10 +112,6 @@ final class OpenViewController: UIViewController {
 			}
 
 			self?.load(asset)
-
-			mixpanel.track(event: "Import image", parameters: [
-				"source": "Library"
-			])
 		}
 	}
 
@@ -128,10 +124,6 @@ final class OpenViewController: UIViewController {
 			}
 
 			self?.load(asset)
-
-			mixpanel.track(event: "Import image", parameters: [
-				"source": "Last Photo Taken"
-			])
 		}
 	}
 
@@ -139,20 +131,12 @@ final class OpenViewController: UIViewController {
 		haptics.prepare()
 		PhotosController.takePhoto(context: self) { [weak self] image in
 			self?.editorViewController.originalImage = image
-
-			mixpanel.track(event: "Import image", parameters: [
-				"source": "Camera"
-			])
 		}
 	}
 
 	@objc func pastePhoto() {
 		let data = UIPasteboard.general.data(forPasteboardType: "public.image")
 		editorViewController.originalImage = data.flatMap(UIImage.init)
-
-		mixpanel.track(event: "Import image", parameters: [
-			"source": "Paste"
-		])
 	}
 
 	// MARK: - Private

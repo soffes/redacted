@@ -71,7 +71,6 @@ final class EditorViewController: NSViewController {
 	@objc func shareImage(fromView sender: NSView) {
 		if let image = renderedImage {
 			let sharingServicePicker = NSSharingServicePicker(items: [image])
-			sharingServicePicker.delegate = self
 			sharingServicePicker.show(relativeTo: CGRect.zero, of: sender, preferredEdge: .minY)
 		}
 	}
@@ -135,18 +134,5 @@ final class EditorViewController: NSViewController {
 				self?.toolTipView.removeFromSuperview()
 			})
 		}
-	}
-}
-
-extension EditorViewController: NSSharingServicePickerDelegate {
-	func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker, didChoose service: NSSharingService?) {
-		guard let title = service?.title else {
-            return
-        }
-
-		mixpanel.track(event: "Share image", parameters: [
-			"service": title,
-			"redactions_count": redactedView.redactions.count
-		])
 	}
 }

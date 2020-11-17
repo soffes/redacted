@@ -1,4 +1,3 @@
-import Mixpanel
 import UIKit
 
 @UIApplicationMain final class AppDelegate: UIResponder {
@@ -18,8 +17,6 @@ extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
     {
-		mixpanel.track(event: "Launch")
-
 		application.shortcutItems = [
 			UIApplicationShortcutItem(type: choosePhotoType, title: LocalizedString.choosePhoto.string,
                                       iconName: "Photo"),

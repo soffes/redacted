@@ -261,7 +261,7 @@ CA
                                 <toolbarItem implicitItemIdentifier="B5DBD10B-8CAB-4E4A-8767-0DE5BA0302DA" explicitItemIdentifier="mode" label="Mode" paletteLabel="Mode" sizingBehavior="auto" id="m3V-Mi-ixQ">
                                     <nil key="toolTip"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="FtH-vU-pEZ">
-                                        <rect key="frame" x="0.0" y="14" width="145" height="24"/>
+                                        <rect key="frame" x="0.0" y="14" width="153" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="rWV-CV-kvs">
                                             <font key="font" metaFont="system"/>

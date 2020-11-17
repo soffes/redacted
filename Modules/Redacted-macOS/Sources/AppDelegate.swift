@@ -1,9 +1,6 @@
 import AppKit
 import IOKit
-import Mixpanel
 import RedactedKit
-
-var mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 
 @NSApplicationMain final class AppDelegate: NSObject {
 
@@ -72,13 +69,6 @@ var mixpanel = Mixpanel(token: "8a64b11c12312da3bead981a4ad7e30b")
 
 extension AppDelegate: NSApplicationDelegate {
 	func applicationDidFinishLaunching(_ notification: Notification) {
-#if DEBUG
-        mixpanel.enabled = false
-#endif
-
-		mixpanel.identify(identifier: uniqueIdentifier)
-		mixpanel.track(event: "Launch")
-
 		saveMenuItem.title = string("SAVE")
 		exportMenuItem.title = string("EXPORT")
 		copyMenuItem.title = string("COPY_IMAGE")

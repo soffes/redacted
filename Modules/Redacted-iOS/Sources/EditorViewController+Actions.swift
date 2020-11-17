@@ -65,11 +65,6 @@ extension EditorViewController {
                 SVProgressHUD.showSuccess(withStatus: nil)
                 SVProgressHUD.dismiss(withDelay: 1)
             }
-
-            mixpanel.track(event: "Share image", parameters: [
-                "service": title,
-                "redactions_count": count
-            ])
         }
 
         if let presentationController = viewController.popoverPresentationController {
@@ -82,11 +77,6 @@ extension EditorViewController {
 
 	@objc func copyImage() {
 		UIPasteboard.general.image = renderedImage
-
-		mixpanel.track(event: "Share image", parameters: [
-			"service": "Copy",
-			"redactions_count": redactedView.redactions.count
-		])
 	}
 
 #if !REDACTED_APP_EXTENSION
@@ -94,11 +84,6 @@ extension EditorViewController {
         PhotosController.savePhoto(context: self) { [weak self] in
             return self?.renderedImage
         }
-
-        mixpanel.track(event: "Share image", parameters: [
-            "service": "Save",
-            "redactions_count": redactedView.redactions.count
-        ])
     }
 #endif
 

@@ -1,4 +1,3 @@
-import Mixpanel
 import Photos
 import PhotosUI
 import RedactedKit
@@ -20,8 +19,6 @@ class PhotoEditingViewController: EditorViewController, PHContentEditingControll
     }
 
     func startContentEditing(with contentEditingInput: PHContentEditingInput, placeholderImage: UIImage) {
-		mixpanel.track(event: "Photo Extension Launch")
-
 		input = contentEditingInput
     }
 
@@ -76,8 +73,6 @@ class PhotoEditingViewController: EditorViewController, PHContentEditingControll
 				return
 			}
 
-			mixpanel.track(event: "Photo Extension Save")
-
             // Commit edit to Photos
             completionHandler(output)
         }
@@ -87,7 +82,5 @@ class PhotoEditingViewController: EditorViewController, PHContentEditingControll
         return !redactedView.redactions.isEmpty
     }
 
-    func cancelContentEditing() {
-		mixpanel.track(event: "Photo Extension Cancel")
-	}
+    func cancelContentEditing() {}
 }

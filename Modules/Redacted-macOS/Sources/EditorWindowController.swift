@@ -158,21 +158,12 @@ final class EditorWindowController: NSWindowController {
 			let pasteboard = NSPasteboard.general
 			pasteboard.clearContents()
 			pasteboard.writeObjects([image])
-
-			mixpanel.track(event: "Share image", parameters: [
-				"service": "Copy",
-				"redactions_count": editor.redactedView.redactions.count
-			])
 		}
 	}
 
 	@objc func paste(_ sender: Any?) {
 		if let data = NSPasteboard.general.data(forType: .tiff) {
 			editorViewController?.image = NSImage(data: data)
-
-			mixpanel.track(event: "Import image", parameters: [
-				"source": "Paste image"
-			])
 		}
 	}
 
@@ -215,10 +206,6 @@ final class EditorWindowController: NSWindowController {
 			imageURL = url
 			NSDocumentController.shared.noteNewRecentDocumentURL(url)
 			editorViewController?.image = image
-
-			mixpanel.track(event: "Import image", parameters: [
-				"source": source
-			])
 
 			return true
 		}
@@ -295,10 +282,6 @@ extension EditorWindowController: ImageDragDestinationViewDelegate {
 	func imageDragDestinationView(_ view: ImageDragDestinationView, didAcceptImage image: NSImage) {
 		imageURL = nil
 		editorViewController?.image = image
-
-		mixpanel.track(event: "Import image", parameters: [
-			"source": "Drag image"
-		])
 	}
 
 	func imageDragDestinationView(_ view: ImageDragDestinationView, didAcceptURL url: URL) {
@@ -313,11 +296,5 @@ extension EditorWindowController: NSSharingServicePickerTouchBarItemDelegate {
         }
 
 		return [image]
-	}
-}
-
-extension EditorWindowController: NSSharingServicePickerDelegate {
-	func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker, didChoose service: NSSharingService?) {
-		editorViewController?.sharingServicePicker(sharingServicePicker, didChoose: service)
 	}
 }
