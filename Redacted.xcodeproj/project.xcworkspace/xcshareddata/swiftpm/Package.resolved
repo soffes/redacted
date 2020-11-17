@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Mixpanel",
+        "repositoryURL": "https://github.com/soffes/Mixpanel",
+        "state": {
+          "branch": null,
+          "revision": "d03dc2abdcbbb01840c75c2313c77e5a327c2228",
+          "version": "0.2.3"
+        }
+      },
+      {
+        "package": "X",
+        "repositoryURL": "https://github.com/soffes/x",
+        "state": {
+          "branch": null,
+          "revision": "69c28ff29c026f35b9397520db131c3184749051",
+          "version": "0.5.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
