@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="17008"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
@@ -276,10 +276,8 @@ CA
                                         <action selector="changeMode:" target="B8D-0N-5wS" id="7o4-av-AFB"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="B6EDDFE6-8E03-4946-8637-D378BD8B9922" explicitItemIdentifier="clear" label="Clear" paletteLabel="Clear Image" tag="1" image="Clear" id="ZBv-j4-Tiu">
+                                <toolbarItem implicitItemIdentifier="B6EDDFE6-8E03-4946-8637-D378BD8B9922" explicitItemIdentifier="clear" label="Clear" paletteLabel="Clear Image" tag="1" image="Clear" sizingBehavior="auto" id="ZBv-j4-Tiu">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="44" height="28"/>
-                                    <size key="maxSize" width="44" height="28"/>
                                     <button key="view" verticalHuggingPriority="750" tag="1" id="UbA-5R-CyW">
                                         <rect key="frame" x="13" y="14" width="44" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -292,10 +290,8 @@ CA
                                         <action selector="clearImage:" target="B8D-0N-5wS" id="Dzh-a4-5hS"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="3A149F7E-B0BE-4E92-9E87-D977A3F74AC6" explicitItemIdentifier="share" label="Share" paletteLabel="Share" tag="2" image="NSShareTemplate" id="JVS-8C-fuQ">
+                                <toolbarItem implicitItemIdentifier="3A149F7E-B0BE-4E92-9E87-D977A3F74AC6" explicitItemIdentifier="share" label="Share" paletteLabel="Share" tag="2" image="NSShareTemplate" sizingBehavior="auto" id="JVS-8C-fuQ">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="44" height="28"/>
-                                    <size key="maxSize" width="44" height="28"/>
                                     <button key="view" verticalHuggingPriority="750" tag="2" id="3Za-NF-8vf">
                                         <rect key="frame" x="0.0" y="14" width="44" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
