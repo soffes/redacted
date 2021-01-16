@@ -1294,7 +1294,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.4;
+				MARKETING_VERSION = 1.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-mac";
 				PRODUCT_NAME = Redacted;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1320,7 +1320,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.4;
+				MARKETING_VERSION = 1.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nothingmagical.redacted-mac";
 				PRODUCT_NAME = Redacted;
 				SWIFT_COMPILATION_MODE = wholemodule;
