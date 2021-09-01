@@ -1,0 +1,39 @@
+/*
+  Localizable.strings
+  Redacted
+
+  Created by Ryo Nakano on 7/17/21.
+  Copyright © 2015–2017 Nothing Magical Inc. All rights reserved.
+*/
+
+/* Modes */
+"MODE" = "モード";
+"PIXELATE" = "モザイク";
+"BLUR" = "ブラー";
+"BLACK_BAR" = "黒塗り";
+
+/* Actions */
+"SHARE" = "共有";
+"CLEAR" = "消去";
+"CLEAR_IMAGE" = "イメージを消去";
+"SAVE" = "保存";
+"EXPORT" = "エクスポート…";
+
+/* Edit menu */
+"COPY_IMAGE" = "イメージをコピー";
+"PASTE_IMAGE" = "イメージをペースト";
+"SELECT_ALL_REDACTIONS" = "すべての加工部分を選択";
+
+/* Undo actions */
+"INSERT_REDACTION" = "加工の追加";
+"INSERT_REDACTIONS" = "加工の追加";
+"DELETE_REDACTION" = "加工の削除";
+"DELETE_REDACTIONS" = "加工の削除";
+
+/* About */
+"VERSION_FORMAT" = "バージョン %@";
+"CREDITS" = "Designed & developed by Nothing Magical in California.";
+
+/* Tutorial */
+"DRAG_TO_GET_STARTED" = "イメージをここへドラッグ";
+"CLICK_AND_DRAG" = "加工を開始するには、クリックしてドラッグしてください";

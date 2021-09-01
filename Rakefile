@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :strings do
   desc 'Import strings files'
   task :import do
@@ -24,7 +26,8 @@ namespace :strings do
     # Clean local strings
     puts 'ℹ️  Removing local strings…'
     Dir['Modules/*/Resources/*.lproj'].each do |lproj|
-      next if File.basename(path) == 'Base.lproj'
+      next if File.basename(lproj) == 'Base.lproj'
+
       system "rm -rf '#{lproj}'"
     end
 
@@ -67,10 +70,10 @@ namespace :strings do
 
     keys.each do |key|
       camel = key.split('_').collect(&:capitalize).join.tap { |e| e[0] = e[0].downcase }
-      output << %(    case #{camel} = "#{key}"\n)
+      output += %(    case #{camel} = "#{key}"\n)
     end
 
-    output << <<~SWIFT
+    output += <<~SWIFT
 
           var string: String {
               return NSLocalizedString(rawValue, comment: "")
