@@ -3,7 +3,7 @@ included:
   - Modules/Redacted-macOS/Sources
   - Modules/RedactedKit/Sources
   - Modules/RedactedPhoto-iOS/Sources
-whitelist_rules:
+only_rules:
   - array_init
   # - attributes
   - block_based_kvo
@@ -114,9 +114,6 @@ whitelist_rules:
   # - weak_delegate
   - xctfail_message
   - yoda_condition
-identifier_name:
-  excluded:
-    - id
 line_length: 120
 number_separator:
   minimum_length: 5

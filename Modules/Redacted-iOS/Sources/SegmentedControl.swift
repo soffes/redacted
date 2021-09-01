@@ -53,8 +53,8 @@ final class SegmentedControl: UIControl {
 
 		var constraints = [NSLayoutConstraint]()
 
-		for (i, button) in buttons.enumerated() {
-			button.tag = i
+		for (index, button) in buttons.enumerated() {
+			button.tag = index
 			button.addTarget(self, action: #selector(selectItem), for: .touchDown)
 
 			stackView.addArrangedSubview(button)
