@@ -92,7 +92,6 @@
 		212BA36B233FC61300335979 /* RedactedKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 212BA335233FC24C00335979 /* RedactedKitResources.bundle */; };
 		212BA36D233FC61900335979 /* X in Frameworks */ = {isa = PBXBuildFile; productRef = 212BA36C233FC61900335979 /* X */; };
 		212BA36E233FC61900335979 /* libRedactedKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 212BA347233FC3C800335979 /* libRedactedKit.a */; };
-		21382EEF1F117A5800603048 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B874B81EFB4DA2004DC73D /* SVProgressHUD.framework */; };
 		21382F251F117DF100603048 /* RedcatedPhoto.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 21382F171F117DF100603048 /* RedcatedPhoto.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -268,7 +267,6 @@
 		21382F171F117DF100603048 /* RedcatedPhoto.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RedcatedPhoto.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2156E4642564376B00131801 /* Redacted.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Redacted.entitlements; sourceTree = "<group>"; };
 		2192BAC41AD0E6C500AC87E2 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B874B81EFB4DA2004DC73D /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,7 +317,6 @@
 			files = (
 				212BA363233FC3FC00335979 /* libRedactedKit.a in Frameworks */,
 				212BA362233FC3FC00335979 /* X in Frameworks */,
-				21382EEF1F117A5800603048 /* SVProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +328,6 @@
 			children = (
 				2156E4642564376B00131801 /* Redacted.entitlements */,
 				212038202328B57C00118100 /* Modules */,
-				21CC0D711D88FFB000B3F5DF /* Frameworks */,
 				210EF3381AC0A35C00ED8E97 /* Products */,
 			);
 			indentWidth = 4;
@@ -538,23 +534,6 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		21CC0D711D88FFB000B3F5DF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				21CC0D721D88FFB000B3F5DF /* iOS */,
-			);
-			name = Frameworks;
-			path = Carthage/Build;
-			sourceTree = "<group>";
-		};
-		21CC0D721D88FFB000B3F5DF /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				21B874B81EFB4DA2004DC73D /* SVProgressHUD.framework */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -680,7 +659,6 @@
 				2192BAC01AD0E6C500AC87E2 /* Sources */,
 				2192BAC11AD0E6C500AC87E2 /* Frameworks */,
 				2192BAC21AD0E6C500AC87E2 /* Resources */,
-				2189E4B51AF3DD5F00051BD6 /* Embed Carthage Frameworks */,
 				216677E41D8909D70031B903 /* Set Version */,
 				21382F291F117DF100603048 /* Embed App Extensions */,
 				2110964F218621D700D07B5D /* Swiftlint */,
@@ -894,23 +872,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/usr/bin/env ruby";
 			shellScript = "git = `sh /etc/profile; which git`.chomp\napp_build = `#{git} rev-list HEAD --count`.chomp.to_i\n`/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion #{app_build}\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"`\nputs \"Updated #{ENV['TARGET_BUILD_DIR']}/#{ENV['INFOPLIST_PATH']}\"";
-		};
-		2189E4B51AF3DD5F00051BD6 /* Embed Carthage Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/X.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Mixpanel.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
-			);
-			name = "Embed Carthage Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		21B997DE1F12961E0049BF84 /* Set Version */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1532,10 +1493,6 @@
 				CODE_SIGN_ENTITLEMENTS = "Modules/Redacted-iOS/Support/Redacted.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1560,10 +1517,6 @@
 				CODE_SIGN_ENTITLEMENTS = "Modules/Redacted-iOS/Support/Redacted.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = "$(SRCROOT)/Modules/Redacted-iOS/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

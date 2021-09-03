@@ -1,10 +1,6 @@
 import RedactedKit
 import UIKit
 
-#if !REDACTED_APP_EXTENSION
-import SVProgressHUD
-#endif
-
 extension EditorViewController {
 	@objc func usePixelate() {
 		toolbarView.modeControl.selectedIndex = 0
@@ -48,8 +44,8 @@ extension EditorViewController {
         let viewController = UIActivityViewController(activityItems: [item], applicationActivities: nil)
         viewController.completionWithItemsHandler = { [weak self] type, completed, _, error in
             if error != nil {
-                SVProgressHUD.showError(withStatus: nil)
-                SVProgressHUD.dismiss(withDelay: 1)
+//                SVProgressHUD.showError(withStatus: nil)
+//                SVProgressHUD.dismiss(withDelay: 1)
                 return
             }
 
@@ -58,13 +54,13 @@ extension EditorViewController {
                 let count = self?.redactedView.redactions.count
             else { return }
 
-            if title == "com.apple.UIKit.activity.CopyToPasteboard" {
-                SVProgressHUD.showSuccess(withStatus: nil)
-                SVProgressHUD.dismiss(withDelay: 1)
-            } else if title == "com.apple.UIKit.activity.SaveToCameraRoll" {
-                SVProgressHUD.showSuccess(withStatus: nil)
-                SVProgressHUD.dismiss(withDelay: 1)
-            }
+//            if title == "com.apple.UIKit.activity.CopyToPasteboard" {
+//                SVProgressHUD.showSuccess(withStatus: nil)
+//                SVProgressHUD.dismiss(withDelay: 1)
+//            } else if title == "com.apple.UIKit.activity.SaveToCameraRoll" {
+//                SVProgressHUD.showSuccess(withStatus: nil)
+//                SVProgressHUD.dismiss(withDelay: 1)
+//            }
         }
 
         if let presentationController = viewController.popoverPresentationController {
