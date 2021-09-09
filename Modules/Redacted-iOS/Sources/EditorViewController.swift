@@ -201,8 +201,8 @@ class EditorViewController: UIViewController {
 		NSLayoutConstraint.activate([
 			redactedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			redactedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			redactedView.topAnchor.constraint(equalTo: view.topAnchor),
-			redactedView.bottomAnchor.constraint(equalTo: spacerView.topAnchor),
+			redactedView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			redactedView.bottomAnchor.constraint(equalTo: spacerView.topAnchor, constant: -16),
 
 			spacerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 			spacerView.heightAnchor.constraint(equalTo: toolbarView.heightAnchor),

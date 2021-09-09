@@ -71,16 +71,24 @@ public class CoreImageView: MTKView {
 			return
 		}
 
-		clear(to: drawable, commandBuffer: commandBuffer)
+		let texture = drawable.texture
+		clear(commandBuffer: commandBuffer)
 
 		if var image = ciImage {
-			// Transform to expected coordinates
+			// Transform to unflipped
 			image = image.transformed(by: CGAffineTransform(scaleX: 1, y: -1))
 			image = image.transformed(by: CGAffineTransform(translationX: 0, y: image.extent.height))
 
-			let rect = pixelImageRect(for: drawable.texture)
+			// Aspect fit
+			let textureBounds = CGRect(x: 0, y: 0, width: texture.width, height: texture.height)
+			let rect = imageRectForBounds(textureBounds)
+			image = image.transformed(by: CGAffineTransform(scaleX: rect.width / image.extent.width,
+															y: rect.height / image.extent.height))
+			image = image.transformed(by: CGAffineTransform(translationX: rect.origin.x, y: rect.origin.y))
+
+			// Draw
 			let colorSpace = image.colorSpace ?? CGColorSpaceCreateDeviceRGB()
-			ciContext.render(image, to: drawable.texture, commandBuffer: commandBuffer, bounds: rect,
+			ciContext.render(image, to: texture, commandBuffer: commandBuffer, bounds: textureBounds,
 							 colorSpace: colorSpace)
 		}
 
@@ -102,16 +110,7 @@ public class CoreImageView: MTKView {
 
 	// MARK: - Private
 
-	private func pixelImageRect(for texture: MTLTexture) -> CGRect {
-		var rect = imageRectForBounds(bounds)
-		rect.origin.x *= contentScaleFactor
-		rect.origin.y *= -contentScaleFactor
-		rect.size.width *= contentScaleFactor
-		rect.size.height *= contentScaleFactor
-		return rect
-	}
-
-	private func clear(to drawable: MTLDrawable, commandBuffer: MTLCommandBuffer) {
+	private func clear(commandBuffer: MTLCommandBuffer) {
 		guard let renderPassDescriptor = currentRenderPassDescriptor else {
 			assertionFailure("Missing render pass descriptor")
 			return
@@ -119,9 +118,6 @@ public class CoreImageView: MTKView {
 
 		let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)!
 		renderEncoder.endEncoding()
-
-//		commandBuffer.present(drawable)
-//		commandBuffer.commit()
 	}
 }
 #endif
