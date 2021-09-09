@@ -1,9 +1,9 @@
 #if !os(macOS)
 import CoreImage
-import GLKit
+import MetalKit
 import UIKit
 
-public class CoreImageView: GLKView {
+public class CoreImageView: MTKView {
 
 	// MARK: - Properties
 
@@ -14,51 +14,63 @@ public class CoreImageView: GLKView {
 	}
 
 	private let ciContext: CIContext
+	private let commandQueue: MTLCommandQueue
 
 	// MARK: - Initializers
 
-	public convenience init() {
-		self.init(frame: .zero, context: EAGLContext(api: .openGLES2)!)
-	}
+	public override init(frame: CGRect = .zero, device: MTLDevice? = nil) {
+		guard let device = device ?? MTLCreateSystemDefaultDevice(), let queue = device.makeCommandQueue() else {
+			fatalError("Missing MTLDevice")
+		}
 
-	public override init(frame: CGRect, context: EAGLContext) {
-		ciContext = CIContext(eaglContext: context, options: [
+		commandQueue = queue
+
+		ciContext = CIContext(mtlDevice: device, options: [
 			.workingColorSpace: NSNull()
 		])
 
-		super.init(frame: frame, context: context)
+		super.init(frame: .zero, device: device)
 
 		backgroundColor = .black
+		framebufferOnly = false
+		enableSetNeedsDisplay = true
+		isPaused = true
+		clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
 	}
 
-	public required init?(coder aDecoder: NSCoder) {
+	@available(*, unavailable)
+	required init(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
 	// MARK: - View
 
 	public override func draw(_ rect: CGRect) {
-		glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
-
-		if let backgroundColor = (backgroundColor?.cgColor).flatMap(CIColor.init) {
-			var pixelBounds = bounds
-			pixelBounds.origin.x *= contentScaleFactor
-			pixelBounds.origin.y *= contentScaleFactor
-			pixelBounds.size.width *= contentScaleFactor
-			pixelBounds.size.height *= contentScaleFactor
-
-			let colorImage = CIImage(color: backgroundColor).cropped(to: pixelBounds)
-			ciContext.draw(colorImage, in: pixelBounds, from: colorImage.extent)
-		}
-
-		guard var image = ciImage else {
+		guard let commandBuffer = commandQueue.makeCommandBuffer() else {
+			assertionFailure("Failed to create command buffer")
 			return
 		}
 
+		guard let drawable = currentDrawable else {
+			print("Failed to get current drawable")
+			return
+		}
+
+		guard var image = ciImage else {
+			clear(to: drawable, commandBuffer: commandBuffer)
+			return
+		}
+
+		// Transform to expected coordinates
 		image = image.transformed(by: CGAffineTransform(scaleX: 1, y: -1))
 		image = image.transformed(by: CGAffineTransform(translationX: 0, y: image.extent.height))
 
-		ciContext.draw(image, in: pixelImageRectForBounds(bounds), from: image.extent)
+		let rect = pixelImageRect(for: drawable.texture)
+		let colorSpace = image.colorSpace ?? CGColorSpaceCreateDeviceRGB()
+		ciContext.render(image, to: drawable.texture, commandBuffer: commandBuffer, bounds: rect, colorSpace: colorSpace)
+
+		commandBuffer.present(drawable)
+		commandBuffer.commit()
 	}
 
 	// MARK: - Configuration
@@ -73,15 +85,28 @@ public class CoreImageView: GLKView {
 		return rect
 	}
 
-	private func pixelImageRectForBounds(_ bounds: CGRect) -> CGRect {
-		var rect = imageRectForBounds(bounds)
+	// MARK: - Private
 
+	private func pixelImageRect(for texture: MTLTexture) -> CGRect {
+		var rect = imageRectForBounds(bounds)
 		rect.origin.x *= contentScaleFactor
-		rect.origin.y *= contentScaleFactor
+		rect.origin.y *= -contentScaleFactor
 		rect.size.width *= contentScaleFactor
 		rect.size.height *= contentScaleFactor
-
 		return rect
+	}
+
+	private func clear(to drawable: MTLDrawable, commandBuffer: MTLCommandBuffer) {
+		guard let renderPassDescriptor = currentRenderPassDescriptor else {
+			assertionFailure("Missing render pass descriptor")
+			return
+		}
+
+		let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)!
+		renderEncoder.endEncoding()
+
+		commandBuffer.present(drawable)
+		commandBuffer.commit()
 	}
 }
 #endif
