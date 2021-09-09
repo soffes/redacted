@@ -32,10 +32,10 @@ public class CoreImageView: MTKView {
 		super.init(frame: .zero, device: device)
 
 		backgroundColor = .black
+		clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
 		framebufferOnly = false
 		enableSetNeedsDisplay = true
 		isPaused = true
-		clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 1)
 	}
 
 	@available(*, unavailable)
@@ -43,7 +43,22 @@ public class CoreImageView: MTKView {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	// MARK: - View
+	// MARK: - UIView
+
+	public override var backgroundColor: UIColor? {
+		didSet {
+			let color = backgroundColor ?? .black
+
+			var red: CGFloat = 0
+			var green: CGFloat = 0
+			var blue: CGFloat = 0
+			var alpha: CGFloat = 0
+			color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+			clearColor = MTLClearColor(red: red, green: green, blue: blue, alpha: alpha)
+			setNeedsDisplay()
+		}
+	}
 
 	public override func draw(_ rect: CGRect) {
 		guard let commandBuffer = commandQueue.makeCommandBuffer() else {
@@ -56,18 +71,18 @@ public class CoreImageView: MTKView {
 			return
 		}
 
-		guard var image = ciImage else {
-			clear(to: drawable, commandBuffer: commandBuffer)
-			return
+		clear(to: drawable, commandBuffer: commandBuffer)
+
+		if var image = ciImage {
+			// Transform to expected coordinates
+			image = image.transformed(by: CGAffineTransform(scaleX: 1, y: -1))
+			image = image.transformed(by: CGAffineTransform(translationX: 0, y: image.extent.height))
+
+			let rect = pixelImageRect(for: drawable.texture)
+			let colorSpace = image.colorSpace ?? CGColorSpaceCreateDeviceRGB()
+			ciContext.render(image, to: drawable.texture, commandBuffer: commandBuffer, bounds: rect,
+							 colorSpace: colorSpace)
 		}
-
-		// Transform to expected coordinates
-		image = image.transformed(by: CGAffineTransform(scaleX: 1, y: -1))
-		image = image.transformed(by: CGAffineTransform(translationX: 0, y: image.extent.height))
-
-		let rect = pixelImageRect(for: drawable.texture)
-		let colorSpace = image.colorSpace ?? CGColorSpaceCreateDeviceRGB()
-		ciContext.render(image, to: drawable.texture, commandBuffer: commandBuffer, bounds: rect, colorSpace: colorSpace)
 
 		commandBuffer.present(drawable)
 		commandBuffer.commit()
@@ -105,8 +120,8 @@ public class CoreImageView: MTKView {
 		let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)!
 		renderEncoder.endEncoding()
 
-		commandBuffer.present(drawable)
-		commandBuffer.commit()
+//		commandBuffer.present(drawable)
+//		commandBuffer.commit()
 	}
 }
 #endif
