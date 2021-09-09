@@ -308,7 +308,7 @@ public final class RedactedView: CoreImageView {
 		let layer = BoundingBoxLayer()
 		boundingBoxes[redaction.uuid] = layer
 
-#if os(OSX)
+#if os(macOS)
         self.layer?.addSublayer(layer)
 #else
         self.layer.addSublayer(layer)

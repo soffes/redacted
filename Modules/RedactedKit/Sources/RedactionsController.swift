@@ -15,7 +15,7 @@ public final class RedactionsController {
 	public  var image: Image? {
 		didSet {
 			if let image = image {
-				#if os(OSX)
+				#if os(macOS)
 					ciImage = CIImage(cgImage: image.cgImage!)
 				#else
 					var img = CIImage(cgImage: image.cgImage!)
