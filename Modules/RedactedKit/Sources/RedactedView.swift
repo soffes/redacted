@@ -1,11 +1,13 @@
-import QuartzCore
+import CoreImageView
 import X
 
-#if !os(OSX)
+#if canImport(AppKit)
+import AppKit
+#elseif canImport(UIKit)
 import UIKit
 #endif
 
-public final class RedactedView: CoreImageView {
+public final class RedactedView: View {
 
 	// MARK: - Constants
 
@@ -87,12 +89,27 @@ public final class RedactedView: CoreImageView {
 		return customUndoManager
 	}
 
-	// MARK: - CALayer
+	private var imageView: CoreImageView!
+
+	// MARK: - Initializers
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		initialize()
+	}
+
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		initialize()
+	}
+
+	// MARK: - View
 
 	public override var frame: CGRect {
 		didSet {
 			if oldValue.size != frame.size {
 				updateRedactions()
+				imageView.frame = bounds
 			}
 		}
 	}
@@ -104,7 +121,7 @@ public final class RedactedView: CoreImageView {
 	}
 
 	public func tap(point: CGPoint, exclusive: Bool = true) {
-		if ciImage == nil {
+		if imageView.ciImage == nil {
 			return
 		}
 
@@ -126,7 +143,7 @@ public final class RedactedView: CoreImageView {
 	}
 
 	public func drag(point: CGPoint, state: GestureRecognizer.State) {
-		if ciImage == nil {
+		if imageView.ciImage == nil {
 			return
 		}
 
@@ -208,7 +225,7 @@ public final class RedactedView: CoreImageView {
 	}
 
 	public func rect(for redaction: Redaction) -> CGRect {
-		return redaction.rectForBounds(imageRectForBounds(bounds)).flippedInRect(bounds)
+		return redaction.rectForBounds(imageView.imageRectForBounds(bounds)).flippedInRect(bounds)
 	}
 
 	public func redaction(at point: CGPoint) -> Redaction? {
@@ -225,8 +242,16 @@ public final class RedactedView: CoreImageView {
 
 	// MARK: - Private
 
+	private func initialize() {
+		wantsLayer = true
+
+		let imageView = CoreImageView()
+		addSubview(imageView)
+		self.imageView = imageView
+	}
+
 	private func converPointToUnits(_ point: CGPoint) -> CGPoint {
-		let rect = imageRectForBounds(bounds)
+		let rect = imageView.imageRectForBounds(bounds)
 		var point = point.flippedInRect(bounds)
 		point.x = (point.x - rect.origin.x) / rect.size.width
 		point.y = (point.y - rect.origin.y) / rect.size.height
@@ -243,7 +268,7 @@ public final class RedactedView: CoreImageView {
 	}
 
 	private func updateRedactions() {
-		ciImage = redactionsController.process()
+		imageView.ciImage = redactionsController.process()
 		updateSelections()
 	}
 

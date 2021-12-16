@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2116C99D276ADD630097E2F7 /* CoreImageView in Frameworks */ = {isa = PBXBuildFile; productRef = 2116C99C276ADD630097E2F7 /* CoreImageView */; };
 		212038C42328B5BF00118100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2120385F2328B57C00118100 /* Main.storyboard */; };
 		212038C52328B5C200118100 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212038612328B57C00118100 /* Images.xcassets */; };
 		212038D22328B5C800118100 /* NSBezierPath+Redacted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120386C2328B57C00118100 /* NSBezierPath+Redacted.swift */; };
@@ -91,10 +92,6 @@
 		212BA36D233FC61900335979 /* X in Frameworks */ = {isa = PBXBuildFile; productRef = 212BA36C233FC61900335979 /* X */; };
 		212BA36E233FC61900335979 /* libRedactedKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 212BA347233FC3C800335979 /* libRedactedKit.a */; };
 		21382F251F117DF100603048 /* RedcatedPhoto.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 21382F171F117DF100603048 /* RedcatedPhoto.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		21EBE22026E9AC2000216F13 /* CoreImageView-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038912328B57C00118100 /* CoreImageView-macOS.swift */; };
-		21EBE22126E9AC2000216F13 /* CoreImageView-iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EBE21B26E9AC1800216F13 /* CoreImageView-iOS.swift */; };
-		21EBE22226E9AC2100216F13 /* CoreImageView-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038912328B57C00118100 /* CoreImageView-macOS.swift */; };
-		21EBE22326E9AC2100216F13 /* CoreImageView-iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EBE21B26E9AC1800216F13 /* CoreImageView-iOS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,7 +255,6 @@
 		2120388E2328B57C00118100 /* CIImage+RedactedKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIImage+RedactedKit.swift"; sourceTree = "<group>"; };
 		2120388F2328B57C00118100 /* RedactedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactedView.swift; sourceTree = "<group>"; };
 		212038902328B57C00118100 /* CoreGraphics+RedactedKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+RedactedKit.swift"; sourceTree = "<group>"; };
-		212038912328B57C00118100 /* CoreImageView-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreImageView-macOS.swift"; sourceTree = "<group>"; };
 		212038922328B57C00118100 /* RedactionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactionsController.swift; sourceTree = "<group>"; };
 		212038932328B57C00118100 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		212038942328B57C00118100 /* RedactionSerialization+Adjustments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RedactionSerialization+Adjustments.swift"; sourceTree = "<group>"; };
@@ -267,9 +263,7 @@
 		212BA342233FC38100335979 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		212BA347233FC3C800335979 /* libRedactedKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRedactedKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		21382F171F117DF100603048 /* RedcatedPhoto.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RedcatedPhoto.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		2156E4642564376B00131801 /* Redacted.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Redacted.entitlements; sourceTree = "<group>"; };
 		2192BAC41AD0E6C500AC87E2 /* Redacted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redacted.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		21EBE21B26E9AC1800216F13 /* CoreImageView-iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreImageView-iOS.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +280,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2116C99D276ADD630097E2F7 /* CoreImageView in Frameworks */,
 				212BA330233FC20600335979 /* X in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,12 +321,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21006A43276AD2D000BBF3A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		210EF32E1AC0A35C00ED8E97 = {
 			isa = PBXGroup;
 			children = (
-				2156E4642564376B00131801 /* Redacted.entitlements */,
 				212038202328B57C00118100 /* Modules */,
 				210EF3381AC0A35C00ED8E97 /* Products */,
+				21006A43276AD2D000BBF3A3 /* Frameworks */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -521,8 +523,6 @@
 				2120388E2328B57C00118100 /* CIImage+RedactedKit.swift */,
 				2120388F2328B57C00118100 /* RedactedView.swift */,
 				212038902328B57C00118100 /* CoreGraphics+RedactedKit.swift */,
-				212038912328B57C00118100 /* CoreImageView-macOS.swift */,
-				21EBE21B26E9AC1800216F13 /* CoreImageView-iOS.swift */,
 				212038922328B57C00118100 /* RedactionsController.swift */,
 				212038932328B57C00118100 /* Colors.swift */,
 				212038942328B57C00118100 /* RedactionSerialization+Adjustments.swift */,
@@ -591,6 +591,7 @@
 			name = "RedactedKit-macOS";
 			packageProductDependencies = (
 				212BA32F233FC20600335979 /* X */,
+				2116C99C276ADD630097E2F7 /* CoreImageView */,
 			);
 			productName = "RedactedKit-macOS";
 			productReference = 212BA314233FC0BB00335979 /* libRedactedKit.a */;
@@ -755,6 +756,7 @@
 			mainGroup = 210EF32E1AC0A35C00ED8E97;
 			packageReferences = (
 				212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */,
+				2116C99B276ADD630097E2F7 /* XCRemoteSwiftPackageReference "CoreImageView" */,
 			);
 			productRefGroup = 210EF3381AC0A35C00ED8E97 /* Products */;
 			projectDirPath = "";
@@ -922,9 +924,7 @@
 				212BA324233FC0C300335979 /* RedactedView.swift in Sources */,
 				212BA31F233FC0C300335979 /* RedactedKit.swift in Sources */,
 				212BA323233FC0C300335979 /* CIImage+RedactedKit.swift in Sources */,
-				21EBE22226E9AC2100216F13 /* CoreImageView-macOS.swift in Sources */,
 				212BA31E233FC0C300335979 /* Redaction.swift in Sources */,
-				21EBE22326E9AC2100216F13 /* CoreImageView-iOS.swift in Sources */,
 				212BA321233FC0C300335979 /* BoundingBoxLayer.swift in Sources */,
 				212BA325233FC0C300335979 /* CoreGraphics+RedactedKit.swift in Sources */,
 				212BA322233FC0C300335979 /* RedactionSerialization.swift in Sources */,
@@ -950,9 +950,7 @@
 				212BA352233FC3E100335979 /* BoundingBoxLayer.swift in Sources */,
 				212BA353233FC3E100335979 /* RedactionSerialization.swift in Sources */,
 				212BA351233FC3E100335979 /* ChainFilter.swift in Sources */,
-				21EBE22026E9AC2000216F13 /* CoreImageView-macOS.swift in Sources */,
 				212BA355233FC3E100335979 /* RedactedView.swift in Sources */,
-				21EBE22126E9AC2000216F13 /* CoreImageView-iOS.swift in Sources */,
 				212BA356233FC3E100335979 /* CoreGraphics+RedactedKit.swift in Sources */,
 				212BA354233FC3E100335979 /* CIImage+RedactedKit.swift in Sources */,
 				212BA34E233FC3E100335979 /* HandleLayer.swift in Sources */,
@@ -1609,6 +1607,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2116C99B276ADD630097E2F7 /* XCRemoteSwiftPackageReference "CoreImageView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/CoreImageView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soffes/x";
@@ -1620,6 +1626,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2116C99C276ADD630097E2F7 /* CoreImageView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2116C99B276ADD630097E2F7 /* XCRemoteSwiftPackageReference "CoreImageView" */;
+			productName = CoreImageView;
+		};
 		212BA30A233FBBD400335979 /* X */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */;

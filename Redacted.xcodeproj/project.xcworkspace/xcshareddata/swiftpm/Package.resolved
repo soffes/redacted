@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "CoreImageView",
+        "repositoryURL": "https://github.com/soffes/CoreImageView",
+        "state": {
+          "branch": null,
+          "revision": "d5dd091bf473e21303b307aaaaf5c70c751ba53b",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "X",
         "repositoryURL": "https://github.com/soffes/x",
         "state": {
