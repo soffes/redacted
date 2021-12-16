@@ -19,8 +19,6 @@ public final class RedactionsController {
 					ciImage = CIImage(cgImage: image.cgImage!)
 				#else
 					var img = CIImage(cgImage: image.cgImage!)
-					img = img.transformed(by: CGAffineTransform(scaleX: 1, y: -1)
-                        .concatenating(CGAffineTransform(translationX: 0, y: img.extent.height)))
 
 					switch image.imageOrientation {
 					case .up:

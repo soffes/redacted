@@ -56,7 +56,12 @@ public struct Redaction: Hashable, Equatable {
 
 	public func filter(_ image: CIImage, preprocessor: Preprocessor = Redaction.preprocess) -> CIFilter {
 		let extent = image.extent
-		let scaledRect = rectForBounds(extent).flippedInRect(extent)
+		var scaledRect = rectForBounds(extent)
+
+#if canImport(AppKit)
+		scaledRect = scaledRect.flippedInRect(extent)
+#endif
+
 		let processed = preprocessor(image, type)
 
 		return CIFilter(name: "CISourceOverCompositing", parameters: [

@@ -257,6 +257,7 @@ public final class RedactedView: View {
 	private func converPointToUnits(_ point: CGPoint) -> CGPoint {
 		let rect = imageView.imageRectForBounds(bounds)
 		var point = point.flippedInRect(bounds)
+
 		point.x = (point.x - rect.origin.x) / rect.size.width
 		point.y = (point.y - rect.origin.y) / rect.size.height
 		return point

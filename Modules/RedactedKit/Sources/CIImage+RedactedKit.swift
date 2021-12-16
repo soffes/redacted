@@ -8,12 +8,7 @@ import QuartzCore
 
 extension CIImage {
 	public var renderedImage: Image {
-		var image = self
-
-#if os(iOS)
-        image = image.transformed(by: CGAffineTransform(scaleX: 1, y: -1)
-            .concatenating(CGAffineTransform(translationX: 0, y: image.extent.height)))
-#endif
+		let image = self
 
 		let colorSpace = CGColorSpaceCreateDeviceRGB()
         let options: [CIContextOption: Any] = [
