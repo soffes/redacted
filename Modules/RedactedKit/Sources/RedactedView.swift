@@ -109,9 +109,13 @@ public final class RedactedView: View {
 		didSet {
 			if oldValue.size != frame.size {
 				updateRedactions()
-				imageView.frame = bounds
 			}
 		}
+	}
+
+	public override func layoutSubviews() {
+		super.layoutSubviews()
+		imageView.frame = bounds
 	}
 
 	// MARK: - Manipulation

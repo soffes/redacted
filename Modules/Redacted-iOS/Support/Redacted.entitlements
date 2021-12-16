@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.nothingmagical.redacted-ios</string>
+		<string>group.com.soffes.redacted-ios</string>
 	</array>
 </dict>
 </plist>
