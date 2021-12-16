@@ -12,7 +12,7 @@
       },
       {
         "package": "X",
-        "repositoryURL": "https://github.com/soffes/x",
+        "repositoryURL": "https://github.com/soffes/X.git",
         "state": {
           "branch": null,
           "revision": "69c28ff29c026f35b9397520db131c3184749051",

@@ -55,7 +55,6 @@
 		212039022328C19600118100 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120384A2328B57C00118100 /* LocalizedString.swift */; };
 		212039032328C1A300118100 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038462328B57C00118100 /* Preferences.swift */; };
 		212039042328C1BC00118100 /* EditorViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038442328B57C00118100 /* EditorViewController+Actions.swift */; };
-		212BA30B233FBBD400335979 /* X in Frameworks */ = {isa = PBXBuildFile; productRef = 212BA30A233FBBD400335979 /* X */; settings = {ATTRIBUTES = (Required, ); }; };
 		212BA31D233FC0C300335979 /* HandleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038882328B57C00118100 /* HandleLayer.swift */; };
 		212BA31E233FC0C300335979 /* Redaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038892328B57C00118100 /* Redaction.swift */; };
 		212BA31F233FC0C300335979 /* RedactedKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2120388A2328B57C00118100 /* RedactedKit.swift */; };
@@ -69,7 +68,6 @@
 		212BA328233FC0C300335979 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038932328B57C00118100 /* Colors.swift */; };
 		212BA329233FC0C300335979 /* RedactionSerialization+Adjustments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038942328B57C00118100 /* RedactionSerialization+Adjustments.swift */; };
 		212BA32A233FC0CD00335979 /* libRedactedKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 212BA314233FC0BB00335979 /* libRedactedKit.a */; };
-		212BA330233FC20600335979 /* X in Frameworks */ = {isa = PBXBuildFile; productRef = 212BA32F233FC20600335979 /* X */; };
 		212BA33B233FC26200335979 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2120387A2328B57C00118100 /* Localizable.strings */; };
 		212BA33C233FC28700335979 /* RedactedKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 212BA335233FC24C00335979 /* RedactedKitResources.bundle */; };
 		212BA34E233FC3E100335979 /* HandleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038882328B57C00118100 /* HandleLayer.swift */; };
@@ -84,14 +82,12 @@
 		212BA358233FC3E100335979 /* RedactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038922328B57C00118100 /* RedactionsController.swift */; };
 		212BA359233FC3E100335979 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038932328B57C00118100 /* Colors.swift */; };
 		212BA35A233FC3E100335979 /* RedactionSerialization+Adjustments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212038942328B57C00118100 /* RedactionSerialization+Adjustments.swift */; };
-		212BA362233FC3FC00335979 /* X in Frameworks */ = {isa = PBXBuildFile; productRef = 212BA361233FC3FC00335979 /* X */; };
 		212BA363233FC3FC00335979 /* libRedactedKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 212BA347233FC3C800335979 /* libRedactedKit.a */; };
 		212BA364233FC40300335979 /* RedactedKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 212BA335233FC24C00335979 /* RedactedKitResources.bundle */; };
-		212BA366233FC44400335979 /* X in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 212BA365233FC44400335979 /* X */; };
 		212BA36B233FC61300335979 /* RedactedKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 212BA335233FC24C00335979 /* RedactedKitResources.bundle */; };
-		212BA36D233FC61900335979 /* X in Frameworks */ = {isa = PBXBuildFile; productRef = 212BA36C233FC61900335979 /* X */; };
 		212BA36E233FC61900335979 /* libRedactedKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 212BA347233FC3C800335979 /* libRedactedKit.a */; };
 		21382F251F117DF100603048 /* RedcatedPhoto.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 21382F171F117DF100603048 /* RedcatedPhoto.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		215660D9276BC0E6001A346C /* X in Frameworks */ = {isa = PBXBuildFile; productRef = 215660D8276BC0E6001A346C /* X */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,7 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				212BA32A233FC0CD00335979 /* libRedactedKit.a in Frameworks */,
-				212BA30B233FBBD400335979 /* X in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2116C99D276ADD630097E2F7 /* CoreImageView in Frameworks */,
-				212BA330233FC20600335979 /* X in Frameworks */,
+				215660D9276BC0E6001A346C /* X in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +291,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				212BA366233FC44400335979 /* X in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +299,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				212BA36E233FC61900335979 /* libRedactedKit.a in Frameworks */,
-				212BA36D233FC61900335979 /* X in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +307,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				212BA363233FC3FC00335979 /* libRedactedKit.a in Frameworks */,
-				212BA362233FC3FC00335979 /* X in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,7 +561,6 @@
 			);
 			name = "Redacted-macOS";
 			packageProductDependencies = (
-				212BA30A233FBBD400335979 /* X */,
 			);
 			productName = Redacted;
 			productReference = 210EF3371AC0A35C00ED8E97 /* Redacted.app */;
@@ -590,8 +581,8 @@
 			);
 			name = "RedactedKit-macOS";
 			packageProductDependencies = (
-				212BA32F233FC20600335979 /* X */,
 				2116C99C276ADD630097E2F7 /* CoreImageView */,
+				215660D8276BC0E6001A346C /* X */,
 			);
 			productName = "RedactedKit-macOS";
 			productReference = 212BA314233FC0BB00335979 /* libRedactedKit.a */;
@@ -628,7 +619,6 @@
 			);
 			name = "RedactedKit-iOS";
 			packageProductDependencies = (
-				212BA365233FC44400335979 /* X */,
 			);
 			productName = "RedactedKit-iOS";
 			productReference = 212BA347233FC3C800335979 /* libRedactedKit.a */;
@@ -651,7 +641,6 @@
 			);
 			name = "RedactedPhoto-iOS";
 			packageProductDependencies = (
-				212BA36C233FC61900335979 /* X */,
 			);
 			productName = "RedactedPhoto-iOS";
 			productReference = 21382F171F117DF100603048 /* RedcatedPhoto.appex */;
@@ -677,7 +666,6 @@
 			);
 			name = "Redacted-iOS";
 			packageProductDependencies = (
-				212BA361233FC3FC00335979 /* X */,
 			);
 			productName = Redacted;
 			productReference = 2192BAC41AD0E6C500AC87E2 /* Redacted.app */;
@@ -755,8 +743,8 @@
 			);
 			mainGroup = 210EF32E1AC0A35C00ED8E97;
 			packageReferences = (
-				212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */,
 				2116C99B276ADD630097E2F7 /* XCRemoteSwiftPackageReference "CoreImageView" */,
+				215660D7276BC0E6001A346C /* XCRemoteSwiftPackageReference "X" */,
 			);
 			productRefGroup = 210EF3381AC0A35C00ED8E97 /* Products */;
 			projectDirPath = "";
@@ -1623,6 +1611,14 @@
 				minimumVersion = 0.5.0;
 			};
 		};
+		215660D7276BC0E6001A346C /* XCRemoteSwiftPackageReference "X" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/X.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1631,27 +1627,7 @@
 			package = 2116C99B276ADD630097E2F7 /* XCRemoteSwiftPackageReference "CoreImageView" */;
 			productName = CoreImageView;
 		};
-		212BA30A233FBBD400335979 /* X */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */;
-			productName = X;
-		};
 		212BA32D233FC20200335979 /* X */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */;
-			productName = X;
-		};
-		212BA32F233FC20600335979 /* X */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */;
-			productName = X;
-		};
-		212BA361233FC3FC00335979 /* X */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */;
-			productName = X;
-		};
-		212BA365233FC44400335979 /* X */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */;
 			productName = X;
@@ -1661,9 +1637,9 @@
 			package = 212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */;
 			productName = X;
 		};
-		212BA36C233FC61900335979 /* X */ = {
+		215660D8276BC0E6001A346C /* X */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 212BA309233FBBD400335979 /* XCRemoteSwiftPackageReference "x" */;
+			package = 215660D7276BC0E6001A346C /* XCRemoteSwiftPackageReference "X" */;
 			productName = X;
 		};
 /* End XCSwiftPackageProductDependency section */
