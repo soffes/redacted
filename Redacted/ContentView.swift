@@ -60,6 +60,8 @@ struct ContentView: View {
         let faces = VNDetectFaceRectanglesRequest(completionHandler: detectFaces)
         let text = VNDetectTextRectanglesRequest(completionHandler: detectText)
 
+        print("identifiers: \(try! VNRecognizeAnimalsRequest(completionHandler: detectBarcodes).supportedIdentifiers())")
+
         do {
             try handler.perform([
                 barcodes,
