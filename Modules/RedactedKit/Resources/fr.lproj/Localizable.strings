@@ -1,11 +1,3 @@
-/*
-  Localizable.strings
-  Redacted
-
-  Created by Mattieu Gamache-Asselin on 4/18/15.
-  Copyright © 2015–2017 Nothing Magical Inc. All rights reserved.
-*/
-
 /* Modes */
 "MODE" = "Mode";
 "PIXELATE" = "Pixéliser";

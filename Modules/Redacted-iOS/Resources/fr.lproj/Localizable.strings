@@ -1,11 +1,3 @@
-/*
-  Localizable.strings
-  Redacted
-
-  Created by Valentin Menardie on 6/15/17.
-  Copyright © 2017 Nothing Magical Inc. All rights reserved.
-*/
-
 "CHOOSE_PHOTO" = "Choisir une photo";
 "CHOOSE_LAST_PHOTO" = "Utiliser la dernière photo";
 "TAKE_PHOTO" = "Prendre une photo";

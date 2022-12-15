@@ -684,7 +684,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1410;
-				ORGANIZATIONNAME = "Nothing Magical Inc.";
+				ORGANIZATIONNAME = "Sam Soffes";
 				TargetAttributes = {
 					210EF3361AC0A35C00ED8E97 = {
 						CreatedOnToolsVersion = 6.3;

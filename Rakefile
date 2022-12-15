@@ -13,7 +13,7 @@ namespace :strings do
     else
       puts 'ℹ️  Updating strings…'
       Dir.chdir 'tmp/i18n' do
-        system 'git pull origin master'
+        system 'git pull'
       end
     end
 

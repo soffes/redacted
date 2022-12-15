@@ -1,10 +1,2 @@
-/*
-  InfoPlist.strings
-  Redacted
-
-  Created by Ryo Nakano on 7/19/21.
-  Copyright © 2017 Nothing Magical Inc. All rights reserved.
-*/
-
 "NSCameraUsageDescription" = "Redactedはカメラを使って写真をインポートします。";
 "NSPhotoLibraryUsageDescription" = "Redactedはフォトライブラリを使って写真をインポートします。";
