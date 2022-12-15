@@ -32,7 +32,6 @@
 
 /* About */
 "VERSION_FORMAT" = "Versión %@";
-"CREDITS" = "Diseñado y desarrollado por Nothing Magical en California.";
 
 /* Tutorial */
 "DRAG_TO_GET_STARTED" = "Arrastra un imagen aquí";

@@ -32,7 +32,6 @@
 
 /* About */
 "VERSION_FORMAT" = "版本 %@";
-"CREDITS" = "由 Nothing Magical 在加利福尼亚设计和开发。";
 
 /* Tutorial */
 "DRAG_TO_GET_STARTED" = "拖拽一张图片到这里";

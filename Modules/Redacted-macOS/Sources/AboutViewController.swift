@@ -6,7 +6,6 @@ final class AboutViewController: NSViewController {
 	// MARK: - Properties
 
 	@IBOutlet private var versionLabel: NSTextField!
-	@IBOutlet private var creditsLabel: NSTextField!
 	@IBOutlet private var copyrightLabel: NSTextField!
 
 	// MARK: - NSViewController
@@ -20,7 +19,6 @@ final class AboutViewController: NSViewController {
 		let version = info["CFBundleVersion"] as? String ?? "0"
 
 		versionLabel.stringValue = String(format: string("VERSION_FORMAT"), "\(shortVersion) (\(version))")
-		creditsLabel.stringValue = string("CREDITS")
         copyrightLabel.stringValue = info["NSHumanReadableCopyright"] as? String ?? ""
 	}
 }

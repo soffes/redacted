@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="17008"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="21008"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
@@ -280,7 +279,7 @@ CA
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" tag="1" id="UbA-5R-CyW">
                                         <rect key="frame" x="13" y="14" width="44" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" alternateTitle="Clear Image" bezelStyle="texturedRounded" image="Clear" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Mve-cU-aEK">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -294,7 +293,7 @@ CA
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" tag="2" id="3Za-NF-8vf">
                                         <rect key="frame" x="0.0" y="14" width="44" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" alternateTitle="Share" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dG0-wy-jv4">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -428,11 +427,11 @@ CA
             <objects>
                 <viewController title="About" showSeguePresentationStyle="single" id="4hD-bt-0Aa" customClass="AboutViewController" customModule="Redacted" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="cNm-8f-sdn">
-                        <rect key="frame" x="0.0" y="0.0" width="230" height="377"/>
+                        <rect key="frame" x="0.0" y="0.0" width="254" height="373"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RCM-ja-Hod">
-                                <rect key="frame" x="20" y="167" width="190" height="190"/>
+                                <rect key="frame" x="32" y="163" width="190" height="190"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="DMp-ix-eJn"/>
                                     <constraint firstAttribute="width" secondItem="RCM-ja-Hod" secondAttribute="height" multiplier="1:1" id="DVf-Nf-zk5"/>
@@ -440,7 +439,7 @@ CA
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="AppIcon" id="nrN-vz-Tik"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nqv-Bg-dma">
-                                <rect key="frame" x="48" y="126" width="134" height="33"/>
+                                <rect key="frame" x="60" y="122" width="134" height="33"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Redacted" id="4Yy-dA-lcB">
                                     <font key="font" metaFont="systemBold" size="28"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -448,7 +447,7 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ASa-J6-PLp">
-                                <rect key="frame" x="78" y="102" width="75" height="16"/>
+                                <rect key="frame" x="90" y="98" width="74" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="&lt;Version&gt;" id="MID-Hp-Kew">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -456,20 +455,10 @@ CA
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kWV-yQ-CgU">
-                                <rect key="frame" x="78" y="20" width="74" height="14"/>
+                                <rect key="frame" x="90" y="20" width="74" height="14"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="&lt;Copyright&gt;" usesSingleLineMode="YES" id="aLd-r9-4xO">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvv-Dg-9ZU">
-                                <rect key="frame" x="27" y="54" width="178" height="28"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="L9u-I5-bma">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <string key="title">Designed and developed
-by Nothing Magical in California.</string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -477,26 +466,21 @@ by Nothing Magical in California.</string>
                         <constraints>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RCM-ja-Hod" secondAttribute="trailing" constant="20" id="8nt-Ks-6I7"/>
                             <constraint firstItem="RCM-ja-Hod" firstAttribute="top" secondItem="cNm-8f-sdn" secondAttribute="top" constant="20" id="9Cd-Jz-B53"/>
-                            <constraint firstItem="kWV-yQ-CgU" firstAttribute="top" secondItem="wvv-Dg-9ZU" secondAttribute="bottom" constant="20" id="Evl-H1-Yos"/>
-                            <constraint firstAttribute="centerX" secondItem="wvv-Dg-9ZU" secondAttribute="centerX" constant="-0.5" id="Ey0-tF-NDz"/>
-                            <constraint firstItem="RCM-ja-Hod" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cNm-8f-sdn" secondAttribute="leading" constant="20" id="GEU-de-nfV"/>
-                            <constraint firstItem="wvv-Dg-9ZU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cNm-8f-sdn" secondAttribute="leading" constant="20" id="HDB-rC-SLC"/>
+                            <constraint firstItem="RCM-ja-Hod" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cNm-8f-sdn" secondAttribute="leading" constant="32" id="GEU-de-nfV"/>
                             <constraint firstAttribute="bottom" secondItem="kWV-yQ-CgU" secondAttribute="bottom" constant="20" id="K2h-lD-evD"/>
                             <constraint firstItem="nqv-Bg-dma" firstAttribute="top" secondItem="RCM-ja-Hod" secondAttribute="bottom" constant="8" id="LO0-88-6fI"/>
                             <constraint firstAttribute="centerX" secondItem="ASa-J6-PLp" secondAttribute="centerX" id="PWR-Qp-vIJ"/>
                             <constraint firstAttribute="centerX" secondItem="nqv-Bg-dma" secondAttribute="centerX" id="Tv1-Nv-RiO"/>
                             <constraint firstItem="ASa-J6-PLp" firstAttribute="top" secondItem="nqv-Bg-dma" secondAttribute="bottom" constant="8" id="VwX-HL-s0A"/>
                             <constraint firstAttribute="centerX" secondItem="RCM-ja-Hod" secondAttribute="centerX" id="aYp-0b-w8D"/>
-                            <constraint firstItem="wvv-Dg-9ZU" firstAttribute="top" secondItem="ASa-J6-PLp" secondAttribute="bottom" constant="20" id="cD5-Ij-glo"/>
                             <constraint firstAttribute="centerX" secondItem="kWV-yQ-CgU" secondAttribute="centerX" id="fTe-rO-q1l"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wvv-Dg-9ZU" secondAttribute="trailing" constant="20" id="n2Y-6q-cRi"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kWV-yQ-CgU" secondAttribute="trailing" constant="20" id="pGy-3Z-zjf"/>
                             <constraint firstItem="kWV-yQ-CgU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cNm-8f-sdn" secondAttribute="leading" constant="20" id="wIG-zO-aMC"/>
+                            <constraint firstItem="kWV-yQ-CgU" firstAttribute="top" secondItem="ASa-J6-PLp" secondAttribute="bottom" constant="64" id="zla-iY-zVQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="copyrightLabel" destination="kWV-yQ-CgU" id="SYk-Sr-r67"/>
-                        <outlet property="creditsLabel" destination="wvv-Dg-9ZU" id="2ho-Q1-0iC"/>
                         <outlet property="versionLabel" destination="ASa-J6-PLp" id="Ir7-wZ-3rU"/>
                     </connections>
                 </viewController>
@@ -531,7 +515,7 @@ by Nothing Magical in California.</string>
         <image name="BlackBar" width="16" height="16"/>
         <image name="Blur" width="16" height="16"/>
         <image name="Clear" width="16" height="16"/>
-        <image name="NSShareTemplate" width="15" height="17"/>
+        <image name="NSShareTemplate" width="19" height="22"/>
         <image name="Pixelate" width="16" height="16"/>
         <image name="TouchBar-BlackBar" width="18" height="18"/>
         <image name="TouchBar-Blur" width="18" height="18"/>
