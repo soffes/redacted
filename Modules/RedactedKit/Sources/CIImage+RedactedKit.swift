@@ -1,10 +1,5 @@
-import X
-
-#if os(iOS)
 import CoreImage
-#else
-import QuartzCore
-#endif
+import X
 
 extension CIImage {
 	public var renderedImage: Image {

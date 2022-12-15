@@ -1,12 +1,7 @@
 import CoreGraphics
+import CoreImage
 import Foundation
 import X
-
-#if os(iOS)
-	import CoreImage
-#else
-	import QuartzCore
-#endif
 
 public typealias Preprocessor = (_ image: CIImage, _ type: RedactionType) -> CIImage
 

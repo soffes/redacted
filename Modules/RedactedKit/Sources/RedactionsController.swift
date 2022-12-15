@@ -1,10 +1,5 @@
-import X
-
-#if os(iOS)
 import CoreImage
-#else
-import QuartzCore
-#endif
+import X
 
 public final class RedactionsController {
 
