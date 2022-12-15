@@ -1,25 +1,23 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "CoreImageView",
-        "repositoryURL": "https://github.com/soffes/CoreImageView",
-        "state": {
-          "branch": null,
-          "revision": "d5dd091bf473e21303b307aaaaf5c70c751ba53b",
-          "version": "0.1.0"
-        }
-      },
-      {
-        "package": "X",
-        "repositoryURL": "https://github.com/soffes/X.git",
-        "state": {
-          "branch": null,
-          "revision": "69c28ff29c026f35b9397520db131c3184749051",
-          "version": "0.5.1"
-        }
+  "pins" : [
+    {
+      "identity" : "coreimageview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/soffes/CoreImageView",
+      "state" : {
+        "revision" : "d5dd091bf473e21303b307aaaaf5c70c751ba53b",
+        "version" : "0.1.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "x",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/soffes/X.git",
+      "state" : {
+        "revision" : "69c28ff29c026f35b9397520db131c3184749051",
+        "version" : "0.5.1"
+      }
+    }
+  ],
+  "version" : 2
 }
