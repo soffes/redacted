@@ -9,7 +9,7 @@ namespace :strings do
     unless Dir.exists? 'tmp/i18n'
       puts 'ℹ️  Cloning strings…'
       system 'mkdir -p tmp'
-      system 'git clone https://github.com/nothingmagical/redacted-i18n tmp/i18n'
+      system 'git clone https://github.com/soffes/redacted-i18n tmp/i18n'
     else
       puts 'ℹ️  Updating strings…'
       Dir.chdir 'tmp/i18n' do
