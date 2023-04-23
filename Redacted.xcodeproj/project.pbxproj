@@ -104,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				21E2327329F4E960005B3A98 /* Modules */,
-				21E2334629F4E9F3005B3A98 /* RedactedCore */,
 				21E2325C29F4E810005B3A98 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				21E232CC29F4E960005B3A98 /* Redacted */,
+				21E2334629F4E9F3005B3A98 /* RedactedCore */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
