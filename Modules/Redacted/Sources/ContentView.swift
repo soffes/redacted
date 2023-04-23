@@ -1,3 +1,4 @@
+import RedactedCore
 import SwiftUI
 
 struct ContentView: View {
@@ -7,6 +8,7 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+            Text("Version \(RedactedCore.version)")
         }
         .padding()
     }
