@@ -15,7 +15,7 @@ extension NSBezierPath {
 			case .lineTo:
 				path.addLine(to: points[0])
 				closed = false
-			case .curveTo:
+			case .curveTo, .cubicCurveTo, .quadraticCurveTo:
 				path.addCurve(to: points[2], control1: points[0], control2: points[1])
 				closed = false
 			case .closePath:
